@@ -1,0 +1,388 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Ajab Capital LTD.">
+        <meta name="keyword" content="loan origination, mobile credit, credit analytics, fintech, credit score, sme financing, loan portfolio monitoring">
+
+        <title>AjabCapital{% block page-title%} | Index{% endblock page-title%}</title>
+
+        <link rel="shortcut icon" href="{% static "img/logo-icon.png" %}" type="image/png"/>
+        <link href="//fonts.googleapis.com/css?family=Lato:100,200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Abel:100,200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic" rel="stylesheet">
+
+        <!--common style-->
+        <link href="{% static "css/web/index.css" %}" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js" type="text/javascript"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js" type="text/javascript"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js" type="text/javascript"></script>
+        <![endif]-->
+
+        {% block extracss %}{% endblock extracss %}
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url "index" %}">
+                        <div>
+                            <img src="{% static "img/logo-icon.png" %}" />
+                            <span class="logo-text black">ajab</span>
+                            <span class="logo-text light">capital</span>
+                        </div>
+                        <div class="tagline">the mobile credit company</div>
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse pull-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="{% url "index" %}#our-platform">Our Platform</a>
+                        </li>
+                        <li><a href="{% url "about-us" %}">About Us</a></li>
+                        <li><a href="{% url "careers" %}">Careers</a></li>
+                        <li><a href="{% url "partners" %}">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <section class="page call">
+            <div class="container">
+                <div class="body">
+                    <div class="main-call">
+                        cloud based mobile credit platform
+                    </div>
+                    <div class="secondary-call hidden-xs">
+                        End-to-end Loan management platform for unsecured mobile credit business portfolio. Specially created for SACCO’s and Microfinance Insitutions.
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="row">
+                        <a class="btn btn-primary btn-lg" href="">Get Started &gt;</a>
+                    </div>
+                    <div class="row">
+                        <ul class="partners clearfix col-lg-offset-1 col-lg-10">
+                            <li class="partner">
+                                <img src="{% static "img/mpesa.png" %}" />
+                            </li>
+                            <li class="partner">
+                                <img src="{% static "img/airtel.png" %}" />
+                            </li>
+                            <li class="partner">
+                                <img src="{% static "img/metropol.png" %}" />
+                            </li>
+                            <li class="partner">
+                                <img src="{% static "img/creditinfo.png" %}" />
+                            </li>
+                            <li class="partner">
+                                <img src="{% static "img/transunion.png" %}" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="page what-we-offer">
+            <div class="container">
+                <div class="header">
+                    <h2>What we offer</h2>
+                </div>
+                <div class="body clearfix">
+                    <div class="offering col-lg-4 col-sm-12 col-md-4">
+                        <div class="image">
+                            <img src="{% static "img/mobile.png" %}" />
+                        </div>
+                        <div class="label">
+                            Mobile First
+                        </div>
+                        <div class="text">
+                            We are a mobile first company. Meaning all our products are centered around your customer’s mobile phone. Feature or Smatphone.
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="offering col-lg-4 col-sm-12 col-md-4">
+                        <div class="image">
+                            <img src="{% static "img/risk-based-analytics.png" %}" />
+                        </div>
+                        <div class="label">
+                            Risk Based Analytics
+                        </div>
+                        <div class="text">
+                            We have onboard 3 Credit Reference Bureaus on board to choose from, or combine in the Underwriting process
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="offering col-lg-4 col-sm-12 col-md-4">
+                        <div class="image">
+                            <img src="{% static "img/powerful-crm.png" %}" />
+                        </div>
+                        <div class="label">
+                            Powerful CRM
+                        </div>
+                        <div class="text">
+                            Access your Customers via campaigns on various digital channels. This includes SMS, Push notifications and even Telegram
+                        </div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <a class="btn btn-primary btn-lg" href="">Our Platform &gt;</a>
+                </div>
+            </div>
+        </section>
+        <section id="our-platform" class="page our-platform">
+            <div class="container">
+                <div class="header">
+                    <h2>Our Platform</h2>
+                    <div class="secondary-text">
+                        Our industry solutions involve a combination of services, products and systems
+                    </div>
+                </div>
+                <div class="body">
+                    <div class="modules clearfix">
+                        <div class="module-row">
+                            <div class="module">
+                                <div class="module-initials app">A</div>
+                                <div class="module-name">App</div>
+                                <div class="module-description">
+                                    The core module on the platform. Manages Funds, 
+                                    Credit Control, The General Journal, Loan Ledger, 
+                                    Transaction Processing and Users.
+                                </div>
+                                <div class="module-learn-more">
+                                    <a href="#">Learn More &gt;</a>
+                                </div>
+                            </div>
+                            <div class="module">
+                                <div class="module-initials backoffice">B</div>
+                                <div class="module-name">Back Office</div>
+                                <div class="module-description">
+                                    Designed for Manual Operations, 
+                                    this module helps you manage Product types, 
+                                    KYC, Collateral, Underwriting, Appraisal 
+                                    and Loan Restructuring.
+                                </div>
+                                <div class="module-learn-more">
+                                    <a href="#">Learn More &gt;</a>
+                                </div>
+                            </div>
+                            <div class="module">
+                                <div class="module-initials crm">C</div>
+                                <div class="module-name">CRM</div>
+                                <div class="module-description">
+                                    The Customer Relation module handles Customer 
+                                    Data, Communication and Document Management. 
+                                    This is through SMS, Email and Telegram Bot
+                                </div>
+                                <div class="module-learn-more">
+                                    <a href="#">Learn More &gt;</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="module-row">
+                            <div class="module">
+                                <div class="module-initials decisioning">CD</div>
+                                <div class="module-name">Credit Decisioning</div>
+                                <div class="module-description">
+                                    We provide you an automated underwriting and 
+                                    appraisal software that can make credit decisions 
+                                    based on your own decisioning rules.
+                                </div>
+                                <div class="module-learn-more">
+                                    <a href="#">Learn More &gt;</a>
+                                </div>
+                            </div>
+                            <div class="module">
+                                <div class="module-initials credit-officer">CO</div>
+                                <div class="module-name">Credit Officer</div>
+                                <div class="module-description">
+                                    Our credit officer/agent module provides a mobile app 
+                                    for field-based Agents. Manages KYC, 
+                                    Appraisal and follow up on Defaulting Loans.
+                                </div>
+                                <div class="module-learn-more">
+                                    <a href="#">Learn More &gt;</a>
+                                </div>
+                            </div>
+                            <div class="module">
+                                <div class="module-initials compliance-reporting">CR</div>
+                                <div class="module-name">Compliance Reporting</div>
+                                <div class="module-description">
+                                    This Module is specially formulated for Microfinance 
+                                    Banks, or those that are keen on Core Capital 
+                                    requirements among other KPIs
+                                </div>
+                                <div class="module-learn-more">
+                                    <a href="#">Learn More &gt;</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="module-row">
+                            <div class="module">
+                                <div class="module-initials debt-collection">DC</div>
+                                <div class="module-name">Debt Collection</div>
+                                <div class="module-description">
+                                    Have Bad Debts? Write them Off and we will take it 
+                                    from there, we will connect you to a debt collector 
+                                    to help you recover the loans.
+                                </div>
+                                <div class="module-learn-more">
+                                    <a href="#">Learn More &gt;</a>
+                                </div>
+                            </div>
+                            <div class="module">
+                                <div class="module-initials financial-accounting">FA</div>
+                                <div class="module-name">Financial Accounting</div>
+                                <div class="module-description">
+                                    Comprehensive financial accounting and reporting. 
+                                    It includes a General Ledger, Balance Sheet, the P&amp;L, 
+                                    and Accounting Consultancy 
+                                </div>
+                                <div class="module-learn-more">
+                                    <a href="#">Learn More &gt;</a>
+                                </div>
+                            </div>
+                            <div class="module">
+                                <div class="module-initials loan-origination">LO</div>
+                                <div class="module-name">Loan Origination</div>
+                                <div class="module-description">
+                                    This module extends the CRM and Core modules, 
+                                    providing Mobile and Web based channels for your 
+                                    customers to apply for loans 
+                                </div>
+                                <div class="module-learn-more">
+                                    <a href="#">Learn More &gt;</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="module-row">
+                            <div class="module">
+                                <div class="module-initials payments">PY</div>
+                                <div class="module-name">Payments</div>
+                                <div class="module-description">
+                                    Manages Disbursement and Repayments. 
+                                    This module Links up with M-Pesa, Airtel Money, 
+                                    Paypal and RTGS.
+                                </div>
+                                <div class="module-learn-more">
+                                    <a href="#">Learn More &gt;</a>
+                                </div>
+                            </div>
+                            <div class="module">
+                                <div class="module-initials risk-management">RM</div>
+                                <div class="module-name">Risk Management</div>
+                                <div class="module-description">
+                                    We link up with 3 Credit Bureaus to help protect your Loan 
+                                    Portfolio. Assess and set Risk Metrics for regulation, 
+                                    insurance and credit control
+                                </div>
+                                <div class="module-learn-more">
+                                    <a href="#">Learn More &gt;</a>
+                                </div>
+                            </div>
+                            <div class="module">
+                                <div class="module-initials syndicated-loans">SL</div>
+                                <div class="module-name">Syndicated Loans</div>
+                                <div class="module-description">
+                                    We arrange financing for your Loan products from various Banks. 
+                                    We also handle Insurance, Accounting and Reporting.
+                                </div>
+                                <div class="module-learn-more">
+                                    <a href="#">Learn More &gt;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <a class="btn btn-primary btn-lg" href="">Book a Demo</a>
+                </div>
+            </div>
+        </section>
+        <section class="page end-to-end-automation">
+            <div class="container">
+                <div class="header">
+                    <h2 class="">
+                        Multiple channels of Loan Origination
+                    </h2>
+                </div>
+                <div class="body clearfix">
+                    <div class="col-lg-4 col-md-5 messages hidden-xs hidden-sm">
+                        <div class="message">Android</div>
+                        <div class="message">iOS</div>
+                        <div class="message">USSD</div>
+                        <div class="message">Web</div>
+                        <div class="message">Telegram</div>
+                        <div class="message">Whatsapp</div>
+                    </div>
+                    <div class="col-lg-8 col-md-7 devices col-xs-12">
+                    </div>
+                </div>
+                <div class="footer">
+                </div>
+            </div>
+        </section>
+        <footer class="clearfix">
+            <div class="copyright col-lg-4">
+                <img src="{% static "img/logo-icon.png" %}" width="25px" height="25px" />
+                &copy; Ajab Capital Limited <strong>{% now "Y" %}</strong>
+            </div>
+            <div class="links col-lg-6">
+                <ul class="horizontal-list">
+                    <li><a href="#">About</a></li>
+                    <li>/</li>
+                    <li><a href="#">Our Platform</a></li>
+                    <li>/</li>
+                    <li><a href="#">Blog</a></li>
+                    <li>/</li>
+                    <li><a href="#">Careers</a></li>
+                    <li>/</li>
+                    <li><a href="#">Privacy</a></li>
+                    <li>/</li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+            <div class="social-buttons col-lg-2 clearfix">
+                <ul class="horizontal-list">
+                    <li>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="38" height="38" viewBox="0 0 38 38">
+                              <path d="M38.000,-0.000 C38.000,-0.000 31.682,-0.000 31.682,-0.000 C31.682,-0.000 31.682,0.001 31.682,0.001 C31.677,0.001 31.672,-0.000 31.667,-0.000 C31.667,-0.000 8.444,-0.000 8.444,-0.000 C8.444,-0.000 6.334,-0.000 6.334,-0.000 C6.334,-0.000 0.000,-0.000 0.000,-0.000 C0.000,-0.000 0.000,6.334 0.000,6.334 C0.000,6.334 0.000,8.444 0.000,8.444 C0.000,8.444 0.000,29.556 0.000,29.556 C0.000,29.556 0.000,31.666 0.000,31.666 C0.000,31.666 0.000,38.000 0.000,38.000 C0.000,38.000 6.334,38.000 6.334,38.000 C6.334,38.000 8.444,38.000 8.444,38.000 C8.444,38.000 19.000,38.000 19.000,38.000 C19.000,38.000 19.000,23.644 19.000,23.644 C19.000,23.644 14.356,23.644 14.356,23.644 C14.356,23.644 14.356,17.311 14.356,17.311 C14.356,17.311 19.000,17.311 19.000,17.311 C19.000,17.311 19.000,14.844 19.000,14.844 C19.000,10.588 22.196,6.756 26.125,6.756 C26.125,6.756 31.244,6.756 31.244,6.756 C31.244,6.756 31.244,13.089 31.244,13.089 C31.244,13.089 26.125,13.089 26.125,13.089 C25.565,13.089 24.911,13.769 24.911,14.788 C24.911,14.788 24.911,17.311 24.911,17.311 C24.911,17.311 31.244,17.311 31.244,17.311 C31.244,17.311 31.244,23.644 31.244,23.644 C31.244,23.644 24.911,23.644 24.911,23.644 C24.911,23.644 24.911,38.000 24.911,38.000 C24.911,38.000 29.556,38.000 29.556,38.000 C29.556,38.000 31.667,38.000 31.667,38.000 C31.667,38.000 38.000,38.000 38.000,38.000 C38.000,38.000 38.000,31.666 38.000,31.666 C38.000,31.666 38.000,29.556 38.000,29.556 C38.000,29.556 38.000,6.334 38.000,6.334 C38.000,6.329 37.999,6.323 37.999,6.318 C37.999,6.318 38.000,6.318 38.000,6.318 C38.000,6.318 38.000,-0.000 38.000,-0.000 Z" id="path-1" class="cls-2" fill-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="46" height="38" viewBox="0 0 46 38">
+                              <path d="M14.627,38.000 C9.240,38.000 4.225,36.412 0.003,33.690 C0.750,33.779 1.509,33.824 2.279,33.824 C6.748,33.824 10.862,32.291 14.127,29.718 C9.952,29.640 6.429,26.867 5.215,23.055 C5.798,23.167 6.395,23.227 7.010,23.227 C7.880,23.227 8.723,23.110 9.524,22.891 C5.159,22.010 1.871,18.132 1.871,13.484 C1.871,13.444 1.871,13.403 1.872,13.363 C3.158,14.082 4.629,14.514 6.193,14.563 C3.633,12.843 1.949,9.907 1.949,6.578 C1.949,4.820 2.419,3.172 3.240,1.756 C7.946,7.560 14.975,11.379 22.903,11.779 C22.741,11.077 22.656,10.344 22.656,9.593 C22.656,4.295 26.928,-0.001 32.196,-0.001 C34.940,-0.001 37.419,1.165 39.160,3.029 C41.333,2.599 43.374,1.800 45.217,0.701 C44.505,2.941 42.993,4.821 41.023,6.009 C42.953,5.777 44.791,5.261 46.502,4.498 C45.223,6.422 43.606,8.111 41.742,9.464 C41.760,9.875 41.769,10.289 41.769,10.705 C41.769,23.382 32.174,38.000 14.627,38.000 " id="path-1" class="cls-2" fill-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                <path d="M92.6,0H7.4C3.3,0,0,3.2,0,7.2v85.6c0,4,3.3,7.2,7.4,7.2h85.2c4.1,0,7.4-3.2,7.4-7.2V7.2C100,3.2,96.7,0,92.6,0z M29.7,85.2
+                                  H14.8V37.5h14.8V85.2z M22.2,31c-4.8,0-8.6-3.9-8.6-8.6c0-4.7,3.8-8.6,8.6-8.6c4.7,0,8.6,3.9,8.6,8.6C30.8,27.1,27,31,22.2,31z
+                                   M85.2,85.2H70.4V62c0-5.5-0.1-12.7-7.7-12.7c-7.7,0-8.9,6-8.9,12.3v23.6H39V37.5h14.2V44h0.2c2-3.8,6.8-7.7,14-7.7
+                                  c15,0,17.8,9.9,17.8,22.7V85.2z"></path>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>

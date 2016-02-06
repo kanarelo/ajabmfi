@@ -1,0 +1,431 @@
+@import "bootstrap/bootstrap.scss";
+
+@import "base.scss";
+
+header {
+    margin-top: 4vh;
+
+    .navbar-header{
+        .navbar-brand{
+            width: 300px;
+            position: relative;
+
+            img{
+                display: inline;
+                margin-right: 7.5px;
+            }
+            .logo-text{
+                display: inline;
+                font-size: 40px;
+                color: #000;
+                margin-left: -4px;
+            }
+            .tagline{
+                position: absolute;
+                right: 32px;
+                top: 55px;
+                font-size: 12px;
+                color: #000;
+            }
+        }
+    }
+
+    .nav{
+        &.navbar-nav{
+            margin-top: 2vh;
+            text-transform: uppercase;
+            letter-spacing: 1.5px; 
+
+            li {
+                margin-right: 10px;
+                a {
+                    transition: background-color .4s ease-in;
+                    border-radius: 50px;
+                    color: black;
+
+                    &:hover{
+                        background-color: #CFE900;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.call{
+    height: 70vh !important;
+
+    .header{
+
+    }
+    .body{
+        padding-top: 20vh;
+        text-align: center;
+
+        .main-call{
+            letter-spacing: 2px;
+            font-size: 42.5px;
+            text-transform: uppercase;
+            @extend .black;
+        }
+        .secondary-call{
+            font-size: 25px;
+            color: #6C6C6C;
+            padding: 0.5vh 10vh; 
+            text-transform: lowercase;
+        }
+    }
+    .footer{
+        text-align: center;
+
+        a.btn{
+            transition: background-color .0025s linear;
+
+            margin: 6vh auto auto;
+            padding: 15px 45px;
+            border-radius: 5px;
+            border: none;
+
+            font-size: 23px;
+            
+            @extend .linear-gradient;
+
+            &:hover{
+                background: #2B3438 !important;
+            }
+        }
+
+        ul.partners {
+            list-style-type: none;
+            margin-top: 60px;
+            padding-left: 4vw;
+
+            li.partner {
+                float: left;
+                margin-right: 30px;
+                max-height: 50px;
+                padding: 2.5px;
+            }
+        }
+    }
+
+    @extend section.page;
+}
+
+.what-we-offer{
+    height: 80vh !important;
+    background-color: #F8F9F9;
+
+    .header{
+        padding: 6vh 2vh 8vh;
+
+        h2 {
+            text-align: center;
+            font-size: 40px;
+            text-transform: capitalize;
+        }
+    }
+    .body{
+        margin-bottom: 5vh;
+
+        .offering{
+            text-align: center;
+
+            .label{
+                text-align: center;
+                color: #000;
+                font-size: 22px;
+                margin-bottom: 10px;
+                font-weight: normal;
+
+                @extend .semibold;
+            }
+            .text{
+                margin-top: 15px;
+                text-align: center;
+                color: #767676;
+                font-size: 20px;
+            }
+            .image{
+                margin-bottom: 15px;
+                height: 100px;
+
+                img{
+                    margin: auto;
+                }
+            }
+        }
+    }
+    .footer{
+        text-align: center;
+
+        a.btn{
+            margin: auto auto;
+
+            padding: 15px 45px;
+            border-radius: 5px;
+            border: none;
+
+            font-size: 23px;
+
+            background-color: #40484C;
+
+            &:hover{
+                background: #2B3438 !important;
+            }
+        }
+    }
+
+    @extend section.page;
+}
+
+.our-platform{
+    min-height: 80vh;
+    background-image: linear-gradient(-145deg, #75BE8B 0%, #6BB88A 0%, #75BE8B 0%, #2B9784 100%);
+    padding-bottom: 10vh;
+
+    .header{
+        padding: 6vh 2vh;
+
+        h2 {
+            text-align: center;
+            font-size: 40px;
+            text-transform: capitalize;
+
+            color: #fff;
+        }
+        .secondary-text{
+            color: #fff;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 22px;
+        }
+    }
+    .body{
+        text-align: center;
+
+        .modules{
+            margin: 10px auto 40px;
+            position: relative;
+            right: 16.5%;
+
+            .module-row{
+                float: right;
+
+                &:first-child{
+                    .module:first-child{
+                        border-top-left-radius: 10px;
+                    }
+                    .module:last-child{
+                        border-top-right-radius: 10px;
+                    }
+                }
+                &:last-child{
+                    .module:first-child{
+                        border-bottom-left-radius: 10px;
+                    }
+                    .module:last-child{
+                        border-bottom-right-radius: 10px;
+                    }
+                }
+                .module{
+                    width: 256px;
+                    height: 256px;
+                    background-color: #fff;
+                    border-right: 1px solid #57AE88;
+                    border-top: 1px solid #57AE88;
+                    display: inline-block;
+                    margin: 0;
+                    float: left;
+
+                    &-initials{
+                        height: 62px;
+                        width: 62px;
+                        background-color: #000;
+                        font-size: 40px;
+                        line-height: 40px;
+                        border-radius: 5px;
+                        margin: 20px auto;
+                        color: #FFFFFF;
+                        padding-top: 12.5px;
+                        text-align: center;
+                        vertical-align: middle;
+
+                        &.app{
+                            background-image: linear-gradient(-135deg, #6E1E7D 0%, #35013F 100%);
+                        }
+                        &.backoffice{
+                            background-image: linear-gradient(-135deg, #92338A 0%, #561050 100%);
+                        }
+                        &.crm{
+                            background-image: linear-gradient(-135deg, #DA3C8D 0%, #951556 100%);
+                        }
+                        &.decisioning{
+                            background-image: linear-gradient(-135deg, #C47486 0%, #A75265 100%);
+                        }
+                        &.credit-officer{
+                            background-image: linear-gradient(-135deg, #F4978C 0%, #EC7263 100%);
+                        }
+                        &.compliance-reporting{
+                            background-image: linear-gradient(-135deg, #FFDCBA 0%, #FEBE7E 100%);
+                            color: #B36072;
+                        }
+                        &.debt-collection{
+                            background-image: linear-gradient(-135deg, #40859C 0%, #114B5F 100%);
+                        }
+                        &.financial-accounting{
+                            background-image: linear-gradient(-135deg, #4EBD9C 0%, #1A936F 100%);
+                        }
+                        &.loan-origination{
+                            background-image: linear-gradient(-135deg, #A6EDB5 0%, #88D498 100%);
+                            color: #114B5F;
+                        }
+                        &.payments{
+                            background-image: linear-gradient(-135deg, #2F60CE 0%, #062C80 100%);
+                        }
+                        &.risk-management{
+                            background-image: linear-gradient(-135deg, #3891EB 0%, #0E6AC7 100%);
+                        }
+                        &.syndicated-loans{
+                            background-image: linear-gradient(-135deg, #85C9F3 0%, #4FB9FC 100%);
+                        }
+                    }
+                    &-name{
+                        text-transform: uppercase;
+                        font-size: 15px;
+                        @extend .semibold;
+                    }
+                    &-description{
+                        padding: 5px 15px;
+                        font-size: 13px;
+                        min-height: 90px;
+                    }
+                    &-learn-more{
+                        a{
+                            font-size: 15px;
+                        }
+                    }
+                    &:hover{
+                        opacity: .9;
+                    }
+                }
+            }
+        }
+    }
+    .footer{
+        text-align: center;
+
+        
+        a.btn{
+            margin: auto auto;
+
+            padding: 15px 45px;
+            border-radius: 5px;
+            border: none;
+
+            font-size: 23px;
+
+            background-image: linear-gradient(-145deg, #FFFFFF 0%, #DDE1E2 100%);
+            border-radius: 4px;
+            color: #000;
+
+            &:hover{
+                background-image: linear-gradient(-145deg, #DDE1E2 0%, #FFFFFF 100%);
+            }
+        }
+    }
+
+    @extend section.page;
+}
+
+.end-to-end-automation{
+    height: 100vh;
+    background-image: url("/static/img/dark-bg-computer.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 10%;
+
+    .header{
+        margin: 0;
+        width: 100%;
+        border-bottom: none;
+
+        h2{
+            text-align: center;
+            font-size: 35px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #fff;
+            margin-top: 60px;
+
+            @extend .black;
+        }
+    }
+    .body{
+        .messages{
+            margin-top: 20vh;
+            .message{
+                color: #fff;
+                font-size: 24px;
+                line-height: 45px;
+                margin-right: 20px;
+                text-align: center;
+
+                @extend .light;
+            }
+        }
+
+        .devices{
+            background-image: url("/static/img/devices.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 85vh;
+            background-size: 100vh;
+        }
+    }
+
+    @extend section.page;
+}
+
+footer{
+    padding: 20px 30px;
+
+    .copyright{
+        display: inline-block;
+
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1px;
+
+        img {
+            margin-right: 10px;
+        }
+    }
+
+    .links{
+        display: inline-block;
+
+        a{
+            font-size: 14px;
+            @extend .semibold;
+        }
+    }
+
+    .social-buttons{
+        display: inline-block;
+
+        svg {
+            width: 16px;
+            height: 16px;
+            fill: #282828;
+            top: 2px;
+            position: relative;
+            opacity: .5;
+            transition: opacity .05s ease-in;
+
+            &:hover{
+                opacity: 1;
+            }
+        }
+    }
+}
