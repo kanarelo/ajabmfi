@@ -4,7 +4,8 @@ DEBUG = False
 
 SECRET_KEY = '98tghjcfhv.U.O.I09237923bhjasUYVX98a02372--u2hj3mashjbsambcIII}|bjas,j%0y#q#nmb*d%u(#'
 ALLOWED_HOSTS = [
-	'.ajabcapital.com'
+    '.ajabcapital.com',
+    '192.241.160.33'
 ]
 
 # # Database

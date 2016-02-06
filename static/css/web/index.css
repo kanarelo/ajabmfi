@@ -5932,19 +5932,19 @@ header {
     text-align: center; }
     .call .body .main-call {
       letter-spacing: 2px;
-      font-size: 42.5px;
+      font-size: 5.85vh;
       text-transform: uppercase; }
     .call .body .secondary-call {
-      font-size: 25px;
+      font-size: 4vh;
       color: #6C6C6C;
-      padding: 0.5vh 10vh;
+      padding: 0.5vh 8vh;
       text-transform: lowercase; }
   .call .footer {
     text-align: center; }
     .call .footer a.btn {
       transition: background-color .0025s linear;
       margin: 6vh auto auto;
-      padding: 15px 45px;
+      padding: 1.5vh 30px;
       border-radius: 5px;
       border: none;
       font-size: 23px; }
@@ -5952,7 +5952,7 @@ header {
         background: #2B3438 !important; }
     .call .footer ul.partners {
       list-style-type: none;
-      margin-top: 60px;
+      margin-top: 5vh;
       padding-left: 4vw; }
       .call .footer ul.partners li.partner {
         float: left;
@@ -5964,19 +5964,19 @@ header {
   height: 80vh !important;
   background-color: #F8F9F9; }
   .what-we-offer .header {
-    padding: 6vh 2vh 8vh; }
+    padding: 6vh 2vh 7.5vh; }
     .what-we-offer .header h2 {
       text-align: center;
-      font-size: 40px;
+      font-size: 5.5vh;
       text-transform: capitalize; }
   .what-we-offer .body {
-    margin-bottom: 5vh; }
+    margin-bottom: 3vh; }
     .what-we-offer .body .offering {
       text-align: center; }
       .what-we-offer .body .offering .label {
         text-align: center;
         color: #000;
-        font-size: 22px;
+        font-size: 3vh;
         margin-bottom: 10px;
         font-weight: normal; }
       .what-we-offer .body .offering .text {
@@ -5986,14 +5986,15 @@ header {
         font-size: 20px; }
       .what-we-offer .body .offering .image {
         margin-bottom: 15px;
-        height: 100px; }
+        height: 85px; }
         .what-we-offer .body .offering .image img {
-          margin: auto; }
+          margin: auto;
+          height: 80px; }
   .what-we-offer .footer {
     text-align: center; }
     .what-we-offer .footer a.btn {
       margin: auto auto;
-      padding: 15px 45px;
+      padding: 12.5px 30px;
       border-radius: 5px;
       border: none;
       font-size: 23px;
@@ -6095,7 +6096,7 @@ header {
     text-align: center; }
     .our-platform .footer a.btn {
       margin: auto auto;
-      padding: 15px 45px;
+      padding: 12.5px 30px;
       border-radius: 5px;
       border: none;
       font-size: 23px;
@@ -6121,7 +6122,7 @@ header {
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #fff;
-      margin-top: 60px; }
+      margin-top: 8vh; }
   .end-to-end-automation .body .messages {
     margin-top: 20vh; }
     .end-to-end-automation .body .messages .message {
@@ -6152,15 +6153,17 @@ footer {
       font-size: 14px; }
   footer .social-buttons {
     display: inline-block; }
-    footer .social-buttons svg {
-      width: 16px;
-      height: 16px;
-      fill: #282828;
-      top: 2px;
-      position: relative;
-      opacity: .5;
-      transition: opacity .05s ease-in; }
-      footer .social-buttons svg:hover {
-        opacity: 1; }
+    footer .social-buttons .horizontal-list {
+      float: right; }
+      footer .social-buttons .horizontal-list svg {
+        width: 16px;
+        height: 16px;
+        fill: #282828;
+        top: 2px;
+        position: relative;
+        opacity: .5;
+        transition: opacity .05s ease-in; }
+        footer .social-buttons .horizontal-list svg:hover {
+          opacity: 1; }
 
 /*# sourceMappingURL=index.css.map */

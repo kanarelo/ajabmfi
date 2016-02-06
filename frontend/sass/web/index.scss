@@ -64,14 +64,14 @@ header {
 
         .main-call{
             letter-spacing: 2px;
-            font-size: 42.5px;
+            font-size: 5.85vh;
             text-transform: uppercase;
             @extend .black;
         }
         .secondary-call{
-            font-size: 25px;
+            font-size: 4vh;
             color: #6C6C6C;
-            padding: 0.5vh 10vh; 
+            padding: 0.5vh 8vh; 
             text-transform: lowercase;
         }
     }
@@ -82,7 +82,7 @@ header {
             transition: background-color .0025s linear;
 
             margin: 6vh auto auto;
-            padding: 15px 45px;
+            padding: 1.5vh 30px;
             border-radius: 5px;
             border: none;
 
@@ -97,7 +97,7 @@ header {
 
         ul.partners {
             list-style-type: none;
-            margin-top: 60px;
+            margin-top: 5vh;
             padding-left: 4vw;
 
             li.partner {
@@ -117,16 +117,16 @@ header {
     background-color: #F8F9F9;
 
     .header{
-        padding: 6vh 2vh 8vh;
+        padding: 6vh 2vh 7.5vh;
 
         h2 {
             text-align: center;
-            font-size: 40px;
+            font-size: 5.5vh;
             text-transform: capitalize;
         }
     }
     .body{
-        margin-bottom: 5vh;
+        margin-bottom: 3vh;
 
         .offering{
             text-align: center;
@@ -134,7 +134,7 @@ header {
             .label{
                 text-align: center;
                 color: #000;
-                font-size: 22px;
+                font-size: 3vh;
                 margin-bottom: 10px;
                 font-weight: normal;
 
@@ -148,10 +148,11 @@ header {
             }
             .image{
                 margin-bottom: 15px;
-                height: 100px;
+                height: 85px;
 
                 img{
                     margin: auto;
+                    height: 80px;
                 }
             }
         }
@@ -162,7 +163,7 @@ header {
         a.btn{
             margin: auto auto;
 
-            padding: 15px 45px;
+            padding: 12.5px 30px;
             border-radius: 5px;
             border: none;
 
@@ -319,7 +320,7 @@ header {
         a.btn{
             margin: auto auto;
 
-            padding: 15px 45px;
+            padding: 12.5px 30px;
             border-radius: 5px;
             border: none;
 
@@ -356,7 +357,7 @@ header {
             letter-spacing: 2px;
             text-transform: uppercase;
             color: #fff;
-            margin-top: 60px;
+            margin-top: 8vh;
 
             @extend .black;
         }
@@ -414,17 +415,21 @@ footer{
     .social-buttons{
         display: inline-block;
 
-        svg {
-            width: 16px;
-            height: 16px;
-            fill: #282828;
-            top: 2px;
-            position: relative;
-            opacity: .5;
-            transition: opacity .05s ease-in;
+        .horizontal-list{
+            float: right;
 
-            &:hover{
-                opacity: 1;
+            svg {
+                width: 16px;
+                height: 16px;
+                fill: #282828;
+                top: 2px;
+                position: relative;
+                opacity: .5;
+                transition: opacity .05s ease-in;
+
+                &:hover{
+                    opacity: 1;
+                }
             }
         }
     }
