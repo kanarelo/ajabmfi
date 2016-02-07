@@ -25,12 +25,8 @@ section{
 
 @mixin linear-gradient($topColor, $bottomColor, $angle:-145deg) {
     background-color: $topColor;
-    background-image: -webkit-linear-gradient($angle, $topColor 0%, $bottomColor 100%);
-    background-image: -moz-linear-gradient($angle, $topColor 0%, $bottomColor 100%);
-    background-image: -ms-linear-gradient($angle, $topColor 0%, $bottomColor 100%);
-    background-image: -o-linear-gradient($angle, $topColor 0%, $bottomColor 100%);
-    background-image: linear-gradient($angle, $topColor 0%, $bottomColor 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='$topColor', end-colourStr='$bottomColor');
+    @include gradient-directional($topColor, $bottomColor, $angle);
+    filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#{$topColor}', end-colourStr='#{$bottomColor}');
 }
 
 ul.horizontal-list{
@@ -41,4 +37,20 @@ ul.horizontal-list{
         float: left;
         margin-right: 10px;
     }  
+}
+
+%landing-btn{
+    transition: background-color .0025s linear;
+
+    color: #fff;
+    margin: auto auto;
+    padding: 12.5px 30px;
+    border-radius: 5px;
+    border: none;
+
+    font-size: 23px;
+
+    &:hover{
+        color: #fff;
+    }
 }

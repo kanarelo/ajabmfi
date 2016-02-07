@@ -7,7 +7,7 @@ header {
 
     .navbar-header{
         .navbar-brand{
-            width: 300px;
+            width: 285px;
             position: relative;
 
             img{
@@ -22,29 +22,32 @@ header {
             }
             .tagline{
                 position: absolute;
-                right: 32px;
+                right: 1rem;
                 top: 55px;
                 font-size: 12px;
                 color: #000;
+                width: 10rem;
             }
         }
     }
 
-    .nav{
-        &.navbar-nav{
-            margin-top: 2vh;
-            text-transform: uppercase;
-            letter-spacing: 1.5px; 
+    .navbar-collapse{   
+        .nav{
+            &.navbar-nav{
+                margin-top: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px; 
 
-            li {
-                margin-right: 10px;
-                a {
-                    transition: background-color .4s ease-in;
-                    border-radius: 50px;
-                    color: black;
+                li {
+                    margin-right: 10px;
+                    a {
+                        transition: background-color .4s ease-in;
+                        border-radius: 2.5rem;
+                        color: black;
 
-                    &:hover{
-                        background-color: #CFE900;
+                        &:hover{
+                            background-color: #CFE900;
+                        }
                     }
                 }
             }
@@ -73,21 +76,16 @@ header {
             color: #6C6C6C;
             padding: 0.3rem 4.2rem; 
             text-transform: lowercase;
+
+            @extend .hidden-xs;
         }
     }
     .footer{
         text-align: center;
 
-        a.btn{
-            transition: background-color .0025s linear;
-
+        a.landing-btn{
             margin: 3.1rem auto auto;
-            padding: 15px 30px;
-            border-radius: 5px;
-            border: none;
-
-            font-size: 23px;
-            
+            @extend %landing-btn;
             @include linear-gradient(#75BE8B, #2B9784);
 
             &:hover{
@@ -163,21 +161,21 @@ header {
                     height: 80px;
                 }
             }
+
+            @extend .col-xs-12;
+            @extend .col-sm-12;
+            @extend .col-md-4;
+            @extend .col-lg-4;
+
         }
     }
     .footer{
         text-align: center;
 
-        a.btn{
-            margin: auto auto;
-
-            padding: 12.5px 30px;
-            border-radius: 5px;
-            border: none;
-
-            font-size: 23px;
-
+        a.landing-btn{
             background-color: #40484C;
+
+            @extend %landing-btn;
 
             &:hover{
                 background: #2B3438 !important;
@@ -245,8 +243,6 @@ header {
                     }
                 }
                 .module{
-                    width: 256px;
-                    height: 256px;
                     background-color: #fff;
                     border-right: 1px solid #57AE88;
                     border-top: 1px solid #57AE88;
@@ -254,9 +250,9 @@ header {
                     margin: 0;
                     float: left;
 
+                    @include square(256px);
+
                     &-initials{
-                        height: 62px;
-                        width: 62px;
                         background-color: #000;
                         font-size: 40px;
                         line-height: 40px;
@@ -266,6 +262,8 @@ header {
                         padding-top: 12.5px;
                         text-align: center;
                         vertical-align: middle;
+
+                        @include square(62px);
 
                         &.app{
                             @include linear-gradient(#6E1E7D, #35013F);
@@ -322,7 +320,7 @@ header {
                         }
                     }
                     &:hover{
-                        opacity: .9;
+                        @include opacity(0.9);
                     }
                 }
             }
@@ -332,20 +330,14 @@ header {
         text-align: center;
 
         
-        a.btn{
-            margin: auto auto;
-
-            padding: 12.5px 30px;
-            border-radius: 5px;
-            border: none;
-
-            font-size: 23px;
-
-            @include linear-gradient(#FFFFFF, #DDE1E2);
-            border-radius: 4px;
+        a.landing-btn{
             color: #000;
 
+            @extend %landing-btn;
+            @include linear-gradient(#FFFFFF, #DDE1E2);
+
             &:hover{
+                color: #000;                
                 @include linear-gradient(#DDE1E2, #FFFFFF);
             }
         }
@@ -425,6 +417,8 @@ footer{
         img {
             margin-right: 10px;
         }
+
+        @extend .col-lg-4;
     }
 
     .links{
@@ -435,6 +429,8 @@ footer{
             color: #3A3A3A;
             text-transform: lowercase;
         }
+
+        @extend .col-lg-6;
     }
 
     .social-buttons{
@@ -444,18 +440,19 @@ footer{
             float: right;
 
             svg {
-                width: 16px;
-                height: 16px;
+                @include square(16px);
                 fill: #282828;
                 top: 2px;
                 position: relative;
-                opacity: .5;
+                @include opacity(0.5);
                 transition: opacity .05s ease-in;
 
                 &:hover{
-                    opacity: 1;
+                    @include opacity(1);
                 }
             }
         }
+
+        @extend .col-lg-2;
     }
 }
