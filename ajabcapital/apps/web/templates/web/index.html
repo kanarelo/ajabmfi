@@ -40,7 +40,7 @@
                     </button>
                     <a class="navbar-brand" href="{% url "index" %}">
                         <div>
-                            <img src="{% static "img/logo-icon.png" %}" />
+                            <img src="{% static "img/logo-icon.svg" %}" />
                             <span class="logo-text black">ajab</span>
                             <span class="logo-text light">capital</span>
                         </div>
@@ -73,8 +73,8 @@
                     <div class="row">
                         <a class="btn btn-primary btn-lg" href="">Get Started &gt;</a>
                     </div>
-                    <div class="row">
-                        <ul class="partners clearfix col-lg-offset-1 col-lg-10">
+                    <div class="row hidden-xs">
+                        <ul class="partners">
                             <li class="partner">
                                 <img src="{% static "img/mpesa.png" %}" />
                             </li>
@@ -320,7 +320,7 @@
                     </h2>
                 </div>
                 <div class="body clearfix">
-                    <div class="col-lg-4 col-md-5 messages hidden-xs hidden-sm">
+                    <div class="messages">
                         <div class="message">Android</div>
                         <div class="message">iOS</div>
                         <div class="message">USSD</div>
@@ -328,7 +328,7 @@
                         <div class="message">Telegram</div>
                         <div class="message">Whatsapp</div>
                     </div>
-                    <div class="col-lg-8 col-md-7 devices col-xs-12">
+                    <div class="devices">
                     </div>
                 </div>
                 <div class="footer">
@@ -337,7 +337,7 @@
         </section>
         <footer class="clearfix">
             <div class="copyright col-lg-4">
-                <img src="{% static "img/logo-icon.png" %}" width="25px" height="25px" />
+                <img src="{% static "img/logo-icon.svg" %}" width="25px" height="25px" />
                 &copy; Ajab Capital Limited <strong>{% now "Y" %}</strong>
             </div>
             <div class="links col-lg-6">

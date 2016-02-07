@@ -98,14 +98,22 @@ header {
         ul.partners {
             list-style-type: none;
             margin-top: 5vh;
-            padding-left: 4vw;
+            padding-left: 15vw;
 
             li.partner {
                 float: left;
                 margin-right: 30px;
                 max-height: 50px;
                 padding: 2.5px;
+
+                img {
+                    height: 35px;
+                }
             }
+
+            @extend .clearfix; 
+            @extend .col-lg-10;
+            @extend .col-lg-offset-1; 
         }
     }
 
@@ -113,7 +121,7 @@ header {
 }
 
 .what-we-offer{
-    height: 80vh !important;
+    min-height: 80vh !important;
     background-color: #F8F9F9;
 
     .header{
@@ -374,6 +382,11 @@ header {
 
                 @extend .light;
             }
+
+            @extend .col-lg-4; 
+            @extend .col-md-5;
+            @extend .hidden-xs;
+            @extend .hidden-sm;
         }
 
         .devices{
@@ -382,6 +395,10 @@ header {
             background-position: center;
             height: 85vh;
             background-size: 100vh;
+
+            @extend .col-lg-8;
+            @extend .col-md-7;
+            @extend .col-xs-12;
         }
     }
 
@@ -408,7 +425,8 @@ footer{
 
         a{
             font-size: 14px;
-            @extend .semibold;
+            color: #3A3A3A;
+            text-transform: lowercase;
         }
     }
 
