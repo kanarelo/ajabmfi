@@ -3,7 +3,7 @@
 @import "base.scss";
 
 header {
-    margin-top: 4vh;
+    margin-top: 2.2rem;
 
     .navbar-header{
         .navbar-brand{
@@ -53,25 +53,25 @@ header {
 }
 
 .call{
-    height: 70vh !important;
+    min-height: 33rem !important;
 
     .header{
 
     }
     .body{
-        padding-top: 20vh;
+        padding-top: 11rem;
         text-align: center;
 
         .main-call{
             letter-spacing: 2px;
-            font-size: 5.85vh;
+            font-size: 3.2rem;
             text-transform: uppercase;
             @extend .black;
         }
         .secondary-call{
-            font-size: 4vh;
+            font-size: 2.15rem;
             color: #6C6C6C;
-            padding: 0.5vh 8vh; 
+            padding: 0.3rem 4.2rem; 
             text-transform: lowercase;
         }
     }
@@ -81,14 +81,14 @@ header {
         a.btn{
             transition: background-color .0025s linear;
 
-            margin: 6vh auto auto;
-            padding: 1.5vh 30px;
+            margin: 3.1rem auto auto;
+            padding: 15px 30px;
             border-radius: 5px;
             border: none;
 
             font-size: 23px;
             
-            @extend .linear-gradient;
+            @include linear-gradient(#75BE8B, #2B9784);
 
             &:hover{
                 background: #2B3438 !important;
@@ -97,8 +97,8 @@ header {
 
         ul.partners {
             list-style-type: none;
-            margin-top: 5vh;
-            padding-left: 15vw;
+            margin-top: 4.3rem;
+            padding-left: 12.5rem;
 
             li.partner {
                 float: left;
@@ -121,20 +121,20 @@ header {
 }
 
 .what-we-offer{
-    min-height: 80vh !important;
+    min-height: 40rem !important;
     background-color: #F8F9F9;
 
     .header{
-        padding: 6vh 2vh 7.5vh;
+        padding: 3.1rem 1.1rem 3.8rem;
 
         h2 {
             text-align: center;
-            font-size: 5.5vh;
+            font-size: 2.56rem;
             text-transform: capitalize;
         }
     }
     .body{
-        margin-bottom: 3vh;
+        margin-bottom: 1.6rem;
 
         .offering{
             text-align: center;
@@ -142,7 +142,7 @@ header {
             .label{
                 text-align: center;
                 color: #000;
-                font-size: 3vh;
+                font-size: 22px;
                 margin-bottom: 10px;
                 font-weight: normal;
 
@@ -189,12 +189,19 @@ header {
 }
 
 .our-platform{
-    min-height: 80vh;
+    min-height: 44rem;
+    padding-bottom: 5.5rem;
+
+    background-color: #75BE8B;
+    background-image: -webkit-linear-gradient(-145deg, #75BE8B 0%, #6BB88A 0%, #75BE8B 0%, #2B9784 100%);
+    background-image: -moz-linear-gradient(-145deg, #75BE8B 0%, #6BB88A 0%, #75BE8B 0%, #2B9784 100%);
+    background-image: -ms-linear-gradient(-145deg, #75BE8B 0%, #6BB88A 0%, #75BE8B 0%, #2B9784 100%);
+    background-image: -o-linear-gradient(-145deg, #75BE8B 0%, #6BB88A 0%, #75BE8B 0%, #2B9784 100%);
     background-image: linear-gradient(-145deg, #75BE8B 0%, #6BB88A 0%, #75BE8B 0%, #2B9784 100%);
-    padding-bottom: 10vh;
+    filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#75BE8B', end-colourStr='#6BB88A');
 
     .header{
-        padding: 6vh 2vh;
+        padding: 3.3rem 1.1rem;
 
         h2 {
             text-align: center;
@@ -261,42 +268,42 @@ header {
                         vertical-align: middle;
 
                         &.app{
-                            background-image: linear-gradient(-135deg, #6E1E7D 0%, #35013F 100%);
+                            @include linear-gradient(#6E1E7D, #35013F);
                         }
                         &.backoffice{
-                            background-image: linear-gradient(-135deg, #92338A 0%, #561050 100%);
+                            @include linear-gradient(#92338A, #561050);
                         }
                         &.crm{
-                            background-image: linear-gradient(-135deg, #DA3C8D 0%, #951556 100%);
+                            @include linear-gradient(#DA3C8D, #951556);
                         }
                         &.decisioning{
-                            background-image: linear-gradient(-135deg, #C47486 0%, #A75265 100%);
+                            @include linear-gradient(#C47486, #A75265);
                         }
                         &.credit-officer{
-                            background-image: linear-gradient(-135deg, #F4978C 0%, #EC7263 100%);
+                            @include linear-gradient(#F4978C, #EC7263);
                         }
                         &.compliance-reporting{
-                            background-image: linear-gradient(-135deg, #FFDCBA 0%, #FEBE7E 100%);
+                            @include linear-gradient(#FFDCBA, #FEBE7E);
                             color: #B36072;
                         }
                         &.debt-collection{
-                            background-image: linear-gradient(-135deg, #40859C 0%, #114B5F 100%);
+                            @include linear-gradient(#40859C, #114B5F);
                         }
                         &.financial-accounting{
-                            background-image: linear-gradient(-135deg, #4EBD9C 0%, #1A936F 100%);
+                            @include linear-gradient(#4EBD9C, #1A936F);
                         }
                         &.loan-origination{
-                            background-image: linear-gradient(-135deg, #A6EDB5 0%, #88D498 100%);
+                            @include linear-gradient(#A6EDB5, #88D498);
                             color: #114B5F;
                         }
                         &.payments{
-                            background-image: linear-gradient(-135deg, #2F60CE 0%, #062C80 100%);
+                            @include linear-gradient(#2F60CE, #062C80);
                         }
                         &.risk-management{
-                            background-image: linear-gradient(-135deg, #3891EB 0%, #0E6AC7 100%);
+                            @include linear-gradient(#3891EB, #0E6AC7);
                         }
                         &.syndicated-loans{
-                            background-image: linear-gradient(-135deg, #85C9F3 0%, #4FB9FC 100%);
+                            @include linear-gradient(#85C9F3, #4FB9FC);
                         }
                     }
                     &-name{
@@ -334,12 +341,12 @@ header {
 
             font-size: 23px;
 
-            background-image: linear-gradient(-145deg, #FFFFFF 0%, #DDE1E2 100%);
+            @include linear-gradient(#FFFFFF, #DDE1E2);
             border-radius: 4px;
             color: #000;
 
             &:hover{
-                background-image: linear-gradient(-145deg, #DDE1E2 0%, #FFFFFF 100%);
+                @include linear-gradient(#DDE1E2, #FFFFFF);
             }
         }
     }
@@ -348,7 +355,7 @@ header {
 }
 
 .end-to-end-automation{
-    height: 100vh;
+    min-height: 55rem;
     background-image: url("/static/img/dark-bg-computer.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -365,14 +372,14 @@ header {
             letter-spacing: 2px;
             text-transform: uppercase;
             color: #fff;
-            margin-top: 8vh;
+            margin-top: 4.4rem;
 
             @extend .black;
         }
     }
     .body{
         .messages{
-            margin-top: 20vh;
+            margin-top: 11rem;
             .message{
                 color: #fff;
                 font-size: 24px;
@@ -393,8 +400,8 @@ header {
             background-image: url("/static/img/devices.png");
             background-repeat: no-repeat;
             background-position: center;
-            height: 85vh;
-            background-size: 100vh;
+            height: 46.75rem;
+            background-size: 88%;
 
             @extend .col-lg-8;
             @extend .col-md-7;
