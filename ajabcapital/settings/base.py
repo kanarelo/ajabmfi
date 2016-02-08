@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'ajabcapital.apps.web.apps',
+    'ajabcapital.apps.website.apps',
 ]
 
 MIDDLEWARE_CLASSES = [
