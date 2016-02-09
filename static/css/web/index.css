@@ -5951,7 +5951,9 @@ header {
       background-image: -webkit-linear-gradient(-145deg, #75BE8B, #2B9784);
       background-image: -o-linear-gradient(-145deg, #75BE8B, #2B9784);
       background-image: linear-gradient(-145deg, #75BE8B, #2B9784);
-      filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#75BE8B', end-colourStr='#2B9784'); }
+      filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#75BE8B', end-colourStr='#2B9784');
+      text-transform: uppercase;
+      font-size: 19px; }
       .call .footer a.landing-btn:hover {
         background: #2B3438 !important; }
     .call .footer ul.partners {

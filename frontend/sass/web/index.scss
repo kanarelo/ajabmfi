@@ -87,6 +87,8 @@ header {
             margin: 3.1rem auto auto;
             @extend %landing-btn;
             @include linear-gradient(#75BE8B, #2B9784);
+            text-transform: uppercase;
+            font-size: 19px;
 
             &:hover{
                 background: #2B3438 !important;

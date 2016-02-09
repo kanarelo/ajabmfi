@@ -14,13 +14,13 @@ import random
 import logging
 
 def index(request):
-    return TemplateResponse(request, "web/index.html", {})
+    return TemplateResponse(request, "website/index.html", {})
 
 def about_us(request):
-    return TemplateResponse(request, "web/about_us.html", {})
+    return TemplateResponse(request, "website/about_us.html", {})
 
 def careers(request):
-    return TemplateResponse(request, "web/careers.html", {})
+    return TemplateResponse(request, "website/careers.html", {})
 
 def partners(request):
-    return TemplateResponse(request, "web/partners.html", {})
+    return TemplateResponse(request, "website/partners.html", {})
