@@ -15,7 +15,7 @@ class Module(models.Model):
         return self.name
 
     class Meta:
-        db_table = 'web_cms_module'
+        db_table = 'website_cms_module'
 
 class Offering(models.Model):
     name  = models.CharField(max_length=40)
@@ -26,7 +26,7 @@ class Offering(models.Model):
         return self.name
 
     class Meta:
-        db_table = 'web_cms_offering'
+        db_table = 'website_cms_offering'
 
 class Page(models.Model):
     title  = models.CharField(max_length=50)
@@ -39,4 +39,4 @@ class Page(models.Model):
         return self.name
 
     class Meta:
-        db_table = 'web_cms_page'
+        db_table = 'website_cms_page'
