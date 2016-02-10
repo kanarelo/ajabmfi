@@ -47,6 +47,7 @@ from decimal import Decimal as D
 
 from ..core import (
     utils as core_utils
+    forms as core_forms
 )
 from . import (
     api as auth_api,
@@ -62,6 +63,13 @@ def dashboard(request):
 
     if not auth_utils.is_capable(request.user, 'users.dashboard'):
         return HttpResponseForbidden('Access Denied')
+
+    return TemplateResponse(request, "users/dashboard.html" {
+        'top_new_users': auth_api.get_top_new_users(limit=5)
+        'most_active_users': auth_api.get_most_active_users(limit=5)
+        'password_expired_users': auth_api.get_password_expired_users(limit=5)
+        'contact_us_form': core_forms.ContactUsForm()
+    })
 
 #-------------------- activate/deactivate
 @login_required
@@ -340,10 +348,10 @@ def password_reset_confirm(
     extra_context=None
 ):
     """
-    View that checks the hash in a password reset link and presents a
-    form for entering a new password.
+    View that checks the hash in a password reset 
+    link and presents a form for entering a new password.
     """
-    UserModel = get_user_model()
+    User = get_user_model()
     assert uidb64 is not None and token is not None
 
     if post_reset_redirect is None:
@@ -353,8 +361,8 @@ def password_reset_confirm(
 
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
-        user = UserModel._default_manager.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, UserModel.DoesNotExist):
+        user = User._default_manager.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
 
     if user is not None and token_generator.check_token(user, token):
@@ -373,11 +381,8 @@ def password_reset_confirm(
         form = None
         title = ('Password reset unsuccessful')
 
-    context = {
-        'form': form,
-        'title': title,
-        'validlink': validlink,
-    }
+    context = dict(form=form, title=title, validlink=validlink)
+
     if extra_context is not None:
         context.update(extra_context)
 
