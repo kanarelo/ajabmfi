@@ -37,8 +37,8 @@ def log_access(func):
 
 def logtrail(func, action_path):
     @wraps(func, assigned=available_attrs(func))
-    def inner(request, *args, **kwargs):
-        if request.user.is_authenticated():
+    def inner(user, *args, **kwargs):
+        if user.is_authenticated():
             logtrail = LogTrail.objects.create(
                 user=request.user,
                 action=path

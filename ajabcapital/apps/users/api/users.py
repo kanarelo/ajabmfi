@@ -48,4 +48,3 @@ def deactivate_user(user):
         user.save()
 
     return user
-
