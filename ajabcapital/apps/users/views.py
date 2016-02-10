@@ -135,6 +135,10 @@ def add_user(request):
                 )
             )
 
+            core_utils.leave_user_message(
+                request, "INFO", "User %s added successfully" % user.get_full_name()
+            )
+
             redirect_to = request.POST.get('redirect_to', 'users:dashboard')
             return redirect(redirect_to)
 
@@ -181,75 +185,61 @@ def edit_profile(request):
 @login_required
 def password_change(
     request,
-    template_name='auth/change_password.html',
-    post_change_redirect=None,
+    template_name='users/password/change.html',
     password_change_form=ChangeUserPasswordForm,
     extra_context=None
 ):
-
     context = {}
 
     if extra_context is not None:
         context.update(extra_context)
 
+    is_profile_owner = (request.user.id == user_id)
+
+    #check see if the user is the same as the one to be changed for
+    if is_profile_owner:
+        user = request.user
+    else:
+        user_id = core_utils.get_int_or_None(
+            request.objects.get('user_id')
+        )
+        user = get_object_or_404(User, id=user_id)
+
     if request.method == "POST":
-        try:
-            try:
-                user_id = int(request.REQUEST.get('user_id'))
-            except TypeError:
-                user_id = request.user.id
-
-            if request.user.id == user_id:
-                user = request.user
-            else:
-                user = get_object_or_404(User, id=user_id)
-        except ValueError as e:
-            raise Http404('Must provide user id')
-
-        if request.REQUEST.get('random-password') == "on":
-            new_password = User.objects.make_random_password()
-            user.set_password(new_password)
-            context['successful'] = True
-            # um_facades.send_password_been_reset_email(new_password)
-        else:
-            if user == request.user:
-                form = ChangeUserPasswordForm(data=request.POST, user=user)
-            else:
-                if request.user.is_superuser and request.REQUEST.get('no-current'):
-                    form = ChangePasswordForm(data=request.POST)
-                else:
-                    form = password_change_form(data=request.POST, user=user)
+        if is_profile_owner:
+            form = password_change_form(data=request.POST, user=user)
 
             if form.is_valid():
                 data = form.cleaned_data
 
                 new_password = data.get("new_password")
-                user.set_password(new_password)
-
-                # um_facades.send_password_been_reset_email(new_password)
-                context['successful'] = True
-            else:
-                context['successful'] = False
-                context['error'] = form.errors
-                context['message'] = form.errors
-        context['user'] = um_facades.get_user_dict(user)
+                user.set_password(new_password)e
+        else:
+            new_password = User.objects.make_random_password()
+            user.set_password(new_password)
 
         update_session_auth_hash(request, user)
-                
-        if request.is_ajax():
-            return JsonResponse(context)
+        
+        #formulate message for user
+        if is_profile_owner:
+            message = "Your password has been updated successfully"
         else:
-            return redirect('switchboard')
+            message = "User %s password updated successfully" % user.get_full_name()
+
+        #leave message
+        core_utils.leave_user_message(request, "INFO", message)
+
+        return redirect(
+            request.POST.get('redirect_to', 'users:dashboard')
+        )
     else:
-        if post_change_redirect is None:
-            post_change_redirect = reverse('password_change_done')
+        if is_profile_owner:
+            form = password_change_form(user=request.user)
+            context.update(form=form, title=('Password change'))
         else:
-            post_change_redirect = resolve_url(post_change_redirect)
+            return redirect("users:dashboard")
 
-        form = password_change_form(user=request.user)
-        context.update(form=form, title=('Password change'))
-
-        return TemplateResponse(request, template_name, context)
+    return TemplateResponse(request, template_name, context)
 
 @require_POST
 @login_required
@@ -257,9 +247,9 @@ def password_change(
 @sensitive_post_parameters()
 def send_reset_email(
     request,
-    template_name='auth/password_reset_form.html',
-    email_template_name='auth/password_reset_email.html',
-    subject_template_name='auth/password_reset_subject.txt',
+    template_name='users/password/reset_form.html',
+    email_template_name='users/password/reset_email.html',
+    subject_template_name='users/password/reset_subject.txt',
     password_reset_form=PasswordResetForm,
     token_generator=default_token_generator,
     post_reset_redirect=None,
@@ -298,9 +288,9 @@ def send_reset_email(
 @csrf_protect
 def password_reset(
     request,
-    template_name='auth/password_reset_form.html',
-    email_template_name='auth/password_reset_email.html',
-    subject_template_name='auth/password_reset_subject.txt',
+    template_name='users/password/reset_form.html',
+    email_template_name='users/password/reset_email.html',
+    subject_template_name='users/password/reset_subject.txt',
     password_reset_form=PasswordResetForm,
     token_generator=default_token_generator,
     post_reset_redirect=None,
@@ -310,9 +300,10 @@ def password_reset(
     extra_email_context=None
 ):
     if post_reset_redirect is None:
-        post_reset_redirect = reverse('password_reset_done')
+        post_reset_redirect = resolve_url('users:dashboard')
     else:
         post_reset_redirect = resolve_url(post_reset_redirect)
+
     if request.method == "POST":
         return send_reset_email(
             request,
@@ -338,24 +329,11 @@ def password_reset(
 
     return TemplateResponse(request, template_name, context)
 
-def password_reset_done(
-    request,
-    template_name='auth/password_reset_done.html',
-    extra_context=None
-):
-    context = {
-        'title': ('Password reset sent'),
-    }
-    if extra_context is not None:
-        context.update(extra_context)
-
-    return TemplateResponse(request, template_name, context)
-
 @sensitive_post_parameters()
 @never_cache
 def password_reset_confirm(
     request, uidb64=None, token=None,
-    template_name='auth/password_reset_confirm.html',
+    template_name='users/password/reset_confirm.html',
     token_generator=default_token_generator,
     set_password_form=SetPasswordForm,
     post_reset_redirect=None,
@@ -366,13 +344,14 @@ def password_reset_confirm(
     form for entering a new password.
     """
     UserModel = get_user_model()
-    assert uidb64 is not None and token is not None  # checked by URLconf
+    assert uidb64 is not None and token is not None
+
     if post_reset_redirect is None:
         post_reset_redirect = reverse('password_reset_complete')
     else:
-        post_reset_redirect = resolve_url(post_reset_redirect)
+        post_reset_redirect = resolve_url('users:dashboard')
+
     try:
-        # urlsafe_base64_decode() decodes to bytestring on Python 3
         uid = force_text(urlsafe_base64_decode(uidb64))
         user = UserModel._default_manager.get(pk=uid)
     except (TypeError, ValueError, OverflowError, UserModel.DoesNotExist):
@@ -381,6 +360,7 @@ def password_reset_confirm(
     if user is not None and token_generator.check_token(user, token):
         validlink = True
         title = ('Enter new password')
+
         if request.method == 'POST':
             form = set_password_form(user, request.POST)
             if form.is_valid():
@@ -392,22 +372,11 @@ def password_reset_confirm(
         validlink = False
         form = None
         title = ('Password reset unsuccessful')
+
     context = {
         'form': form,
         'title': title,
         'validlink': validlink,
-    }
-    if extra_context is not None:
-        context.update(extra_context)
-
-    return TemplateResponse(request, template_name, context)
-
-def password_reset_complete(request,
-                            template_name='auth/password_reset_complete.html',
-                            extra_context=None):
-    context = {
-        'login_url': resolve_url(settings.LOGIN_URL),
-        'title': ('Password reset complete'),
     }
     if extra_context is not None:
         context.update(extra_context)

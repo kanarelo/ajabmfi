@@ -90,6 +90,8 @@ AUTH_PASSWORD_VALIDATORS = [{
     }
 ]
 
+AUTH_USER_MODEL = "users.User"
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -109,7 +111,6 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "..", "static"),
 )
-# AUTH_USER_MODEL = 'user_management.User'
 
 LOGIN_REDIRECT_URL = '/'
 
