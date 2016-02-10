@@ -6,11 +6,30 @@ from . import roles
 
 @decorators.logtrail(action_path="users.add.partner")
 def create_partner_user(data):
-    user = auth_models.User.objects.create(
-        fullname="%s %s %s" % (first_name, middle_name or '', surname),
-        email=email,
-        role=role
-    )
+    if data:
+        first_name = data.get('first_name')
+        middle_name = data.get('middle_name')
+        surname = data.get('surname')
+        email = data.get('email')
+        role = data.get('role')
+
+        user = auth_models.User.objects.create(
+            fullname="%s %s %s" % (first_name, middle_name or '', surname),
+            email=email,
+            role=role
+        )
+
+        return user
+
+@decorators.logtrail(action_path="users.add.partner")
+def update_user(user, data):
+    #get the names
+    if user is not None:
+        user.fullname = "%(first_name)s %(middle_name)s %(surname)s" % data,
+        user.email = data.get('email')
+        user.role = data.get('role')
+        user.save()
+    
     return user
 
 #-------------------------------------data-----------------------------------

@@ -3,12 +3,6 @@ objectives of the user management module:
 
 ============= version 1 =================
 - reset password for a user as a client * important 
-- provide a place to update, recover and securitise your profile * important
-    /users/password/forgot/
-    /users/password/forgot/sent/
-    /users/password/reset/ah782hjaskhsaajks823bmsa/
-    /users/password/reset/done/
-    /users/password/change/
 - view a dashboard of various user actions and behavious * important
     /users/dashboard/
         - top 5 new users: get users order_by creation date, limit to 5
@@ -19,10 +13,17 @@ objectives of the user management module:
     /users/audit/trail/?user_id=323
 
 --documenting
---coding
+--backend-coding
+- provide a place to update, recover and securitise your profile * important
+    /users/password/forgot/
+    /users/password/forgot/sent/
+    /users/password/reset/ah782hjaskhsaajks823bmsa/
+    /users/password/reset/done/
+    /users/password/change/
+--ready-for-html-coding
     - provide a profile form to view/change possible items within capabilities * important
-        /users/profile/
---done-coding
+        /users/profile/edit/
+        /users/profile/view/
     - by default the client user should be assigned all capabilities * important
         /users/add/
     - add a new user, expire, activate, deactive, into the system as a client user * important

@@ -103,7 +103,10 @@ def deactivate_user(request):
 def add_user(request):
     logger = logging.getLogger(__name__)
 
-    form = AddPartnerUserForm(request.POST)
+    if not auth_utils.is_capable(request.user, 'users.add'):
+        return HttpResponseForbidden('Access Denied')
+
+    form = auth_forms.AddPartnerUserForm(request.POST)
 
     if form.is_valid():
         data = form.cleaned_data
@@ -118,3 +121,40 @@ def add_user(request):
 
             redirect_to = request.POST.get('redirect_to', 'users:dashboard')
             return redirect(redirect_to)
+
+#---------------------
+@login_required
+@require_GET
+def view_profile(request):
+    logger = logging.getLogger(__name__)
+    user   = request.user
+
+    user_id = core_utils.get_int_or_None(request.objects.get('user_id'))
+
+    if not auth_utils.is_capable(user, 'users.add') or (user.id == user_id):
+        return HttpResponseForbidden('Access Denied')
+
+    context = {}
+
+    return TemplateResponse(request, "users/view_profile.html", context)
+
+@login_required
+@require_POST
+def edit_profile(request):
+    user = request.user
+    context = {}
+    
+    form = auth_forms.AddPartnerUserForm(data=request.POST, user=user)
+    if form.is_valid():
+        data = form.cleaned_data
+
+        with db_transaction.atomic():
+            user = auth_api.update_user(user, data)
+
+            context['message'] = "Profile successfully updated."
+            context['user'] = um_facades.get_user_dict(user)
+    else:
+        context['message'] = form.errors
+        context['successful'] = False
+
+    return JsonResponse(context)
