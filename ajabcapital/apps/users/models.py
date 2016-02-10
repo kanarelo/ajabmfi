@@ -153,7 +153,7 @@ class Capability(AuditBase):
     path = models.CharField(max_length=140, unique=True)
     description = models.CharField(max_length=250)
 
-    role_category = models.CharField(choices=ROLE_CATEGORIES)
+    role_category = models.CharField(max_length=4, choices=ROLE_CATEGORIES)
 
     def __unicode__(self):
         return "(%s) %s" % (self.path, self.name)
