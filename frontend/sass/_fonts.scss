@@ -52,7 +52,7 @@
      font-style: normal;
 }
 
-.font-optimizing {
+%font-optimizing {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -60,24 +60,24 @@
 
 .regular {
   font-family: "ProximaNova-Regular";
-  @extend .font-optimizing;
+  @extend %font-optimizing;
 }
 .extra-bold {
   font-family: "proxima_nova_thbold";
-  @extend .font-optimizing;
+  @extend %font-optimizing;
 }
 .black {
   font-family: "ProximaNovaBlRegular";
-  @extend .font-optimizing;
+  @extend %font-optimizing;
 }
 .light,
 .thin {
   font-family: "proxima_nova_ltregular";
-  @extend .font-optimizing;
+  @extend %font-optimizing;
 }
 .semibold {
   font-family: "proxima_nova_ltbold";
-  @extend .font-optimizing;
+  @extend %font-optimizing;
 }
 .skinny-letterspacing {
   letter-spacing: .025em;
