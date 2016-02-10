@@ -32,3 +32,32 @@ class BaseUserAddForm(forms.Form):
 
 class AddPartnerUserForm(BaseUserAddForm):
     pass
+
+class ChangePasswordForm(forms.Form):
+    new_password = forms.CharField(widget=forms.PasswordInput)
+    new_password_repeat = forms.CharField(widget=forms.PasswordInput)
+
+    def clean(self):
+        new_password = self.cleaned_data.get('new_password')
+        new_password_repeat = self.cleaned_data.get('new_password_repeat')
+
+        if new_password_repeat != new_password:
+            raise form.ValidationError('The two passwords do not match!')
+
+        return self.cleaned_data
+
+class ChangeUserPasswordForm(ChangePasswordForm):
+    current_password = forms.CharField(widget=forms.PasswordInput)
+
+    def __init__(self, data=None, user=None, *args, **kwargs):
+        self.user = user
+
+        super(ChangeUserPasswordForm, self).__init__(data=data, *args, **kwargs)
+
+    def clean_current_password(self):
+        current_password = self.cleaned_data.get('current_password')
+
+        if not self.user.check_password(current_password):
+            raise forms.ValidationError('Authorization denied, wrong current password entered')
+
+        return current_password

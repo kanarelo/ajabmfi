@@ -5840,6 +5840,7 @@ button.close {
   font-style: normal; }
 .regular, html, body, section.page, .extra-bold, .black, .light,
 .thin, .semibold {
+  -webkit-font-feature-settings: "kern" 1,"liga" 1,"calt" 1,"pnum" 1,"tnum" 0,"onum" 0,"lnum" 0,"dlig" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility; }

@@ -123,3 +123,5 @@ vagrant/local/.vagrant/
 ajabcapital/settings/local.py
 .sass-cache
 logs/
+
+*.css.map

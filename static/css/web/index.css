@@ -5840,6 +5840,7 @@ button.close {
   font-style: normal; }
 .regular, html, body, section.page, .call, .what-we-offer, .our-platform, .end-to-end-automation, .extra-bold, .black, .call .body .main-call, .end-to-end-automation .header h2, .light, .end-to-end-automation .body .messages .message,
 .thin, .semibold, .what-we-offer .body .offering .label, .our-platform .body .modules .module-row .module-name {
+  -webkit-font-feature-settings: "kern" 1,"liga" 1,"calt" 1,"pnum" 1,"tnum" 0,"onum" 0,"lnum" 0,"dlig" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility; }

@@ -7,7 +7,8 @@ from django.contrib.auth import (
 )
 from django.contrib.auth import (login as auth_login, authenticate)
 from django.contrib.auth.forms import (
-    AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm
+    AuthenticationForm, PasswordChangeForm, 
+    PasswordResetForm, SetPasswordForm, 
 )
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.decorators import login_required
@@ -46,7 +47,7 @@ import calendar
 from decimal import Decimal as D
 
 from ..core import (
-    utils as core_utils
+    utils as core_utils,
     forms as core_forms
 )
 from . import (
@@ -58,16 +59,17 @@ from . import (
 
 import logging
 
+@login_required
 def dashboard(request):
     logger = logging.getLogger(__name__)
 
     if not auth_utils.is_capable(request.user, 'users.dashboard'):
         return HttpResponseForbidden('Access Denied')
 
-    return TemplateResponse(request, "users/dashboard.html" {
-        'top_new_users': auth_api.get_top_new_users(limit=5)
-        'most_active_users': auth_api.get_most_active_users(limit=5)
-        'password_expired_users': auth_api.get_password_expired_users(limit=5)
+    return TemplateResponse(request, "users/dashboard.html", {
+        'top_new_users': auth_api.get_top_new_users(limit=5),
+        'most_active_users': auth_api.get_most_active_users(limit=5),
+        'password_expired_users': auth_api.get_password_expired_users(limit=5),
         'contact_us_form': core_forms.ContactUsForm()
     })
 
@@ -194,7 +196,7 @@ def edit_profile(request):
 def password_change(
     request,
     template_name='users/password/change.html',
-    password_change_form=ChangeUserPasswordForm,
+    password_change_form=auth_forms.ChangeUserPasswordForm,
     extra_context=None
 ):
     context = {}
@@ -221,7 +223,7 @@ def password_change(
                 data = form.cleaned_data
 
                 new_password = data.get("new_password")
-                user.set_password(new_password)e
+                user.set_password(new_password)
         else:
             new_password = User.objects.make_random_password()
             user.set_password(new_password)

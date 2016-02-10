@@ -3,7 +3,7 @@ from django.conf import settings
 
 from . import views
 
-urlpatterns = ([
+urlpatterns = [
     url(r'^$', views.dashboard, name="dashboard"),
 
     url(r'^activate/$', views.activate_user, name="activate"),
@@ -16,7 +16,9 @@ urlpatterns = ([
     url(r'^password/forgot/$', views.password_reset, name='password_reset'),
     url(r'^password/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.password_reset_confirm, name='password_reset_confirm'),
 
+    url(r'^customers/enroll/$', views.signup, name='signup'),
+
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'auth/login.html'}, name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name='logout'), 
 
-], "users")
+]

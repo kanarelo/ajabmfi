@@ -4,7 +4,7 @@ from .. import (
 )
 from . import roles
 
-@decorators.logtrail(action_path="users.add.partner")
+#@decorators.logtrail(action_path="users.add.partner")
 def create_partner_user(data):
     if data:
         first_name = data.get('first_name')
@@ -21,7 +21,7 @@ def create_partner_user(data):
 
         return user
 
-@decorators.logtrail(action_path="users.add.partner")
+#@decorators.logtrail(action_path="users.add.partner")
 def update_user(user, data):
     #get the names
     if user is not None:
@@ -32,8 +32,13 @@ def update_user(user, data):
     
     return user
 
+def signup_user(user):
+    user = create_partner_user(data)
+
+    return user
+
 #-------------------------------------data-----------------------------------
-@decorators.logtrail(action_path="users.activate")
+#@decorators.logtrail(action_path="users.activate")
 def activate_user(user):
     if user is not None and not user.is_activate:
         user.is_activate = True
@@ -41,7 +46,7 @@ def activate_user(user):
 
     return user
 
-@decorators.logtrail(action_path="users.deactivate")
+#@decorators.logtrail(action_path="users.deactivate")
 def deactivate_user(user):
     if user is not None and user.is_activate:
         user.is_activate = False
