@@ -1550,13 +1550,13 @@ pre {
   .row:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, footer .social-buttons, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .what-we-offer .body .offering, .col-lg-4, footer .copyright, .what-we-offer .body .offering, .end-to-end-automation .body .messages, .col-xs-5, .col-sm-5, .col-md-5, .end-to-end-automation .body .messages, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, footer .links, .col-xs-7, .col-sm-7, .col-md-7, .end-to-end-automation .body .devices, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .end-to-end-automation .body .devices, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .call .footer ul.partners, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .what-we-offer .body .offering, .end-to-end-automation .body .devices, .col-sm-12, .what-we-offer .body .offering, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, footer .social-buttons, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, footer .copyright, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, footer .links, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .what-we-offer .body .offering, .end-to-end-automation .body .devices {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left; }
 
 .col-xs-1 {
@@ -1592,7 +1592,7 @@ pre {
 .col-xs-11 {
   width: 91.66667%; }
 
-.col-xs-12, .what-we-offer .body .offering, .end-to-end-automation .body .devices {
+.col-xs-12 {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -1713,7 +1713,7 @@ pre {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .what-we-offer .body .offering {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left; }
 
   .col-sm-1 {
@@ -1749,7 +1749,7 @@ pre {
   .col-sm-11 {
     width: 91.66667%; }
 
-  .col-sm-12, .what-we-offer .body .offering {
+  .col-sm-12 {
     width: 100%; }
 
   .col-sm-pull-0 {
@@ -1869,7 +1869,7 @@ pre {
   .col-sm-offset-12 {
     margin-left: 100%; } }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .what-we-offer .body .offering, .col-md-5, .end-to-end-automation .body .messages, .col-md-6, .col-md-7, .end-to-end-automation .body .devices, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     float: left; }
 
   .col-md-1 {
@@ -1881,16 +1881,16 @@ pre {
   .col-md-3 {
     width: 25%; }
 
-  .col-md-4, .what-we-offer .body .offering {
+  .col-md-4 {
     width: 33.33333%; }
 
-  .col-md-5, .end-to-end-automation .body .messages {
+  .col-md-5 {
     width: 41.66667%; }
 
   .col-md-6 {
     width: 50%; }
 
-  .col-md-7, .end-to-end-automation .body .devices {
+  .col-md-7 {
     width: 58.33333%; }
 
   .col-md-8 {
@@ -2025,7 +2025,7 @@ pre {
   .col-md-offset-12 {
     margin-left: 100%; } }
 @media (min-width: 1200px) {
-  .col-lg-1, .col-lg-2, footer .social-buttons, .col-lg-3, .col-lg-4, footer .copyright, .what-we-offer .body .offering, .end-to-end-automation .body .messages, .col-lg-5, .col-lg-6, footer .links, .col-lg-7, .col-lg-8, .end-to-end-automation .body .devices, .col-lg-9, .col-lg-10, .call .footer ul.partners, .col-lg-11, .col-lg-12 {
+  .col-lg-1, .col-lg-2, footer .social-buttons, .col-lg-3, .col-lg-4, footer .copyright, .col-lg-5, .col-lg-6, footer .links, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
     float: left; }
 
   .col-lg-1 {
@@ -2037,7 +2037,7 @@ pre {
   .col-lg-3 {
     width: 25%; }
 
-  .col-lg-4, footer .copyright, .what-we-offer .body .offering, .end-to-end-automation .body .messages {
+  .col-lg-4, footer .copyright {
     width: 33.33333%; }
 
   .col-lg-5 {
@@ -2049,13 +2049,13 @@ pre {
   .col-lg-7 {
     width: 58.33333%; }
 
-  .col-lg-8, .end-to-end-automation .body .devices {
+  .col-lg-8 {
     width: 66.66667%; }
 
   .col-lg-9 {
     width: 75%; }
 
-  .col-lg-10, .call .footer ul.partners {
+  .col-lg-10 {
     width: 83.33333%; }
 
   .col-lg-11 {
@@ -2145,7 +2145,7 @@ pre {
   .col-lg-offset-0 {
     margin-left: 0%; }
 
-  .col-lg-offset-1, .call .footer ul.partners {
+  .col-lg-offset-1 {
     margin-left: 8.33333%; }
 
   .col-lg-offset-2 {
@@ -5593,10 +5593,10 @@ button.close {
 
   .carousel-indicators {
     bottom: 20px; } }
-.clearfix:before, .call .footer ul.partners:before, .clearfix:after, .call .footer ul.partners:after {
+.clearfix:before, .clearfix:after {
   content: " ";
   display: table; }
-.clearfix:after, .call .footer ul.partners:after {
+.clearfix:after {
   clear: both; }
 
 .center-block {
@@ -5761,10 +5761,10 @@ button.close {
     display: inline-block !important; } }
 
 @media (max-width: 767px) {
-  .hidden-xs, .call .body .secondary-call, .end-to-end-automation .body .messages {
+  .hidden-xs {
     display: none !important; } }
 @media (min-width: 768px) and (max-width: 991px) {
-  .hidden-sm, .end-to-end-automation .body .messages {
+  .hidden-sm {
     display: none !important; } }
 @media (min-width: 992px) and (max-width: 1199px) {
   .hidden-md {
@@ -5838,26 +5838,26 @@ button.close {
   src: url("/static/fonts/proximanova/proximanova-light-webfont.eot?#iefix") format("embedded-opentype"), url("/static/fonts/proximanova/proximanova-light-webfont.woff") format("woff"), url("/static/fonts/proximanova/proximanova-light-webfont.ttf") format("truetype"), url("/static/fonts/proximanova/proximanova-light-webfont.svg#proxima_nova_ltregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-.regular, html, body, section.page, .call, .what-we-offer, .our-platform, .end-to-end-automation, .extra-bold, .black, .call .body .main-call, .end-to-end-automation .header h2, .light, .end-to-end-automation .body .messages .message,
-.thin, .semibold, .what-we-offer .body .offering .label, .our-platform .body .modules .module-row .module-name {
+.regular, html, body, section.page, .extra-bold, .black, .light,
+.thin, .semibold {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility; }
 
-.regular, html, body, section.page, .call, .what-we-offer, .our-platform, .end-to-end-automation {
+.regular, html, body, section.page {
   font-family: "ProximaNova-Regular"; }
 
 .extra-bold {
   font-family: "proxima_nova_thbold"; }
 
-.black, .call .body .main-call, .end-to-end-automation .header h2 {
+.black {
   font-family: "ProximaNovaBlRegular"; }
 
-.light, .end-to-end-automation .body .messages .message,
+.light,
 .thin {
   font-family: "proxima_nova_ltregular"; }
 
-.semibold, .what-we-offer .body .offering .label, .our-platform .body .modules .module-row .module-name {
+.semibold {
   font-family: "proxima_nova_ltbold"; }
 
 .skinny-letterspacing {
@@ -5883,17 +5883,6 @@ ul.horizontal-list {
   ul.horizontal-list li {
     float: left;
     margin-right: 10px; }
-
-.call .footer a.landing-btn, .what-we-offer .footer a.landing-btn, .our-platform .footer a.landing-btn {
-  transition: background-color .0025s linear;
-  color: #fff;
-  margin: auto auto;
-  padding: 12.5px 30px;
-  border-radius: 5px;
-  border: none;
-  font-size: 23px; }
-  .call .footer a.landing-btn:hover, .what-we-offer .footer a.landing-btn:hover, .our-platform .footer a.landing-btn:hover {
-    color: #fff; }
 
 header {
   margin-top: 2.2rem; }
@@ -5960,289 +5949,20 @@ footer {
           opacity: 1;
           filter: alpha(opacity=100); }
 
-.call {
-  min-height: 33rem !important; }
-  .call .body {
-    padding-top: 11rem;
-    text-align: center; }
-    .call .body .main-call {
-      letter-spacing: 2px;
-      font-size: 3.2rem;
-      text-transform: uppercase; }
-    .call .body .secondary-call {
-      font-size: 2.15rem;
-      color: #6C6C6C;
-      padding: 0.3rem 4.2rem;
-      text-transform: lowercase; }
-  .call .footer {
-    text-align: center; }
-    .call .footer a.landing-btn {
-      margin: 3.1rem auto auto;
-      background-color: #75BE8B;
-      background-repeat: repeat-x;
-      background-image: -webkit-linear-gradient(-145deg, #75BE8B, #2B9784);
-      background-image: -o-linear-gradient(-145deg, #75BE8B, #2B9784);
-      background-image: linear-gradient(-145deg, #75BE8B, #2B9784);
-      filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#75BE8B', end-colourStr='#2B9784');
-      text-transform: uppercase;
-      font-size: 19px; }
-      .call .footer a.landing-btn:hover {
-        background: #2B3438 !important; }
-    .call .footer ul.partners {
-      list-style-type: none;
-      margin-top: 4.3rem;
-      padding-left: 12.5rem; }
-      .call .footer ul.partners li.partner {
-        float: left;
-        margin-right: 30px;
-        max-height: 50px;
-        padding: 2.5px; }
-        .call .footer ul.partners li.partner img {
-          height: 35px; }
-
-.what-we-offer {
-  min-height: 40rem !important;
-  background-color: #F8F9F9; }
-  .what-we-offer .header {
-    padding: 3.1rem 1.1rem 3.8rem; }
-    .what-we-offer .header h2 {
+section {
+  background-color: #58B28D; }
+  section.page {
+    margin-top: 30px;
+    min-height: 40rem; }
+    section.page h1 {
       text-align: center;
-      font-size: 2.56rem;
-      text-transform: capitalize; }
-  .what-we-offer .body {
-    margin-bottom: 1.6rem; }
-    .what-we-offer .body .offering {
-      text-align: center; }
-      .what-we-offer .body .offering .label {
-        text-align: center;
-        color: #000;
-        font-size: 22px;
-        margin-bottom: 10px;
-        font-weight: normal; }
-      .what-we-offer .body .offering .text {
-        margin-top: 15px;
-        text-align: center;
-        color: #767676;
-        font-size: 20px; }
-      .what-we-offer .body .offering .image {
-        margin-bottom: 15px;
-        height: 85px; }
-        .what-we-offer .body .offering .image img {
-          margin: auto;
-          height: 80px; }
-  .what-we-offer .footer {
-    text-align: center; }
-    .what-we-offer .footer a.landing-btn {
-      background-color: #40484C; }
-      .what-we-offer .footer a.landing-btn:hover {
-        background: #2B3438 !important; }
-
-.our-platform {
-  min-height: 44rem;
-  padding-bottom: 5.5rem;
-  background-color: #75BE8B;
-  background-image: -webkit-linear-gradient(-145deg, #75BE8B 0%, #6BB88A 0%, #75BE8B 0%, #2B9784 100%);
-  background-image: -moz-linear-gradient(-145deg, #75BE8B 0%, #6BB88A 0%, #75BE8B 0%, #2B9784 100%);
-  background-image: -ms-linear-gradient(-145deg, #75BE8B 0%, #6BB88A 0%, #75BE8B 0%, #2B9784 100%);
-  background-image: -o-linear-gradient(-145deg, #75BE8B 0%, #6BB88A 0%, #75BE8B 0%, #2B9784 100%);
-  background-image: linear-gradient(-145deg, #75BE8B 0%, #6BB88A 0%, #75BE8B 0%, #2B9784 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#75BE8B', end-colourStr='#6BB88A'); }
-  .our-platform .header {
-    padding: 3.3rem 1.1rem; }
-    .our-platform .header h2 {
-      text-align: center;
-      font-size: 40px;
-      text-transform: capitalize;
-      color: #fff; }
-    .our-platform .header .secondary-text {
       color: #fff;
-      margin-top: 10px;
-      text-align: center;
-      font-size: 22px; }
-  .our-platform .body {
-    text-align: center; }
-    .our-platform .body .modules {
-      margin: 10px auto 40px;
-      position: relative;
-      right: 16.5%; }
-      .our-platform .body .modules .module-row {
-        float: right; }
-        .our-platform .body .modules .module-row:first-child .module:first-child {
-          border-top-left-radius: 10px; }
-        .our-platform .body .modules .module-row:first-child .module:last-child {
-          border-top-right-radius: 10px; }
-        .our-platform .body .modules .module-row:last-child .module:first-child {
-          border-bottom-left-radius: 10px; }
-        .our-platform .body .modules .module-row:last-child .module:last-child {
-          border-bottom-right-radius: 10px; }
-        .our-platform .body .modules .module-row .module {
-          background-color: #fff;
-          border-right: 1px solid #57AE88;
-          border-top: 1px solid #57AE88;
-          display: inline-block;
-          margin: 0;
-          float: left;
-          width: 256px;
-          height: 256px; }
-          .our-platform .body .modules .module-row .module-initials {
-            background-color: #000;
-            font-size: 40px;
-            line-height: 40px;
-            border-radius: 5px;
-            margin: 20px auto;
-            color: #FFFFFF;
-            padding-top: 12.5px;
-            text-align: center;
-            vertical-align: middle;
-            width: 62px;
-            height: 62px; }
-            .our-platform .body .modules .module-row .module-initials.app {
-              background-color: #6E1E7D;
-              background-repeat: repeat-x;
-              background-image: -webkit-linear-gradient(-145deg, #6E1E7D, #35013F);
-              background-image: -o-linear-gradient(-145deg, #6E1E7D, #35013F);
-              background-image: linear-gradient(-145deg, #6E1E7D, #35013F);
-              filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#6E1E7D', end-colourStr='#35013F'); }
-            .our-platform .body .modules .module-row .module-initials.backoffice {
-              background-color: #92338A;
-              background-repeat: repeat-x;
-              background-image: -webkit-linear-gradient(-145deg, #92338A, #561050);
-              background-image: -o-linear-gradient(-145deg, #92338A, #561050);
-              background-image: linear-gradient(-145deg, #92338A, #561050);
-              filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#92338A', end-colourStr='#561050'); }
-            .our-platform .body .modules .module-row .module-initials.crm {
-              background-color: #DA3C8D;
-              background-repeat: repeat-x;
-              background-image: -webkit-linear-gradient(-145deg, #DA3C8D, #951556);
-              background-image: -o-linear-gradient(-145deg, #DA3C8D, #951556);
-              background-image: linear-gradient(-145deg, #DA3C8D, #951556);
-              filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#DA3C8D', end-colourStr='#951556'); }
-            .our-platform .body .modules .module-row .module-initials.decisioning {
-              background-color: #C47486;
-              background-repeat: repeat-x;
-              background-image: -webkit-linear-gradient(-145deg, #C47486, #A75265);
-              background-image: -o-linear-gradient(-145deg, #C47486, #A75265);
-              background-image: linear-gradient(-145deg, #C47486, #A75265);
-              filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#C47486', end-colourStr='#A75265'); }
-            .our-platform .body .modules .module-row .module-initials.credit-officer {
-              background-color: #F4978C;
-              background-repeat: repeat-x;
-              background-image: -webkit-linear-gradient(-145deg, #F4978C, #EC7263);
-              background-image: -o-linear-gradient(-145deg, #F4978C, #EC7263);
-              background-image: linear-gradient(-145deg, #F4978C, #EC7263);
-              filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#F4978C', end-colourStr='#EC7263'); }
-            .our-platform .body .modules .module-row .module-initials.compliance-reporting {
-              background-color: #FFDCBA;
-              background-repeat: repeat-x;
-              background-image: -webkit-linear-gradient(-145deg, #FFDCBA, #FEBE7E);
-              background-image: -o-linear-gradient(-145deg, #FFDCBA, #FEBE7E);
-              background-image: linear-gradient(-145deg, #FFDCBA, #FEBE7E);
-              filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#FFDCBA', end-colourStr='#FEBE7E');
-              color: #B36072; }
-            .our-platform .body .modules .module-row .module-initials.debt-collection {
-              background-color: #40859C;
-              background-repeat: repeat-x;
-              background-image: -webkit-linear-gradient(-145deg, #40859C, #114B5F);
-              background-image: -o-linear-gradient(-145deg, #40859C, #114B5F);
-              background-image: linear-gradient(-145deg, #40859C, #114B5F);
-              filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#40859C', end-colourStr='#114B5F'); }
-            .our-platform .body .modules .module-row .module-initials.financial-accounting {
-              background-color: #4EBD9C;
-              background-repeat: repeat-x;
-              background-image: -webkit-linear-gradient(-145deg, #4EBD9C, #1A936F);
-              background-image: -o-linear-gradient(-145deg, #4EBD9C, #1A936F);
-              background-image: linear-gradient(-145deg, #4EBD9C, #1A936F);
-              filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#4EBD9C', end-colourStr='#1A936F'); }
-            .our-platform .body .modules .module-row .module-initials.loan-origination {
-              background-color: #A6EDB5;
-              background-repeat: repeat-x;
-              background-image: -webkit-linear-gradient(-145deg, #A6EDB5, #88D498);
-              background-image: -o-linear-gradient(-145deg, #A6EDB5, #88D498);
-              background-image: linear-gradient(-145deg, #A6EDB5, #88D498);
-              filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#A6EDB5', end-colourStr='#88D498');
-              color: #114B5F; }
-            .our-platform .body .modules .module-row .module-initials.payments {
-              background-color: #2F60CE;
-              background-repeat: repeat-x;
-              background-image: -webkit-linear-gradient(-145deg, #2F60CE, #062C80);
-              background-image: -o-linear-gradient(-145deg, #2F60CE, #062C80);
-              background-image: linear-gradient(-145deg, #2F60CE, #062C80);
-              filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#2F60CE', end-colourStr='#062C80'); }
-            .our-platform .body .modules .module-row .module-initials.risk-management {
-              background-color: #3891EB;
-              background-repeat: repeat-x;
-              background-image: -webkit-linear-gradient(-145deg, #3891EB, #0E6AC7);
-              background-image: -o-linear-gradient(-145deg, #3891EB, #0E6AC7);
-              background-image: linear-gradient(-145deg, #3891EB, #0E6AC7);
-              filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#3891EB', end-colourStr='#0E6AC7'); }
-            .our-platform .body .modules .module-row .module-initials.syndicated-loans {
-              background-color: #85C9F3;
-              background-repeat: repeat-x;
-              background-image: -webkit-linear-gradient(-145deg, #85C9F3, #4FB9FC);
-              background-image: -o-linear-gradient(-145deg, #85C9F3, #4FB9FC);
-              background-image: linear-gradient(-145deg, #85C9F3, #4FB9FC);
-              filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#85C9F3', end-colourStr='#4FB9FC'); }
-          .our-platform .body .modules .module-row .module-name {
-            text-transform: uppercase;
-            font-size: 15px; }
-          .our-platform .body .modules .module-row .module-description {
-            padding: 5px 15px;
-            font-size: 13px;
-            min-height: 90px; }
-          .our-platform .body .modules .module-row .module-learn-more a {
-            font-size: 15px; }
-          .our-platform .body .modules .module-row .module:hover {
-            opacity: 0.9;
-            filter: alpha(opacity=90); }
-  .our-platform .footer {
-    text-align: center; }
-    .our-platform .footer a.landing-btn {
-      color: #000;
-      background-color: #FFFFFF;
-      background-repeat: repeat-x;
-      background-image: -webkit-linear-gradient(-145deg, #FFFFFF, #DDE1E2);
-      background-image: -o-linear-gradient(-145deg, #FFFFFF, #DDE1E2);
-      background-image: linear-gradient(-145deg, #FFFFFF, #DDE1E2);
-      filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#FFFFFF', end-colourStr='#DDE1E2'); }
-      .our-platform .footer a.landing-btn:hover {
-        color: #000;
-        background-color: #DDE1E2;
-        background-repeat: repeat-x;
-        background-image: -webkit-linear-gradient(-145deg, #DDE1E2, #FFFFFF);
-        background-image: -o-linear-gradient(-145deg, #DDE1E2, #FFFFFF);
-        background-image: linear-gradient(-145deg, #DDE1E2, #FFFFFF);
-        filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#DDE1E2', end-colourStr='#FFFFFF'); }
+      font-size: 50px; }
 
-.end-to-end-automation {
-  min-height: 55rem;
-  background-image: url("/static/img/dark-bg-computer.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 10%; }
-  .end-to-end-automation .header {
-    margin: 0;
-    width: 100%;
-    border-bottom: none; }
-    .end-to-end-automation .header h2 {
-      text-align: center;
-      font-size: 35px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #fff;
-      margin-top: 4.4rem; }
-  .end-to-end-automation .body .messages {
-    margin-top: 11rem; }
-    .end-to-end-automation .body .messages .message {
-      color: #fff;
-      font-size: 24px;
-      line-height: 45px;
-      margin-right: 20px;
-      text-align: center; }
-  .end-to-end-automation .body .devices {
-    background-image: url("/static/img/devices.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 46.75rem;
-    background-size: 88%; }
+footer {
+  padding: 20px 30px;
+  bottom: 0;
+  position: absolute;
+  width: 100%; }
 
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=careers.css.map */

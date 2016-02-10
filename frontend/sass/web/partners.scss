@@ -1,0 +1,23 @@
+@import "base.scss";
+
+section{
+    &.page{
+        margin-top: 30px;
+        min-height: 40rem;
+    }
+
+    h1 {
+        text-align: center; 
+        color: #fff; 
+        font-size: 50px;
+    }
+
+    background-color: #58B28D;
+}
+
+footer{
+    padding: 20px 30px;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
