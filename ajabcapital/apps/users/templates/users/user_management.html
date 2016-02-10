@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% load humanize %}
+
+{% block page-head %}
+{% endblock page-head %}
+
+{% block sidebar-left %}
+{% endblock sidebar-left %}
+
+{% block reactjs-scripts %}
+  {{ block.super }}
+  <script type="text/jsx" src="{% static "js/frontend/user_management.jsx" %}"></script>
+{% endblock reactjs-scripts %}
+
+{% block extrajs %}
+  <script type="text/javascript" src="{% static "js/validator.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/bower_components/classnames/index.js" %}"></script>
+  <script type="text/javascript">
+    window.USER_LIST_ENDPOINT = "{% url "user-list" %}";
+    window.PARTNER_LIST_ENDPOINT = "{% url "partner-list" %}";
+    window.PARTNER_BRANCH_LIST_ENDPOINT = "{% url "partner-branch-list" %}";
+    window.SEARCH_USER_ENDPOINT = "{% url "search-user" %}"
+    window.PARTNER_ROLE_LIST_ENDPOINT = "{% url "partner-roles" %}";
+    window.METROPOL_ROLE_LIST_ENDPOINT = "{% url "metropol-roles" %}";
+    window.ADD_USER_ENDPOINT = "{% url "add-user" %}"
+    window.EDIT_USER_ENDPOINT = "{% url "edit-user" %}"
+
+    window.SEND_PASSWORD_EMAIL_ENDPOINT = "{% url "send-password-email" %}"
+    window.MAKE_USER_ADMINISTRATOR_ENDPOINT = "{% url "grant-admin-role" %}"
+    window.REVOKE_USER_ADMINISTRATOR_ENDPOINT = "{% url "revoke-admin-role" %}"
+    window.DEACTIVATE_USER_ENDPOINT = "{% url "deactivate-user" %}"
+    window.DELETE_USER_ENDPOINT = "{% url "delete-user" %}"
+  </script>
+{% endblock extrajs %}
+
+{% block body-wrapper %}
+  <div id="user-management-holder" class="main-holder">
+    <div id="user-list-holder"></div>
+    <div id="modal-holder"></div>
+  </div>
+{% endblock body-wrapper %}
+
+{% block footer %}
+  <footer>
+    &copy; {% now "Y" %} Metropol CRB
+  </footer>
+{% endblock footer %}

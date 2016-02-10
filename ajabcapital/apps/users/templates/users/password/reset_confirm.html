@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block page-head %}
+{% endblock page-head %}
+
+{% block body %}
+    <body class="login-body" cz-shortcut-listen="true" hola-ext-player="1">
+        <h2 class="form-heading">Reset Password</h2>
+        <div class="container log-row">
+            {% if validlink %}
+                <div class="col-lg-5" style="margin-left: 29%;">
+                    <div class="signup-form">
+                        <form method="POST" action=".">{% csrf_token %}
+                            <div class="errors">
+                                {% bootstrap_form_errors form layout='inline' %}
+                            </div>
+                            <p style="text-align: center; color: #fff; font-weight: 600; margin-bottom: 30px;">
+                                Please enter your new password twice so we can verify you typed it in correctly.
+                            </p>
+
+                            {% bootstrap_field form.new_password1 %}
+                            {% bootstrap_field form.new_password2  %}
+                            {% buttons %}
+                              <button style="margin-top: 30px; text-transform: uppercase;" type="submit" class="btn btn-block btn-yellow btn-embossed">Submit</button>
+                            {% endbuttons %}
+                        </form>
+                    </div>
+                </div>
+            {% else %}
+                <h3 style="text-align:center;">Reset Password Failed</h3>
+                <p>
+                    The password reset link was invalid, possibly because it has already been used.  Please request a new password reset.
+                </p>
+            {% endif %}
+        </div>
+    </body>
+{% endblock body %}

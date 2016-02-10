@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block page-head %}
+{% endblock page-head %}
+
+{% block body %}
+    <body class="login-body" cz-shortcut-listen="true" hola-ext-player="1">
+        <h2 class="form-heading">Reset Password</h2>
+        <div class="container log-row">
+            <div class="col-lg-5" style="margin-left: 29%;">
+                <div class="signup-form">
+                    <form method="POST" action=".">{% csrf_token %}
+                        <p style="text-align: center; color: #fff; font-weight: 600">Enter your email to get started</p>
+                        <div class="errors">
+                            {% bootstrap_form_errors form layout='inline' %}
+                        </div>
+                        {% bootstrap_field form.email layout='inline' %}
+                        {% buttons %}
+                          <button style="text-transform: uppercase;" type="submit" class="btn btn-block btn-yellow">Send me reset email</button>
+                        {% endbuttons %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock body %}

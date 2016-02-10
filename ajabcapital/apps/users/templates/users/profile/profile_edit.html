@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% load humanize %}
+
+{% block page-head %}
+{% endblock page-head %}
+
+{% block sidebar-left %}
+{% endblock sidebar-left %}
+
+{% block reactjs-scripts %}
+  {{ block.super }}
+  <script type="text/jsx" src="{% static "js/frontend/user_management.jsx" %}"></script>
+{% endblock reactjs-scripts %}
+
+{% block extracss %}
+  <link href="{% static "js/bower_components/toastr/toastr.css" %}" rel="stylesheet"/>
+{% endblock extracss %}
+
+{% block extrajs %}
+  <script type="text/javascript" src="{% static "js/bower_components/accounting/accounting.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/bower_components/chartjs/Chart.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/bower_components/toastr/toastr.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/validator.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/fuse.min.js" %}"></script>
+  <script type="text/javascript">
+    window.POSSIBLE_COLORS = [
+      "#33345E", 
+      "#FFCC5A", 
+      "#337AB7", 
+      "#70BBFC", 
+      "#A9AAB3", 
+      "#E7CE96", 
+      "#FF5200", 
+      "#29C5F6"
+    ];
+    
+    {% if partner_json %}
+      window.PARTNER = {{ partner_json }};
+    {% else %}
+      window.PARTNER = null;
+    {% endif %}
+
+    window.REQUEST_USER_ID = {{ request.user.id }};
+  </script>
+{% endblock extrajs %}
+
+{% block body-wrapper %}
+    <div id="user-management-holder" class="main-holder">
+      <br>
+      <div id="content-holder">
+        <form class="col-lg-4" method="POST">
+          <h3>Update Profile</h3>
+          {% bootstrap_field form.first_name layout='inline' %}
+          {% bootstrap_field form.middle_name layout='inline' %}
+          {% bootstrap_field form.sur_name layout='inline' %}
+          {% buttons %}
+              <button class="btn btn-primary" type="submit">Update</button>
+          {% endbuttons %}
+        </form>
+      </div>
+      <div id="modal-holder"></div>
+    </div>
+{% endblock body-wrapper %}
+
+{% block footer %}
+  <footer>
+    &copy; {% now "Y" %} Metropol CRB
+  </footer>
+{% endblock footer %}
