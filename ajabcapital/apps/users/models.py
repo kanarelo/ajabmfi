@@ -127,7 +127,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.full_name.split()[0] if self.full_name else self.email
 
     def get_full_name(self):
-        return self.full_name
+        return self.full_name or self.get_short_name()
 
 class PasswordToken(AuditBase):
     user = models.ForeignKey('User', related_name="password_tokens")

@@ -57,17 +57,17 @@ class Lead(models.Model):
         (5, "Media"),
     )
 
-    first_name = models.CharField(max_length=50)
-    middle_name = models.CharField(max_length=50)
-    sur_name = models.CharField(max_length=50)
+    first_name = models.CharField(verbose_name="First Name (required)", max_length=50)
+    middle_name = models.CharField(verbose_name="Middle Name", max_length=50)
+    sur_name = models.CharField(verbose_name="Surname (required)",  max_length=50)
 
-    email = models.EmailField()
-    mobile_phone_number = models.CharField(max_length=20)
+    email = models.EmailField(verbose_name="Email Address (required)")
+    mobile_phone_number = models.CharField(verbose_name="Mobile Phone Number (required)", max_length=20)
 
-    channel = models.IntegerField(verbose_name="How did you hear about us?", choices=CHANNELS)
+    channel = models.IntegerField(verbose_name="How did you hear about us? (required)", choices=CHANNELS)
 
-    company = models.CharField(verbose_name="Your Company", max_length=140)
-    role = models.CharField(verbose_name="Your Role", max_length=140, choices=ROLES)
+    company = models.CharField(verbose_name="Your Company (required)", max_length=140)
+    role = models.PositiveIntegerField(verbose_name="Your Role (required)", choices=ROLES)
 
     enrollment_code = models.CharField(max_length=15, unique=True)
 

@@ -5,6 +5,14 @@
 {% block sections %}
     <section class="page call">
         <div class="container">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert{% if message.tags %} alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}{% endif %} alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&#215;</button>
+                        {{ message|safe|urlize|linebreaksbr }}
+                    </div>
+                {% endfor %}
+            {% endif %}
             <div class="body">
                 <div class="main-call">
                     cloud based mobile loan platform

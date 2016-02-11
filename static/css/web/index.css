@@ -5962,6 +5962,10 @@ footer {
           opacity: 1;
           filter: alpha(opacity=100); }
 
+.alert {
+  margin-bottom: -60px;
+  font-size: 16px; }
+
 .call {
   min-height: 33rem !important; }
   .call .body {

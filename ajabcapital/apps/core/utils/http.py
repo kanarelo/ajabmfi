@@ -1,2 +1,3 @@
-from django.contrib.messages import constants as messages
+from django.contrib import messages
+
 
