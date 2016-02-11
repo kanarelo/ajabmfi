@@ -18,6 +18,10 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'auth.User'
+
+ROOT_URLCONF = 'ajabcapital.apps.website.urls'
+
 try:
 	from .local import *
 except ImportError:
