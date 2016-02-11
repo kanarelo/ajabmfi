@@ -8,7 +8,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'ajabcapital.apps.website.apps.WebsiteConfig'
+    'ajabcapital.apps.website'
 ]
 
 DATABASES = {
