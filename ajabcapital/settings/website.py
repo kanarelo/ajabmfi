@@ -18,6 +18,15 @@ DATABASES = {
     }
 }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ajabcapital',
+        'USER': 'ajabcapital',
+        'PASSWORD': 'qoSQhO5ygV'
+    }
+}
+
 AUTH_USER_MODEL = 'auth.User'
 
 ROOT_URLCONF = 'ajabcapital.apps.website.urls'

@@ -5963,7 +5963,7 @@ footer {
           filter: alpha(opacity=100); }
 
 .alert {
-  margin-bottom: -60px;
+  margin-bottom: -5rem;
   font-size: 16px; }
 
 .call {
