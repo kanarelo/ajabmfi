@@ -5951,17 +5951,24 @@ footer {
           opacity: 1;
           filter: alpha(opacity=100); }
 
-section.page.header {
-  height: 12.5rem;
-  padding-top: 3.5rem;
-  background-color: #58B28D; }
-  section.page.header h1 {
-    text-align: center;
-    color: #fff;
-    font-size: 27.5px;
-    text-transform: uppercase; }
-section.page.other {
-  min-height: 40rem;
-  padding-top: 2rem; }
+section {
+  background-color: #F8F9F9; }
+  section.page {
+    padding-top: 2rem;
+    min-height: 40rem;
+    padding: 40px;
+    font-weight: normal !important;
+    min-height: 400px !important; }
+    section.page h1 {
+      text-align: center;
+      font-size: 27.5px;
+      text-transform: uppercase; }
+    section.page .demo-booking-form form.form {
+      padding: 10px; }
+      section.page .demo-booking-form form.form .form-group label {
+        font-weight: normal;
+        font-size: 15px !important; }
+      section.page .demo-booking-form form.form .form-group .form-control {
+        font-size: 15px !important; }
 
-/*# sourceMappingURL=careers.css.map */
+/*# sourceMappingURL=demo_booking.css.map */

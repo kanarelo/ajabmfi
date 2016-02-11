@@ -125,3 +125,5 @@ ajabcapital/settings/local.py
 logs/
 
 *.css.map
+
+static/css/web/about_us.css.map

@@ -11,6 +11,13 @@ INSTALLED_APPS = [
     'ajabcapital.apps.website.apps.WebsiteConfig'
 ]
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '../../db/landing.db',
+    }
+}
+
 try:
 	from .local import *
 except ImportError:

@@ -5897,7 +5897,8 @@ ul.horizontal-list {
     color: #fff; }
 
 header {
-  margin-top: 2.2rem; }
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem; }
   header .navbar-header .navbar-brand {
     width: 285px;
     position: relative; }

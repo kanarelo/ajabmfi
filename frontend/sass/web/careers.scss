@@ -2,22 +2,21 @@
 
 section{
     &.page{
-        margin-top: 30px;
-        min-height: 40rem;
+        &.header{
+            height: 12.5rem;
+            padding-top: 3.5rem;
+            background-color: #58B28D;
 
-        h1 {
-            text-align: center; 
-            color: #fff; 
-            font-size: 50px;
+            h1 {
+                text-align: center; 
+                color: #fff; 
+                font-size: 27.5px;
+                text-transform: uppercase;
+            }
+        }
+        &.other{
+            min-height: 40rem;
+            padding-top: 2rem;
         }
     }
-
-    background-color: #58B28D;
-}
-
-footer{
-    padding: 20px 30px;
-    bottom: 0;
-    position: absolute;
-    width: 100%;
 }

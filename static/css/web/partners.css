@@ -5886,7 +5886,8 @@ ul.horizontal-list {
     margin-right: 10px; }
 
 header {
-  margin-top: 2.2rem; }
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem; }
   header .navbar-header .navbar-brand {
     width: 285px;
     position: relative; }
@@ -5950,20 +5951,17 @@ footer {
           opacity: 1;
           filter: alpha(opacity=100); }
 
-section {
+section.page.header {
+  height: 12.5rem;
+  padding-top: 3.5rem;
   background-color: #58B28D; }
-  section.page {
-    margin-top: 30px;
-    min-height: 40rem; }
-  section h1 {
+  section.page.header h1 {
     text-align: center;
     color: #fff;
-    font-size: 50px; }
-
-footer {
-  padding: 20px 30px;
-  bottom: 0;
-  position: absolute;
-  width: 100%; }
+    font-size: 27.5px;
+    text-transform: uppercase; }
+section.page.other {
+  min-height: 40rem;
+  padding-top: 2rem; }
 
 /*# sourceMappingURL=partners.css.map */

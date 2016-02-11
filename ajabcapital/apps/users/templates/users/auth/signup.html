@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block page-head %}
+{% endblock page-head %}
+
+{% block body %}
+    <body class="login-body" cz-shortcut-listen="true" hola-ext-player="1">
+        <div class="container log-row">
+            <img class="login-logo" src="{% static "img/logos/dark-small.png" %}">
+            <form method="POST" class="form-signin" action="{% url 'login' %}">
+              {% csrf_token %}
+                <div class="login-wrap">
+                    <div class="errors">
+                        {% bootstrap_form_errors form layout='inline' %}
+                    </div>
+                    {% bootstrap_field form.username %}
+                    {% bootstrap_field form.password %}
+                    {% buttons %}
+                        <button class="btn btn-yellow btn-block btn-lg" type="submit">
+                          LOGIN
+                        </button>
+                    {% endbuttons %}
+                    {% buttons %}
+                        <a class="forgot-password" href="{% url "password_reset" %}">Forgot Password</a>
+                    {% endbuttons %}
+                </div>
+            </form>
+        </div>
+    </block>
+{% endblock body %}

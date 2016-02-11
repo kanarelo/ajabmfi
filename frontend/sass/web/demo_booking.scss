@@ -1,0 +1,38 @@
+@import "base.scss";
+
+section{
+    &.page{
+        padding-top: 2rem;
+        min-height: 40rem;
+        padding: 40px;
+        font-weight: normal !important;
+        min-height: 400px !important;
+
+        h1 {
+            text-align: center;
+            font-size: 27.5px;
+            text-transform: uppercase;
+        }
+
+        .demo-booking-form{
+            
+            form.form{
+                padding: 10px;
+
+                .form-group{
+                    label{
+                        font-weight: normal;
+                        font-size: 15px !important;
+                    }
+                    .form-control{
+                        font-size: 15px !important;
+                    }
+                }
+            }
+        }
+
+        @extend .regular;
+    }
+
+    background-color: #F8F9F9;
+}

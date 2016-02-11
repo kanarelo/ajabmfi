@@ -13,6 +13,8 @@ import json
 import random
 import logging
 
+from . import forms
+
 def index(request):
     return TemplateResponse(request, "website/index.html", {})
 
@@ -24,3 +26,17 @@ def careers(request):
 
 def partners(request):
     return TemplateResponse(request, "website/partners.html", {})
+
+def demo_bookings(request):
+	if request.method == "POST":
+		form = forms.DemoBookingForm(request.POST)
+
+		if form.is_valid():
+			data = form.cleaned_data
+
+	else:
+		form = forms.DemoBookingForm()
+			
+	return TemplateResponse(request, "website/demo_booking.html", {
+		'form': form
+	})

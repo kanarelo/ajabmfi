@@ -8,16 +8,16 @@ ALLOWED_HOSTS = [
     '192.241.160.33'
 ]
 
-# # Database
-# # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'ajabcapital',
-#         'USER': 'ajabcapital',
-#         'PASSWORD': 'o94u3n3jJJKS21032sjdu34nsnlp223'
-#     }
-# }
+# Database
+# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ajabcapital',
+        'USER': 'ajabcapital',
+        'PASSWORD': 'o94u3n3jJJKS21032sjdu34nsnlp223'
+    }
+}
 
 BASE_URL = 'http://www.ajabcapital.com'
 

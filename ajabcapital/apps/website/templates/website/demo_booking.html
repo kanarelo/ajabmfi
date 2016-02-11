@@ -1,0 +1,45 @@
+{% extends "website/base.html" %}
+
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block extra-css %}
+    <link href="{% static "css/web/demo_booking.css" %}" rel="stylesheet">
+{% endblock extra-css%}
+
+{% block sections %}
+    <section class="page">
+        <div class="container">
+            <div class="demo-booking-form col-lg-6 col-lg-offset-3">
+                <h1 class="black">Book a Demo</h1>
+                <form class="form" method="POST" action=".">
+                  {% csrf_token %}
+                    <div class="login-wrap">
+                        <div class="errors">
+                            {% bootstrap_form_errors form layout='inline' %}
+                        </div>
+                        {% bootstrap_field form.first_name layout='inline' %}
+                        {% bootstrap_field form.middle_name layout='inline' %}
+                        {% bootstrap_field form.sur_name layout='inline' %}
+                        {% bootstrap_field form.email layout='inline' %}
+                        {% bootstrap_field form.mobile_phone_number layout='inline' %}
+                        {% bootstrap_field form.channel %}
+                        {% bootstrap_field form.company layout='inline' %}
+                        {% bootstrap_field form.role %}
+                        {% buttons %}
+                            <button class="btn btn-success btn-block btn-lg" type="submit">
+                              SUBMIT
+                            </button>
+                        {% endbuttons %}
+                        <div class="form-group">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" checked="checked"> 
+                                Subscribe to our Newsletter, Updates on sofware and blog posts
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock sections %}

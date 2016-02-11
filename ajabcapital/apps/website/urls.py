@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^about-us/$', about_us, name="about-us"),
     url(r'^careers/$', careers, name="careers"),
     url(r'^partners/$', partners, name="partners"),
+    url(r'^demo/bookings/$', demo_bookings, name='demo-booking'),
 ]
