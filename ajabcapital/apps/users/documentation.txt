@@ -3,18 +3,18 @@ objectives of the user management module:
 
 ============= version 1 =================
 - view a dashboard of various user actions and behavious * important
+
+--documenting
+--backend-coding
+--ready-for-html-coding
     /users/dashboard/
         - top 5 new users: get users order_by creation date, limit to 5
         - most active users: top 10 logins/access
         - passwords expired: top 5 expired passwords
         - contact us form: create support message (support module) to our support dashboard
-- view an audit trail of all actions by users * important
-    /users/audit/trail/?user_id=323
-
---documenting
---backend-coding
+    - view an audit trail of all actions by users * important
+        /users/audit/trail/?user_id=323
     - reset password for a user as a client * important 
---ready-for-html-coding
     - provide a place to update, recover and securitise your profile * important
         /users/password/forgot/
         /users/password/forgot/sent/

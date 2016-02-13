@@ -389,3 +389,36 @@ def password_reset_confirm(
         context.update(extra_context)
 
     return TemplateResponse(request, template_name, context)
+
+#--------------------------------------------
+@login_required
+def view_log_trail(request):
+    logger = logging.getLogger(__name__)
+
+    if not auth_utils.is_capable(request.user, 'users.deactivate'):
+        return HttpResponseForbidden('Access Denied')
+
+    logtrails = LogTrail.objects.all().order_by('-created_at')
+
+    page = request.REQUEST.get('page', 1)
+    paginator = Paginator(logtrails, request.REQUEST.get('count', 11))
+
+    try:
+        error_logs = paginator.page(page)
+    except PageNotAnInteger:
+        error_logs = paginator.page(1)
+    except EmptyPage:
+        error_logs = paginator.page(paginator.num_pages)
+
+    context.update(
+        page=page,
+        successful=True,
+        has_next=error_logs.has_next(),
+        has_previous=error_logs.has_previous(),
+        page_range=paginator.page_range,
+        error_logs=map(upload_facades.get_error_log_dict, error_logs.object_list or []),
+    )
+
+    return TemplateResponse(request, "users/log_trail.html", {
+
+    })

@@ -8,8 +8,8 @@ from django.contrib.auth.decorators import user_passes_test
 
 import logging
 
-from ...core.utils import record_log
-from ..models import LogTrail
+from ..core.utils import record_log
+from .models import LogTrail
 
 def user_has_capability(func, capability_codes=[]):
     actual_decorator = user_passes_test(
