@@ -43,18 +43,17 @@ class Page(models.Model):
 
 class Lead(models.Model):
     CHANNELS = (
-        (1, "Local Tradional Media"),
-        (2, "A Friend"),
-        (3, "Ajab Capital Marketing"),
-        (4, "Google"),
-        (5, "Other"),
+        (1, "ajab capital marketing"),
+        (2, "local tradional media"),
+        (3, "a friend/word of mouth"),
+        (4, "google"),
+        (5, "other"),
     )
     ROLES = (
-        (1, "Managing Director/CEO"),
-        (2, "CTO/CIO/IT Director/Manager"),
-        (3, "Loan Officer/Administrator"),
-        (4, "Staff"),
-        (5, "Media"),
+        (1, "Business Executive"),
+        (2, "Technology Executive"),
+        (3, "Banking/Loan Executive"),
+        (4, "Media Executive"),
     )
 
     first_name = models.CharField(verbose_name="First Name (required)", max_length=50)
