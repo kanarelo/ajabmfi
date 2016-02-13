@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="246px" height="56px" viewBox="0 0 246 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.1 (25234) - http://www.bohemiancoding.com/sketch -->
+    <title>Logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#58B28D" offset="0%"></stop>
+            <stop stop-color="#58B28D" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#D8E129" offset="0%"></stop>
+            <stop stop-color="#D6E029" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0.5" dy="0.5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Index" sketch:type="MSArtboardGroup" transform="translate(-239.000000, -88.000000)">
+            <g id="Main" sketch:type="MSLayerGroup">
+                <g id="Logo" transform="translate(239.893846, 86.867692)">
+                    <text id="Text" sketch:type="MSTextLayer" font-family="Proxima Nova" font-size="34.6027505" font-weight="633" line-spacing="34" letter-spacing="2.20000005" fill="#000000">
+                        <tspan x="58.8807692" y="32">ajab</tspan>
+                        <tspan x="135.669767" y="32" font-weight="260">capita</tspan>
+                        <tspan x="238.536172" y="32" font-weight="260">l</tspan>
+                    </text>
+                    <text id="the-mobile-credit-co" sketch:type="MSTextLayer" font-family="Proxima Nova" font-size="9" font-weight="normal" sketch:alignment="right" line-spacing="16" letter-spacing="0.739285707" fill="#000000">
+                        <tspan x="122.677525" y="45">the mobile credit company</tspan>
+                    </text>
+                    <g id="Icon" transform="translate(0.000000, 2.000000)" sketch:type="MSShapeGroup">
+                        <g transform="translate(0.000000, 0.324615)" id="Path-1">
+                            <path d="M1.50692559,0.50351582 L53.7080481,0.50351582 L53.7080481,52.3535143 L1.50692559,0.50351582 Z" fill="url(#linearGradient-1)"></path>
+                            <path d="M53.6808738,52.0717703 L1.47975128,52.0717703 L1.47975128,0.221771816 L53.6808738,52.0717703 L53.6808738,52.0717703 Z" fill="#A1DBE6"></path>
+                            <path d="M0.467150446,0.312730529 L52.504442,0.312730529 L0.467150446,52 L0.467150446,0.312730529 Z" fill="url(#linearGradient-2)" filter="url(#filter-3)"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
