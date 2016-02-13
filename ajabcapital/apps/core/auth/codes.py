@@ -5,19 +5,24 @@ AJAB_CAPITAL_STAFF = "102"
 LOAN_PARTNER_ADMINISTRATOR = "103"
 LOAN_PARTNER_OFFICER = "104"
 
+LOAN_CLIENT = "105"
+
 ROLE_CODES = (
     (SUPER_ADMIN, "Super Admin"),
     (AJAB_CAPITAL_STAFF, "Ajab Capital Staff"),
 
     (LOAN_PARTNER_ADMINISTRATOR, "Loan Administrator"),
     (LOAN_PARTNER_OFFICER, "Loan Officer"),
+    (LOAN_CLIENT, "Loan Client"),
 )
 
 #Role Categories
 AJAB_CAPITAL_USER = 1
 LOAN_PARTNER_USER = 2
+LOAN_CLIENT_USER = 3
 
 ROLE_CATEGORIES = (
 	(AJAB_CAPITAL_USER, "Ajab Capital User"),
 	(LOAN_PARTNER_USER, "Loan Partner User"),
+	(LOAN_CLIENT_USER, "Loan Client User"),
 )
