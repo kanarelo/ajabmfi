@@ -8,7 +8,7 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('ajabcapital.apps.website.urls')),
-    url(r'users/', include('ajabcapital.apps.users.urls', namespace="users")),
+    url(r'users/', include('ajabcapital.apps.core_users.urls', namespace="users")),
 ]
 
 if settings.DEBUG:

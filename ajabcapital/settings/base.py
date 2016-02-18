@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'bootstrap3',
 
     'ajabcapital.apps.website',
-    'ajabcapital.apps.users',
+    'ajabcapital.apps.core_users',
+    'ajabcapital.apps.loan',
+    'ajabcapital.apps.risk_management',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -94,7 +96,7 @@ AUTH_PASSWORD_VALIDATORS = [{
     }
 ]
 
-AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = "core_users.User"
 
 
 # Internationalization
