@@ -2,6 +2,20 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+from decimal import Decimal as D
+
+from ajabcapital.apps.core.models import AuditBase, ConfigBase
+
+class ConfigMetropolProductType(ConfigBase):
+    class Meta:
+        db_table = "config_metropol_product_type"
+        verbose_name = "Config Metropol Product Type"
+
+class ConfigMetropolDelinquencyCode(ConfigBase):
+    class Meta:
+        db_table = "config_metropol_delinquency_code"
+        verbose_name = "Config Metropol Delinquency Code"
+
 class MetropolRiskProfile(AuditBase):
     full_name = models.CharField(max_length=50, blank=True)
 
@@ -35,7 +49,7 @@ class MetropolIdentitySearch(AuditBase):
 
 class MetropolIdentitySearchResult(AuditBase):
     #Set before search, and processing
-    search = models.OneToOneField('Search')
+    search = models.OneToOneField('MetropolIdentitySearch')
 
     delinquency_code = models.ForeignKey('ConfigMetropolDelinquencyCode', null=True)
     api_ref_code = models.CharField(max_length=100)
