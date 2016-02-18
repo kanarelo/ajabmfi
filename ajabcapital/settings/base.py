@@ -44,9 +44,12 @@ INSTALLED_APPS = [
     'bootstrap3',
 
     'ajabcapital.apps.website',
+    'ajabcapital.apps.core',
     'ajabcapital.apps.core_users',
+    'ajabcapital.apps.financial_accounting',
     'ajabcapital.apps.loan',
     'ajabcapital.apps.risk_management',
+    'ajabcapital.apps.risk_management_metropol',
 ]
 
 MIDDLEWARE_CLASSES = [
