@@ -10,7 +10,7 @@ from django.conf import settings
 
 from django.utils import timezone
 
-from ajabcapital.apps.core.models import *
+from ajabcapital.apps.core.models import AuditBase, ConfigBase
 from ajabcapital.apps.core.auth.codes import *
 
 class UserManager(BaseUserManager):

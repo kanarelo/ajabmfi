@@ -33,3 +33,9 @@ class ConfigBase(AuditBase):
 
     def __unicode__(self):
         return self.name
+
+class ConfigCurrency(ConfigBase):
+    class Meta:
+        db_table = "config_currency"
+        verbose_name = "Config Currency"
+        verbose_name_plural = "Config Currencies"
