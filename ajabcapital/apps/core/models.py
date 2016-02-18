@@ -17,18 +17,19 @@ class AuditBase(models.Model):
         settings.AUTH_USER_MODEL, related_name="%(app_label)s_%(class)s_created_by_me",
         null=False, db_column="created_by"
     )
-    created_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         abstract = True
 
 class ConfigBase(AuditBase):
     '''Class Account Closure Reason'''
-    config_code = models.CharField(max_length=10)
-    config_name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
+    code = models.CharField(max_length=10, unique=True)
     
     class Meta:
         abstract = True
 
     def __unicode__(self):
-        return self.config_name
+        return self.name

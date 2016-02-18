@@ -153,7 +153,7 @@ class Capability(AuditBase):
     path = models.CharField(max_length=140, unique=True)
     description = models.CharField(max_length=250)
 
-    role_category = models.CharField(max_length=4, choices=ROLE_CATEGORIES)
+    role_category = models.PositiveIntegerField(choices=ROLE_CATEGORIES)
 
     def __unicode__(self):
         return "(%s) %s" % (self.path, self.name)
@@ -165,13 +165,16 @@ class Capability(AuditBase):
         verbose_name_plural = "Capabilities"
 
 class RoleCapability(AuditBase):
-    role_code  = models.CharField(max_length=4, choices=ROLE_CODES)
     capability = models.ForeignKey("Capability", related_name="capability_roles")
+    
+    role_code  = models.PositiveIntegerField(choices=ROLE_CODES)
 
     is_granted = models.BooleanField(default=False)
         
-    last_modified_by = models.ForeignKey(settings.AUTH_USER_MODEL, 
-        related_name="capability_edits", null=False)
+    last_modified_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        related_name="capability_edits", null=False
+    )
 
     def __unicode__(self):
         return "[%s] %s" % (self.role_code, self.capability)
