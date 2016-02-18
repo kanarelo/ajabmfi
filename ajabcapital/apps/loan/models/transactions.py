@@ -4,7 +4,7 @@ from django.db import models
 
 from decimal import Decimal as D
 
-from ajabcapital.apps.core.models import *
+from ajabcapital.apps.core.models import AuditBase, ConfigBase
 
 class LoanLedgerAccount(AuditBase):
     name = models.CharField(max_length=100)
@@ -91,7 +91,6 @@ class LoanAccountTransaction(AuditBase):
     transaction_type = models.ForeignKey("ConfigLoanTransactionType")
     status = models.ForeignKey("ConfigLoanAccountTransactionStatus", related_name="transactions")
 
-    currency = models.ForeignKey("ConfigCurrency", blank=True, null=True)
     amount   = models.DecimalField(max_digits=18, decimal_places=4, default=D('0.0'))
 
     sms_sent   = models.BooleanField(default=False)

@@ -6,7 +6,7 @@ from django.db import models
 
 from decimal import Decimal as D
 
-from ajabcapital.apps.core.models import *
+from ajabcapital.apps.core.models import AuditBase, ConfigBase
 
 class LoanProfile(AuditBase):
     user  = models.ForeignKey(
@@ -63,7 +63,7 @@ class LoanAccount(AuditBase):
     account_number = models.CharField(unique=True, db_index=True, max_length=20)
 
     amortization_type = models.ForeignKey('ConfigAmortizationType', blank=True, null=True)
-    currency = models.ForeignKey('ConfigCurrency', blank=True, null=True)
+    currency = models.ForeignKey('core.ConfigCurrency', blank=True, null=True)
 
     repayment_period_unit = models.ForeignKey("ConfigLoanPeriodUnit", related_name="repayments")
     repayment_period = models.IntegerField()

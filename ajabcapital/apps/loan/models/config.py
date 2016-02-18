@@ -4,18 +4,12 @@ from django.db import models
 
 from decimal import Decimal as D
 
-from ajabcapital.apps.core.models import *
+from ajabcapital.apps.core.models import AuditBase, ConfigBase
 
 class ConfigAmortizationType(ConfigBase):
     class Meta:
         db_table = "config_amortization_type"
         verbose_name = "Config Amortization Type"
-
-class ConfigCurrency(ConfigBase):
-    class Meta:
-        db_table = "config_currency"
-        verbose_name = "Config Currency"
-        verbose_name_plural = "Config Currencies"
 
 class ConfigFeeCalculationMethod(ConfigBase):
     class Meta:
@@ -70,11 +64,6 @@ class ConfigLoanProductFeeType(ConfigBase):
     class Meta:
         db_table = "config_loan_product_fee_type"
         verbose_name = "Config Loan Product Fee Type"
-
-class ConfigLoanPipelineStep(ConfigBase):
-    class Meta:
-        db_table = "config_loan_pipeline_step"
-        verbose_name = "Config Loan Pipeline Step"    
         
 class ConfigLoanTransactionType(ConfigBase):
     icon = models.FileField(upload_to="config/icons/", null=True, blank=True)
@@ -90,6 +79,7 @@ class ConfigPaymentFrequency(ConfigBase):
         verbose_name_plural = "Config Payment Frequencies"
     
 class ConfigLoanRiskClassification(ConfigBase):
+    default_provision = models.DecimalField(decimal_places=4, max_digits=6, default=D(0.0))
     icon = models.FileField(upload_to="config/icons/", null=True, blank=True)
 
     class Meta:
