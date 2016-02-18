@@ -6,7 +6,7 @@ from django.db import models
 
 from decimal import Decimal as D
 
-from ajabcapital.apps.core.models import *
+from ajabcapital.apps.core.models import AuditBase, ConfigBase
 
 class ConfigIdentityType(ConfigBase):
     class Meta:
