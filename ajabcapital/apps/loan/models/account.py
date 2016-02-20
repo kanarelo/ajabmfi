@@ -9,11 +9,7 @@ from decimal import Decimal as D
 from ajabcapital.apps.core.models import AuditBase, ConfigBase
 
 class LoanProfile(AuditBase):
-    user  = models.ForeignKey(
-        settings.AUTH_USER_MODEL, 
-        related_name="loan_accounts", 
-        related_query_name="loan_account"
-    )
+    customer_profile = models.ForeignKey('crm.CustomerProfile')
 
     #counters
     no_of_loans = models.PositiveIntegerField()
@@ -36,6 +32,8 @@ class LoanGroup(AuditBase):
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=20, unique=True)
 
+    status = models.ForeignKey('ConfigLoanGroupStatus')
+
     class Meta:
         db_table = "loan_group"
         verbose_name = "Loan Group"
@@ -43,6 +41,8 @@ class LoanGroup(AuditBase):
 class LoanProfileGroup(AuditBase):
     loan_profile = models.ForeignKey('LoanProfile')
     loan_group = models.ForeignKey('LoanGroup')
+
+    group_role = models.ForeignKey('ConfigLoanGroupRole')
 
     class Meta:
         db_table = "loan_profile_group"

@@ -8,7 +8,8 @@ from ajabcapital.apps.core.models import AuditBase, ConfigBase
 
 class LoanLedgerAccount(AuditBase):
     name = models.CharField(max_length=100)
-    gl_code = models.CharField(max_length=20)
+    
+    gl_code = models.CharField(max_length=20, null=True)
 
     class Meta:
         db_table = "loan_ledger_account"
@@ -85,19 +86,15 @@ class LoanProductControlAccount(AuditBase):
             self.pk if (self.pk > 9) else ("0%s" % self.pk)
         )
 
-class LoanAccountTransaction(AuditBase):
-    account = models.ForeignKey('LoanAccount', related_name="transactions")
-
+class LoanTransaction(AuditBase):
     transaction_type = models.ForeignKey("ConfigLoanTransactionType")
     status = models.ForeignKey("ConfigLoanAccountTransactionStatus", related_name="transactions")
 
     amount   = models.DecimalField(max_digits=18, decimal_places=4, default=D('0.0'))
-
-    sms_sent   = models.BooleanField(default=False)
-    email_sent = models.BooleanField(default=False)
+    notified = models.BooleanField(default=False)
 
     class Meta:
-        db_table = "loan_account_transaction"
+        db_table = "loan_transaction"
         verbose_name = "Loan Account Transaction"
 
 class LoanAccountTransactionEntry(AuditBase):
@@ -118,11 +115,14 @@ class LoanAccountTransactionEntry(AuditBase):
         (LOAN_LEDGER, "Loan ledger entry"),
     )
 
-    transaction = models.ForeignKey('LoanAccountTransaction', related_name="entries")
+    transaction = models.ForeignKey('LoanTransaction', related_name="entries")
     
     item_type = models.IntegerField(choices=ITEM_TYPES)
 
-    ledger_account = models.ForeignKey('LoanLedgerAccount', null=True)
+    #involved accounts
+    loan_ledger_account = models.ForeignKey('LoanLedgerAccount', related_name="transactions", null=True)
+    loan_account = models.ForeignKey('LoanAccount', related_name="transactions", null=True)
+
     ledger_type = models.IntegerField(choices=LEDGER_TYPES)
 
     ledger_balance_increment = models.DecimalField(

@@ -48,6 +48,16 @@ class ConfigLoanAccountTransactionStatus(ConfigBase):
         verbose_name = "Config Loan Transaction Status"
         verbose_name_plural = "Config Loan Transaction Statuses"
 
+class ConfigLoanGroupRole(ConfigBase):
+    class Meta:
+        db_table = "config_loan_group_role"
+        verbose_name = "Config Loan Group Role"
+
+class ConfigLoanGroupStatus(ConfigBase):
+    class Meta:
+        db_table = "config_loan_group_status"
+        verbose_name = "Config Loan Group Status"
+
 class ConfigLoanPeriodUnit(ConfigBase):
     class Meta:
         db_table = "config_loan_period_unit"
@@ -72,16 +82,18 @@ class ConfigLoanTransactionType(ConfigBase):
         db_table = "config_loan_transaction_type"
         verbose_name = "Config Loan Transaction Type"
     
+class ConfigLoanRiskClassification(ConfigBase):
+    default_provision = models.DecimalField(decimal_places=4, max_digits=7, default=D(0.0))
+
+    icon = models.FileField(upload_to="config/icons/", null=True, blank=True)
+
+    class Meta:
+        db_table = "config_loan_risk_classification"
+        verbose_name = "Config Loan Risk Classification"
+
 class ConfigPaymentFrequency(ConfigBase):
     class Meta:
         db_table = "config_payment_frequency"
         verbose_name = "Config Payment Frequency"
         verbose_name_plural = "Config Payment Frequencies"
     
-class ConfigLoanRiskClassification(ConfigBase):
-    default_provision = models.DecimalField(decimal_places=4, max_digits=6, default=D(0.0))
-    icon = models.FileField(upload_to="config/icons/", null=True, blank=True)
-
-    class Meta:
-        db_table = "config_loan_risk_classification"
-        verbose_name = "Config Loan Risk Classification"
