@@ -2,6 +2,11 @@ from .base import *
 
 DEBUG = False
 
+ALLOWED_HOSTS = [
+    '.ajabcapital.com',
+    '192.241.160.33'
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
