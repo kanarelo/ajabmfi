@@ -82,11 +82,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         * is_superuser
     """
     
-    full_name = models.CharField(max_length=140, null=True, blank=False)
-
-    phone_number = models.CharField(max_length=20, null=True, db_column="mobile_phone_number")
     email = models.EmailField(('email address'), max_length=255, unique=True)
-
     role = models.PositiveIntegerField(choices=ROLE_CODES, null=False)
 
     is_staff = models.BooleanField(('staff status'), default=False, help_text=(
@@ -124,10 +120,28 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         "Returns the short name for the user."
-        return self.full_name.split()[0] if self.full_name else self.email
+        return self.email
 
     def get_full_name(self):
-        return self.full_name or self.get_short_name()
+        try:
+            if self.profile:
+                return self.profile.full_name
+        except ObjectDoesNotExist:
+            pass
+
+        return self.get_short_name()
+
+class UserProfile(AuditBase):
+    user = models.OneToOneField('User', related_name="profile")
+
+    full_name = models.CharField(max_length=140, null=True, blank=False)
+    phone_number = models.CharField(
+        max_length=20, null=True, db_column="mobile_phone_number"
+    )
+
+    class Meta:
+        db_table = "user_profile"
+        verbose_name = "User Profile"
 
 class PasswordToken(AuditBase):
     user = models.ForeignKey('User', related_name="password_tokens")
