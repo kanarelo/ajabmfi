@@ -11,7 +11,6 @@ class ConfigGLAccountType(ConfigBase):
         db_table = "config_gl_account_type"
         verbose_name = "Config GL Account Type"
 
-
 class ConfigGLTransactionEntryType(ConfigBase):
     class Meta:
         db_table = "config_gl_transaction_entry_type"
@@ -70,10 +69,10 @@ class GeneralLedgerTransactionEntry(AuditBase):
         (DEBIT, 'Debit'),
     )
 
+    gl_account = models.ForeignKey('GeneralLedgerAccount')
+
     transaction = models.ForeignKey('GeneralLedgerTransaction')
     item_type = models.PositiveIntegerField(choices=ITEM_TYPE)
-
-    gl_code = models.CharField(max_length=25, null=True)
 
     ledger_balance_increment = models.DecimalField(
         max_digits=18, decimal_places=4, default=D(0.0)
