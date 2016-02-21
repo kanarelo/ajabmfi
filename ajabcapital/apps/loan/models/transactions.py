@@ -87,6 +87,7 @@ class LoanProductControlAccount(AuditBase):
         )
 
 class LoanTransaction(AuditBase):
+    transaction_no = models.CharField(unique=True, max_length=15)
     transaction_type = models.ForeignKey("ConfigLoanTransactionType")
     status = models.ForeignKey("ConfigLoanAccountTransactionStatus", related_name="transactions")
 
@@ -108,13 +109,6 @@ class LoanAccountTransactionEntry(AuditBase):
         (DEBIT, 'Debit'),
     )
 
-    ACCOUNTS_LEDGER = 1
-    LOAN_LEDGER = 2
-    LEDGER_TYPES = (
-        (ACCOUNTS_LEDGER, "Loan accounts ledger entry"),
-        (LOAN_LEDGER, "Loan ledger entry"),
-    )
-
     transaction = models.ForeignKey('LoanTransaction', related_name="entries")
     
     item_type = models.IntegerField(choices=ITEM_TYPES)
@@ -122,8 +116,6 @@ class LoanAccountTransactionEntry(AuditBase):
     #involved accounts
     loan_ledger_account = models.ForeignKey('LoanLedgerAccount', related_name="transactions", null=True)
     loan_account = models.ForeignKey('LoanAccount', related_name="transactions", null=True)
-
-    ledger_type = models.IntegerField(choices=LEDGER_TYPES)
 
     ledger_balance_increment = models.DecimalField(
         decimal_places=4, max_digits=18, default=D('0.0')
