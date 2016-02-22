@@ -1,0 +1,172 @@
+[
+{
+  "model": "core.ledgeraccount",
+  "pk": "1.1310.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:54:28.660Z",
+    "updated_at": "2016-02-16T17:28:04.497Z",
+    "account_category": 1,
+    "ledger_type": 2,
+    "name": "Interest Income Receivable Account"
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "1.1311.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:55:06.135Z",
+    "updated_at": "2016-02-16T17:28:15.318Z",
+    "account_category": 1,
+    "ledger_type": 2,
+    "name": "Penalty Income Receivable Account"
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "1.1312.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:55:22.993Z",
+    "updated_at": "2016-02-16T17:28:22.739Z",
+    "account_category": 1,
+    "ledger_type": 2,
+    "name": "Fee Income Receivable Account"
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "1.4100.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:57:18.986Z",
+    "updated_at": "2016-02-16T17:28:29.573Z",
+    "account_category": 1,
+    "ledger_type": 2,
+    "name": "Loan Portfolio Control Account"
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "1.1220.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T17:17:03.162Z",
+    "updated_at": "2016-02-16T17:27:55.485Z",
+    "account_category": 1,
+    "ledger_type": 2,
+    "name": "Loan Fund Source"
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "4.1100.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T17:21:18.373Z",
+    "updated_at": "2016-02-16T17:29:23.350Z",
+    "account_category": 4,
+    "ledger_type": 2,
+    "name": "Interest Income Account"
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "4.1220.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T17:23:13.778Z",
+    "updated_at": "2016-02-16T17:29:39.169Z",
+    "account_category": 4,
+    "ledger_type": 2,
+    "name": "Loan Fee Income Account"
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "4.1240.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T17:23:34.326Z",
+    "updated_at": "2016-02-16T17:29:53.896Z",
+    "account_category": 4,
+    "ledger_type": 2,
+    "name": "Penalty Income Account"
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "5.1300.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T17:24:28.483Z",
+    "updated_at": "2016-02-16T17:30:03.312Z",
+    "account_category": 5,
+    "ledger_type": 2,
+    "name": "Loan Write-Off Expense Account"
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "1.3200.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-20T07:08:27.162Z",
+    "updated_at": "2016-02-20T07:08:27.162Z",
+    "account_category": 1,
+    "ledger_type": 2,
+    "name": "Provision for Bad Debt"
+  }
+}
+]

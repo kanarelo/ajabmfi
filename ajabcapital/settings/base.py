@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'ajabcapital.apps.website',
     'ajabcapital.apps.core',
+    'ajabcapital.apps.crm',
     'ajabcapital.apps.core_users',
     'ajabcapital.apps.financial_accounting',
     'ajabcapital.apps.loan',

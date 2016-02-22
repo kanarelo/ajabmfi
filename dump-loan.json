@@ -1,0 +1,36 @@
+[
+{
+  "model": "loan.loanproductfundsource",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T20:47:11.971Z",
+    "updated_at": "2016-02-16T20:47:11.971Z",
+    "name": "Mpesa PayBill: 404400",
+    "product": 2,
+    "base_account": "1.1220.000"
+  }
+},
+{
+  "model": "loan.loanproductfundsource",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T20:49:45.881Z",
+    "updated_at": "2016-02-16T20:49:45.881Z",
+    "name": "Airtel Money Acc: AOO439",
+    "product": 2,
+    "base_account": "1.1220.000"
+  }
+}
+]

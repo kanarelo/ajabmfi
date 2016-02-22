@@ -47,14 +47,6 @@ class ConfigRepaymentAllocationItem(ConfigBase):
         db_table = "config_repayment_allocation_item"
         verbose_name = "Config Repayment Allocation Item"
 
-class ConfigLoanAccountTransactionStatus(ConfigBase):
-    icon = models.FileField(upload_to="config/icons/", null=True, blank=True)
-
-    class Meta:
-        db_table = "config_loan_account_transaction_status"
-        verbose_name = "Config Loan Transaction Status"
-        verbose_name_plural = "Config Loan Transaction Statuses"
-
 class ConfigLoanGroupRole(ConfigBase):
     class Meta:
         db_table = "config_loan_group_role"
@@ -64,6 +56,7 @@ class ConfigLoanGroupStatus(ConfigBase):
     class Meta:
         db_table = "config_loan_group_status"
         verbose_name = "Config Loan Group Status"
+        verbose_name_plural = "Config Loan Group Statuses"
 
 class ConfigLoanPeriodUnit(ConfigBase):
     frequencies = models.ManyToManyField('ConfigRepaymentFrequency')
@@ -83,13 +76,6 @@ class ConfigLoanProductFeeType(ConfigBase):
     class Meta:
         db_table = "config_loan_product_fee_type"
         verbose_name = "Config Loan Product Fee Type"
-        
-class ConfigLoanTransactionType(ConfigBase):
-    icon = models.FileField(upload_to="config/icons/", null=True, blank=True)
-
-    class Meta:
-        db_table = "config_loan_transaction_type"
-        verbose_name = "Config Loan Transaction Type"
     
 class ConfigLoanRiskClassification(ConfigBase):
     default_provision = models.DecimalField(decimal_places=4, max_digits=7, default=D(0.0))

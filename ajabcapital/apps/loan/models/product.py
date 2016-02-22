@@ -59,3 +59,16 @@ class LoanProductFee(AuditBase):
     class Meta:
         db_table = "loan_product_fee"
         verbose_name = "Loan Fee"
+
+class LoanRepaymentAllocationOrder(AuditBase):
+    product = models.ForeignKey('LoanProduct')
+
+    allocation_item = models.ForeignKey('ConfigRepaymentAllocationItem')
+    rank = models.PositiveIntegerField()
+
+    class Meta:
+        db_table = "loan_repayment_allocation_order"
+        verbose_name = "Loan Repayment Allocation Order"
+
+    def __str__(self):
+        return "(%s) %s" % (self.product.name, self.allocation_item.name)
