@@ -27,6 +27,8 @@ class ConfigBase(AuditBase):
     '''Class Account Closure Reason'''
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=10, unique=True)
+
+    is_active = models.BooleanField(default=True)
     
     class Meta:
         abstract = True
