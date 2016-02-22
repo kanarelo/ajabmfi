@@ -36,9 +36,16 @@ class ConfigLoanAccountStatus(ConfigBase):
         verbose_name = "Config Loan Account Status"
         verbose_name_plural = "Config Loan Account Statuses"
 
+class ConfigRepaymentFrequency(ConfigBase):
+    class Meta:
+        db_table = "config_repayment_frequency"
+        verbose_name = "Config Repayment Frequency"
+        verbose_name_plural = "Config Repayment Frequencies"
+
 class ConfigRepaymentAllocationItem(ConfigBase):
     class Meta:
         db_table = "config_repayment_allocation_item"
+        verbose_name = "Config Repayment Allocation Item"
 
 class ConfigLoanAccountTransactionStatus(ConfigBase):
     icon = models.FileField(upload_to="config/icons/", null=True, blank=True)
@@ -59,6 +66,8 @@ class ConfigLoanGroupStatus(ConfigBase):
         verbose_name = "Config Loan Group Status"
 
 class ConfigLoanPeriodUnit(ConfigBase):
+    frequencies = models.ManyToManyField('ConfigRepaymentFrequency')
+
     class Meta:
         db_table = "config_loan_period_unit"
         verbose_name = "Config Loan Period Unit"
@@ -90,10 +99,3 @@ class ConfigLoanRiskClassification(ConfigBase):
     class Meta:
         db_table = "config_loan_risk_classification"
         verbose_name = "Config Loan Risk Classification"
-
-class ConfigPaymentFrequency(ConfigBase):
-    class Meta:
-        db_table = "config_payment_frequency"
-        verbose_name = "Config Payment Frequency"
-        verbose_name_plural = "Config Payment Frequencies"
-    

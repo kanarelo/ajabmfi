@@ -13,23 +13,24 @@ class LoanProduct(AuditBase):
 
     loan_type = models.ForeignKey('ConfigLoanProductType')
     
+    default_repayment_period = models.IntegerField(default=0)
     default_repayment_period_unit = models.ForeignKey(
         "ConfigLoanPeriodUnit", related_name="repayment_products")
-    default_repayment_period = models.IntegerField(default=0)
+    default_repayment_frequency = models.ForeignKey(
+        "ConfigRepaymentFrequency", db_column='payment_frequency', default=1)
     
-    grace_period_type = models.ForeignKey("ConfigGracePeriodType", null=True, blank=True)
-    default_grace_period_unit = models.ForeignKey(
-        "ConfigLoanPeriodUnit", null=True, blank=True, related_name="grace_products")
-    default_grace_period = models.IntegerField(null=True, blank=True)
-
+    repayment_grace_period_type = models.ForeignKey("ConfigGracePeriodType", 
+        null=True, blank=True, db_column="grace_period_type")
+    default_repayment_grace_period = models.IntegerField(
+        null=True, blank=True, db_column="default_grace_period")
+    default_repayment_grace_period_unit = models.ForeignKey("ConfigLoanPeriodUnit", 
+        null=True, blank=True, related_name="grace_products", 
+        db_column="default_grace_period_unit")
+    
     amount_currency = models.ForeignKey("core.ConfigCurrency", db_column='currency')
     default_amount = models.DecimalField(decimal_places=4, max_digits=18, default=D(0.0))
     min_amount = models.DecimalField(decimal_places=4, max_digits=18, default=D(0.0))
     max_amount = models.DecimalField(decimal_places=4, max_digits=18, default=D(0.0))
-
-    default_installment = models.IntegerField()
-    min_installment = models.IntegerField()
-    max_installment = models.IntegerField()
 
     interest_calculation_method = models.ForeignKey("ConfigInterestCalculationMethod")
     default_interest_rate = models.DecimalField(decimal_places=4, max_digits=6, default=D('0.0'))

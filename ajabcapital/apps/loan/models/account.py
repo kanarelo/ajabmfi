@@ -65,9 +65,9 @@ class LoanAccount(AuditBase):
     amortization_type = models.ForeignKey('ConfigAmortizationType', blank=True, null=True)
     currency = models.ForeignKey('core.ConfigCurrency', blank=True, null=True)
 
-    repayment_period_unit = models.ForeignKey("ConfigLoanPeriodUnit", related_name="repayments")
     repayment_period = models.IntegerField()
-    repayment_installments = models.IntegerField()
+    repayment_period_unit = models.ForeignKey("ConfigLoanPeriodUnit", related_name="repayments")
+    repayment_frequency = models.ForeignKey("ConfigRepaymentFrequency", db_column='payment_frequency')
 
     grace_period_unit = models.ForeignKey("ConfigLoanPeriodUnit", related_name="grace_periods")
     grace_period = models.IntegerField(default=0)
