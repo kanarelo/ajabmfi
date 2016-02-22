@@ -68,11 +68,11 @@
         {% block sections %}
         {% endblock sections %}
         <footer class="clearfix">
-            <div class="copyright">
+            <div class="copyright col-lg-4">
                 <img src="{% static "img/logo-icon.png" %}" width="25px" height="25px" />
                 &copy; Ajab Capital Limited <strong>{% now "Y" %}</strong>
             </div>
-            <div class="links">
+            <div class="links col-lg-6">
                 <ul class="horizontal-list">
                     <li><a href="{% url "about-us" %}">About</a></li>
                     <li>/</li>
@@ -87,7 +87,7 @@
                     <li><a href="#">Terms</a></li>
                 </ul>
             </div>
-            <div class="social-buttons clearfix">
+            <div class="social-buttons clearfix col-lg-2">
                 <ul class="horizontal-list">
                     <li>
                         <a href="#">

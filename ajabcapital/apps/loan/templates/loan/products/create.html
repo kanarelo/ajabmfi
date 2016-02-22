@@ -1,0 +1,30 @@
+{% extends "loan/base.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block page-head %}
+{% endblock page-head %}
+
+{% block page-content %}
+    <div class="form-holder">
+        <div class="header">
+            <h2>Create Loan Product</h2>
+            <p>
+                A product is a template service offering that your business offers. 
+                Products are used to provide parameters on which to create your loan accounts.
+            </p>
+        </div>
+        <div class="body">
+            <form method="POST" class="form" action=".">{% csrf_token %}
+                <div class="col-lg-10 col-lg-offset-1">
+                    {% bootstrap_form form layout='horizontal' %}
+                    {% buttons %}
+                        <button class="btn btn-primary btn-block btn-lg" type="submit">
+                          Save Product
+                        </button>
+                    {% endbuttons %}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock page-content %}
