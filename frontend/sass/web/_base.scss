@@ -3,7 +3,7 @@
 
 html {
     font-size: 14px;
-    @extend .regular;
+    @extend %regular;
 }
 
 body {
@@ -11,7 +11,7 @@ body {
     margin: 0;
     font-weight: normal;
 
-    @extend .regular;
+    @extend %regular;
 }
 
 * {
@@ -20,7 +20,7 @@ body {
 
 section{
     &.page{
-        @extend .regular;
+        @extend %regular;
     }
 }
 
@@ -109,8 +109,6 @@ footer{
         img {
             margin-right: 10px;
         }
-
-        @extend .col-lg-4;
     }
 
     .links{
@@ -121,8 +119,6 @@ footer{
             color: #3A3A3A;
             text-transform: lowercase;
         }
-
-        @extend .col-lg-6;
     }
 
     .social-buttons{
@@ -144,7 +140,5 @@ footer{
                 }
             }
         }
-
-        @extend .col-lg-2;
     }
 }

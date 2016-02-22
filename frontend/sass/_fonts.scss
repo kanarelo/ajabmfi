@@ -27,7 +27,6 @@
         url('/static/fonts/proximanova/proximanova-semibold-webfont.woff') format('woff'), 
         url('/static/fonts/proximanova/proximanova-semibold-webfont.ttf') format('truetype'), 
         url('/static/fonts/proximanova/proximanova-semibold-webfont#proxima_nova_ltbold') format('svg');
-    /*font-weight: bold;*/
     font-style: normal;
 }
 
@@ -59,27 +58,43 @@
   text-rendering: optimizeLegibility;
 }
 
-.regular {
+%regular {
   font-family: "ProximaNova-Regular";
   @extend %font-optimizing;
 }
-.extra-bold {
+%extra-bold {
   font-family: "proxima_nova_thbold";
   @extend %font-optimizing;
 }
-.black {
+%black {
   font-family: "ProximaNovaBlRegular";
   @extend %font-optimizing;
 }
-.light,
-.thin {
+%light {
   font-family: "proxima_nova_ltregular";
   @extend %font-optimizing;
 }
-.semibold {
+%semibold {
   font-family: "proxima_nova_ltbold";
   @extend %font-optimizing;
 }
+
+.font_regular{
+  @extend %regular;
+}
+.font_extra_bold{
+  @extend %extra-bold;
+}
+.font_black{
+  @extend %black;
+}
+.font_light{
+  @extend %light;
+}
+.font_semibold{
+  @extend %semibold;
+}
+
 .skinny-letterspacing {
   letter-spacing: .025em;
 }

@@ -1,0 +1,137 @@
+@import "web/base.scss";
+
+.navbar{
+    border-radius: 0;
+
+    &-nav{
+        & > li {
+            & > a {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+    }
+
+    .navbar-header{
+        margin-right: 5rem;
+
+        .navbar-brand{
+            padding: 5px 15px;
+        }
+    }
+
+    &.navbar-primary{
+        margin-bottom: 0;
+        border: none;
+        background-color: #ffffff;
+        min-height: 65px;
+        padding-top: 7.5px;
+        margin-top: 0.75rem;
+        margin-bottom: 1rem;
+
+        .logo{
+            height: 45px;
+        }
+
+        #navbar{
+            ul.nav{
+                margin-top: 5px;
+
+                li {
+                    > a{
+                        @extend %regular;
+                        
+                    }
+                    &.active, 
+                    &.focus,
+                    &.open {
+                        > a {
+                            background-color: #fff;
+                            color: #28B98E;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.navbar-secondary{
+        border: none;
+        margin-bottom: 0;
+        min-height: 40px;
+        background-color: lighten(#93DEE8, 20%);    
+        color: #000;
+
+        #navbar{
+            padding: 0;
+
+            ul.nav {
+                li.active, 
+                li.focus, 
+                li.open {
+                    .dropdown-menu{
+                        border: none;
+                        -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.175);
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.175);
+                    }
+                    > a{
+                        color: #fff;
+                        @extend %extra-bold;
+                        background-color: #93DEE8;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.navbar-secondary-holder{
+    background-color: lighten(#93DEE8, 20%);    
+}
+
+section.body-area{
+    .form-holder{
+        padding-top: 0.5rem;
+
+        .header{
+            text-align: center;
+
+            h2{
+            }
+            p{  
+                margin: 1rem auto;
+                width: 45rem;
+                color: lighten(#000, 50%);
+            }
+        }
+        .body{
+            padding-top: 2rem;
+
+            .form{
+                .form-group{
+                    padding-top: 0.5rem;
+                    padding-bottom: 1.5rem;
+
+                    border-bottom: 1px solid #f8f8f8;
+                    @include clearfix;
+
+                    label{
+                        font-weight: normal;
+                        text-transform: capitalize;
+                        @extend %semibold;
+                    }
+
+                    .form-control {
+                        border: 1px solid #dfdfdf;
+                        box-shadow: none;
+                        font-size: 13px;
+
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}

@@ -5837,16 +5837,20 @@ button.close {
   src: url("/static/fonts/proximanova/proximanova-light-webfont.eot?#iefix") format("embedded-opentype"), url("/static/fonts/proximanova/proximanova-light-webfont.woff") format("woff"), url("/static/fonts/proximanova/proximanova-light-webfont.ttf") format("truetype"), url("/static/fonts/proximanova/proximanova-light-webfont.svg#proxima_nova_ltregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-.font_regular, html, body, section.page, .font_extra_bold, .font_black, .font_light, .font_semibold {
+.font_regular, html, body, section.page, .navbar.navbar-primary #navbar ul.nav li > a, .font_extra_bold, .navbar.navbar-secondary #navbar ul.nav li.active > a,
+.navbar.navbar-secondary #navbar ul.nav li.focus > a,
+.navbar.navbar-secondary #navbar ul.nav li.open > a, .font_black, .font_light, .font_semibold, section.body-area .form-holder .body .form .form-group label {
   -webkit-font-feature-settings: "kern" 1,"liga" 1,"calt" 1,"pnum" 1,"tnum" 0,"onum" 0,"lnum" 0,"dlig" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility; }
 
-.font_regular, html, body, section.page {
+.font_regular, html, body, section.page, .navbar.navbar-primary #navbar ul.nav li > a {
   font-family: "ProximaNova-Regular"; }
 
-.font_extra_bold {
+.font_extra_bold, .navbar.navbar-secondary #navbar ul.nav li.active > a,
+.navbar.navbar-secondary #navbar ul.nav li.focus > a,
+.navbar.navbar-secondary #navbar ul.nav li.open > a {
   font-family: "proxima_nova_thbold"; }
 
 .font_black {
@@ -5855,7 +5859,7 @@ button.close {
 .font_light {
   font-family: "proxima_nova_ltregular"; }
 
-.font_semibold {
+.font_semibold, section.body-area .form-holder .body .form .form-group label {
   font-family: "proxima_nova_ltbold"; }
 
 .skinny-letterspacing {
@@ -5936,24 +5940,80 @@ footer {
           opacity: 1;
           filter: alpha(opacity=100); }
 
-section {
-  background-color: #F8F9F9; }
-  section.page {
-    padding-top: 2rem;
-    min-height: 40rem;
-    padding: 40px;
-    font-weight: normal !important;
-    min-height: 400px !important; }
-    section.page h1 {
-      text-align: center;
-      font-size: 27.5px;
-      text-transform: uppercase; }
-    section.page .demo-booking-form form.form {
-      padding: 10px; }
-      section.page .demo-booking-form form.form .form-group label {
-        font-weight: normal;
-        font-size: 15px !important; }
-      section.page .demo-booking-form form.form .form-group .form-control {
-        font-size: 15px !important; }
+.navbar {
+  border-radius: 0; }
+  .navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px; }
+  .navbar .navbar-header {
+    margin-right: 5rem; }
+    .navbar .navbar-header .navbar-brand {
+      padding: 5px 15px; }
+  .navbar.navbar-primary {
+    margin-bottom: 0;
+    border: none;
+    background-color: #ffffff;
+    min-height: 65px;
+    padding-top: 7.5px;
+    margin-top: 0.75rem;
+    margin-bottom: 1rem; }
+    .navbar.navbar-primary .logo {
+      height: 45px; }
+    .navbar.navbar-primary #navbar ul.nav {
+      margin-top: 5px; }
+      .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a {
+        background-color: #fff;
+        color: #28B98E; }
+  .navbar.navbar-secondary {
+    border: none;
+    margin-bottom: 0;
+    min-height: 40px;
+    background-color: #e7f8fa;
+    color: #000; }
+    .navbar.navbar-secondary #navbar {
+      padding: 0; }
+      .navbar.navbar-secondary #navbar ul.nav li.active .dropdown-menu,
+      .navbar.navbar-secondary #navbar ul.nav li.focus .dropdown-menu,
+      .navbar.navbar-secondary #navbar ul.nav li.open .dropdown-menu {
+        border: none;
+        -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.175); }
+      .navbar.navbar-secondary #navbar ul.nav li.active > a,
+      .navbar.navbar-secondary #navbar ul.nav li.focus > a,
+      .navbar.navbar-secondary #navbar ul.nav li.open > a {
+        color: #fff;
+        background-color: #93DEE8; }
 
-/*# sourceMappingURL=demo_booking.css.map */
+.navbar-secondary-holder {
+  background-color: #e7f8fa; }
+
+section.body-area .form-holder {
+  padding-top: 0.5rem; }
+  section.body-area .form-holder .header {
+    text-align: center; }
+    section.body-area .form-holder .header p {
+      margin: 1rem auto;
+      width: 45rem;
+      color: gray; }
+  section.body-area .form-holder .body {
+    padding-top: 2rem; }
+    section.body-area .form-holder .body .form .form-group {
+      padding-top: 0.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #f8f8f8; }
+      section.body-area .form-holder .body .form .form-group:before, section.body-area .form-holder .body .form .form-group:after {
+        content: " ";
+        display: table; }
+      section.body-area .form-holder .body .form .form-group:after {
+        clear: both; }
+      section.body-area .form-holder .body .form .form-group label {
+        font-weight: normal;
+        text-transform: capitalize; }
+      section.body-area .form-holder .body .form .form-group .form-control {
+        border: 1px solid #dfdfdf;
+        box-shadow: none;
+        font-size: 13px; }
+        section.body-area .form-holder .body .form .form-group .form-control:focus {
+          box-shadow: none; }
+
+/*# sourceMappingURL=products.css.map */

@@ -31,7 +31,7 @@ section{
             }
         }
 
-        @extend .regular;
+        @extend %regular;
     }
 
     background-color: #F8F9F9;

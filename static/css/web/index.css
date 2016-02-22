@@ -1550,13 +1550,13 @@ pre {
   .row:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, footer .social-buttons, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .what-we-offer .body .offering, .col-lg-4, footer .copyright, .what-we-offer .body .offering, .end-to-end-automation .body .messages, .col-xs-5, .col-sm-5, .col-md-5, .end-to-end-automation .body .messages, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, footer .links, .col-xs-7, .col-sm-7, .col-md-7, .end-to-end-automation .body .devices, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .end-to-end-automation .body .devices, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .call .footer ul.partners, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .what-we-offer .body .offering, .end-to-end-automation .body .devices, .col-sm-12, .what-we-offer .body .offering, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .what-we-offer .body .offering, .end-to-end-automation .body .devices {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left; }
 
 .col-xs-1 {
@@ -1592,7 +1592,7 @@ pre {
 .col-xs-11 {
   width: 91.66667%; }
 
-.col-xs-12, .what-we-offer .body .offering, .end-to-end-automation .body .devices {
+.col-xs-12 {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -1713,7 +1713,7 @@ pre {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .what-we-offer .body .offering {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left; }
 
   .col-sm-1 {
@@ -1749,7 +1749,7 @@ pre {
   .col-sm-11 {
     width: 91.66667%; }
 
-  .col-sm-12, .what-we-offer .body .offering {
+  .col-sm-12 {
     width: 100%; }
 
   .col-sm-pull-0 {
@@ -1869,7 +1869,7 @@ pre {
   .col-sm-offset-12 {
     margin-left: 100%; } }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .what-we-offer .body .offering, .col-md-5, .end-to-end-automation .body .messages, .col-md-6, .col-md-7, .end-to-end-automation .body .devices, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     float: left; }
 
   .col-md-1 {
@@ -1881,16 +1881,16 @@ pre {
   .col-md-3 {
     width: 25%; }
 
-  .col-md-4, .what-we-offer .body .offering {
+  .col-md-4 {
     width: 33.33333%; }
 
-  .col-md-5, .end-to-end-automation .body .messages {
+  .col-md-5 {
     width: 41.66667%; }
 
   .col-md-6 {
     width: 50%; }
 
-  .col-md-7, .end-to-end-automation .body .devices {
+  .col-md-7 {
     width: 58.33333%; }
 
   .col-md-8 {
@@ -2025,37 +2025,37 @@ pre {
   .col-md-offset-12 {
     margin-left: 100%; } }
 @media (min-width: 1200px) {
-  .col-lg-1, .col-lg-2, footer .social-buttons, .col-lg-3, .col-lg-4, footer .copyright, .what-we-offer .body .offering, .end-to-end-automation .body .messages, .col-lg-5, .col-lg-6, footer .links, .col-lg-7, .col-lg-8, .end-to-end-automation .body .devices, .col-lg-9, .col-lg-10, .call .footer ul.partners, .col-lg-11, .col-lg-12 {
+  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
     float: left; }
 
   .col-lg-1 {
     width: 8.33333%; }
 
-  .col-lg-2, footer .social-buttons {
+  .col-lg-2 {
     width: 16.66667%; }
 
   .col-lg-3 {
     width: 25%; }
 
-  .col-lg-4, footer .copyright, .what-we-offer .body .offering, .end-to-end-automation .body .messages {
+  .col-lg-4 {
     width: 33.33333%; }
 
   .col-lg-5 {
     width: 41.66667%; }
 
-  .col-lg-6, footer .links {
+  .col-lg-6 {
     width: 50%; }
 
   .col-lg-7 {
     width: 58.33333%; }
 
-  .col-lg-8, .end-to-end-automation .body .devices {
+  .col-lg-8 {
     width: 66.66667%; }
 
   .col-lg-9 {
     width: 75%; }
 
-  .col-lg-10, .call .footer ul.partners {
+  .col-lg-10 {
     width: 83.33333%; }
 
   .col-lg-11 {
@@ -2145,7 +2145,7 @@ pre {
   .col-lg-offset-0 {
     margin-left: 0%; }
 
-  .col-lg-offset-1, .call .footer ul.partners {
+  .col-lg-offset-1 {
     margin-left: 8.33333%; }
 
   .col-lg-offset-2 {
@@ -5593,10 +5593,10 @@ button.close {
 
   .carousel-indicators {
     bottom: 20px; } }
-.clearfix:before, .call .footer ul.partners:before, .clearfix:after, .call .footer ul.partners:after {
+.clearfix:before, .clearfix:after {
   content: " ";
   display: table; }
-.clearfix:after, .call .footer ul.partners:after {
+.clearfix:after {
   clear: both; }
 
 .center-block {
@@ -5761,10 +5761,10 @@ button.close {
     display: inline-block !important; } }
 
 @media (max-width: 767px) {
-  .hidden-xs, .call .body .secondary-call, .end-to-end-automation .body .messages {
+  .hidden-xs {
     display: none !important; } }
 @media (min-width: 768px) and (max-width: 991px) {
-  .hidden-sm, .end-to-end-automation .body .messages {
+  .hidden-sm {
     display: none !important; } }
 @media (min-width: 992px) and (max-width: 1199px) {
   .hidden-md {
@@ -5825,7 +5825,6 @@ button.close {
   font-family: 'proxima_nova_ltbold';
   src: url("/static/fonts/proximanova/proximanova-semibold-webfont.eot");
   src: local("?"), url("/static/fonts/proximanova/proximanova-semibold-webfont.woff") format("woff"), url("/static/fonts/proximanova/proximanova-semibold-webfont.ttf") format("truetype"), url("/static/fonts/proximanova/proximanova-semibold-webfont#proxima_nova_ltbold") format("svg");
-  /*font-weight: bold;*/
   font-style: normal; }
 @font-face {
   font-family: 'proxima_nova_thbold';
@@ -5838,27 +5837,25 @@ button.close {
   src: url("/static/fonts/proximanova/proximanova-light-webfont.eot?#iefix") format("embedded-opentype"), url("/static/fonts/proximanova/proximanova-light-webfont.woff") format("woff"), url("/static/fonts/proximanova/proximanova-light-webfont.ttf") format("truetype"), url("/static/fonts/proximanova/proximanova-light-webfont.svg#proxima_nova_ltregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-.regular, html, body, section.page, .call, .what-we-offer, .our-platform, .end-to-end-automation, .extra-bold, .black, .call .body .main-call, .end-to-end-automation .header h2, .light, .end-to-end-automation .body .messages .message,
-.thin, .semibold, .what-we-offer .body .offering .label, .our-platform .body .modules .module-row .module-name {
+.font_regular, html, body, section.page, .call, .what-we-offer, .our-platform, .end-to-end-automation, .font_extra_bold, .font_black, .call .body .main-call, .end-to-end-automation .header h2, .font_light, .end-to-end-automation .body .messages .message, .font_semibold, .what-we-offer .body .offering .label, .our-platform .body .modules .module-row .module-name {
   -webkit-font-feature-settings: "kern" 1,"liga" 1,"calt" 1,"pnum" 1,"tnum" 0,"onum" 0,"lnum" 0,"dlig" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility; }
 
-.regular, html, body, section.page, .call, .what-we-offer, .our-platform, .end-to-end-automation {
+.font_regular, html, body, section.page, .call, .what-we-offer, .our-platform, .end-to-end-automation {
   font-family: "ProximaNova-Regular"; }
 
-.extra-bold {
+.font_extra_bold {
   font-family: "proxima_nova_thbold"; }
 
-.black, .call .body .main-call, .end-to-end-automation .header h2 {
+.font_black, .call .body .main-call, .end-to-end-automation .header h2 {
   font-family: "ProximaNovaBlRegular"; }
 
-.light, .end-to-end-automation .body .messages .message,
-.thin {
+.font_light, .end-to-end-automation .body .messages .message {
   font-family: "proxima_nova_ltregular"; }
 
-.semibold, .what-we-offer .body .offering .label, .our-platform .body .modules .module-row .module-name {
+.font_semibold, .what-we-offer .body .offering .label, .our-platform .body .modules .module-row .module-name {
   font-family: "proxima_nova_ltbold"; }
 
 .skinny-letterspacing {

@@ -124,6 +124,6 @@ ajabcapital/settings/local.py
 .sass-cache
 logs/
 
-*.css.map
+*.map
 
 static/css/web/about_us.css.map
