@@ -17,24 +17,26 @@ def get_reference_no(limit=10):
     chosen_chars = ""
     z = 0
 
-    while z <= limit:
-        chosen_chars = chosen_chars + random.choice(possible_chars)
+    while (z <= limit):
+        chosen_chars = (chosen_chars + random.choice(possible_chars))
 
-        if chosen_chars == '0': #Shouldn't start with a zero
-            return get_reference_no(limit=limit)
-            
         z += 1
 
     return chosen_chars
 
-def record_log(request=None, logger=None, message='', level=logging.DEBUG, **kwargs):
+def record_log(request=None, logger=None, message='', user=None, level=logging.DEBUG, *args, **kwargs):
     if not logger:
         logger = logging.getLogger(__name__)
 
-    user = request.user
     log_data = {}
 
-    if request is not None:
+    if user is None: 
+        if request is not None:
+            user = request.user
+        else:
+            raise Exception("Please provide the user or a request object")
+
+    elif request is not None:
         log_data['ip_address'] = request.META.get('REMOTE_ADDR')
         log_data['referrer'] = request.META.get('HTTP_REFERER')
         log_data['user_agent'] = request.META.get('HTTP_USER_AGENT')
@@ -44,13 +46,12 @@ def record_log(request=None, logger=None, message='', level=logging.DEBUG, **kwa
         log_data['request'] = dict(request.REQUEST.iteritems())
         log_data['url'] = request.get_full_path()
 
-        if user.is_authenticated():
-            log_data['user'] = user.email
-            log_data['user_role_type'] = user.role_type
+    if user.is_authenticated():
+        log_data['user'] = user.email
 
     log_data.update(dict(
         message=message,
-        timestamp=timezone.now().strftime('%Y-%m-%dT%H:%M:%S%Z'),
+        timestamp=timezone.now(),
         **kwargs
     ))
 
