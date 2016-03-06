@@ -13,11 +13,11 @@ class LoanProduct(AuditBase):
 
     loan_type = models.ForeignKey('ConfigLoanProductType')
     
+    default_repayment_frequency = models.ForeignKey(
+        "ConfigRepaymentFrequency", db_column='payment_frequency', default=1)
     default_repayment_period = models.IntegerField(default=0)
     default_repayment_period_unit = models.ForeignKey(
         "ConfigLoanPeriodUnit", related_name="repayment_products")
-    default_repayment_frequency = models.ForeignKey(
-        "ConfigRepaymentFrequency", db_column='payment_frequency', default=1)
     
     repayment_grace_period_type = models.ForeignKey("ConfigGracePeriodType", 
         null=True, blank=True, db_column="grace_period_type")

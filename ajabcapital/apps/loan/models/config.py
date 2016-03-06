@@ -6,11 +6,6 @@ from decimal import Decimal as D
 
 from ajabcapital.apps.core.models import AuditBase, ConfigBase
 
-class ConfigAmortizationType(ConfigBase):
-    class Meta:
-        db_table = "config_amortization_type"
-        verbose_name = "Config Amortization Type"
-
 class ConfigFeeCalculationMethod(ConfigBase):
     class Meta:
         db_table = "config_fee_calculation_method"
