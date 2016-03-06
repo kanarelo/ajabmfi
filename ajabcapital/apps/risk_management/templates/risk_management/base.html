@@ -1,19 +1,18 @@
 {% extends "base.html" %}
-
 {% load staticfiles %}
 
-{% block page-title %} Loans {% endblock page-title %}
+{% block page-title %} CRM {% endblock page-title %}
 
 {% block extracss %}
-  <link href="{% static "css/app/loans/dashboard.css" %}" rel="stylesheet">
+  <link href="{% static "css/app/risk_management/dashboard.css" %}" rel="stylesheet">
 {% endblock extracss %}
 
 {% block nav-menu-items %}
-  <li class="active"><a href="{% url "home:dashboard" %}">Home</a></li>
+  <li><a href="{% url "home:dashboard" %}">Home</a></li>
   <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
   <li><a href="{% url "crm:dashboard" %}">Clients</a></li>
   <li><a href="{% url "accounting:dashboard" %}">Accounting</a></li>
-  <li><a href="{% url "risk:dashboard" %}">Risk &amp; Compliance</a></li>
+  <li class="active"><a href="{% url "risk:dashboard" %}">Risk &amp; Compliance</a></li>
   <li><a href="{% url "users:dashboard" %}">Users</a></li>
   <li><a href="{% url "users:my-profile" %}">My Profile</a></li>
 {% endblock nav-menu-items %}
@@ -23,31 +22,31 @@
     <div class="menu-item">
       <div class="menu-icon loan_accounts">
       </div>
-      <div class="menu-label">accounts</div>
+      <div class="menu-label">kyc</div>
     </div>
     <div class="menu-item">
       <div class="menu-icon loan_funds">
       </div>
-      <div class="menu-label">loan funds</div>
+      <div class="menu-label">policies</div>
     </div>
   </li>
   <li class="menu-row clearfix">
     <div class="menu-item">
       <div class="menu-icon loan_transactions">
       </div>
-      <div class="menu-label">transactions</div>
+      <div class="menu-label">monitoring</div>
     </div>
     <div class="menu-item">
       <div class="menu-icon loan_products">
       </div>
-      <div class="menu-label">loan products</div>
+      <div class="menu-label">working capital</div>
     </div>
   </li>
   <li class="menu-row clearfix">
     <div class="menu-item">
       <div class="menu-icon loan_accounting">
       </div>
-      <div class="menu-label">accounting</div>
+      <div class="menu-label">audit trail</div>
     </div>
     <div class="menu-item">
       <div class="menu-icon loan_reports">

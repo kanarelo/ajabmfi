@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'home/', include('ajabcapital.apps.core.urls', namespace="home")),
     url(r'users/', include('ajabcapital.apps.core_users.urls', namespace="users")),
     url(r'loans/', include('ajabcapital.apps.loan.urls', namespace="loans")),
-    url(r'risk/', include('ajabcapital.apps.risk_management.urls', namespace="risk")),
+    url(r'risk-and-compliance/', include('ajabcapital.apps.risk_management.urls', namespace="risk")),
     url(r'clients/', include('ajabcapital.apps.crm.urls', namespace="crm")),
     url(r'accounting/', include('ajabcapital.apps.financial_accounting.urls', namespace="accounting")),
 ]

@@ -6,6 +6,5 @@ from .transactions import *
 
 @login_required
 def dashboard(request):
-	return TemplateResponse(request, "loans/dashboard.html", {
-
+	return TemplateResponse(request, "loan/dashboard.html", {
 	})

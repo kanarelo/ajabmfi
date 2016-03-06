@@ -7,7 +7,7 @@ from .banking import BANKING_URLS
 from .. import views
 
 urlpatterns = [
-    url(r'^accounting/$', views.dashboard, name="dashboard")
+    url(r'^dashboard/$', views.dashboard, name="dashboard")
 ]
 
 #1. Add the product urls

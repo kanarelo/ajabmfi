@@ -10,8 +10,12 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>AjabCapital | Loans</title>
-    <link href="{% static "css/app/loans/products.css" %}" rel="stylesheet">
+    <title>ajabmfi | {% block page-title %}Home Dashboard{% endblock page-title %}</title>
+
+    {% block extracss %}
+      <link href="{% static "css/app/dashboard.css" %}" rel="stylesheet">
+    {% endblock extracss %}
+    
   </head>
   <body>
     <nav class="navbar navbar-default navbar-primary">

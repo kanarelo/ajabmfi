@@ -1,0 +1,116 @@
+@import "app/base.scss";
+
+.btn-primary{
+    background: none;
+    background-image: linear-gradient(-90deg, #2984D3 0%, #3891EB 100%);
+    border: none;
+
+    &:hover, 
+    &.active, &:active,
+    &.focus,  &:focus {
+        background: darken(#2984D3, 10%);
+    }
+}
+
+.navbar{
+    &.navbar-primary{
+        #navbar{
+            ul.nav{
+                li {
+                    &.active, 
+                    &.focus,
+                    &.open {
+                        > a {
+                            border-bottom: 5px solid #2984D3;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+section.body-area{
+    .sidebar{
+        .sidebar-menu{
+            .body{
+                ul.menu{
+                    li.menu-row{
+                        .menu-item{
+                            .menu-label{
+                                @extend %extra-bold;
+                                text-transform: uppercase;
+                                color: #7e7e7e;
+                                margin-top: .5rem;
+                                font-size: 13px;
+                            }
+                            .menu-icon{
+                                &.loan_accounts{
+                                    background-image: url("/static/img/icons/ic_loan_accounts_coloured.png");
+                                }
+                                &.loan_funds{
+                                    background-image: url("/static/img/icons/ic_loan_funds_coloured.png");
+                                }
+                                &.loan_transactions{
+                                    background-image: url("/static/img/icons/ic_loan_transactions_coloured.png");
+                                }
+                                &.loan_products{
+                                    background-image: url("/static/img/icons/ic_loan_products_coloured.png");
+                                }
+                                &.loan_accounting{
+                                    background-image: url("/static/img/icons/ic_accounting_coloured.png");
+                                }
+                                &.loan_reports{
+                                    background-image: url("/static/img/icons/ic_accounting_reports_coloured.png");
+                                }
+
+                                &:hover{
+                                    &.loan_accounts{
+                                        background-image: url("/static/img/icons/ic_loan_accounts_white.png");
+                                    }
+                                    &.loan_funds{
+                                        background-image: url("/static/img/icons/ic_loan_funds_white.png");
+                                    }
+                                    &.loan_transactions{
+                                        background-image: url("/static/img/icons/ic_loan_transactions_white.png");
+                                    }
+                                    &.loan_products{
+                                        background-image: url("/static/img/icons/ic_loan_products_white.png");
+                                    }
+                                    &.loan_accounting{
+                                        background-image: url("/static/img/icons/ic_accounting_white.png");
+                                    }
+                                    &.loan_reports{
+                                        background-image: url("/static/img/icons/ic_accounting_reports_white.png");
+                                    }
+                                }
+                            }
+
+                            &:hover{
+                                background-image: linear-gradient(-90deg, #2984D3 0%, #3891EB 100%);
+                                cursor: pointer;
+
+                                .menu-label{
+                                    color: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .footer{
+                ul.quick-actions{
+                    li{ 
+                        &.active{
+                            padding-left: 1.5rem;
+                            border-left: 5px solid #2984D3;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .main-content{
+    }
+}

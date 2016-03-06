@@ -24,4 +24,4 @@ from ..core import (
 )
 
 def dashboard(request):
-    return TemplateResponse(request, "clients/dashboard.html", {})
+    return TemplateResponse(request, "crm/dashboard.html", {})

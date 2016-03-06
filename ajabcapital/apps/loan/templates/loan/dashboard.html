@@ -1,16 +1,10 @@
-{% extends "base.html" %}
+{% extends "loan/base.html" %}
 
 {% load staticfiles %}
 
-{% block page-title %} Loans {% endblock page-title %}
-
-{% block extracss %}
-  <link href="{% static "css/app/loans/dashboard.css" %}" rel="stylesheet">
-{% endblock extracss %}
-
 {% block nav-menu-items %}
-  <li class="active"><a href="{% url "home:dashboard" %}">Home</a></li>
-  <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
+  <li><a href="{% url "home:dashboard" %}">Home</a></li>
+  <li class="active"><a href="{% url "loans:dashboard" %}">Loans</a></li>
   <li><a href="{% url "crm:dashboard" %}">Clients</a></li>
   <li><a href="{% url "accounting:dashboard" %}">Accounting</a></li>
   <li><a href="{% url "risk:dashboard" %}">Risk &amp; Compliance</a></li>
