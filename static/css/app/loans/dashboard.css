@@ -5839,7 +5839,7 @@ button.close {
   font-style: normal; }
 .font_regular, html, body, section.page, .font_extra_bold, .navbar .navbar-header .navbar-brand .ajab, .navbar.navbar-secondary #navbar ul.nav li.active > a,
 .navbar.navbar-secondary #navbar ul.nav li.focus > a,
-.navbar.navbar-secondary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-label, .font_black, .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li:first-child, .font_light, .navbar .navbar-header .navbar-brand .mfi, .font_semibold, .navbar.navbar-primary #navbar ul.nav li > a, section.body-area .main-content .form-holder .body .form .form-group label {
+.navbar.navbar-secondary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-label, .font_black, .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li:first-child, .font_light, .navbar .navbar-header .navbar-brand .mfi, .font_semibold, .navbar.navbar-primary #navbar ul.nav li > a {
   -webkit-font-feature-settings: "kern" 1,"liga" 1,"calt" 1,"pnum" 1,"tnum" 0,"onum" 0,"lnum" 0,"dlig" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -5859,7 +5859,7 @@ button.close {
 .font_light, .navbar .navbar-header .navbar-brand .mfi {
   font-family: "proxima_nova_ltregular"; }
 
-.font_semibold, .navbar.navbar-primary #navbar ul.nav li > a, section.body-area .main-content .form-holder .body .form .form-group label {
+.font_semibold, .navbar.navbar-primary #navbar ul.nav li > a {
   font-family: "proxima_nova_ltbold"; }
 
 .skinny-letterspacing {
@@ -6120,32 +6120,4 @@ section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li.active {
   padding-left: 1.5rem;
   border-left: 5px solid #E52B50; }
 
-section.body-area .main-content .form-holder .header {
-  text-align: center; }
-  section.body-area .main-content .form-holder .header p {
-    margin: 1rem auto;
-    min-width: 30rem;
-    max-width: 45rem;
-    color: gray; }
-section.body-area .main-content .form-holder .body {
-  padding-top: 2rem; }
-  section.body-area .main-content .form-holder .body .form .form-group {
-    padding-top: 0.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #f8f8f8; }
-    section.body-area .main-content .form-holder .body .form .form-group:before, section.body-area .main-content .form-holder .body .form .form-group:after {
-      content: " ";
-      display: table; }
-    section.body-area .main-content .form-holder .body .form .form-group:after {
-      clear: both; }
-    section.body-area .main-content .form-holder .body .form .form-group label {
-      font-weight: normal;
-      text-transform: capitalize; }
-    section.body-area .main-content .form-holder .body .form .form-group .form-control {
-      border: 1px solid #dfdfdf;
-      box-shadow: none;
-      font-size: 13px; }
-      section.body-area .main-content .form-holder .body .form .form-group .form-control:focus {
-        box-shadow: none; }
-
-/*# sourceMappingURL=products.css.map */
+/*# sourceMappingURL=dashboard.css.map */

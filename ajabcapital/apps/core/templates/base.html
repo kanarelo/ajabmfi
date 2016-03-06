@@ -1,0 +1,118 @@
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>AjabCapital | Loans</title>
+    <link href="{% static "css/app/loans/products.css" %}" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-primary">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            <strong class="ajab">ajab</strong><span class="mfi">mfi</span>
+          </a>
+        </div>
+        <!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
+        <div id="navbar" class="clearfix">
+          <div class="collapse navbar-collapse" id="collapsable">
+            <ul class="nav navbar-nav navbar-right">
+              {% block nav-menu-items %}
+                <li><a href="{% url "home:dashboard" %}">Home</a></li>
+                <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
+                <li><a href="{% url "crm:dashboard" %}">Clients</a></li>
+                <li><a href="{% url "accounting:dashboard" %}">Accounting</a></li>
+                <li><a href="{% url "risk:dashboard" %}">Risk &amp; Compliance</a></li>
+                <li><a href="{% url "users:dashboard" %}">Users</a></li>
+                <li><a href="{% url "users:my-profile" %}">My Profile</a></li>
+              {% endblock nav-menu-items %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="body-area">
+      <div class="sidebar">
+        <div class="sidebar-menu">
+          <div class="header">
+            <h2>Menu</h2>
+          </div>
+          <div class="body">
+            <ul class="menu">
+              {% block menu-items %}
+                <li class="menu-row clearfix">
+                  <div class="menu-item">
+                    <div class="menu-icon loan_accounts">
+                    </div>
+                    <div class="menu-label">dashboard</div>
+                  </div>
+                  <div class="menu-item">
+                    <div class="menu-icon loan_funds">
+                    </div>
+                    <div class="menu-label">loan funds</div>
+                  </div>
+                </li>
+                <li class="menu-row clearfix">
+                  <div class="menu-item">
+                    <div class="menu-icon loan_transactions">
+                    </div>
+                    <div class="menu-label">transactions</div>
+                  </div>
+                  <div class="menu-item">
+                    <div class="menu-icon loan_products">
+                    </div>
+                    <div class="menu-label">loan products</div>
+                  </div>
+                </li>
+                <li class="menu-row clearfix">
+                  <div class="menu-item">
+                    <div class="menu-icon loan_accounting">
+                    </div>
+                    <div class="menu-label">accounting</div>
+                  </div>
+                  <div class="menu-item">
+                    <div class="menu-icon loan_reports">
+                    </div>
+                    <div class="menu-label">reports</div>
+                  </div>
+                </li>
+              {% endblock menu-items %}
+            </ul>
+          </div>
+          <div class="footer">
+            <ul class="quick-actions">
+              <li>Quick Actions</li>
+              {% block quick-actions %}
+                <li class="active">
+                  <a href="#">add loan account</a>
+                </li>
+              {% endblock quick-actions %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="main-content hidden-xs">
+        {% block page-content %}
+        {% endblock page-content %}
+      </div>
+    </section>
+    <footer>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+  </body>
+</html>

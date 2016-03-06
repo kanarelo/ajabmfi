@@ -15,7 +15,7 @@
             </p>
         </div>
         <div class="body">
-            <form method="POST" class="form" action=".">{% csrf_token %}
+            <form method="POST" class="form clearfix" action=".">{% csrf_token %}
                 <div class="col-lg-10 col-lg-offset-1">
                     {% bootstrap_form form layout='horizontal' %}
                     {% buttons %}

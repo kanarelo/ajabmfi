@@ -1,0 +1,237 @@
+@import "web/base.scss";
+
+html, body {
+    min-height: 100% !important;
+    height: 100%;
+}
+
+.navbar{
+    border-radius: 0;
+
+    &-nav{
+        & > li {
+            & > a {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+    }
+
+    .navbar-header{
+        .navbar-brand{
+            font-size: 30px;
+            color: #000;
+
+            .ajab{
+                @extend %extra-bold;
+            }
+            .mfi{
+                @extend %light;
+            }
+        }
+    }
+
+    &.navbar-primary{
+        margin-bottom: 0;
+        border: none;
+        background-image: linear-gradient(-180deg, #F6F6F6 0%, #FFFFFF 100%);
+        box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.15);
+
+        .navbar-header{
+            .navbar-toggle {
+                margin-left: 2rem;
+
+                .icon-bar {
+                    width: 25px;
+                    height: 3px;
+                }
+            }
+        }
+        #navbar{
+            ul.nav{
+                margin-top: 5px;
+
+                li {
+                    > a{
+                        @extend %semibold;
+                    }
+                    &.active, 
+                    &.focus,
+                    &.open {
+                        > a {
+                            @extend %black;
+                            background-color: transparent;
+                            border-bottom: 5px solid #28B98E;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+    &.navbar-secondary{
+        border: none;
+        margin-bottom: 0;
+        min-height: 40px;
+        background-color: lighten(#93DEE8, 20%);    
+        color: #000;
+
+        #navbar{
+            padding: 0;
+
+            ul.nav {
+                li.active, 
+                li.focus, 
+                li.open {
+                    .dropdown-menu{
+                        border: none;
+                        -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.175);
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.175);
+                    }
+                    > a{
+                        color: #fff;
+                        @extend %extra-bold;
+                        background-color: #93DEE8;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.navbar-secondary-holder{
+    background-color: lighten(#93DEE8, 20%);    
+}
+
+section.body-area{
+    height: 93.5%;
+
+    .sidebar{
+        background-color: #f8f8f8;
+        float: left;
+        height: 100%;
+        width: 100%;
+
+        @media screen and (min-width: $screen-tablet) {
+            width: 20rem;
+        }
+
+        .sidebar-menu{
+            .header{
+                h2{
+                    padding-left: 1rem;
+                    font-size: 25px;
+                }
+            }
+            .body{
+                ul.menu{
+                    border-bottom: 1px solid #DBDBDB;
+                    list-style: none;
+                    padding-left: 0;
+
+                    li.menu-row{
+                        border-top: 1px solid #DBDBDB;
+
+                        .menu-item{
+                            padding-top: 2rem;
+                            background-color: #fff;
+
+                            width: 50%;
+                            height: 100px;
+                            display: inline-block;
+                            text-align: center;
+                            float: left;
+
+                            &:last-child{
+                                border-left: 1px solid #DBDBDB;
+                            }
+
+                            .menu-label{
+                                @extend %extra-bold;
+                                text-transform: uppercase;
+                                color: #7e7e7e;
+                                margin-top: .5rem;
+                                font-size: 13px;
+                            }
+                            .menu-icon{
+                                display: inline-block;
+                                width: 32px;
+                                height: 32px;
+                                background-repeat: no-repeat;
+                                background-position: 4px 2px;
+                            }
+
+                            &:hover{
+                                background-image: linear-gradient(-90deg, #06AEA7 0%, #20B38C 100%);
+                                cursor: pointer;
+
+                                .menu-label{
+                                    color: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .footer{
+                ul.quick-actions{
+                    padding-left: 0;
+                    margin-top: 2rem;
+
+                    li{ 
+                        padding-top: 5px;
+                        height: 30px;
+                        vertical-align: middle;
+                        color: #7e7e7e;
+                        padding-left: 2rem;
+                        border-top: 1px solid #EDEDED;
+                        
+                        &:first-child{
+                            @extend %black;
+                            border-top: none;
+                        }
+                        &:last-child{
+                            border-bottom: 1px solid #EDEDED;
+                        }
+
+                        &.active{
+                            padding-left: 1.5rem;
+                            border-left: 5px solid #28B98E;
+                        }
+
+                        a{
+                            color: #7e7e7e;
+                            text-decoration: none;
+
+                            &:hover{
+                                color: #000;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .main-content{
+        margin-left: 20.15rem;
+        box-shadow: -4px 0 3px -2px rgba(0,0,0,.15);
+
+        .form-holder{
+            padding-top: 0.5rem;
+
+            .header{
+                text-align: center;
+
+                p{  
+                    margin: 1rem auto;
+                    min-width: 30rem;
+                    max-width: 45rem;
+                    color: lighten(#000, 50%);
+                }
+            }
+            .body{
+                padding-top: 2rem;
+            }
+        }
+    }
+}

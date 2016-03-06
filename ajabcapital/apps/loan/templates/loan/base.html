@@ -1,88 +1,56 @@
-{% load bootstrap3 %}
-{% load staticfiles %}
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>AjabCapital | Loans</title>
-    <link href="{% static "css/app/loans/products.css" %}" rel="stylesheet">
-  </head>
-  <body>
-    <nav class="navbar navbar-default navbar-primary">
-      <div class="container">
-        <div class="navbar-header">
-          <!-- The mobile navbar-toggle button can be safely removed since you do not need it in a non-responsive implementation -->
-          <a class="navbar-brand" href="#">
-            <img class="logo" src="{% static "img/logo.png" %}" />
-          </a>
-        </div>
-        <!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
-        <div id="navbar" class="clearfix">
-          <ul class="nav navbar-nav">
-            <li><a href="#">Dashboard</a></li>
-            <li class="active"><a href="#">Origination</a></li>
-            <li><a href="#about">Accounting</a></li>
-            <li><a href="#contact">Risk</a></li>
-            <li><a href="#contact">Administration</a></li>
-            <li><a href="#contact">User</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ request.user }} <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
+{% block nav-menu-items %}
+  <li class="active"><a href="{% url "home:dashboard" %}">Home</a></li>
+  <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
+  <li><a href="{% url "crm:dashboard" %}">Clients</a></li>
+  <li><a href="{% url "accounting:dashboard" %}">Accounting</a></li>
+  <li><a href="{% url "risk:dashboard" %}">Risk &amp; Compliance</a></li>
+  <li><a href="{% url "users:dashboard" %}">Users</a></li>
+  <li><a href="{% url "users:my-profile" %}">My Profile</a></li>
+{% endblock nav-menu-items %}
+
+{% block menu-items %}
+  <li class="menu-row clearfix">
+    <div class="menu-item">
+      <div class="menu-icon loan_accounts">
       </div>
-    </nav>
-    <div class="navbar-secondary-holder">
-      <div class="container">
-        <nav class="navbar navbar-default navbar-secondary">
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Loans</a></li>
-              <li><a href="#">Accounting</a></li>
-              <li><a href="#">Contact</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+      <div class="menu-label">accounts</div>
     </div>
-    <section class="body-area">
-      <div class="container">
-        {% block page-content %}
-        {% endblock page-content %}
+    <div class="menu-item">
+      <div class="menu-icon loan_funds">
       </div>
-    </section>
-    <footer>
-    </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="{% static "js/bootstrap.min.js" %}"></script>
-  </body>
-</html>
+      <div class="menu-label">loan funds</div>
+    </div>
+  </li>
+  <li class="menu-row clearfix">
+    <div class="menu-item">
+      <div class="menu-icon loan_transactions">
+      </div>
+      <div class="menu-label">transactions</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-icon loan_products">
+      </div>
+      <div class="menu-label">loan products</div>
+    </div>
+  </li>
+  <li class="menu-row clearfix">
+    <div class="menu-item">
+      <div class="menu-icon loan_accounting">
+      </div>
+      <div class="menu-label">accounting</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-icon loan_reports">
+      </div>
+      <div class="menu-label">reports</div>
+    </div>
+  </li>
+{% endblock menu-items %}
+
+{% block quick-actions %}
+  <li class="active">
+    <a href="#">add loan account</a>
+  </li>
+{% endblock quick-actions %}
