@@ -24,6 +24,9 @@ from ..core import (
 )
 
 def index(request):
+    if request.user.is_authenticated():
+        return redirect('home:dashboard')
+
     return TemplateResponse(request, "website/index.html", {})
 
 def about_us(request):
