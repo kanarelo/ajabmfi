@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-SECRET_KEY = '98tghjcfhv.U.O.I09237923bhjasUYVX98a02372--u2hj3mashjbsambcIII}|bjas,j%0y#q#nmb*d%u(#'
+SECRET_KEY = '98tgh68787ghjkhjcfhv.U.O.I09237923bhjasUYVX98a02372--u2hj3mashjbsambcIII}|bjas,j%0y#q#nmb*d%u(#'
 ALLOWED_HOSTS = [
     '.ajabcapital.com',
     '192.241.160.33'
@@ -23,6 +23,7 @@ BASE_URL = 'http://www.ajabcapital.com'
 
 STATIC_ROOT = '/opt/apps/assets/ajabcapital/static/'
 MEDIA_ROOT = '/opt/apps/assets/ajabcapital/media/'
+FIXTURE_DIRS = '/opt/apps/assets/ajabcapital/fixtures/'
 
 # Use local settings if it's available
 

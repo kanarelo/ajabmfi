@@ -9,6 +9,10 @@ DATABASES = {
     }
 }
 
+FIXTURE_DIRS = (
+    os.path.join(BASE_DIR, "..", "fixtures"),
+)
+
 try:
     from .local import *
 except ImportError:

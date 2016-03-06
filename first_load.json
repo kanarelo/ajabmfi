@@ -1,7 +1,7 @@
 [
 {
-  "model": "core.ledgeraccount",
-  "pk": "1.1310.000",
+  "model": "core.configcurrency",
+  "pk": 1,
   "fields": {
     "row_comment": "",
     "deleted_by": null,
@@ -9,16 +9,16 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T15:54:28.660Z",
-    "updated_at": "2016-02-16T17:28:04.497Z",
-    "account_category": 1,
-    "ledger_type": 2,
-    "name": "Interest Income Receivable Account"
+    "created_at": "2016-02-18T16:43:21.408Z",
+    "updated_at": "2016-02-18T16:43:21.408Z",
+    "name": "Kenya Shillings",
+    "code": "KES",
+    "is_active": true
   }
 },
 {
-  "model": "core.ledgeraccount",
-  "pk": "1.1311.000",
+  "model": "core.configledgeraccounttype",
+  "pk": 1,
   "fields": {
     "row_comment": "",
     "deleted_by": null,
@@ -26,16 +26,17 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T15:55:06.135Z",
-    "updated_at": "2016-02-16T17:28:15.318Z",
-    "account_category": 1,
-    "ledger_type": 2,
-    "name": "Penalty Income Receivable Account"
+    "created_at": "2016-02-22T14:00:09.150Z",
+    "updated_at": "2016-02-23T23:20:45.112Z",
+    "name": "Header Account",
+    "code": "LAT_001",
+    "is_active": true,
+    "icon": ""
   }
 },
 {
-  "model": "core.ledgeraccount",
-  "pk": "1.1312.000",
+  "model": "core.configledgeraccounttype",
+  "pk": 2,
   "fields": {
     "row_comment": "",
     "deleted_by": null,
@@ -43,16 +44,17 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T15:55:22.993Z",
-    "updated_at": "2016-02-16T17:28:22.739Z",
-    "account_category": 1,
-    "ledger_type": 2,
-    "name": "Fee Income Receivable Account"
+    "created_at": "2016-02-22T14:00:22.010Z",
+    "updated_at": "2016-02-23T23:21:23.396Z",
+    "name": "Detail Account",
+    "code": "LAT_002",
+    "is_active": true,
+    "icon": ""
   }
 },
 {
-  "model": "core.ledgeraccount",
-  "pk": "1.4100.000",
+  "model": "core.configledgeraccounttype",
+  "pk": 6,
   "fields": {
     "row_comment": "",
     "deleted_by": null,
@@ -60,11 +62,514 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T15:57:18.986Z",
-    "updated_at": "2016-02-16T17:28:29.573Z",
-    "account_category": 1,
-    "ledger_type": 2,
-    "name": "Loan Portfolio Control Account"
+    "created_at": "2016-02-23T23:39:13.015Z",
+    "updated_at": "2016-02-23T23:39:13.015Z",
+    "name": "Product Account",
+    "code": "LAT_003",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "core.configledgeraccounttype",
+  "pk": 7,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-23T23:39:36.110Z",
+    "updated_at": "2016-02-23T23:39:36.110Z",
+    "name": "User Account",
+    "code": "LAT_004",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "core.configledgeraccountbalancedirection",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-23T23:15:34.791Z",
+    "updated_at": "2016-02-23T23:15:34.791Z",
+    "name": "Normal",
+    "code": "LBD_001",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "core.configledgeraccountbalancedirection",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-23T23:16:14.689Z",
+    "updated_at": "2016-02-23T23:16:14.689Z",
+    "name": "Contra",
+    "code": "LBD_002",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "core.configledgeraccountcategory",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-22T14:07:31.907Z",
+    "updated_at": "2016-02-22T14:07:31.907Z",
+    "name": "Asset",
+    "code": "1",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "core.configledgeraccountcategory",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-22T14:07:40.362Z",
+    "updated_at": "2016-02-22T14:07:40.362Z",
+    "name": "Liability",
+    "code": "2",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "core.configledgeraccountcategory",
+  "pk": 3,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-22T14:08:05.136Z",
+    "updated_at": "2016-02-22T14:08:05.136Z",
+    "name": "Equity",
+    "code": "3",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "core.configledgeraccountcategory",
+  "pk": 4,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-22T14:09:27.732Z",
+    "updated_at": "2016-02-22T14:09:27.732Z",
+    "name": "Income",
+    "code": "4",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "core.configledgeraccountcategory",
+  "pk": 5,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-22T14:09:39.284Z",
+    "updated_at": "2016-02-22T14:09:39.284Z",
+    "name": "Expense",
+    "code": "5",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "core.configledgertype",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-22T13:57:59.202Z",
+    "updated_at": "2016-02-23T23:25:30.156Z",
+    "name": "General Ledger",
+    "code": "LGT_001",
+    "is_active": true
+  }
+},
+{
+  "model": "core.configledgertype",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-22T13:58:19.576Z",
+    "updated_at": "2016-02-23T23:29:26.842Z",
+    "name": "Loan Ledger",
+    "code": "LGT_002",
+    "is_active": true
+  }
+},
+{
+  "model": "core.configledgertransactiontype",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T14:58:54.998Z",
+    "updated_at": "2016-02-22T14:35:47.626Z",
+    "name": "Loan Disbursal",
+    "code": "TT_001",
+    "is_active": true,
+    "icon": "",
+    "ledger_types": [
+      2
+    ]
+  }
+},
+{
+  "model": "core.configledgertransactiontype",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:00:53.512Z",
+    "updated_at": "2016-02-22T14:35:55.589Z",
+    "name": "Interest Accrual",
+    "code": "TT_002",
+    "is_active": true,
+    "icon": "",
+    "ledger_types": [
+      2
+    ]
+  }
+},
+{
+  "model": "core.configledgertransactiontype",
+  "pk": 3,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:01:05.771Z",
+    "updated_at": "2016-02-22T14:36:05.419Z",
+    "name": "Fee Acrual",
+    "code": "TT_003",
+    "is_active": true,
+    "icon": "",
+    "ledger_types": [
+      2
+    ]
+  }
+},
+{
+  "model": "core.configledgertransactiontype",
+  "pk": 4,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:01:31.493Z",
+    "updated_at": "2016-02-22T14:36:11.706Z",
+    "name": "Penalty Accrual",
+    "code": "TT_004",
+    "is_active": true,
+    "icon": "",
+    "ledger_types": [
+      2
+    ]
+  }
+},
+{
+  "model": "core.configledgertransactiontype",
+  "pk": 5,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:01:59.678Z",
+    "updated_at": "2016-02-22T14:36:18.112Z",
+    "name": "Principal Posting",
+    "code": "TT_005",
+    "is_active": true,
+    "icon": "",
+    "ledger_types": [
+      2
+    ]
+  }
+},
+{
+  "model": "core.configledgertransactiontype",
+  "pk": 6,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:02:16.223Z",
+    "updated_at": "2016-02-22T14:36:24.619Z",
+    "name": "Interest Posting",
+    "code": "TT_006",
+    "is_active": true,
+    "icon": "",
+    "ledger_types": [
+      2
+    ]
+  }
+},
+{
+  "model": "core.configledgertransactiontype",
+  "pk": 7,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:02:34.899Z",
+    "updated_at": "2016-02-22T14:36:29.284Z",
+    "name": "Fee Posting",
+    "code": "TT_007",
+    "is_active": true,
+    "icon": "",
+    "ledger_types": [
+      2
+    ]
+  }
+},
+{
+  "model": "core.configledgertransactiontype",
+  "pk": 8,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:02:54.862Z",
+    "updated_at": "2016-02-22T14:36:42.529Z",
+    "name": "Penalty Posting",
+    "code": "TT_008",
+    "is_active": true,
+    "icon": "",
+    "ledger_types": [
+      2
+    ]
+  }
+},
+{
+  "model": "core.configledgertransactiontype",
+  "pk": 9,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:03:19.418Z",
+    "updated_at": "2016-02-22T14:36:47.528Z",
+    "name": "Principal Write-Off",
+    "code": "TT_009",
+    "is_active": true,
+    "icon": "",
+    "ledger_types": [
+      2
+    ]
+  }
+},
+{
+  "model": "core.configledgertransactiontype",
+  "pk": 10,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:03:40.904Z",
+    "updated_at": "2016-02-22T14:36:53.287Z",
+    "name": "Interest Write-Off",
+    "code": "TT_010",
+    "is_active": true,
+    "icon": "",
+    "ledger_types": [
+      2
+    ]
+  }
+},
+{
+  "model": "core.configledgertransactiontype",
+  "pk": 11,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:03:57.947Z",
+    "updated_at": "2016-02-22T14:36:58.648Z",
+    "name": "Fee Write-Off",
+    "code": "TT_011",
+    "is_active": true,
+    "icon": "",
+    "ledger_types": [
+      2
+    ]
+  }
+},
+{
+  "model": "core.configledgertransactiontype",
+  "pk": 12,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:04:17.533Z",
+    "updated_at": "2016-02-22T14:37:03.929Z",
+    "name": "Penalty Write-Off",
+    "code": "TT_012",
+    "is_active": true,
+    "icon": "",
+    "ledger_types": [
+      2
+    ]
+  }
+},
+{
+  "model": "core.configledgertransactionstatus",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:33:03.307Z",
+    "updated_at": "2016-02-16T15:33:11.821Z",
+    "name": "Pending Posting",
+    "code": "LTS_001",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "core.configledgertransactionstatus",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:33:31.786Z",
+    "updated_at": "2016-02-16T15:33:31.786Z",
+    "name": "Posted",
+    "code": "LTS_002",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "core.configledgertransactionstatus",
+  "pk": 3,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:33:51.270Z",
+    "updated_at": "2016-02-16T15:33:51.270Z",
+    "name": "Held",
+    "code": "LTS_003",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "core.configledgertransactionstatus",
+  "pk": 4,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:34:42.398Z",
+    "updated_at": "2016-02-16T15:34:42.398Z",
+    "name": "Settled",
+    "code": "LTS_004",
+    "is_active": true,
+    "icon": ""
   }
 },
 {
@@ -79,14 +584,16 @@
     "created_by": 3,
     "created_at": "2016-02-16T17:17:03.162Z",
     "updated_at": "2016-02-16T17:27:55.485Z",
+    "name": "Loan Fund Source",
+    "ledger_type": 2,
     "account_category": 1,
-    "ledger_type": 2,
-    "name": "Loan Fund Source"
+    "account_type": 1,
+    "balance_direction": 1
   }
 },
 {
   "model": "core.ledgeraccount",
-  "pk": "4.1100.000",
+  "pk": "1.1310.000",
   "fields": {
     "row_comment": "",
     "deleted_by": null,
@@ -94,16 +601,18 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T17:21:18.373Z",
-    "updated_at": "2016-02-16T17:29:23.350Z",
-    "account_category": 4,
+    "created_at": "2016-02-16T15:54:28.660Z",
+    "updated_at": "2016-02-16T17:28:04.497Z",
+    "name": "Interest Income Receivable Account",
     "ledger_type": 2,
-    "name": "Interest Income Account"
+    "account_category": 1,
+    "account_type": 1,
+    "balance_direction": 1
   }
 },
 {
   "model": "core.ledgeraccount",
-  "pk": "4.1220.000",
+  "pk": "1.1311.000",
   "fields": {
     "row_comment": "",
     "deleted_by": null,
@@ -111,16 +620,18 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T17:23:13.778Z",
-    "updated_at": "2016-02-16T17:29:39.169Z",
-    "account_category": 4,
+    "created_at": "2016-02-16T15:55:06.135Z",
+    "updated_at": "2016-02-16T17:28:15.318Z",
+    "name": "Penalty Income Receivable Account",
     "ledger_type": 2,
-    "name": "Loan Fee Income Account"
+    "account_category": 1,
+    "account_type": 1,
+    "balance_direction": 1
   }
 },
 {
   "model": "core.ledgeraccount",
-  "pk": "4.1240.000",
+  "pk": "1.1312.000",
   "fields": {
     "row_comment": "",
     "deleted_by": null,
@@ -128,28 +639,13 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T17:23:34.326Z",
-    "updated_at": "2016-02-16T17:29:53.896Z",
-    "account_category": 4,
+    "created_at": "2016-02-16T15:55:22.993Z",
+    "updated_at": "2016-02-16T17:28:22.739Z",
+    "name": "Fee Income Receivable Account",
     "ledger_type": 2,
-    "name": "Penalty Income Account"
-  }
-},
-{
-  "model": "core.ledgeraccount",
-  "pk": "5.1300.000",
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T17:24:28.483Z",
-    "updated_at": "2016-02-16T17:30:03.312Z",
-    "account_category": 5,
-    "ledger_type": 2,
-    "name": "Loan Write-Off Expense Account"
+    "account_category": 1,
+    "account_type": 1,
+    "balance_direction": 1
   }
 },
 {
@@ -164,9 +660,106 @@
     "created_by": 3,
     "created_at": "2016-02-20T07:08:27.162Z",
     "updated_at": "2016-02-20T07:08:27.162Z",
-    "account_category": 1,
+    "name": "Provision for Bad Debt",
     "ledger_type": 2,
-    "name": "Provision for Bad Debt"
+    "account_category": 1,
+    "account_type": 1,
+    "balance_direction": 1
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "1.4100.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:57:18.986Z",
+    "updated_at": "2016-02-16T17:28:29.573Z",
+    "name": "Loan Portfolio Control Account",
+    "ledger_type": 2,
+    "account_category": 1,
+    "account_type": 1,
+    "balance_direction": 1
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "4.1100.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T17:21:18.373Z",
+    "updated_at": "2016-02-16T17:29:23.350Z",
+    "name": "Interest Income Account",
+    "ledger_type": 2,
+    "account_category": 4,
+    "account_type": 1,
+    "balance_direction": 1
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "4.1220.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T17:23:13.778Z",
+    "updated_at": "2016-02-16T17:29:39.169Z",
+    "name": "Loan Fee Income Account",
+    "ledger_type": 2,
+    "account_category": 4,
+    "account_type": 1,
+    "balance_direction": 1
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "4.1240.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T17:23:34.326Z",
+    "updated_at": "2016-02-16T17:29:53.896Z",
+    "name": "Penalty Income Account",
+    "ledger_type": 2,
+    "account_category": 4,
+    "account_type": 1,
+    "balance_direction": 1
+  }
+},
+{
+  "model": "core.ledgeraccount",
+  "pk": "5.1300.000",
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T17:24:28.483Z",
+    "updated_at": "2016-02-16T17:30:03.312Z",
+    "name": "Loan Write-Off Expense Account",
+    "ledger_type": 2,
+    "account_category": 5,
+    "account_type": 1,
+    "balance_direction": 1
   }
 }
 ]

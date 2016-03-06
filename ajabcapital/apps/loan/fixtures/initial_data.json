@@ -1,70 +1,6 @@
 [
 {
-  "model": "loan.configamortizationtype",
-  "pk": 3,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T12:49:01.525Z",
-    "updated_at": "2016-02-16T12:49:01.525Z",
-    "name": "Fixed installment",
-    "code": "AT_001"
-  }
-},
-{
-  "model": "loan.configamortizationtype",
-  "pk": 4,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T12:49:47.693Z",
-    "updated_at": "2016-02-16T12:49:47.693Z",
-    "name": "Straight Line",
-    "code": "AT_002"
-  }
-},
-{
-  "model": "loan.configamortizationtype",
-  "pk": 5,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T12:50:25.798Z",
-    "updated_at": "2016-02-16T12:50:25.798Z",
-    "name": "Single Payment Loan",
-    "code": "AT_003"
-  }
-},
-{
-  "model": "loan.configamortizationtype",
-  "pk": 6,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T12:50:46.945Z",
-    "updated_at": "2016-02-16T12:50:46.945Z",
-    "name": "Irregular Repayment Schedule",
-    "code": "AT_004"
-  }
-},
-{
-  "model": "loan.configpaymentfrequency",
+  "model": "loan.configfeecalculationmethod",
   "pk": 1,
   "fields": {
     "row_comment": "",
@@ -73,14 +9,15 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T13:11:14.428Z",
-    "updated_at": "2016-02-16T13:11:14.428Z",
-    "name": "Annually",
-    "code": "PF_001"
+    "created_at": "2016-02-16T20:59:36.724Z",
+    "updated_at": "2016-02-16T20:59:36.724Z",
+    "name": "Percentage",
+    "code": "FC_001",
+    "is_active": true
   }
 },
 {
-  "model": "loan.configpaymentfrequency",
+  "model": "loan.configfeecalculationmethod",
   "pk": 2,
   "fields": {
     "row_comment": "",
@@ -89,823 +26,11 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T13:11:33.184Z",
-    "updated_at": "2016-02-16T13:11:33.184Z",
-    "name": "Bullet: one lump sum upon maturity",
-    "code": "PF_002"
-  }
-},
-{
-  "model": "loan.configpaymentfrequency",
-  "pk": 3,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T13:11:44.915Z",
-    "updated_at": "2016-02-16T13:11:44.915Z",
-    "name": "Daily",
-    "code": "PF_003"
-  }
-},
-{
-  "model": "loan.configpaymentfrequency",
-  "pk": 4,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T13:12:02.826Z",
-    "updated_at": "2016-02-16T13:12:02.826Z",
-    "name": "Fortnightly",
-    "code": "PF_004"
-  }
-},
-{
-  "model": "loan.configpaymentfrequency",
-  "pk": 5,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T13:12:17.645Z",
-    "updated_at": "2016-02-16T13:12:17.645Z",
-    "name": "Irregular Schedule",
-    "code": "PF_005"
-  }
-},
-{
-  "model": "loan.configpaymentfrequency",
-  "pk": 6,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T13:12:32.236Z",
-    "updated_at": "2016-02-16T13:12:32.236Z",
-    "name": "Monthly",
-    "code": "PF_006"
-  }
-},
-{
-  "model": "loan.configpaymentfrequency",
-  "pk": 7,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T13:12:46.233Z",
-    "updated_at": "2016-02-16T13:12:46.233Z",
-    "name": "Other",
-    "code": "PF_007"
-  }
-},
-{
-  "model": "loan.configpaymentfrequency",
-  "pk": 8,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T13:12:58.585Z",
-    "updated_at": "2016-02-16T13:12:58.585Z",
-    "name": "Quarterly",
-    "code": "PF_008"
-  }
-},
-{
-  "model": "loan.configpaymentfrequency",
-  "pk": 9,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T13:13:16.820Z",
-    "updated_at": "2016-02-16T13:13:16.820Z",
-    "name": "Revolving",
-    "code": "PF_009"
-  }
-},
-{
-  "model": "loan.configpaymentfrequency",
-  "pk": 10,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T13:13:44.485Z",
-    "updated_at": "2016-02-16T13:13:44.485Z",
-    "name": "Twice a year",
-    "code": "PF_010"
-  }
-},
-{
-  "model": "loan.configpaymentfrequency",
-  "pk": 11,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T13:13:55.206Z",
-    "updated_at": "2016-02-16T13:13:55.206Z",
-    "name": "Weekly",
-    "code": "PF_011"
-  }
-},
-{
-  "model": "loan.configpaymentfrequency",
-  "pk": 12,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T13:14:13.402Z",
-    "updated_at": "2016-02-16T13:14:13.402Z",
-    "name": "Every two months",
-    "code": "PF_012"
-  }
-},
-{
-  "model": "loan.configpaymentfrequency",
-  "pk": 13,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T13:14:28.170Z",
-    "updated_at": "2016-02-16T13:14:28.170Z",
-    "name": "Thrice a year",
-    "code": "PF_013"
-  }
-},
-{
-  "model": "loan.configloanaccountstatus",
-  "pk": 1,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T21:24:38.554Z",
-    "updated_at": "2016-02-16T21:27:29.529Z",
-    "name": "Disputed",
-    "code": "AS_001",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanaccountstatus",
-  "pk": 2,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T21:24:56.731Z",
-    "updated_at": "2016-02-16T21:27:49.615Z",
-    "name": "Outstanding and Beyond terms",
-    "code": "AS_002",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanaccountstatus",
-  "pk": 3,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T21:25:55.832Z",
-    "updated_at": "2016-02-16T21:28:01.553Z",
-    "name": "Restructured credit facility",
-    "code": "AS_003",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanaccountstatus",
-  "pk": 4,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T21:26:21.606Z",
-    "updated_at": "2016-02-16T21:28:38.750Z",
-    "name": "Write-Off",
-    "code": "AS_004",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanaccountstatus",
-  "pk": 5,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T21:27:19.000Z",
-    "updated_at": "2016-02-16T21:27:19.000Z",
-    "name": "Fully paid",
-    "code": "AS_005",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanaccountstatus",
-  "pk": 6,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T21:29:10.880Z",
-    "updated_at": "2016-02-16T21:29:23.809Z",
-    "name": "Current and within terms",
-    "code": "AS_006",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanaccountstatus",
-  "pk": 7,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T21:45:47.480Z",
-    "updated_at": "2016-02-16T21:45:47.481Z",
-    "name": "Loan Disbursement",
-    "code": "AS_007",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanaccountstatus",
-  "pk": 8,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T21:46:05.935Z",
-    "updated_at": "2016-02-16T21:49:22.190Z",
-    "name": "Underwriting (risk)",
-    "code": "AS_008",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanaccountstatus",
-  "pk": 9,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T21:46:26.508Z",
-    "updated_at": "2016-02-16T21:48:42.386Z",
-    "name": "Appraisal (assessment)",
-    "code": "AS_009",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanaccountstatus",
-  "pk": 10,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T21:46:50.466Z",
-    "updated_at": "2016-02-16T21:46:50.466Z",
-    "name": "Origination",
-    "code": "AS_010",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanaccounttransactionstatus",
-  "pk": 1,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:33:03.307Z",
-    "updated_at": "2016-02-16T15:33:11.821Z",
-    "name": "Pending Posting",
-    "code": "LTS_001",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanaccounttransactionstatus",
-  "pk": 2,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:33:31.786Z",
-    "updated_at": "2016-02-16T15:33:31.786Z",
-    "name": "Posted",
-    "code": "LTS_002",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanaccounttransactionstatus",
-  "pk": 3,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:33:51.270Z",
-    "updated_at": "2016-02-16T15:33:51.270Z",
-    "name": "Held",
-    "code": "LTS_003",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanaccounttransactionstatus",
-  "pk": 4,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:34:42.398Z",
-    "updated_at": "2016-02-16T15:34:42.398Z",
-    "name": "Settled",
-    "code": "LTS_004",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanperiodunit",
-  "pk": 1,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T12:55:10.384Z",
-    "updated_at": "2016-02-16T12:55:10.384Z",
-    "name": "Hour",
-    "code": "LP_001"
-  }
-},
-{
-  "model": "loan.configloanperiodunit",
-  "pk": 2,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T12:55:24.355Z",
-    "updated_at": "2016-02-16T12:55:24.355Z",
-    "name": "Day",
-    "code": "LP_002"
-  }
-},
-{
-  "model": "loan.configloanperiodunit",
-  "pk": 3,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T12:56:01.740Z",
-    "updated_at": "2016-02-16T12:56:01.740Z",
-    "name": "Week",
-    "code": "LP_003"
-  }
-},
-{
-  "model": "loan.configloanperiodunit",
-  "pk": 4,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T12:56:26.004Z",
-    "updated_at": "2016-02-16T12:56:26.004Z",
-    "name": "Month",
-    "code": "LP_004"
-  }
-},
-{
-  "model": "loan.configloanperiodunit",
-  "pk": 5,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T12:56:42.768Z",
-    "updated_at": "2016-02-16T12:56:42.768Z",
-    "name": "Year",
-    "code": "LP_005"
-  }
-},
-{
-  "model": "loan.configloanproducttype",
-  "pk": 1,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T12:58:27.365Z",
-    "updated_at": "2016-02-16T12:58:27.365Z",
-    "name": "Mobile Loan",
-    "code": "LT_001",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanproducttype",
-  "pk": 2,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T12:59:05.629Z",
-    "updated_at": "2016-02-16T12:59:05.629Z",
-    "name": "Business Loan",
-    "code": "LT_002",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanproducttype",
-  "pk": 3,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T12:59:57.019Z",
-    "updated_at": "2016-02-16T15:32:03.688Z",
-    "name": "Syndicated Business Loan",
-    "code": "LT_003",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloanproductfeetype",
-  "pk": 1,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:06:31.869Z",
-    "updated_at": "2016-02-16T15:08:36.538Z",
-    "name": "Penalty Fee",
-    "code": "FT_001"
-  }
-},
-{
-  "model": "loan.configloanproductfeetype",
-  "pk": 2,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:07:31.637Z",
-    "updated_at": "2016-02-16T15:07:31.637Z",
-    "name": "Mobile Money Charge",
-    "code": "FT_002"
-  }
-},
-{
-  "model": "loan.configloanproductfeetype",
-  "pk": 3,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:07:49.374Z",
-    "updated_at": "2016-02-16T15:07:49.374Z",
-    "name": "Service Charge",
-    "code": "FT_003"
-  }
-},
-{
-  "model": "loan.configloanproductfeetype",
-  "pk": 4,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T21:08:46.462Z",
-    "updated_at": "2016-02-16T21:08:46.462Z",
-    "name": "Tax",
-    "code": "FT_004"
-  }
-},
-{
-  "model": "loan.configloantransactiontype",
-  "pk": 1,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T14:58:54.998Z",
-    "updated_at": "2016-02-16T14:58:54.998Z",
-    "name": "Loan Disbursal",
-    "code": "TT_001",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloantransactiontype",
-  "pk": 2,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:00:53.512Z",
-    "updated_at": "2016-02-16T15:00:53.512Z",
-    "name": "Interest Accrual",
-    "code": "TT_002",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloantransactiontype",
-  "pk": 3,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:01:05.771Z",
-    "updated_at": "2016-02-16T15:01:05.771Z",
-    "name": "Fee Acrual",
-    "code": "TT_003",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloantransactiontype",
-  "pk": 4,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:01:31.493Z",
-    "updated_at": "2016-02-16T15:01:31.493Z",
-    "name": "Penalty Accrual",
-    "code": "TT_004",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloantransactiontype",
-  "pk": 5,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:01:59.678Z",
-    "updated_at": "2016-02-16T15:01:59.678Z",
-    "name": "Principal Posting",
-    "code": "TT_005",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloantransactiontype",
-  "pk": 6,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:02:16.223Z",
-    "updated_at": "2016-02-16T15:02:16.223Z",
-    "name": "Interest Posting",
-    "code": "TT_006",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloantransactiontype",
-  "pk": 7,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:02:34.899Z",
-    "updated_at": "2016-02-16T15:02:34.899Z",
-    "name": "Fee Posting",
-    "code": "TT_007",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloantransactiontype",
-  "pk": 8,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:02:54.862Z",
-    "updated_at": "2016-02-16T15:02:54.862Z",
-    "name": "Penalty Posting",
-    "code": "TT_008",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloantransactiontype",
-  "pk": 9,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:03:19.418Z",
-    "updated_at": "2016-02-16T15:03:19.418Z",
-    "name": "Principal Write-Off",
-    "code": "TT_009",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloantransactiontype",
-  "pk": 10,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:03:40.904Z",
-    "updated_at": "2016-02-16T15:03:40.904Z",
-    "name": "Interest Write-Off",
-    "code": "TT_010",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloantransactiontype",
-  "pk": 11,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:03:57.947Z",
-    "updated_at": "2016-02-16T15:03:57.947Z",
-    "name": "Fee Write-Off",
-    "code": "TT_011",
-    "icon": ""
-  }
-},
-{
-  "model": "loan.configloantransactiontype",
-  "pk": 12,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:04:17.533Z",
-    "updated_at": "2016-02-16T15:04:17.533Z",
-    "name": "Penalty Write-Off",
-    "code": "TT_012",
-    "icon": ""
+    "created_at": "2016-02-16T20:59:58.385Z",
+    "updated_at": "2016-02-16T20:59:58.385Z",
+    "name": "Flat",
+    "code": "FC_002",
+    "is_active": true
   }
 },
 {
@@ -921,7 +46,8 @@
     "created_at": "2016-02-16T12:53:53.448Z",
     "updated_at": "2016-02-16T12:53:53.448Z",
     "name": "Principal Grace Period",
-    "code": "GP_001"
+    "code": "GP_001",
+    "is_active": true
   }
 },
 {
@@ -937,7 +63,8 @@
     "created_at": "2016-02-16T12:54:09.660Z",
     "updated_at": "2016-02-16T12:54:09.660Z",
     "name": "Full Grace Period",
-    "code": "GP_002"
+    "code": "GP_002",
+    "is_active": true
   }
 },
 {
@@ -954,6 +81,7 @@
     "updated_at": "2016-02-16T12:52:13.391Z",
     "name": "On Declining Balance",
     "code": "CM_001",
+    "is_active": true,
     "icon": ""
   }
 },
@@ -971,11 +99,12 @@
     "updated_at": "2016-02-16T12:52:26.380Z",
     "name": "Flat",
     "code": "CM_002",
+    "is_active": true,
     "icon": ""
   }
 },
 {
-  "model": "loan.configfeecalculationmethod",
+  "model": "loan.configloanaccountstatus",
   "pk": 1,
   "fields": {
     "row_comment": "",
@@ -984,14 +113,16 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T20:59:36.724Z",
-    "updated_at": "2016-02-16T20:59:36.724Z",
-    "name": "Percentage",
-    "code": "FC_001"
+    "created_at": "2016-02-16T21:24:38.554Z",
+    "updated_at": "2016-02-16T21:27:29.529Z",
+    "name": "Disputed",
+    "code": "AS_001",
+    "is_active": true,
+    "icon": ""
   }
 },
 {
-  "model": "loan.configfeecalculationmethod",
+  "model": "loan.configloanaccountstatus",
   "pk": 2,
   "fields": {
     "row_comment": "",
@@ -1000,10 +131,909 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T20:59:58.385Z",
-    "updated_at": "2016-02-16T20:59:58.385Z",
-    "name": "Flat",
-    "code": "FC_002"
+    "created_at": "2016-02-16T21:24:56.731Z",
+    "updated_at": "2016-02-16T21:27:49.615Z",
+    "name": "Outstanding and Beyond terms",
+    "code": "AS_002",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanaccountstatus",
+  "pk": 3,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T21:25:55.832Z",
+    "updated_at": "2016-02-16T21:28:01.553Z",
+    "name": "Restructured credit facility",
+    "code": "AS_003",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanaccountstatus",
+  "pk": 4,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T21:26:21.606Z",
+    "updated_at": "2016-02-16T21:28:38.750Z",
+    "name": "Write-Off",
+    "code": "AS_004",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanaccountstatus",
+  "pk": 5,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T21:27:19Z",
+    "updated_at": "2016-02-16T21:27:19Z",
+    "name": "Fully paid",
+    "code": "AS_005",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanaccountstatus",
+  "pk": 6,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T21:29:10.880Z",
+    "updated_at": "2016-02-16T21:29:23.809Z",
+    "name": "Current and within terms",
+    "code": "AS_006",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanaccountstatus",
+  "pk": 7,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T21:45:47.480Z",
+    "updated_at": "2016-02-16T21:45:47.481Z",
+    "name": "Loan Disbursal",
+    "code": "AS_007",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanaccountstatus",
+  "pk": 8,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T21:46:05.935Z",
+    "updated_at": "2016-02-16T21:49:22.190Z",
+    "name": "Underwriting (risk)",
+    "code": "AS_008",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanaccountstatus",
+  "pk": 9,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T21:46:26.508Z",
+    "updated_at": "2016-02-16T21:48:42.386Z",
+    "name": "Appraisal (assessment)",
+    "code": "AS_009",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanaccountstatus",
+  "pk": 10,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T21:46:50.466Z",
+    "updated_at": "2016-02-20T07:02:17.095Z",
+    "name": "Application",
+    "code": "AS_010",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configrepaymentfrequency",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-21T16:19:10.760Z",
+    "updated_at": "2016-02-21T16:19:10.760Z",
+    "name": "Daily",
+    "code": "RF_001",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentfrequency",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-21T16:19:33.482Z",
+    "updated_at": "2016-02-21T16:19:33.482Z",
+    "name": "Weekly",
+    "code": "RF_002",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentfrequency",
+  "pk": 3,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-21T16:19:50.059Z",
+    "updated_at": "2016-02-21T16:19:50.059Z",
+    "name": "Fortnightly",
+    "code": "RF_003",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentfrequency",
+  "pk": 4,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-21T16:20:13.728Z",
+    "updated_at": "2016-02-21T16:20:13.728Z",
+    "name": "Monthly",
+    "code": "RF_004",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentfrequency",
+  "pk": 5,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-21T16:20:27.113Z",
+    "updated_at": "2016-02-21T16:20:27.113Z",
+    "name": "Every two months",
+    "code": "RF_005",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentfrequency",
+  "pk": 6,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-21T16:20:43.005Z",
+    "updated_at": "2016-02-21T16:20:43.005Z",
+    "name": "Twice a year",
+    "code": "RF_006",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentfrequency",
+  "pk": 7,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-21T16:20:57.123Z",
+    "updated_at": "2016-02-21T16:20:57.123Z",
+    "name": "Thrice a year",
+    "code": "RF_007",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentfrequency",
+  "pk": 8,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-21T16:21:10.445Z",
+    "updated_at": "2016-02-21T16:21:10.445Z",
+    "name": "Quarterly",
+    "code": "RF_008",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentfrequency",
+  "pk": 9,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-21T16:21:34.974Z",
+    "updated_at": "2016-02-21T16:21:34.974Z",
+    "name": "Irregular Schedule",
+    "code": "RF_009",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentfrequency",
+  "pk": 10,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-21T16:21:50.738Z",
+    "updated_at": "2016-02-21T16:21:50.738Z",
+    "name": "Revolving",
+    "code": "RF_010",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentfrequency",
+  "pk": 11,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-21T16:29:00.905Z",
+    "updated_at": "2016-02-21T16:29:26.070Z",
+    "name": "Bullet: One lump sum upon maturity",
+    "code": "RF_011",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentfrequency",
+  "pk": 12,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-21T16:29:49.122Z",
+    "updated_at": "2016-02-21T16:29:49.123Z",
+    "name": "Annually",
+    "code": "RF_012",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentallocationitem",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-18T06:56:34.335Z",
+    "updated_at": "2016-02-18T06:56:34.335Z",
+    "name": "Fee",
+    "code": "AI_001",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentallocationitem",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-18T06:56:51.943Z",
+    "updated_at": "2016-02-18T06:56:51.943Z",
+    "name": "Penalty",
+    "code": "AI_002",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentallocationitem",
+  "pk": 3,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-18T06:57:05.918Z",
+    "updated_at": "2016-02-18T06:57:05.918Z",
+    "name": "Interest",
+    "code": "AI_003",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configrepaymentallocationitem",
+  "pk": 4,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-18T06:57:20.240Z",
+    "updated_at": "2016-02-18T06:57:20.240Z",
+    "name": "Principal",
+    "code": "AI_004",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configloangrouprole",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 2,
+    "created_at": "2016-02-22T15:52:54.622Z",
+    "updated_at": "2016-02-22T15:52:54.622Z",
+    "name": "Chair",
+    "code": "1",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configloangrouprole",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-22T15:53:07.616Z",
+    "updated_at": "2016-02-22T15:53:07.616Z",
+    "name": "Treasurer",
+    "code": "2",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configloangroupstatus",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-22T16:04:50.672Z",
+    "updated_at": "2016-02-22T16:04:50.672Z",
+    "name": "Active",
+    "code": "1",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configloangroupstatus",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-22T16:05:03.001Z",
+    "updated_at": "2016-02-22T16:05:03.001Z",
+    "name": "Inactive",
+    "code": "2",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configloangroupstatus",
+  "pk": 3,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-22T16:05:13.055Z",
+    "updated_at": "2016-02-22T16:05:13.055Z",
+    "name": "Suspended",
+    "code": "3",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configloangroupstatus",
+  "pk": 4,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-22T16:05:24.520Z",
+    "updated_at": "2016-02-22T16:05:24.520Z",
+    "name": "In Review",
+    "code": "4",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configloangroupstatus",
+  "pk": 5,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-22T16:06:02.046Z",
+    "updated_at": "2016-02-22T16:06:02.046Z",
+    "name": "Approved",
+    "code": "5",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configloanperiodunit",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T12:55:10.384Z",
+    "updated_at": "2016-02-21T21:30:01.361Z",
+    "name": "Hour",
+    "code": "LP_001",
+    "is_active": true,
+    "frequencies": [
+      9,
+      10,
+      11
+    ]
+  }
+},
+{
+  "model": "loan.configloanperiodunit",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T12:55:24.355Z",
+    "updated_at": "2016-02-21T21:29:48.652Z",
+    "name": "Day",
+    "code": "LP_002",
+    "is_active": true,
+    "frequencies": [
+      1,
+      10,
+      11,
+      9
+    ]
+  }
+},
+{
+  "model": "loan.configloanperiodunit",
+  "pk": 3,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T12:56:01.740Z",
+    "updated_at": "2016-02-21T21:29:36.999Z",
+    "name": "Week",
+    "code": "LP_003",
+    "is_active": true,
+    "frequencies": [
+      1,
+      2,
+      11,
+      10,
+      9
+    ]
+  }
+},
+{
+  "model": "loan.configloanperiodunit",
+  "pk": 4,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T12:56:26.004Z",
+    "updated_at": "2016-02-21T21:29:01.793Z",
+    "name": "Month",
+    "code": "LP_004",
+    "is_active": true,
+    "frequencies": [
+      1,
+      2,
+      3,
+      4,
+      9,
+      10,
+      11
+    ]
+  }
+},
+{
+  "model": "loan.configloanperiodunit",
+  "pk": 5,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T12:56:42.768Z",
+    "updated_at": "2016-02-21T21:27:24.374Z",
+    "name": "Year",
+    "code": "LP_005",
+    "is_active": true,
+    "frequencies": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  }
+},
+{
+  "model": "loan.configloanproducttype",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T12:58:27.365Z",
+    "updated_at": "2016-02-16T12:58:27.365Z",
+    "name": "Mobile Loan",
+    "code": "LT_001",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanproducttype",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T12:59:05.629Z",
+    "updated_at": "2016-02-16T12:59:05.629Z",
+    "name": "Business Loan",
+    "code": "LT_002",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanproducttype",
+  "pk": 3,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T12:59:57.019Z",
+    "updated_at": "2016-02-16T15:32:03.688Z",
+    "name": "Syndicated Business Loan",
+    "code": "LT_003",
+    "is_active": true,
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanproductfeetype",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:06:31.869Z",
+    "updated_at": "2016-02-16T15:08:36.538Z",
+    "name": "Penalty Fee",
+    "code": "FT_001",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configloanproductfeetype",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:07:31.637Z",
+    "updated_at": "2016-02-16T15:07:31.637Z",
+    "name": "Mobile Money Charge",
+    "code": "FT_002",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configloanproductfeetype",
+  "pk": 3,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T15:07:49.374Z",
+    "updated_at": "2016-02-16T15:07:49.374Z",
+    "name": "Service Charge",
+    "code": "FT_003",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configloanproductfeetype",
+  "pk": 4,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-16T21:08:46.462Z",
+    "updated_at": "2016-02-16T21:08:46.462Z",
+    "name": "Tax",
+    "code": "FT_004",
+    "is_active": true
+  }
+},
+{
+  "model": "loan.configloanriskclassification",
+  "pk": 1,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-19T07:42:30.361Z",
+    "updated_at": "2016-02-19T07:42:30.361Z",
+    "name": "Standard (PAR < 30)",
+    "code": "1",
+    "is_active": true,
+    "default_provision": "10.0000",
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanriskclassification",
+  "pk": 2,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-19T07:43:37.625Z",
+    "updated_at": "2016-02-19T07:46:31.608Z",
+    "name": "Watch (PAR > 30 and PAR < 60)",
+    "code": "2",
+    "is_active": true,
+    "default_provision": "25.0000",
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanriskclassification",
+  "pk": 3,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-19T07:44:42.932Z",
+    "updated_at": "2016-02-19T07:46:24.419Z",
+    "name": "Substandard (PAR > 60 and PAR < 90)",
+    "code": "3",
+    "is_active": true,
+    "default_provision": "50.0000",
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanriskclassification",
+  "pk": 4,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-19T07:46:11.672Z",
+    "updated_at": "2016-02-19T07:46:11.672Z",
+    "name": "Doubtful (PAR > 90 and PAR <180)",
+    "code": "4",
+    "is_active": true,
+    "default_provision": "75.0000",
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanriskclassification",
+  "pk": 5,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-19T07:49:11.156Z",
+    "updated_at": "2016-02-19T07:49:11.156Z",
+    "name": "Loss (PAR > 180)",
+    "code": "5",
+    "is_active": true,
+    "default_provision": "100.0000",
+    "icon": ""
+  }
+},
+{
+  "model": "loan.configloanriskclassification",
+  "pk": 6,
+  "fields": {
+    "row_comment": "",
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": "",
+    "created_by": 3,
+    "created_at": "2016-02-19T07:50:34.076Z",
+    "updated_at": "2016-02-19T07:50:34.076Z",
+    "name": "Normal (PAR = 0)",
+    "code": "6",
+    "is_active": true,
+    "default_provision": "5.0000",
+    "icon": ""
   }
 },
 {
@@ -1017,23 +1047,57 @@
     "reason_deleted": "",
     "created_by": 3,
     "created_at": "2016-02-16T15:50:52.961Z",
-    "updated_at": "2016-02-16T15:51:05.482Z",
+    "updated_at": "2016-02-18T16:43:38.102Z",
     "name": "M-Loan",
     "description": "Small emergency loans for any type of situation. Payable in 1 month, 3 months or 6 months",
     "is_active": true,
     "loan_type": 1,
-    "period_unit": 4,
-    "grace_period_type": null,
-    "interest_calculation_method": 2,
     "default_repayment_period": 1,
-    "default_grace_period": 0,
+    "default_repayment_period_unit": 1,
+    "default_repayment_frequency": 1,
+    "repayment_grace_period_type": null,
+    "default_repayment_grace_period": null,
+    "default_repayment_grace_period_unit": null,
+    "amount_currency": 1,
+    "default_amount": null,
     "min_amount": "400.0000",
     "max_amount": "10000.0000",
-    "min_installments": 1,
-    "max_installments": 1,
-    "min_interest_rate": "0.7500",
+    "interest_calculation_method": 2,
     "default_interest_rate": "1.0000",
+    "min_interest_rate": "0.7500",
     "max_interest_rate": "1.5000"
+  }
+},
+{
+  "model": "loan.loanproduct",
+  "pk": 4,
+  "fields": {
+    "row_comment": null,
+    "deleted_by": null,
+    "is_deleted": false,
+    "date_deleted": null,
+    "reason_deleted": null,
+    "created_by": 2,
+    "created_at": "2016-02-22T00:53:28.758Z",
+    "updated_at": "2016-02-22T00:53:28.758Z",
+    "name": "M-Shwari",
+    "description": "Simple mobile loan, with simple terms",
+    "is_active": true,
+    "loan_type": 1,
+    "default_repayment_period": 1,
+    "default_repayment_period_unit": 4,
+    "default_repayment_frequency": 11,
+    "repayment_grace_period_type": 2,
+    "default_repayment_grace_period": 0,
+    "default_repayment_grace_period_unit": 1,
+    "amount_currency": 1,
+    "default_amount": "1500.0000",
+    "min_amount": "1000.0000",
+    "max_amount": "2000.0000",
+    "interest_calculation_method": 2,
+    "default_interest_rate": "7.5000",
+    "min_interest_rate": "7.5000",
+    "max_interest_rate": "7.5000"
   }
 },
 {
@@ -1052,7 +1116,6 @@
     "product": 2,
     "fee_type": 2,
     "fee_calculation": 2,
-    "currency": 1,
     "amount": "33.0000"
   }
 },
@@ -1072,7 +1135,6 @@
     "product": 2,
     "fee_type": 3,
     "fee_calculation": 1,
-    "currency": 1,
     "amount": "7.5000"
   }
 },
@@ -1092,44 +1154,11 @@
     "product": 2,
     "fee_type": 4,
     "fee_calculation": 1,
-    "currency": 1,
     "amount": "10.0000"
   }
 },
 {
-  "model": "loan.loanledgeraccount",
-  "pk": 1,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:54:28.660Z",
-    "updated_at": "2016-02-16T17:28:04.497Z",
-    "name": "Interest Income Receivable Account",
-    "gl_code": "1.1310.000"
-  }
-},
-{
-  "model": "loan.loanledgeraccount",
-  "pk": 2,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T15:55:06.135Z",
-    "updated_at": "2016-02-16T17:28:15.318Z",
-    "name": "Penalty Income Receivable Account",
-    "gl_code": "1.1311.000"
-  }
-},
-{
-  "model": "loan.loanledgeraccount",
+  "model": "loan.loanrepaymentallocationorder",
   "pk": 3,
   "fields": {
     "row_comment": "",
@@ -1138,14 +1167,15 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T15:55:22.993Z",
-    "updated_at": "2016-02-16T17:28:22.739Z",
-    "name": "Fee Income Receivable Account",
-    "gl_code": "1.1312.000"
+    "created_at": "2016-02-22T16:02:19.704Z",
+    "updated_at": "2016-02-22T16:02:19.704Z",
+    "product": 4,
+    "allocation_item": 1,
+    "rank": 1
   }
 },
 {
-  "model": "loan.loanledgeraccount",
+  "model": "loan.loanrepaymentallocationorder",
   "pk": 4,
   "fields": {
     "row_comment": "",
@@ -1154,14 +1184,15 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T15:57:18.986Z",
-    "updated_at": "2016-02-16T17:28:29.573Z",
-    "name": "Loan Portfolio Control Account",
-    "gl_code": "1.4100.000"
+    "created_at": "2016-02-22T16:02:44.028Z",
+    "updated_at": "2016-02-22T16:02:44.028Z",
+    "product": 4,
+    "allocation_item": 2,
+    "rank": 2
   }
 },
 {
-  "model": "loan.loanledgeraccount",
+  "model": "loan.loanrepaymentallocationorder",
   "pk": 5,
   "fields": {
     "row_comment": "",
@@ -1170,14 +1201,15 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T17:14:53.891Z",
-    "updated_at": "2016-02-17T07:37:25.470Z",
-    "name": "Provision for Bad Debt",
-    "gl_code": "1.4200.000"
+    "created_at": "2016-02-22T16:02:57.670Z",
+    "updated_at": "2016-02-22T16:02:57.670Z",
+    "product": 4,
+    "allocation_item": 3,
+    "rank": 3
   }
 },
 {
-  "model": "loan.loanledgeraccount",
+  "model": "loan.loanrepaymentallocationorder",
   "pk": 6,
   "fields": {
     "row_comment": "",
@@ -1186,402 +1218,11 @@
     "date_deleted": null,
     "reason_deleted": "",
     "created_by": 3,
-    "created_at": "2016-02-16T17:15:39.231Z",
-    "updated_at": "2016-02-17T07:37:01.614Z",
-    "name": "Loans Recovered",
-    "gl_code": "1.4300.000"
-  }
-},
-{
-  "model": "loan.loanledgeraccount",
-  "pk": 7,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T17:17:03.162Z",
-    "updated_at": "2016-02-16T17:27:55.485Z",
-    "name": "Loan Fund Source",
-    "gl_code": "1.1220.000"
-  }
-},
-{
-  "model": "loan.loanledgeraccount",
-  "pk": 8,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T17:18:09.291Z",
-    "updated_at": "2016-02-16T17:28:51.879Z",
-    "name": "Deposit Protection Fund",
-    "gl_code": "2.1000.000"
-  }
-},
-{
-  "model": "loan.loanledgeraccount",
-  "pk": 9,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T17:18:43.281Z",
-    "updated_at": "2016-02-16T17:29:00.135Z",
-    "name": "Equity Account",
-    "gl_code": "3.0000.000"
-  }
-},
-{
-  "model": "loan.loanledgeraccount",
-  "pk": 10,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T17:19:17.771Z",
-    "updated_at": "2016-02-17T07:39:30.673Z",
-    "name": "Grants and Donations Account",
-    "gl_code": "3.2000.000"
-  }
-},
-{
-  "model": "loan.loanledgeraccount",
-  "pk": 11,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T17:20:11.272Z",
-    "updated_at": "2016-02-17T07:39:51.415Z",
-    "name": "Retained Earnings Account",
-    "gl_code": "3.3000.000"
-  }
-},
-{
-  "model": "loan.loanledgeraccount",
-  "pk": 12,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T17:21:18.373Z",
-    "updated_at": "2016-02-16T17:29:23.350Z",
-    "name": "Interest Income Account",
-    "gl_code": "4.1100.000"
-  }
-},
-{
-  "model": "loan.loanledgeraccount",
-  "pk": 13,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T17:21:37.541Z",
-    "updated_at": "2016-02-16T17:29:30.893Z",
-    "name": "Membership Fee Account",
-    "gl_code": "4.1210.000"
-  }
-},
-{
-  "model": "loan.loanledgeraccount",
-  "pk": 14,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T17:23:13.778Z",
-    "updated_at": "2016-02-16T17:29:39.169Z",
-    "name": "Loan Fee Income Account",
-    "gl_code": "4.1220.000"
-  }
-},
-{
-  "model": "loan.loanledgeraccount",
-  "pk": 15,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T17:23:34.326Z",
-    "updated_at": "2016-02-16T17:29:53.896Z",
-    "name": "Penalty Income Account",
-    "gl_code": "4.1240.000"
-  }
-},
-{
-  "model": "loan.loanledgeraccount",
-  "pk": 16,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T17:24:28.483Z",
-    "updated_at": "2016-02-16T17:30:03.312Z",
-    "name": "Loan Write-Off Expense Account",
-    "gl_code": "5.1300.000"
-  }
-},
-{
-  "model": "loan.loanledgeraccount",
-  "pk": 17,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-17T07:40:17.656Z",
-    "updated_at": "2016-02-17T07:40:17.656Z",
-    "name": "Owner's Equity",
-    "gl_code": "3.1000.000"
-  }
-},
-{
-  "model": "loan.loanproductaccountingrule",
-  "pk": 1,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T18:43:01.441Z",
-    "updated_at": "2016-02-16T18:43:01.441Z",
-    "product": 2,
-    "transaction_type": 1,
-    "debit_account": 4,
-    "credit_account": 7
-  }
-},
-{
-  "model": "loan.loanproductaccountingrule",
-  "pk": 2,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T18:43:38.456Z",
-    "updated_at": "2016-02-16T18:43:38.456Z",
-    "product": 2,
-    "transaction_type": 2,
-    "debit_account": 1,
-    "credit_account": 12
-  }
-},
-{
-  "model": "loan.loanproductaccountingrule",
-  "pk": 3,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T18:44:23.543Z",
-    "updated_at": "2016-02-16T18:44:23.543Z",
-    "product": 2,
-    "transaction_type": 3,
-    "debit_account": 3,
-    "credit_account": 14
-  }
-},
-{
-  "model": "loan.loanproductaccountingrule",
-  "pk": 4,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T18:44:50.977Z",
-    "updated_at": "2016-02-16T18:44:50.977Z",
-    "product": 2,
-    "transaction_type": 4,
-    "debit_account": 2,
-    "credit_account": 15
-  }
-},
-{
-  "model": "loan.loanproductaccountingrule",
-  "pk": 5,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T18:45:19.705Z",
-    "updated_at": "2016-02-16T18:45:19.705Z",
-    "product": 2,
-    "transaction_type": 5,
-    "debit_account": 7,
-    "credit_account": 4
-  }
-},
-{
-  "model": "loan.loanproductaccountingrule",
-  "pk": 6,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T18:46:21.853Z",
-    "updated_at": "2016-02-16T18:46:21.853Z",
-    "product": 2,
-    "transaction_type": 6,
-    "debit_account": 7,
-    "credit_account": 1
-  }
-},
-{
-  "model": "loan.loanproductaccountingrule",
-  "pk": 7,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T18:46:57.204Z",
-    "updated_at": "2016-02-16T18:46:57.204Z",
-    "product": 2,
-    "transaction_type": 7,
-    "debit_account": 7,
-    "credit_account": 3
-  }
-},
-{
-  "model": "loan.loanproductaccountingrule",
-  "pk": 8,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T18:47:31.305Z",
-    "updated_at": "2016-02-16T18:47:31.305Z",
-    "product": 2,
-    "transaction_type": 8,
-    "debit_account": 7,
-    "credit_account": 2
-  }
-},
-{
-  "model": "loan.loanproductaccountingrule",
-  "pk": 9,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T18:48:00.192Z",
-    "updated_at": "2016-02-16T18:48:00.192Z",
-    "product": 2,
-    "transaction_type": 9,
-    "debit_account": 16,
-    "credit_account": 4
-  }
-},
-{
-  "model": "loan.loanproductaccountingrule",
-  "pk": 10,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T18:48:32.112Z",
-    "updated_at": "2016-02-16T18:48:32.112Z",
-    "product": 2,
-    "transaction_type": 10,
-    "debit_account": 16,
-    "credit_account": 1
-  }
-},
-{
-  "model": "loan.loanproductaccountingrule",
-  "pk": 11,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T18:49:23.654Z",
-    "updated_at": "2016-02-16T18:49:23.655Z",
-    "product": 2,
-    "transaction_type": 11,
-    "debit_account": 16,
-    "credit_account": 3
-  }
-},
-{
-  "model": "loan.loanproductaccountingrule",
-  "pk": 12,
-  "fields": {
-    "row_comment": "",
-    "deleted_by": null,
-    "is_deleted": false,
-    "date_deleted": null,
-    "reason_deleted": "",
-    "created_by": 3,
-    "created_at": "2016-02-16T18:49:58.173Z",
-    "updated_at": "2016-02-16T18:49:58.173Z",
-    "product": 2,
-    "transaction_type": 12,
-    "debit_account": 16,
-    "credit_account": 2
+    "created_at": "2016-02-22T16:03:08.788Z",
+    "updated_at": "2016-02-22T16:03:08.788Z",
+    "product": 4,
+    "allocation_item": 4,
+    "rank": 4
   }
 },
 {
@@ -1598,7 +1239,7 @@
     "updated_at": "2016-02-16T20:47:11.971Z",
     "name": "Mpesa PayBill: 404400",
     "product": 2,
-    "base_account": 7
+    "base_account": "1.1220.0000"
   }
 },
 {
@@ -1612,10 +1253,10 @@
     "reason_deleted": "",
     "created_by": 3,
     "created_at": "2016-02-16T20:49:45.881Z",
-    "updated_at": "2016-02-16T20:49:45.881Z",
+    "updated_at": "2016-02-24T10:03:32.252Z",
     "name": "Airtel Money Acc: AOO439",
     "product": 2,
-    "base_account": 7
+    "base_account": "1.1220.0000"
   }
 }
 ]

@@ -57,12 +57,97 @@ class ProductForm(forms.Form):
         self.fields['interest_calculation_method'].queryset = interest_calculation_methods
 
     def clean(self):
+        HOUR = "LP_001"
+        DAY = "LP_002"
+        WEEK = "LP_003"
+        MONTH = "LP_004"
+        YEAR = "LP_005"
+
+        DAILY = "RF_001"
+        WEEKLY = "RF_002"
+        FORTNIGHTLY = "RF_003"
+        MONTHLY = "RF_004"
+        EVERY_TWO_MONTHS = "RF_005"
+        TWICE_A_YEAR = "RF_006"
+        THRICE_A_YEAR = "RF_007"
+        QUARTERLY = "RF_008"
+        IRREGULAR_SCHEDULE = "RF_009"
+        REVOLVING = "RF_010"
+        BULLET = "RF_011"
+        ANNUALLY = "RF_012"
+
         default_repayment_period = self.cleaned_data['default_repayment_period']
         default_repayment_period_unit = self.cleaned_data['default_repayment_period_unit']
         default_repayment_frequency = self.cleaned_data['default_repayment_frequency']
-
         default_repayment_grace_period = self.cleaned_data['default_repayment_grace_period']
         default_repayment_grace_period_unit = self.cleaned_data['default_repayment_grace_period_unit']
+
+        if (default_repayment_period_unit != default_repayment_grace_period_unit):
+            raise forms.ValidationError(
+                "Please enter the same type of unit as the repayment period "
+                "for the grace period."
+            )
+
+        if (not default_repayment_period) or (
+            default_repayment_period_unit.code not in (
+                HOUR, DAY, WEEK, MONTH, YEAR
+            )
+        ):
+            raise forms.ValidationError("Please enter a valid repayment period")
+        else:
+            if default_repayment_period_unit.code == HOUR:
+                if (default_repayment_period < 24) and (default_repayment_period > 0):
+                    if (default_repayment_frequency.code not in (BULLET, IRREGULAR_SCHEDULE)):
+                        raise forms.ValidationError("Frequency invalid: Choose Bullet")
+                #TODO: Increase the offering for hours
+            elif default_repayment_period_unit.code == DAY:
+                if (default_repayment_period < 7) and (default_repayment_period > 0):
+                    if (default_repayment_frequency.code not in (BULLET, DAILY, IRREGULAR_SCHEDULE)):
+                        raise forms.ValidationError("Frequency invalid: Choose Bullet")
+            elif default_repayment_period_unit.code == WEEK:
+                if (default_repayment_period < 5) and (default_repayment_period > 0):
+                    if (default_repayment_frequency.code not in (
+                            IRREGULAR_SCHEDULE, BULLET, DAILY, WEEKLY, FORTNIGHTLY
+                        )
+                    ):
+                        raise forms.ValidationError("Frequency invalid: Choose Bullet")
+            elif default_repayment_period_unit.code == MONTH:
+                COMMON = [
+                    BULLET, 
+                    DAILY, 
+                    WEEKLY, 
+                    FORTNIGHTLY, 
+                    MONTHLY, 
+                    IRREGULAR_SCHEDULE
+                ]
+
+                if (default_repayment_period < 2):
+                    if (default_repayment_frequency.code not in COMMON):
+                        raise forms.ValidationError("Frequency invalid: Choose Bullet")
+                elif (default_repayment_period < 12):
+                    if (default_repayment_frequency.code not in (COMMON + [EVERY_TWO_MONTHS])):
+                        raise forms.ValidationError("Frequency invalid: Choose Bullet")
+                elif (default_repayment_period == 12):
+                    if (default_repayment_frequency.code not in (
+                        COMMON + [
+                            EVERY_TWO_MONTHS, TWICE_A_YEAR, 
+                            THRICE_A_YEAR, QUARTERLY
+                        ]
+                    )):
+                        raise forms.ValidationError("Frequency invalid: Choose Bullet")
+
+            elif default_repayment_period_unit.code == YEAR:
+                if (default_repayment_period > 0):
+                    if (default_repayment_frequency.code not in (
+                            BULLET, DAILY, 
+                            WEEKLY, FORTNIGHTLY,
+                            MONTHLY, EVERY_TWO_MONTHS, 
+                            TWICE_A_YEAR, THRICE_A_YEAR, 
+                            QUARTERLY, IRREGULAR_SCHEDULE,
+                            REVOLVING, ANNUALLY
+                        )
+                    ):
+                        raise forms.ValidationError("Frequency invalid: Choose Bullet")
 
         return self.cleaned_data
 
