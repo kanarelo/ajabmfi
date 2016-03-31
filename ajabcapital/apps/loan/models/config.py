@@ -42,23 +42,26 @@ class ConfigRepaymentAllocationItem(ConfigBase):
         db_table = "config_repayment_allocation_item"
         verbose_name = "Config Repayment Allocation Item"
 
-class ConfigLoanGroupRole(ConfigBase):
-    class Meta:
-        db_table = "config_loan_group_role"
-        verbose_name = "Config Loan Group Role"
-
-class ConfigLoanGroupStatus(ConfigBase):
-    class Meta:
-        db_table = "config_loan_group_status"
-        verbose_name = "Config Loan Group Status"
-        verbose_name_plural = "Config Loan Group Statuses"
-
 class ConfigLoanPeriodUnit(ConfigBase):
     frequencies = models.ManyToManyField('ConfigRepaymentFrequency')
 
     class Meta:
         db_table = "config_loan_period_unit"
         verbose_name = "Config Loan Period Unit"
+
+class ConfigLoanProductChannel(ConfigBase):
+    icon = models.FileField(upload_to="config/icons/channels/", null=True, blank=True)
+
+    class Meta:
+        db_table = "config_loan_product_channel"
+        verbose_name = "Config Loan Product Channel"
+
+class ConfigLoanFundType(ConfigBase):
+    icon = models.FileField(upload_to="config/icons/channels/", null=True, blank=True)
+
+    class Meta:
+        db_table = "config_loan_fund_type"
+        verbose_name = "Config Loan Fund Type"
 
 class ConfigLoanProductType(ConfigBase):
     icon = models.FileField(upload_to="config/icons/", null=True, blank=True)
@@ -74,9 +77,20 @@ class ConfigLoanProductFeeType(ConfigBase):
     
 class ConfigLoanRiskClassification(ConfigBase):
     default_provision = models.DecimalField(decimal_places=4, max_digits=7, default=D(0.0))
-
     icon = models.FileField(upload_to="config/icons/", null=True, blank=True)
 
     class Meta:
         db_table = "config_loan_risk_classification"
         verbose_name = "Config Loan Risk Classification"
+
+class ConfigProfileType(ConfigBase):
+    icon = models.FileField(upload_to="config/icons/profile_types/", null=True, blank=True)    
+
+    class Meta:
+        db_table = "config_profile_type"
+        verbose_name = "Config Profile Type"
+
+class ConfigRepaymentModel(ConfigBase):
+    class Meta:
+        db_table = "config_repayment_model"
+        verbose_name = "Config Repayment Model"

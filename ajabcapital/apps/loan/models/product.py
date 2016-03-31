@@ -6,13 +6,38 @@ from decimal import Decimal as D
 
 from ajabcapital.apps.core.models import AuditBase, ConfigBase
 
+from .querysets import LoanProductQueryset
+
+class LoanFund(AuditBase):
+    name = models.CharField(max_length=100)
+
+    fund_type = models.ForeignKey('ConfigLoanFundType')
+    profile_type = models.ForeignKey('ConfigProfileType')
+    product_type = models.ForeignKey('ConfigLoanProductType')
+    repayment_model = models.ForeignKey('ConfigRepaymentModel')
+    product_channel = models.ForeignKey('ConfigLoanProductChannel')
+    
+    fund_credit_limit = models.DecimalField(decimal_places=2, max_digits=18, null=True)
+    loan_credit_limit = models.DecimalField(decimal_places=2, max_digits=18, null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "loan_fund"
+        verbose_name = "Loan Fund"
+
 class LoanProduct(AuditBase):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=140)
     is_active = models.BooleanField(default=False)
 
-    loan_type = models.ForeignKey('ConfigLoanProductType')
-    
+    loan_fund = models.ForeignKey('LoanFund')
+    product_channel = models.ForeignKey('ConfigLoanProductChannel')
+    repayment_model = models.ForeignKey('ConfigRepaymentModel')
+
+    product_type = models.ForeignKey('ConfigLoanProductType')
+
     default_repayment_frequency = models.ForeignKey(
         "ConfigRepaymentFrequency", db_column='payment_frequency', default=1)
     default_repayment_period = models.IntegerField(default=0)
@@ -37,6 +62,8 @@ class LoanProduct(AuditBase):
     min_interest_rate = models.DecimalField(decimal_places=4, max_digits=6, default=D('0.0'))
     max_interest_rate = models.DecimalField(decimal_places=4, max_digits=6, default=D('0.0'))
 
+    objects = LoanProductQueryset.as_manager()
+
     def __str__(self):
         return self.name
 
@@ -45,9 +72,18 @@ class LoanProduct(AuditBase):
         verbose_name = "Loan Product"
 
 class LoanProductFee(AuditBase):
-    name = models.CharField(max_length=50)
+    DISBURSEMENT = 0
+    REPAYMENT = 1
+
+    CHARGED_AT = (
+        (DISBURSEMENT, "Disbursement"),
+        (REPAYMENT, "Repayment"),
+    )
+
     product = models.ForeignKey('LoanProduct', related_name="fees")
+    charged_at = models.PositiveIntegerField(choices=CHARGED_AT, null=True)
     
+    name = models.CharField(max_length=50)
     fee_type = models.ForeignKey('ConfigLoanProductFeeType')
     fee_calculation = models.ForeignKey('ConfigFeeCalculationMethod')
 
@@ -59,16 +95,3 @@ class LoanProductFee(AuditBase):
     class Meta:
         db_table = "loan_product_fee"
         verbose_name = "Loan Fee"
-
-class LoanRepaymentAllocationOrder(AuditBase):
-    product = models.ForeignKey('LoanProduct')
-
-    allocation_item = models.ForeignKey('ConfigRepaymentAllocationItem')
-    rank = models.PositiveIntegerField()
-
-    class Meta:
-        db_table = "loan_repayment_allocation_order"
-        verbose_name = "Loan Repayment Allocation Order"
-
-    def __str__(self):
-        return "(%s) %s" % (self.product.name, self.allocation_item.name)

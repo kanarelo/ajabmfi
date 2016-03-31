@@ -5,7 +5,23 @@ from django.db import models
 
 from decimal import Decimal as D
 
-from ajabcapital.apps.core.models import AuditBase, ConfigBase
+from ajabcapital.apps.core.models import (
+    AuditBase, 
+    ConfigBase, 
+    BaseTransactionBlock, 
+    BaseTransactionBlockItem
+)
+
+class LoanRepaymentAllocationOrder(AuditBase):
+    allocation_item = models.ForeignKey('ConfigRepaymentAllocationItem')
+    rank = models.PositiveIntegerField()
+
+    class Meta:
+        db_table = "loan_repayment_allocation_order"
+        verbose_name = "Loan Repayment Allocation Order"
+
+    def __str__(self):
+        return "(%s) %s" % (self.product.name, self.allocation_item.name)
 
 class LoanChartOfAccounts(AuditBase):
     loan_portfolio_control_account = models.ForeignKey('core.LedgerAccount', related_name="loan_portfolio")
@@ -24,20 +40,42 @@ class LoanChartOfAccounts(AuditBase):
     class Meta:
         db_table = "loan_chart_of_accounts"
 
-class LoanProductFundSource(AuditBase):
-    name = models.CharField(max_length=100)
-    product = models.ForeignKey('LoanProduct', related_name="fund_sources")
+#---------------------------------------------------
+class LoanProductBlock(BaseTransactionBlock):
+    '''
+    This ledger is for high level, accounts, those that are defined by the system.
+    Blocks record and confirm when and in what sequence 
+    transactions enter and are logged in the block chain.
+    '''
+    class Meta:
+        db_table = "loan_product_transaction_block"
+        verbose_name = "Loan Product Block"
+
+class LoanProductBlockItem(BaseTransactionBlockItem):
+    '''
+    '''
+    block = models.ForeignKey('LoanProductBlock', related_name="block_items")
 
     class Meta:
-        db_table = "loan_fund_source"
-        verbose_name = "Loan Fund Source"
+        db_table = "loan_product_transaction_block_item"
+        verbose_name = "Loan Product Block Item"
 
-    def __str__(self):
-        return "(%s) %s" % (self.product, self.base_account)
+#---------------------------------------------------------------
+class LoanAccountBlock(BaseTransactionBlock):
+    '''
+    This ledger is for credit profile transactions, 
+    Basically accruals, repayments and disbursments.
+    '''
+    class Meta:
+        db_table = "loan_account_transaction_block"
+        verbose_name = "Loan Account Block"
 
-class LoanTransactionRegister(AuditBase):
-    transaction  = models.ForeignKey('core.LedgerTransaction', related_name="loan_register")
+class LoanAccountBlockItem(BaseTransactionBlockItem):
+    '''
+    '''
+    ledger_account = models.ForeignKey('LoanAccount')
+    block = models.ForeignKey('LoanAccountBlock', related_name="block_items")
 
     class Meta:
-        db_table = "loan_transaction_register"
-        verbose_name = "Loan Transaction Register"
+        db_table = "loan_account_transaction_block_item"
+        verbose_name = "Loan Account Block Item"
