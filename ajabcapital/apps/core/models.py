@@ -32,6 +32,7 @@ class ConfigBase(AuditBase):
     code = models.CharField(max_length=10, unique=True)
 
     is_active = models.BooleanField(default=True)
+    system_defined = models.BooleanField(default=False)
     
     class Meta:
         abstract = True
@@ -96,7 +97,6 @@ class ConfigLedgerTransactionStatus(ConfigBase):
         verbose_name_plural = "Config Ledger Transaction Statuses"
 
 #------------------------------------------------------------------------------
-
 class LedgerAccount(AuditBase):
     name = models.CharField(max_length=50, unique=True)
     ledger_code = models.CharField(max_length=100, primary_key=True)
@@ -105,6 +105,8 @@ class LedgerAccount(AuditBase):
     account_category = models.ForeignKey('ConfigLedgerAccountCategory')
     account_type = models.ForeignKey('ConfigLedgerAccountType', default=1)
     balance_direction = models.ForeignKey('ConfigLedgerAccountBalanceDirection')
+
+    system_defined = models.BooleanField(default=False)
 
     def __unicode__(self):
         return "#%s: %s" % (self.ledger_code, self.name)
@@ -120,6 +122,8 @@ class LedgerAccountingRule(AuditBase):
 
     debit_account  = models.ForeignKey('LedgerAccount', related_name="debits")
     credit_account = models.ForeignKey('LedgerAccount', related_name="credits")
+
+    system_defined = models.BooleanField(default=False)
 
     class Meta:
         db_table = "ledger_accounting_rule"
@@ -210,35 +214,50 @@ class LedgerTransactionStatus(AuditBase):
 # Balances are closed to avoid post dating, thus, we can't introduce more
 # transactions. We are experimenting around the Blockchain.
 
-class LedgerTransactionBlock(AuditBase):
+class BaseTransactionBlock(AuditBase):
+    '''
+    This ledger is for high level, accounts, those that are defined by the system.
+    Blocks record and confirm when and in what sequence 
+    transactions enter and are logged in the block chain.
+    '''
     block_id = models.CharField(max_length=100, primary_key=True)
 
     name = models.CharField(max_length=100)
     notes = models.CharField(max_length=160)
 
-    block_type   = models.ForeignKey('ConfigBlockType')
+    ledger_type     = models.ForeignKey('ConfigLedgerType')
+    ledger_id       = models.IntegerField(null=True)
+
     balances_as_at  = models.DateTimeField()
 
+    class Meta:
+        abstract = True
+
+class BaseTransactionBlockItem(AuditBase):
+    balance_amount  = models.DecimalField(max_digits=18, decimal_places=4, default=D('0.0'))
+
+    class Meta:
+        abstract = True
+
+#--------------------------------------------------------------
+class LedgerTransactionBlock(BaseTransactionBlock):
+    '''
+    This ledger is for high level, accounts, those that are defined by the system.
+    Blocks record and confirm when and in what sequence 
+    transactions enter and are logged in the block chain.
+    '''
     class Meta:
         db_table = "ledger_transaction_block"
         verbose_name = "Ledger Transaction Block"
 
-class LedgerTransactionBlockItem(AuditBase):
+class LedgerTransactionBlockItem(BaseTransactionBlockItem):
+    '''
+    '''
     block = models.ForeignKey('LedgerTransactionBlock', related_name="block_items")
-
-    ledger_account  = models.ForeignKey('LedgerAccount')
-    balance_amount  = models.DecimalField(max_digits=18, decimal_places=4, default=D('0.0'))
+    ledger_account = models.ForeignKey('LedgerAccount')
 
     class Meta:
         db_table = "ledger_transaction_block_item"
         verbose_name = "Ledger Transaction Block Item"
 
-class LedgerProductBlockItem(AuditBase):
-    block = models.ForeignKey('LedgerTransactionBlock', related_name="product_block_items")
-
-    product_account = models.CharField(max_length=25)
-    balance_amount  = models.DecimalField(max_digits=18, decimal_places=4, default=D('0.0'))
-
-    class Meta:
-        db_table = "product_account_block_item"
-        verbose_name = "Ledger Product Block Item"
+#---------------------------------------------------------------
