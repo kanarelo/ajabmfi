@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block search_client %}active{% endblock %}
+
+{% block page-content %}
+    <div class="header row">
+        <div class="col-md-4 col-sm-9">
+            <h3>Search Client or Loan Account</h3>
+        </div>
+        <div class="col-md-5 col-sm-3 hidden-xs">
+            <a class="btn btn-danger btn-md pull-right" style="margin-left: 10px;" href="#">Mark All Read</a>
+            <a class="btn btn-primary btn-md pull-right" href="#">Notification Settings</a>
+        </div>
+    </div>
+    <div class="dashboard-row row">
+        <div class="dashboard-column col-lg-9">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-12">
+                    <div class="well well-sm notifications-holder">
+                        <!--
+                        <div>
+                            <label class="select-label">
+                                <select class="form-control">
+                                    <option value="poor">Poor (350-629)</option>
+                                    <option value="average">Average (630-689)</option>
+                                    <option value="good">Good (690-719)</option>
+                                    <option value="excellent">Excellent (720-850)</option>
+                                </select>
+                                <span class="icon ss-gizmo ss-navigatedown" aria-hidden="true"></span>
+                            </label>
+                        </div>
+                    -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock page-content %}

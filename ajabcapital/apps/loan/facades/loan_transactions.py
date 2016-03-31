@@ -5,8 +5,8 @@ from django.db.models import Q, Sum, F
 from django.utils import timezone
 from django.db import transaction as db_transaction
 
-from ajabcapital.core.utils import *
-from ajabcapital.core.facades import *
+from ...core.utils import *
+from ...core.facades import *
 
 from ..utils import *
 
@@ -18,11 +18,7 @@ def create_loan_transaction(
     loan_account, amount, user, transaction_type, *args, **kwargs
 ):
     with db_transaction.atomic():
-        try:
-            #get the accounting rules for this product's transaction type
-            debit_account, credit_account = get_transaction_type_account_turple(transaction_type)
-        except LoanProductAccountingRule.DoesNotExist:
-            raise Exception("Please set the Loan Product Rules for the product %s" % )
+        debit_account, credit_account = get_transaction_type_account_turple(transaction_type)
 
         (debit_entry, credit_entry) = create_transaction(
             transaction_type=transaction_type,
@@ -283,7 +279,7 @@ def apply_accruals(loan_account, user):
             PRINCIPAL = "AI_004"
                 
             if interest_due > 0:
-                transaction_type = 
+                # transaction_type = 
                 create_loan_transaction(
                     loan_account, interest_due, user, transaction_type=tt_interest_posting
                 )

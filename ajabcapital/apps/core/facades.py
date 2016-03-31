@@ -8,9 +8,12 @@ from .utils import get_reference_no, record_log
 import logging
 from decimal import Decimal as D
 
-from ajabcapital.core.models import *
+from .models import *
+from ..loan.facades import *
 
 INITIAL = D('0.0')
+
+#-----------------------------
 
 def get_sum_of_transaction_items(entries):
     #Aggregate the ledger balance increment column
@@ -52,11 +55,22 @@ def get_product_ledger_balance(
     return get_sum_of_transaction_items(entries)
 
 #----------------------------------------------------------
+
+def get_last_closing_balance(ledger_account):
+    # last_closing_block_item = BlockItem
+    #last_closing_block_item.balance_amount
+    return 0
+
+#----------------------------------------------------------
+
 def get_transaction_type_account_turple(transaction_type):
     accounting_rule = LedgerAccountingRule.objects.get(
         transaction_type=transaction_type
     )
-    return (debit_account, credit_account)
+    return (
+        accounting_rule.debit_account, 
+        accounting_rule.credit_account
+    )
 
 def get_ledger_balance_increment(amount, account, item_type):
     #constants

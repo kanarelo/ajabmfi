@@ -1,0 +1,116 @@
+@import "app/base.scss";
+
+.btn-primary{
+    background: none;
+    background-image: linear-gradient(-90deg, #54BCCA 0%, #93DEE8 100%);
+    border: none;
+
+    &:hover, 
+    &.active, &:active,
+    &.focus,  &:focus {
+        background: darken(#54BCCA, 10%);
+    }
+}
+
+.navbar{
+    &.navbar-primary{
+        #navbar{
+            ul.nav{
+                li {
+                    &.active, 
+                    &.focus,
+                    &.open {
+                        > a {
+                            border-bottom: 5px solid #54BCCA;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+section.body-area{
+    .sidebar{
+        .sidebar-menu{
+            .body{
+                ul.menu{
+                    li.menu-row{
+                        .menu-item{
+                            .menu-label{
+                                @extend %extra-bold;
+                                text-transform: uppercase;
+                                color: #7e7e7e;
+                                margin-top: .5rem;
+                                font-size: 13px;
+                            }
+                            .menu-icon{
+                                &.clients_individuals{
+                                    background-image: url("/static/img/icons/ic_clients_individual_coloured.png");
+                                }
+                                &.clients_business{
+                                    background-image: url("/static/img/icons/ic_clients_business_coloured.png");
+                                }
+                                &.clients_groups{
+                                    background-image: url("/static/img/icons/ic_clients_groups_coloured.png");
+                                }
+                                &.clients_messages{
+                                    background-image: url("/static/img/icons/ic_clients_messages_coloured.png");
+                                }
+                                &.clients_campaigns{
+                                    background-image: url("/static/img/icons/ic_clients_campaign_coloured.png");
+                                }
+                                &.clients_templates{
+                                    background-image: url("/static/img/icons/ic_clients_message_templates_coloured.png");
+                                }
+
+                                &:hover{
+                                    &.clients_individuals{
+                                        background-image: url("/static/img/icons/ic_clients_individual_coloured.png");
+                                    }
+                                    &.clients_business{
+                                        background-image: url("/static/img/icons/ic_clients_business_coloured.png");
+                                    }
+                                    &.clients_groups{
+                                        background-image: url("/static/img/icons/ic_clients_groups_coloured.png");
+                                    }
+                                    &.clients_messages{
+                                        background-image: url("/static/img/icons/ic_clients_messages_coloured.png");
+                                    }
+                                    &.clients_campaigns{
+                                        background-image: url("/static/img/icons/ic_clients_campaign_coloured.png");
+                                    }
+                                    &.clients_templates{
+                                        background-image: url("/static/img/icons/ic_clients_message_templates_coloured.png");
+                                    }
+                                }
+                            }
+
+                            &:hover{
+                                background-image: linear-gradient(-90deg, #54BCCA 0%, #93DEE8 100%);
+                                cursor: pointer;
+
+                                .menu-label{
+                                    color: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .footer{
+                ul.quick-actions{
+                    li{ 
+                        &.active{
+                            padding-left: 1.5rem;
+                            border-left: 5px solid #54BCCA;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .main-content{
+    }
+}

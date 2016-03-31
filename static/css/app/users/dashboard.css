@@ -5837,20 +5837,20 @@ button.close {
   src: url("/static/fonts/proximanova/proximanova-light-webfont.eot?#iefix") format("embedded-opentype"), url("/static/fonts/proximanova/proximanova-light-webfont.woff") format("woff"), url("/static/fonts/proximanova/proximanova-light-webfont.ttf") format("truetype"), url("/static/fonts/proximanova/proximanova-light-webfont.svg#proxima_nova_ltregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-.font_regular, html, body, section.page, .font_extra_bold, .navbar .navbar-header .navbar-brand .ajab, .navbar.navbar-secondary #navbar ul.nav li.active > a,
+.font_regular, html, body, section.page, h4, .font_extra_bold, .navbar .navbar-header .navbar-brand .ajab, .navbar.navbar-secondary #navbar ul.nav li.active > a,
 .navbar.navbar-secondary #navbar ul.nav li.focus > a,
-.navbar.navbar-secondary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-label, .font_black, .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li:first-child, .font_light, .navbar .navbar-header .navbar-brand .mfi, .font_semibold, .navbar.navbar-primary #navbar ul.nav li > a {
+.navbar.navbar-secondary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label, section.body-area .main-content .header h3, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-label, .font_black, .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li:first-child, .font_light, .navbar .navbar-header .navbar-brand .mfi, .font_semibold, strong, .navbar.navbar-primary #navbar ul.nav li > a {
   -webkit-font-feature-settings: "kern" 1,"liga" 1,"calt" 1,"pnum" 1,"tnum" 0,"onum" 0,"lnum" 0,"dlig" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility; }
 
-.font_regular, html, body, section.page {
+.font_regular, html, body, section.page, h4 {
   font-family: "ProximaNova-Regular"; }
 
 .font_extra_bold, .navbar .navbar-header .navbar-brand .ajab, .navbar.navbar-secondary #navbar ul.nav li.active > a,
 .navbar.navbar-secondary #navbar ul.nav li.focus > a,
-.navbar.navbar-secondary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-label {
+.navbar.navbar-secondary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label, section.body-area .main-content .header h3, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-label {
   font-family: "proxima_nova_thbold"; }
 
 .font_black, .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li:first-child {
@@ -5859,7 +5859,7 @@ button.close {
 .font_light, .navbar .navbar-header .navbar-brand .mfi {
   font-family: "proxima_nova_ltregular"; }
 
-.font_semibold, .navbar.navbar-primary #navbar ul.nav li > a {
+.font_semibold, strong, .navbar.navbar-primary #navbar ul.nav li > a {
   font-family: "proxima_nova_ltbold"; }
 
 .skinny-letterspacing {
@@ -5944,6 +5944,39 @@ html, body {
   min-height: 100% !important;
   height: 100%; }
 
+.select-label .icon {
+  color: #fff;
+  background: #06aea7;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  float: right;
+  margin-top: -41px;
+  margin-right: 1px;
+  pointer-events: none;
+  padding: 2px 0 0 12px;
+  -webkit-transition: background ease-in-out .15s;
+  transition: background ease-in-out .15s;
+  font-size: 16px; }
+.select-label select.form-control {
+  color: #000;
+  border: 1px solid #06aea7;
+  border-radius: 3px !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 42px;
+  padding: 0 48px 0 15px;
+  font-size: 14px; }
+
+h4 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px; }
+
 .navbar {
   border-radius: 0; }
   .navbar-nav > li > a {
@@ -5999,7 +6032,7 @@ section.body-area {
     width: 100%; }
     @media screen and (min-width: 768px) {
       section.body-area .sidebar {
-        width: 20rem; } }
+        width: 19rem; } }
     section.body-area .sidebar .sidebar-menu .header h2 {
       padding-left: 1rem;
       font-size: 25px; }
@@ -6010,7 +6043,6 @@ section.body-area {
       section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row {
         border-top: 1px solid #DBDBDB; }
         section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item {
-          padding-top: 2rem;
           background-color: #fff;
           width: 50%;
           height: 100px;
@@ -6019,21 +6051,28 @@ section.body-area {
           float: left; }
           section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item:last-child {
             border-left: 1px solid #DBDBDB; }
-          section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-label {
-            text-transform: uppercase;
-            color: #7e7e7e;
-            margin-top: .5rem;
-            font-size: 13px; }
-          section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon {
+          section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a {
+            padding-top: 2rem;
             display: inline-block;
-            width: 32px;
-            height: 32px;
-            background-repeat: no-repeat;
-            background-position: 4px 2px; }
-          section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item:hover {
+            width: 100%;
+            height: 100%; }
+            section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label {
+              text-transform: uppercase;
+              color: #7e7e7e;
+              margin-top: .5rem;
+              font-size: 13px; }
+            section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-icon {
+              display: inline-block;
+              width: 32px;
+              height: 32px;
+              background-repeat: no-repeat;
+              background-size: 32px 32px; }
+            section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover {
+              text-decoration: none; }
+          section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active {
             background-image: linear-gradient(-90deg, #06AEA7 0%, #20B38C 100%);
             cursor: pointer; }
-            section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item:hover .menu-label {
+            section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover .menu-label, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active .menu-label {
               color: #fff; }
     section.body-area .sidebar .sidebar-menu .footer ul.quick-actions {
       padding-left: 0;
@@ -6058,8 +6097,40 @@ section.body-area {
           section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li a:hover {
             color: #000; }
   section.body-area .main-content {
-    margin-left: 20.15rem;
-    box-shadow: -4px 0 3px -2px rgba(0, 0, 0, 0.15); }
+    height: 100%;
+    max-height: 100%;
+    overflow-y: scroll;
+    margin-left: 19.15rem;
+    box-shadow: -4px 0 3px -2px rgba(0, 0, 0, 0.15);
+    padding: 2rem 1rem 5rem 2rem; }
+    section.body-area .main-content .header {
+      padding-right: 15px;
+      padding-bottom: 5px; }
+      section.body-area .main-content .header h3 {
+        margin-top: 0; }
+    section.body-area .main-content .dashboard-row {
+      padding: 0 0 0 15px;
+      margin-right: 0px; }
+      section.body-area .main-content .dashboard-row .dashboard-column {
+        padding: 0;
+        height: 100%; }
+        section.body-area .main-content .dashboard-row .dashboard-column.activities {
+          height: 26rem; }
+        section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row {
+          height: 100%; }
+          section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row > div {
+            padding-left: 0;
+            padding-right: 15px;
+            height: 100%; }
+          section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well {
+            background-color: #FCFCFC;
+            margin-bottom: 15px;
+            min-height: 12.5rem;
+            padding: 5px 15px;
+            height: 100%;
+            border: none; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.notifications-holder {
+              min-height: 39.25rem; }
     section.body-area .main-content .form-holder {
       padding-top: 0.5rem; }
       section.body-area .main-content .form-holder .header {
@@ -6071,6 +6142,13 @@ section.body-area {
           color: gray; }
       section.body-area .main-content .form-holder .body {
         padding-top: 2rem; }
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: #464646;
+  color: #B0B0B0; }
 
 .btn-primary {
   background: none;
@@ -6087,30 +6165,22 @@ section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .m
   color: #7e7e7e;
   margin-top: .5rem;
   font-size: 13px; }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.loan_accounts {
-  background-image: url("/static/img/icons/ic_loan_accounts_coloured.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.loan_funds {
-  background-image: url("/static/img/icons/ic_loan_funds_coloured.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.loan_transactions {
-  background-image: url("/static/img/icons/ic_loan_transactions_coloured.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.loan_products {
-  background-image: url("/static/img/icons/ic_loan_products_coloured.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.loan_accounting {
-  background-image: url("/static/img/icons/ic_accounting_coloured.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.loan_reports {
-  background-image: url("/static/img/icons/ic_accounting_reports_coloured.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.loan_accounts {
-  background-image: url("/static/img/icons/ic_loan_accounts_white.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.loan_funds {
-  background-image: url("/static/img/icons/ic_loan_funds_white.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.loan_transactions {
-  background-image: url("/static/img/icons/ic_loan_transactions_white.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.loan_products {
-  background-image: url("/static/img/icons/ic_loan_products_white.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.loan_accounting {
-  background-image: url("/static/img/icons/ic_accounting_white.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.loan_reports {
-  background-image: url("/static/img/icons/ic_accounting_reports_white.png"); }
+section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.users_users {
+  background-image: url("/static/img/icons/ic_users_coloured.png"); }
+section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.users_roles {
+  background-image: url("/static/img/icons/ic_users_roles_coloured.png"); }
+section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.users_loan_officers {
+  background-image: url("/static/img/icons/ic_users_coloured.png"); }
+section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.users_audit_trail {
+  background-image: url("/static/img/icons/ic_audit_trail_coloured.png"); }
+section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.users_users {
+  background-image: url("/static/img/icons/is_users_coloured.png"); }
+section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.users_roles {
+  background-image: url("/static/img/icons/is_users_roles_coloured.png"); }
+section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.users_loan_officers {
+  background-image: url("/static/img/icons/is_users_coloured.png"); }
+section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.users_audit_trail {
+  background-image: url("/static/img/icons/ic_audit_trail_coloured.png"); }
 section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item:hover {
   background-image: linear-gradient(-90deg, #E18B7B 0%, #DF8778 100%);
   cursor: pointer; }

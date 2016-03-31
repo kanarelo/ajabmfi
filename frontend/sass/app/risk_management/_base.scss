@@ -46,23 +46,23 @@ section.body-area{
                                 font-size: 13px;
                             }
                             .menu-icon{
-                                &.loan_accounts{
-                                    background-image: url("/static/img/icons/ic_loan_accounts_coloured.png");
+                                &.kyc{
+                                    background-image: url("/static/img/icons/ic_kyc_coloured.png");
                                 }
-                                &.loan_funds{
-                                    background-image: url("/static/img/icons/ic_loan_funds_coloured.png");
+                                &.policies{
+                                    background-image: url("/static/img/icons/ic_policies_coloured.png");
                                 }
-                                &.loan_transactions{
-                                    background-image: url("/static/img/icons/ic_loan_transactions_coloured.png");
+                                &.monitoring{
+                                    background-image: url("/static/img/icons/ic_monitoring_coloured.png");
                                 }
-                                &.loan_products{
-                                    background-image: url("/static/img/icons/ic_loan_products_coloured.png");
+                                &.working_capital{
+                                    background-image: url("/static/img/icons/ic_core_capital_coloured.png");
                                 }
-                                &.loan_accounting{
-                                    background-image: url("/static/img/icons/ic_accounting_coloured.png");
+                                &.user_controls{
+                                    background-image: url("/static/img/icons/ic_risk_user_control_coloured.png");
                                 }
-                                &.loan_reports{
-                                    background-image: url("/static/img/icons/ic_accounting_reports_coloured.png");
+                                &.reports{
+                                    background-image: url("/static/img/icons/ic_risk_reports_coloured.png");
                                 }
 
                                 &:hover{

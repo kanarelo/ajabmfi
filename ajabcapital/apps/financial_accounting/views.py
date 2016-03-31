@@ -16,7 +16,7 @@ import json
 import random
 import logging
 
-from . import forms
+from . import (forms, facades)
 
 from ..core import (
     utils as core_utils,
@@ -24,4 +24,15 @@ from ..core import (
 )
 
 def dashboard(request):
+
+    context = dict(
+        quick_accounts=facades.get_quick_accounts(user),
+        net_portfolio=facades.get_net_portfolio(user),
+        overdues_by_product=facades.get_overdues_by_product(user),
+        gross_portfolio_by_product=facades.get_gross_portfolio_by_product(user),
+        loan_funds_perfomance=facades.get_loan_funds_perfomance(user),
+        portfolio_at_risk=facades.get_portfolio_at_risk_by_level(user),
+        key_perfomance_indicators=facades.get_key_perfomance_indicators(user)
+    )
+
     return TemplateResponse(request, "accounting/dashboard.html", {})

@@ -3,6 +3,8 @@
 
 {% block page-title %} Financial Accounting {% endblock page-title %}
 
+{% block menu-header %}Financial Accounting{% endblock menu-header %}
+
 {% block extracss %}
   <link href="{% static "css/app/accounting/dashboard.css" %}" rel="stylesheet">
 {% endblock extracss %}
@@ -20,38 +22,38 @@
 {% block menu-items %}
   <li class="menu-row clearfix">
     <div class="menu-item">
-      <div class="menu-icon loan_accounts">
+      <div class="menu-icon general_journal">
       </div>
-      <div class="menu-label">accounts</div>
+      <div class="menu-label">general journal</div>
     </div>
     <div class="menu-item">
-      <div class="menu-icon loan_funds">
+      <div class="menu-icon balance_sheet">
       </div>
-      <div class="menu-label">loan funds</div>
-    </div>
-  </li>
-  <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon loan_transactions">
-      </div>
-      <div class="menu-label">transactions</div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-icon loan_products">
-      </div>
-      <div class="menu-label">loan products</div>
+      <div class="menu-label">balance sheet</div>
     </div>
   </li>
   <li class="menu-row clearfix">
     <div class="menu-item">
-      <div class="menu-icon loan_accounting">
+      <div class="menu-icon pnl_statement">
       </div>
-      <div class="menu-label">accounting</div>
+      <div class="menu-label">p&amp;l statement</div>
     </div>
     <div class="menu-item">
-      <div class="menu-icon loan_reports">
+      <div class="menu-icon trial_balance">
       </div>
-      <div class="menu-label">reports</div>
+      <div class="menu-label">trial balance</div>
+    </div>
+  </li>
+  <li class="menu-row clearfix">
+    <div class="menu-item">
+      <div class="menu-icon ledgers">
+      </div>
+      <div class="menu-label">ledgers</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-icon banking">
+      </div>
+      <div class="menu-label">banking</div>
     </div>
   </li>
 {% endblock menu-items %}

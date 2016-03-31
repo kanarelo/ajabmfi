@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{% block page-title %} CRM {% endblock page-title %}
+{% block page-title %} Risk &amp; Compliance {% endblock page-title %}
 
 {% block extracss %}
   <link href="{% static "css/app/risk_management/dashboard.css" %}" rel="stylesheet">
@@ -20,36 +20,38 @@
 {% block menu-items %}
   <li class="menu-row clearfix">
     <div class="menu-item">
-      <div class="menu-icon loan_accounts">
+      <div class="menu-icon kyc">
       </div>
       <div class="menu-label">kyc</div>
     </div>
     <div class="menu-item">
-      <div class="menu-icon loan_funds">
+      <div class="menu-icon policies">
       </div>
       <div class="menu-label">policies</div>
     </div>
   </li>
   <li class="menu-row clearfix">
     <div class="menu-item">
-      <div class="menu-icon loan_transactions">
+      <div class="menu-icon monitoring">
       </div>
       <div class="menu-label">monitoring</div>
     </div>
     <div class="menu-item">
-      <div class="menu-icon loan_products">
-      </div>
-      <div class="menu-label">working capital</div>
+      <a href="">
+        <div class="menu-icon working_capital">
+        </div>
+        <div class="menu-label">Liquidity</div>
+      </a>
     </div>
   </li>
   <li class="menu-row clearfix">
     <div class="menu-item">
-      <div class="menu-icon loan_accounting">
+      <div class="menu-icon user_controls">
       </div>
-      <div class="menu-label">audit trail</div>
+      <div class="menu-label">user controls</div>
     </div>
     <div class="menu-item">
-      <div class="menu-icon loan_reports">
+      <div class="menu-icon reports">
       </div>
       <div class="menu-label">reports</div>
     </div>

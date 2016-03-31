@@ -12,7 +12,13 @@ from .webhooks import WEBHOOKS_URLS
 from .. import views
 
 urlpatterns = [
-    url(r'^dashboard/$', views.dashboard, name="dashboard")
+    url(r'^dashboard/$', views.dashboard, name="dashboard"),
+    url(r"^accounts/$", views.loan_accounts, name="loan_accounts"),
+    url(r"^funds/$", views.loan_funds, name="loan_funds"),
+    url(r"^transactions/$", views.loan_transactions, name="loan_transactions"),
+    url(r"^products/$", views.loan_products, name="loan_products"),
+    url(r"^accounting/$", views.loan_accounting, name="loan_accounting"),
+    url(r"^reports/$", views.loan_reports, name="loan_reports"),
 ]
 
 #1. Add the product urls

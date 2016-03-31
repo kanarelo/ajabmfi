@@ -88,7 +88,7 @@ def activate_user(request):
     user = get_object_or_404(user_models.User, id=user_id)
 
     with db_transaction.atomic():
-        logger.debug("action='users.activate' request_user_id=%s user_id=%s" % (request.user, user_id))
+        logger.debug("action='users.activate', request_user_id=%s, user_id=%s" % (request.user.id, user_id))
         auth_api.activate_user(user)
 
         core_utils.leave_user_message(
@@ -159,7 +159,7 @@ def view_profile(request):
     logger = logging.getLogger(__name__)
     user   = request.user
 
-    user_id = core_utils.get_int_or_None(request.objects.get('user_id'))
+    user_id = core_utils.get_int_or_None(request.GET.get('user_id', 0))
 
     if not auth_utils.is_capable(user, 'users.add') or (user.id == user_id):
         return HttpResponseForbidden('Access Denied')

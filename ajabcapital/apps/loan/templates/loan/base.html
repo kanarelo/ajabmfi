@@ -8,6 +8,8 @@
   <link href="{% static "css/app/loans/dashboard.css" %}" rel="stylesheet">
 {% endblock extracss %}
 
+{% block menu-header %}Loan Management{% endblock menu-header %}
+
 {% block nav-menu-items %}
   <li class="active"><a href="{% url "home:dashboard" %}">Home</a></li>
   <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
@@ -20,45 +22,72 @@
 
 {% block menu-items %}
   <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon loan_accounts">
-      </div>
-      <div class="menu-label">accounts</div>
+    <div class="menu-item {% block loan_accounts %}{% endblock %}">
+      <a href="{% url "loans:loan_accounts" %}">
+        <div class="menu-icon loan_accounts">
+        </div>
+        <div class="menu-label">accounts</div>
+      </a>
     </div>
-    <div class="menu-item">
-      <div class="menu-icon loan_funds">
-      </div>
-      <div class="menu-label">loan funds</div>
-    </div>
-  </li>
-  <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon loan_transactions">
-      </div>
-      <div class="menu-label">transactions</div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-icon loan_products">
-      </div>
-      <div class="menu-label">loan products</div>
+    <div class="menu-item {% block loan_funds %}{% endblock %}">
+      <a href="{% url "loans:loan_funds" %}">
+        <div class="menu-icon loan_funds">
+        </div>
+        <div class="menu-label">loan funds</div>
+      </a>
     </div>
   </li>
   <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon loan_accounting">
-      </div>
-      <div class="menu-label">accounting</div>
+    <div class="menu-item {% block loan_transactions %}{% endblock %}">
+      <a href="{% url "loans:loan_transactions" %}">
+        <div class="menu-icon loan_transactions">
+        </div>
+        <div class="menu-label">transactions</div>
+      </a>
     </div>
-    <div class="menu-item">
-      <div class="menu-icon loan_reports">
-      </div>
-      <div class="menu-label">reports</div>
+    <div class="menu-item {% block loan_products %}{% endblock %}">
+      <a href="{% url "loans:loan_products" %}">
+        <div class="menu-icon loan_products">
+        </div>
+        <div class="menu-label">loan products</div>
+      </a>
     </div>
   </li>
+  <li class="menu-row clearfix">
+    <div class="menu-item {% block loan_accounting %}{% endblock %}">
+      <a href="{% url "loans:loan_accounting" %}">
+        <div class="menu-icon loan_accounting">
+        </div>
+        <div class="menu-label">accounting</div>
+      </a>
+    </div>
+    <div class="menu-item {% block loan_reports %}{% endblock %}">
+      <a href="{% url "loans:loan_reports" %}">
+        <div class="menu-icon loan_reports">
+        </div>
+        <div class="menu-label">reports</div>
+      </a>
+    </div>
+    </li>
 {% endblock menu-items %}
 
 {% block quick-actions %}
-  <li class="active">
+  <li class="">
     <a href="#">add loan account</a>
+  </li>
+  <li class="">
+    <a href="#">search loan account</a>
+  </li>
+  <li class="">
+    <a href="#">add loan product</a>
+  </li>
+  <li class="">
+    <a href="#">view loan dashboard</a>
+  </li>
+  <li class="">
+    <a href="#">view loan general journal</a>
+  </li>
+  <li class="">
+    <a href="#">pull CRB report for Identity</a>
   </li>
 {% endblock quick-actions %}

@@ -3,7 +3,6 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 
-
 from django.http import (
     Http404, JsonResponse, HttpResponseForbidden
 )
@@ -16,12 +15,25 @@ import json
 import random
 import logging
 
-from . import forms
+from . import forms, facades
+from . import (utils as core_utils, forms as core_forms)
 
-from ..core import (
-    utils as core_utils,
-    forms as core_forms
-)
-
+@login_required
 def dashboard(request):
-    return TemplateResponse(request, "home/dashboard.html", {})
+    user = request.user
+
+    context = {}
+    
+    return TemplateResponse(request, "core/dashboard.html", context)
+
+@login_required
+def main_menu(request):
+    return TemplateResponse(request, "core/main_menu.html", {
+
+    })
+
+@login_required
+def notifications(request):
+    return TemplateResponse(request, "core/notifications.html", {
+
+    })

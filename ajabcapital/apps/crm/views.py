@@ -25,3 +25,7 @@ from ..core import (
 
 def dashboard(request):
     return TemplateResponse(request, "crm/dashboard.html", {})
+
+
+def search_client(request):
+	return TemplateResponse(request, "crm/search_client.html", {})	

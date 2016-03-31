@@ -8,11 +8,29 @@ import uuid
 from calendar import monthrange
 from datetime import timedelta
 
-from ajabcapital.apps.core.facades import *
+from ...core.facades import *
+
 from .loan_transactions import *
 
 INITIAL = D('0.0')
 
+def next_repayment_date(loan):
+    if loan.repayment_model.code == "TRM_001": #term
+        # term = loan.
+        pass
+    elif loan.repayment_model.code == "TRM_002":
+        pass
+
+def next_principal_repayment():
+    pass
+
+def next_possible_account_statuses(status):
+    if status is None:
+        return None
+
+    if status.code == "":
+        pass
+0
 def get_loan_account_current_balance(loan_account):
     accounts = get_chart_of_accounts_balances(loan_account, 
         filter_accounts=['portfolio_control_account']

@@ -4,8 +4,10 @@
 {% block page-title %} CRM {% endblock page-title %}
 
 {% block extracss %}
-  <link href="{% static "css/app/accounting/dashboard.css" %}" rel="stylesheet">
+  <link href="{% static "css/app/crm/dashboard.css" %}" rel="stylesheet">
 {% endblock extracss %}
+
+{% block menu-header %}Client Management{% endblock menu-header %}
 
 {% block nav-menu-items %}
   <li><a href="{% url "home:dashboard" %}">Home</a></li>
@@ -20,44 +22,47 @@
 {% block menu-items %}
   <li class="menu-row clearfix">
     <div class="menu-item">
-      <div class="menu-icon loan_accounts">
+      <div class="menu-icon clients_individuals">
       </div>
-      <div class="menu-label">accounts</div>
+      <div class="menu-label">individuals</div>
     </div>
     <div class="menu-item">
-      <div class="menu-icon loan_funds">
+      <div class="menu-icon clients_business">
       </div>
-      <div class="menu-label">loan funds</div>
-    </div>
-  </li>
-  <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon loan_transactions">
-      </div>
-      <div class="menu-label">transactions</div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-icon loan_products">
-      </div>
-      <div class="menu-label">loan products</div>
+      <div class="menu-label">businesses</div>
     </div>
   </li>
   <li class="menu-row clearfix">
     <div class="menu-item">
-      <div class="menu-icon loan_accounting">
+      <div class="menu-icon clients_groups">
       </div>
-      <div class="menu-label">accounting</div>
+      <div class="menu-label">groups</div>
     </div>
     <div class="menu-item">
-      <div class="menu-icon loan_reports">
+      <div class="menu-icon clients_messages">
       </div>
-      <div class="menu-label">reports</div>
+      <div class="menu-label">messages</div>
+    </div>
+  </li>
+  <li class="menu-row clearfix">
+    <div class="menu-item">
+      <div class="menu-icon clients_campaigns">
+      </div>
+      <div class="menu-label">campaigns</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-icon clients_templates">
+      </div>
+      <div class="menu-label">templates</div>
     </div>
   </li>
 {% endblock menu-items %}
 
 {% block quick-actions %}
   <li class="active">
-    <a href="#">add loan account</a>
+    <a href="#">add individual's credit profile</a>
+  </li>
+  <li class="active">
+    <a href="#">add business' credit profile</a>
   </li>
 {% endblock quick-actions %}

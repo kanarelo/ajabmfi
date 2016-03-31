@@ -46,25 +46,24 @@ section.body-area{
                                 font-size: 13px;
                             }
                             .menu-icon{
-                                &.loan_accounts{
-                                    background-image: url("/static/img/icons/ic_loan_accounts_coloured.png");
+                                &.general_journal{
+                                    background-image: url("/static/img/icons/ic_accounting_general_journal_coloured.png");
                                 }
-                                &.loan_funds{
-                                    background-image: url("/static/img/icons/ic_loan_funds_coloured.png");
+                                &.balance_sheet{
+                                    background-image: url("/static/img/icons/ic_accounting_balance_sheet_coloured.png");
                                 }
-                                &.loan_transactions{
-                                    background-image: url("/static/img/icons/ic_loan_transactions_coloured.png");
+                                &.pnl_statement{
+                                    background-image: url("/static/img/icons/ic_pnl_statement_coloured.png");
                                 }
-                                &.loan_products{
-                                    background-image: url("/static/img/icons/ic_loan_products_coloured.png");
+                                &.trial_balance{
+                                    background-image: url("/static/img/icons/ic_trial_balance_coloured.png");
                                 }
-                                &.loan_accounting{
-                                    background-image: url("/static/img/icons/ic_accounting_coloured.png");
+                                &.ledgers{
+                                    background-image: url("/static/img/icons/ic_products_accounting_coloured.png");
                                 }
-                                &.loan_reports{
-                                    background-image: url("/static/img/icons/ic_accounting_reports_coloured.png");
+                                &.banking{
+                                    background-image: url("/static/img/icons/ic_accounting_banking_coloured.png");
                                 }
-
                                 &:hover{
                                     &.loan_accounts{
                                         background-image: url("/static/img/icons/ic_loan_accounts_white.png");
