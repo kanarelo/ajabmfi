@@ -31,10 +31,10 @@ def dashboard(request):
         return_on_rwa=30,
         capital_adequacy_ratio=34,
         probability_of_default=4.3,
-        expected_loss="500 M",
+        expected_loss="500M",
         expected_loss_percentage=40,
         risk_weighted_assets=1428992999,
-        exposure_at_default="1.4 B",
+        exposure_at_default="1.4B",
         npl_by_credit_rating=[
             {'name': '200-300', 'value': 223992200, 'color': '#EFF2DD'},
             {'name': '301-400', 'value': 123992200, 'color': '#F6EA8C'},

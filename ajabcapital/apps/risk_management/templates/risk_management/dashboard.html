@@ -321,13 +321,14 @@
                                 <div>
                                     <h4 style="letter-spacing:0px;font-size:10px;">Exposure at Default</h4>
                                     <div class="amount-holder">
+                                        <span class="currency">KES</span>
                                         <span class="amount"> {{ exposure_at_default|intword }}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div>
-                                    <h4 style="letter-spacing:0px;font-size:10px;">Expected Loss</h4>
+                                    <h4 style="letter-spacing:0px;font-size:10px;">Expected Loss (KES)</h4>
                                     <div class="amount-holder">
                                         <span class="amount"> {{ expected_loss|intword }}</span>
                                         <span class="percentage">(40%)</span>
@@ -419,11 +420,11 @@
                             </tfoot>
                         </table>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div>
-                                    <h4 style="letter-spacing:0px;font-size:10px;">average score</h4>
+                                    <h4 style="letter-spacing:0px;font-size:10px;">average crb score</h4>
                                     <div class="amount-holder">
-                                        <span class="amount"> {{ average_score|default:"399" }}</span>
+                                        <span class="amount"> {{ average_score|default:"509" }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -435,10 +436,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <div>
                                     <h4 style="letter-spacing:0px;font-size:10px;">Portfolio Growth</h4>
                                     <div class="amount-holder">
+                                        <span class="currency">KES</span>
                                         <span class="amount"> {{ portfolio_growth|intword|default:"203 M" }}</span>
                                         <span class="percentage">(142%)</span>
                                     </div>

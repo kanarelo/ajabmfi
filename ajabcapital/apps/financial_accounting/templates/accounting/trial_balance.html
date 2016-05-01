@@ -1,0 +1,205 @@
+{% extends "accounting/base.html" %}
+
+{% load staticfiles %}
+{% load humanize %}
+
+{% block fa_trial_balance %} active{% endblock fa_trial_balance %}
+
+{% block page-content %}
+    <div class="col-lg-12 table-holder">
+        <div class="table-cover">
+            <h3>Trial Balance</h3>
+            <table class="table table-hover balance-sheet">
+                <thead>
+                    <tr>
+                        <th data-column="ledger_code">Ledger Code</th>
+                        <th data-column="name">Name</th>
+                        <th data-column="balance" style="text-align: right;">Opening (KES)</th>
+                        <th data-column="balance" style="text-align: right;">Debits (KES)</th>
+                        <th data-column="balance" style="text-align: right;">Credits (KES)</th>
+                        <th data-column="balance" style="text-align: right;">Change (KES)</th>
+                        <th data-column="balance" style="text-align: right;">Closing (KES)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="font_extra_bold" style="text-transform: uppercase; font-size: 110%; color: #397D94;" colspan="4">Assets</td>
+                    </tr>
+                    {% for account in trial_balance.assets.current_assets %}
+                        <tr class="level{{ account.ledger_level}}">
+                            <td class="font_semibold">{{ account.ledger_code }}</td>
+                            <td class="font_normal">{{ account.name }}</td>
+                            <td class="font_extra_bold" style="text-align: right;">
+                                {{ account.balance|default:"19,090,090.00" }}
+                            </td>
+                            <td style="text-align: right;">
+                                {{ account.balance|default:"19,090,090.00" }}
+                            </td>
+                            <td style="text-align: right;">
+                                {{ account.balance|default:"19,090,090.00" }}
+                            </td>
+                            <td style="text-align: right;">
+                                {{ account.balance|default:"19,090,090.00" }}
+                            </td>
+                            <td class="font_extra_bold" style="text-align: right;">
+                                {{ account.balance|default:"109,090,090.00" }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr style="font-size: 15.5px;">
+                        <td class="font_semibold" style="border-top-width: 3px;"></td>
+                        <td class="font_extra_bold" style="border-top-width: 3px;">TOTAL ASSETS</td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                    </tr>
+
+                    <tr>
+                        <td style="height: 2rem; border: none" colspan="7   "></td>
+                    </tr>
+                    <tr>
+                        <td class="font_extra_bold" style="text-transform: uppercase; font-size: 110%; color: #397D94;" colspan="4">Liabilities</td>
+                    </tr>
+                    {% for account in trial_balance.liabilities.current_liabilities %}
+                        <tr class="level{{ account.ledger_level }}">
+                            <td class="font_semibold">{{ account.ledger_code }}</td>
+                            <td class="font_normal">{{ account.name }}</td>
+                            <td class="font_extra_bold" style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td class="font_extra_bold" style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td class="font_extra_bold" style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td class="font_extra_bold" style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td class="font_extra_bold" style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr style="font-size: 15.5px;">
+                        <td class="font_semibold" style="border-top-width: 3px;"></td>
+                        <td class="font_extra_bold" style="border-top-width: 3px;">TOTAL LIABILITIES</td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                    </tr>
+
+                    <tr>
+                        <td style="height: 2rem; border: none" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td class="font_extra_bold" style="text-transform: uppercase; font-size: 110%; color: #397D94;" colspan="7">Equity</td>
+                    </tr>
+                    {% for account in trial_balance.equity %}
+                        <tr class="level{{ account.ledger_level }}">
+                            <td class="font_semibold"> {{ account.ledger_code }} </td>
+                            <td class="font_normal">{{ account.name }}</td>
+                            <td class="font_extra_bold" style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td class="font_extra_bold" style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr style="font-size: 15.5px;">
+                        <td class="font_semibold" style="border-top-width: 2px;"></td>
+                        <td class="font_extra_bold" style="border-top-width: 2px;">TOTAL EQUITY</td>
+                        <td class="font_extra_bold" style=" border-top-width: 2px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 2px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 2px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 2px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 2px; text-align: right;"> 0.0 </td>
+                    </tr>
+                    <tr>
+                        <td style="height: 2rem; border: none" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td class="font_extra_bold" style="text-transform: uppercase; font-size: 110%; color: #397D94;" colspan="7">Income</td>
+                    </tr>
+                    {% for account in trial_balance.income %}
+                        <tr class="level{{ account.ledger_level}}">
+                            <td class="font_semibold">{{ account.ledger_code }}</td>
+                            <td class="font_normal">{{ account.name }}</td>
+                            <td class="font_extra_bold" style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td class="font_extra_bold" style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr style="font-size: 15.5px;">
+                        <td class="font_semibold" style="border-top-width: 3px;"></td>
+                        <td class="font_extra_bold" style="border-top-width: 3px;">TOTAL INCOME</td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                    </tr>
+                    <tr>
+                        <td class="font_extra_bold" style="text-transform: uppercase; font-size: 110%; color: #397D94;" colspan="7">Expense</td>
+                    </tr>
+                    {% for account in trial_balance.expense %}
+                        <tr class="level{{ account.ledger_level}}">
+                            <td class="font_semibold">{{ account.ledger_code }}</td>
+                            <td class="font_normal">{{ account.name }}</td>
+                            <td class="font_extra_bold" style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                            <td class="font_extra_bold" style="text-align: right;">
+                                {{ account.balance|default:"0.0" }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr style="font-size: 15.5px;">
+                        <td class="font_semibold" style="border-top-width: 3px;"></td>
+                        <td class="font_extra_bold" style="border-top-width: 3px;">TOTAL EXPENSES</td>
+                        <td style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                        <td class="font_extra_bold" style=" border-top-width: 3px; text-align: right;"> 0.0 </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock page-content %}

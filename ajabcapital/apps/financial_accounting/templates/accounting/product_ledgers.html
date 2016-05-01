@@ -1,0 +1,71 @@
+{% extends "accounting/base.html" %}
+
+{% load staticfiles %}
+{% load humanize %}
+
+{% block fa_product_ledgers %} active{% endblock fa_product_ledgers %}
+
+{% block page-content %}
+    <div class="col-lg-12 table-holder">
+        <div class="table-cover">
+            <h3>Product Ledgers</h3>
+            <table class="table table-striped user-list">
+                <thead>
+                    <tr>
+                        <th data-column="transaction_type">Name</th>
+                        <th data-column="ledger_code">Ledger Code</th>
+                        <th data-column="transaction_date">Balance</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for account in accounts %}
+                        <tr>
+                            <td>{{ account.ledger_transaction.pk }}</td>
+                            <td>{{ account.ledger_account.ledger_code }}</td>
+                            <td class="font_semibold" style="text-align: right;">
+                                {{ account.ledger_transaction.amount|intcomma }}
+                            </td>
+                            <td>
+                                <div class="pull-right dropdown">
+                                    <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                        <span class="font_extra_bold">ACTION</span>
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Manage User</a></li>
+                                        <li><a href="#">Reset Password</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Make Administrator</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Deactivate Account</a></li>
+                                        <li><a href="#">Delete Account</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <nav>
+            <ul class="pager">
+                <li class="previous disabled">
+                    <a href="#">
+                        <span aria-hidden="true">←</span>
+                        <span> Previous Page</span>
+                    </a>
+                </li>
+                <li>
+                    <span style="font-size1px;">Page 1 of 1</span>
+                </li>
+                <li class="next disabled">
+                    <a href="#">
+                        <span>Next Page </span>
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+{% endblock page-content %}

@@ -1,0 +1,95 @@
+{% extends "crm/base.html" %}
+
+{% block crm_individuals %} active{% endblock crm_individuals %}
+
+{% block page-content %}
+    <div class="col-lg-12 table-holder">
+        <div class="btn-group pull-right">
+            <button class="btn btn-default btn-xs">
+                <i class="fa fa-plus-circle"></i>
+                <span> Add</span>
+            </button>
+            <button class="btn btn-default btn-xs">
+                <i class="fa fa-search"></i><span> Search</span>
+            </button>
+            <div class="dropdown pull-right">
+                <button style="margin-bottom5px;" class="btn btn-default btn-xs dropdown-toggle filter-button" type="button" aria-haspopup="true" aria-expanded="true">
+                    <i class="fa fa-filter"></i>
+                    <span> Filter</span>
+                </button>
+            </div>
+        </div>
+        <div class="table-cover">
+            <h3>Individuals Profiles</h3>
+            <table class="table table-striped user-list">
+                <thead>
+                    <tr>
+                        <th data-column="name">Full Name</th>
+                        <th data-column="identity_type">Gender</th>
+                        <th data-column="identity_type">Identity Type</th>
+                        <th data-column="identity_type">Identity Number</th>
+                        <th data-column="identity_type">Mobile</th>
+                        <th data-column="no_of_loans">No of Loans</th>
+                        <th data-column="performing_loans">Performing</th>
+                        <th data-column="non_performing_loans">Non Performing</th>
+                        <th data-column="status">Status</th>
+                        <th data-column="date">Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for individual_profile in profiles %}
+                        <tr>
+                            <td>{{ individual_profile.get_full_name }}</td>
+                            <td>{{ individual_profile.get_gender_display }}</td>
+                            <td>{{ individual_profile.identity_type.name }}</td>
+                            <td>{{ individual_profile.identity_number }}</td>
+                            <td>{{ individual_profile.mobile_phone_number }}</td>
+                            <td>{{ individual_profile.total_no_of_loans }}</td>
+                            <td>{{ individual_profile.current_performing_loans }}</td>
+                            <td>{{ individual_profile.current_non_performing_loans }}</td>
+                            <td>{{ individual_profile.last_status.name }}</td>
+                            <td>{{ individual_profile.created_at|date:"d/m/Y" }}</td>
+                            <td>
+                                <div class="pull-right dropdown">
+                                    <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                        <span class="font_extra_bold">ACTION</span>
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Manage User</a></li>
+                                        <li><a href="#">Reset Password</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Make Administrator</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Deactivate Account</a></li>
+                                        <li><a href="#">Delete Account</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <nav>
+            <ul class="pager">
+                <li class="previous disabled">
+                    <a href="#">
+                        <span aria-hidden="true">←</span>
+                        <span> Previous Page</span>
+                    </a>
+                </li>
+                <li>
+                    <span style="font-size1px;">Page 1 of 1</span>
+                </li>
+                <li class="next disabled">
+                    <a href="#">
+                        <span>Next Page </span>
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+{% endblock page-content %}
