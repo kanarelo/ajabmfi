@@ -36,9 +36,9 @@
           <div class="collapse navbar-collapse" id="collapsable">
             <ul class="nav navbar-nav navbar-right">
               {% block nav-menu-items %}
-                <li class="active"><a href="{% url "home:dashboard" %}">Origination</a></li>
-                <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
+                <li class="active"><a href="{% url "home:dashboard" %}">Home</a></li>
                 <li><a href="{% url "crm:dashboard" %}">CRM</a></li>
+                <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
                 <li><a href="{% url "accounting:dashboard" %}">Accounting</a></li>
                 <li><a href="{% url "risk:dashboard" %}">Risk &amp; Compliance</a></li>
                 <li><a href="{% url "users:dashboard" %}">Users</a></li>
@@ -50,78 +50,80 @@
       </div>
     </nav>
     <section class="body-area">
-      <div class="sidebar">
-        <div class="sidebar-menu">
-          <div class="header">
-            <h2>{% block menu-header %}Ajab Capital LTD{% endblock menu-header %}</h2>
-          </div>
-          <div class="body">
-            <ul class="menu">
-              {% block menu-items %}
-                <li class="menu-row clearfix">
-                  <div class="menu-item {% block mi_dashboard %}{% endblock %}">
-                    <a href="{% url "home:dashboard" %}">
-                      <div class="menu-icon dashboard">
-                      </div>
-                      <div class="menu-label">dashboard</div>
-                    </a>
-                  </div>
-                  <div class="menu-item {% block my_pipeline %}{% endblock %}">
-                    <a href="{% url "origination:my_pipeline" %}">
-                      <div class="menu-icon my_pipeline">
-                      </div>
-                      <div class="menu-label">Applications</div>
-                    </a>
-                  </div>
-                </li>
-                <li class="menu-row clearfix">
-                  <div class="menu-item {% block notifications %}{% endblock %}">
-                    <a href="{% url "home:notifications" %}">
-                      <div class="menu-icon notifications">
-                      </div>
-                      <div class="menu-label">notifications</div>
-                    </a>
-                  </div>
-                  <div class="menu-item {% block search_client %}{% endblock %}">
-                    <a href="{% url "crm:search_client" %}">
-                      <div class="menu-icon search_client">
-                      </div>
-                      <div class="menu-label">search client</div>
-                    </a>
-                  </div>
-                </li>
-                <li class="menu-row clearfix">
-                  <div class="menu-item {% block main_menu %}{% endblock %}">
-                    <a href="{% url "home:main_menu" %}">
-                      <div class="menu-icon main_menu">
-                      </div>
-                      <div class="menu-label">main menu</div>
-                    </a>
-                  </div>
-                  <div class="menu-item {% block home_reports %}{% endblock %}">
-                    <a href="{% url "origination:home_reports" %}">
-                      <div class="menu-icon home_reports">
-                      </div>
-                      <div class="menu-label">reports</div>
-                    </a>
-                  </div>
-                </li>
-              {% endblock menu-items %}
-            </ul>
-          </div>
-          <div class="footer">
-            <ul class="quick-actions">
-              <li>Quick Actions</li>
-              {% block quick-actions %}
-                <li class="active">
-                  <a href="#">add loan account</a>
-                </li>
-              {% endblock quick-actions %}
-            </ul>
+      {% block sidebar %}
+        <div class="sidebar">
+          <div class="sidebar-menu">
+            <div class="header">
+              <h2>{% block menu-header %}Ajab Capital LTD{% endblock menu-header %}</h2>
+            </div>
+            <div class="body">
+              <ul class="menu">
+                {% block menu-items %}
+                  <li class="menu-row clearfix">
+                    <div class="menu-item {% block mi_dashboard %}{% endblock %}">
+                      <a href="{% url "home:dashboard" %}">
+                        <div class="menu-icon dashboard">
+                        </div>
+                        <div class="menu-label">dashboard</div>
+                      </a>
+                    </div>
+                    <div class="menu-item {% block my_pipeline %}{% endblock %}">
+                      <a href="{% url "origination:my_pipeline" %}">
+                        <div class="menu-icon my_pipeline">
+                        </div>
+                        <div class="menu-label">Applications</div>
+                      </a>
+                    </div>
+                  </li>
+                  <li class="menu-row clearfix">
+                    <div class="menu-item {% block notifications %}{% endblock %}">
+                      <a href="{% url "home:notifications" %}">
+                        <div class="menu-icon notifications">
+                        </div>
+                        <div class="menu-label">notifications</div>
+                      </a>
+                    </div>
+                    <div class="menu-item {% block search_client %}{% endblock %}">
+                      <a href="{% url "crm:search_client" %}">
+                        <div class="menu-icon search_client">
+                        </div>
+                        <div class="menu-label">search client</div>
+                      </a>
+                    </div>
+                  </li>
+                  <li class="menu-row clearfix">
+                    <div class="menu-item {% block main_menu %}{% endblock %}">
+                      <a href="{% url "home:main_menu" %}">
+                        <div class="menu-icon main_menu">
+                        </div>
+                        <div class="menu-label">main menu</div>
+                      </a>
+                    </div>
+                    <div class="menu-item {% block home_reports %}{% endblock %}">
+                      <a href="{% url "origination:home_reports" %}">
+                        <div class="menu-icon home_reports">
+                        </div>
+                        <div class="menu-label">reports</div>
+                      </a>
+                    </div>
+                  </li>
+                {% endblock menu-items %}
+              </ul>
+            </div>
+            <div class="footer">
+              <ul class="quick-actions">
+                <li>Quick Actions</li>
+                {% block quick-actions %}
+                  <li class="active">
+                    <a href="#">add loan account</a>
+                  </li>
+                {% endblock quick-actions %}
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="main-content hidden-xs">
+      {% endblock sidebar %}
+      <div class="main-content">
         {% block page-content %}
         {% endblock page-content %}
       </div>
@@ -131,7 +133,16 @@
         &copy; {% now "Y" %} Ajab Capital LTD.
       {% endblock footer %}
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/jquery/dist/jquery.min.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
+
+    {% block extrajs %}
+    {% endblock extrajs %}
+
+    {% block reactjs-scripts %}
+      <script src="{% static "js/bower_components/react/react-with-addons.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/bower_components/react/JSXTransformer.js" %}"></script>
+    {% endblock reactjs-scripts %}
+
   </body>
 </html>

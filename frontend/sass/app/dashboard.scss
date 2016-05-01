@@ -71,6 +71,8 @@ section.body-area{
                                 cursor: pointer;
                                 
                                 .menu-icon{
+                                    background-size: 32px 32px;
+                                    
                                     &.dashboard{
                                         background-image: url("/static/img/icons/ic_home_dashboard_white.png");
                                     }
@@ -113,6 +115,6 @@ section.body-area{
         }
     }
     .main-content{
-
+            margin-left: 0;
     }
 }

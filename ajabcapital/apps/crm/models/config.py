@@ -4,79 +4,76 @@ from django.db import models
 
 from ajabcapital.apps.core.models import AuditBase, ConfigBase
 
-class ConfigBusinessProfileStatus(ConfigBase):
+class ConfigProfileStatus(ConfigBase):
     class Meta:
-        db_table = "config_business_profile_status"
-        verbose_name = "Config Business Profile Status"
+        db_table = "config_profile_status"
+        verbose_name = "Config Profile Status"
+        ordering = ["code"]
 
 class ConfigBusinessRole(ConfigBase):
     class Meta:
         db_table = "config_business_role"
         verbose_name = "Config Business Role"
+        ordering = ["code"]
 
 class ConfigDocumentType(ConfigBase):
     class Meta:
         db_table = "config_document_type"
         verbose_name = "Config Document Type"
+        ordering = ["code"]
 
 class ConfigCampaignTrigger(ConfigBase):
     class Meta:
         db_table = "config_campaign_trigger"
         verbose_name = "Config Campaign Trigger"
-
-class ConfigCampaignSchedule(ConfigBase):
-    class Meta:
-        db_table = "config_campaign_schedule"
-        verbose_name = "Config Campaign Schedule"
+        ordering = ["code"]
 
 class ConfigIdentityType(ConfigBase):
     class Meta:
         db_table = "config_identity_type"
         verbose_name = "Config Identity Type"
+        ordering = ["code"]
 
 class ConfigMessageType(ConfigBase):
     class Meta:
         db_table = "config_message_type"
-        verbose_name = "Config Message Type"    
-
-class ConfigMessageAction(ConfigBase):
-    class Meta:
-        db_table = "config_message_action"
-        verbose_name = "Config Message Action"
+        verbose_name = "Config Message Type"  
+        ordering = ["code"]
 
 class ConfigMessageStatus(ConfigBase):
     class Meta:
         db_table = "config_message_status"
         verbose_name = "Config Message Status"
         verbose_name_plural = "Config Message Statuses"
+        ordering = ["code"]
 
 class ConfigCampaignType(ConfigBase):
     class Meta:
         db_table = "config_campaign_type"
         verbose_name = "Config Campaign Type"
+        ordering = ["code"]
 
 class ConfigCampaignSegmentType(ConfigBase):
     class Meta:
         db_table = "config_campaign_segment_type"
         verbose_name = "Config Campaign Segment Type"
-
-class ConfigGroupProfileStatus(ConfigBase):
-    class Meta:
-        db_table = "config_group_profile_status"
-        verbose_name = "Config Group Profile Status"
+        ordering = ["code"]
 
 class ConfigLoanGroupRole(ConfigBase):
     class Meta:
         db_table = "config_loan_group_role"
         verbose_name = "Config Loan Group Role"
+        ordering = ["code"]
 
 class ConfigLoanGroupType(ConfigBase):
     class Meta:
         db_table = "config_loan_group_type"
         verbose_name = "Config Loan Group Type"
+        ordering = ["code"]
 
 class ConfigBusinessType(ConfigBase):
     class Meta:
         db_table = "config_business_type"
         verbose_name = "Config Business Type"
         verbose_name_plural = "Config Business Type"
+        ordering = ["code"]

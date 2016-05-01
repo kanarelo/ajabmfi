@@ -15,7 +15,7 @@ class LoanFund(AuditBase):
     profile_type = models.ForeignKey('ConfigProfileType')
     product_type = models.ForeignKey('ConfigLoanProductType')
     repayment_model = models.ForeignKey('ConfigRepaymentModel')
-    product_channel = models.ForeignKey('ConfigLoanProductChannel')
+    product_channel = models.ForeignKey('ConfigLoanProductChannel', null=True)
     
     fund_credit_limit = models.DecimalField(decimal_places=2, max_digits=18, null=True)
     loan_credit_limit = models.DecimalField(decimal_places=2, max_digits=18, null=True)
@@ -31,6 +31,8 @@ class LoanProduct(AuditBase):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=140)
     is_active = models.BooleanField(default=False)
+
+    color = models.CharField(max_length=15, null=True)
 
     loan_fund = models.ForeignKey('LoanFund')
     product_channel = models.ForeignKey('ConfigLoanProductChannel')
@@ -59,6 +61,8 @@ class LoanProduct(AuditBase):
 
     interest_calculation_method = models.ForeignKey("ConfigInterestCalculationMethod")
     default_interest_rate = models.DecimalField(decimal_places=4, max_digits=6, default=D('0.0'))
+    default_interest_rate_unit = models.ForeignKey('ConfigLoanPeriodUnit', related_name="default_interest_rates")
+    
     min_interest_rate = models.DecimalField(decimal_places=4, max_digits=6, default=D('0.0'))
     max_interest_rate = models.DecimalField(decimal_places=4, max_digits=6, default=D('0.0'))
 

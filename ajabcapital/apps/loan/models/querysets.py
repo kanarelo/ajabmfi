@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.db.models import Q, Sum, F
 
 from decimal import Decimal as D
 
@@ -16,6 +17,20 @@ class LoanProfileQueryset(models.QuerySet):
     def individual_profiles(self):
         return self.filter(individual_profile__isnull=False)
 
+    def women_profiles(self):
+        FEMALE = 0
+        
+        return self.all().filter(
+            individual_profile__gender=FEMALE
+        )
+
+    def men_profiles(self):
+        MALE = 1
+
+        return self.all().filter(
+            individual_profile__gender=MALE
+        )
+
     def business_profiles(self):
         return self.filter(business_profile__isnull=False)
 
@@ -23,6 +38,13 @@ class LoanProfileQueryset(models.QuerySet):
         return self.filter(group_profile__isnull=False)
 
 class LoanProductQueryset(models.QuerySet):
+    PRINCIPAL_GRACE_PERIOD = "GP_001"
+    FULL_GRACE_PERIOD = "GP_002"
+
+    FLAT_INTEREST = "CM_002"
+    DECLINING_INTEREST = "CM_001"
+    DECLINING_INTEREST_EI = "CM_003"
+
     def active(self):
         return self.filter(Q(is_active=True))
 
@@ -73,16 +95,19 @@ class LoanProductQueryset(models.QuerySet):
         return self.filter(Q(amount_currency__code="USD"))
 
     def flat_interest(self):
-        return self.filter(Q(interest_calculation_method__code="CM_002"))
+        return self.filter(Q(interest_calculation_method__code=FLAT_INTEREST))
 
     def declining_interest(self):
-        return self.filter(Q(interest_calculation_method__code="CM_001"))
+        return self.filter(Q(interest_calculation_method__code=DECLINING_INTEREST))
+
+    def declining_interest_equal_installments(self):
+        return self.filter(Q(interest_calculation_method__code=DECLINING_INTEREST_EI))
 
     def principal_grace_period(self):
-        return self.filter(Q(repayment_grace_period_type__code="GP_001"))
+        return self.filter(Q(repayment_grace_period_type__code=PRINCIPAL_GRACE_PERIOD))
 
     def full_grace_period(self):
-        return self.filter(Q(repayment_grace_period_type__code="GP_002"))
+        return self.filter(Q(repayment_grace_period_type__code=FULL_GRACE_PERIOD))
 
 class LoanAccountQuerySet(models.QuerySet):
     #origination
@@ -92,90 +117,124 @@ class LoanAccountQuerySet(models.QuerySet):
     UNDERWRITING = "AS_008"
     DISBURSEMENT = "AS_007"
 
-    #repayment
+    #repayment/servicing
     PERFORMING = "AS_006"
     OUTSTANDING = "AS_002"
-    DELINQUENT = "AS_014"
     REPERFORMING = "AS_012"
+
+    #NPLs
+    DELINQUENT = "AS_014"
     NON_PERFORMING = "AS_001"
     
     #closed
     DISPUTED = "AS_015"
     RESTRUCTURED = "AS_003"
-    FULLY_PAID = "AS_005"
     WRITE_OFF = "AS_004"
+
+    #close
+    FULLY_PAID = "AS_005"
     CLOSED = "AS_013"
+    
+    #Repayment Frequencies...
+    RF_EVERY_DAY = "RF_001"
+    RF_EVERY_WEEK = "RF_002"
+    RF_EVERY_2_WEEKS = "RF_003"
+    RF_EVERY_MONTH = "RF_004"
+    RF_EVERY_2_MONTHS = "RF_005"
+    RF_EVERY_3_MONTHS = "RF_006"
+    RF_EVERY_4_MONTHS = "RF_007"
+    RF_EVERY_6_MONTHS = "RF_008"
+    RF_EVERY_12_MONTHS = "RF_009"
+    RF_REVOLVING = "RF_010"
+    RF_BULLET = "RF_011"
 
     #status
     def active(self):
         accounts = self.filter(
-            Q(last_account_status__code=self.REPERFORMING)|
-            Q(last_account_status__code=self.PERFORMING)|
-            Q(last_account_status__code=self.OUTSTANDING)
+            Q(date_disbursed__isnull=False) & (
+                Q(current_account_status__code=self.PERFORMING)|
+                Q(current_account_status__code=self.OUTSTANDING)|
+                Q(current_account_status__code=self.REPERFORMING)|
+                Q(current_account_status__code=self.NON_PERFORMING)
+            )
         )
         
         return accounts
 
+    def outstanding(self):
+        return self.filter(
+            Q(current_account_status__code=self.OUTSTANDING)
+        )
+
     def closed(self):
         return self.filter(
-            Q(last_account_status__code=self.RESTRUCTURED)|
-            Q(last_account_status__code=self.FULLY_PAID)|
-            Q(last_account_status__code=self.WRITE_OFF)|
-            Q(last_account_status__code=self.CLOSED)
+            Q(current_account_status__code=self.RESTRUCTURED)|
+            Q(current_account_status__code=self.FULLY_PAID)|
+            Q(current_account_status__code=self.WRITE_OFF)|
+            Q(current_account_status__code=self.CLOSED)
         )
 
     def performing(self):
-        return self.filter(
-            Q(last_account_status__code=self.PERFORMING)|
-            Q(last_account_status__code=self.OUTSTANDING)
+        accounts = self.filter(
+            Q(date_disbursed__isnull=False) & (
+                Q(current_account_status__code=self.PERFORMING)|
+                Q(current_account_status__code=self.OUTSTANDING)
+            )
         )
-
-    def outstanding(self):
-        return self.filter(
-            Q(last_account_status__code=self.OUTSTANDING)
-        )
+        return accounts
 
     def non_performing(self):
         return self.filter(
-            last_account_status__code=self.DISPUTED
+            Q(current_account_status__code=self.REPERFORMING)|
+            Q(current_account_status__code=self.NON_PERFORMING)
+        )
+
+    def reperfoming(self):
+        return self.filter(
+            Q(current_account_status__code=self.REPERFORMING)
         )
 
     def in_processing(self):
         return self.filter(
-            Q(last_account_status__code=self.PROCESSING)|
-            Q(last_account_status__code=self.APPRAISAL)|
-            Q(last_account_status__code=self.UNDERWRITING)|
-            Q(last_account_status__code=self.DISBURSEMENT)
+            Q(current_account_status__code=self.PROCESSING)|
+            Q(current_account_status__code=self.APPRAISAL)|
+            Q(current_account_status__code=self.UNDERWRITING)|
+            Q(current_account_status__code=self.DISBURSEMENT)
         )
 
     def in_origination(self):
         return self.filter(
-            Q(last_account_status__code=self.PROCESSING)|
-            Q(last_account_status__code=self.APPLICATION)|
-            Q(last_account_status__code=self.APPRAISAL)|
-            Q(last_account_status__code=self.UNDERWRITING)|
-            Q(last_account_status__code=self.DISBURSEMENT)
+            Q(current_account_status__code=self.PROCESSING)|
+            Q(current_account_status__code=self.APPLICATION)|
+            Q(current_account_status__code=self.APPRAISAL)|
+            Q(current_account_status__code=self.UNDERWRITING)|
+            Q(current_account_status__code=self.DISBURSEMENT)
+        )
+
+    def in_disbursement(self):
+        return self.filter(
+            Q(current_account_status__code=self.DISBURSEMENT)
         )
 
     def in_repayment(self):
         return self.filter(
-            Q(last_account_status__code=self.PROCESSING)|
-            Q(last_account_status__code=self.APPLICATION)|
-            Q(last_account_status__code=self.APPRAISAL)
+            Q(current_account_status__code=self.PROCESSING)|
+            Q(current_account_status__code=self.APPLICATION)|
+            Q(current_account_status__code=self.APPRAISAL)
         )
 
     def disputed(self):
-        return self.filter(Q(last_account_status__code=self.DISPUTED))
+        return self.filter(Q(current_account_status__code=self.DISPUTED))
 
     def write_offs(self):
-        return self.filter(Q(last_account_status__code=self.WRITE_OFF))
+        return self.filter(Q(current_account_status__code=self.WRITE_OFF))
 
     def term_loans(self):
         return self.filter(Q(term__loan_account__isnull=False))
-
+        
     def restructured_loans(self):
         return self.term_loans().filter(
-            Q(last_account_status__code=self.RESTRUCTURED) &
+            Q(current_account_status__code=self.RESTRUCTURED) &
             Q(term__terms_restructured__isnull=False) &
             Q(term__terms_restructured_date__isnull=False)
         ) 
@@ -188,34 +247,46 @@ class LoanAccountQuerySet(models.QuerySet):
 
     #-------------- repayment_frequencies
     def bullet_loans(self):
-        return self.filter(Q(repayment_frequency__code="RF_011"))
+        return self.filter(Q(term__repayment_frequency__code=RF_BULLET))
 
     def revolving_loans(self):
-        return self.filter(Q(repayment_frequency__code="RF_010"))
+        return self.filter(Q(term__repayment_frequency__code=RF_REVOLVING))
 
     def annual_accruing(self):
-        return self.filter(Q(repayment_frequency__code="RF_009"))
+        return self.filter(Q(term__repayment_frequency__code=RF_EVERY_12_MONTHS))
 
     def halfly_accruing(self):
-        return self.filter(Q(repayment_frequency__code="RF_008"))
+        return self.filter(Q(term__repayment_frequency__code=RF_EVERY_6_MONTHS))
 
     def quaterly_accruing(self):
-        return self.filter(Q(repayment_frequency__code="RF_007"))
+        return self.filter(Q(term__repayment_frequency__code=RF_EVERY_4_MONTHS))
 
     def three_month_accruing(self):
-        return self.filter(Q(repayment_frequency__code="RF_006"))
+        return self.filter(Q(term__repayment_frequency__code=RF_EVERY_3_MONTHS))
 
     def two_month_accuring(self):
-        return self.filter(Q(repayment_frequency__code="RF_005"))
+        return self.filter(Q(term__repayment_frequency__code=RF_EVERY_2_MONTHS))
 
     def monthly_accuring(self):
-        return self.filter(Q(repayment_frequency__code="RF_004"))
+        return self.filter(Q(term__repayment_frequency__code=RF_EVERY_MONTH))
 
     def fortnighly_accuring(self):
-        return self.filter(Q(repayment_frequency__code="RF_003"))
+        return self.filter(Q(term__repayment_frequency__code=RF_EVERY_2_WEEKS))
 
     def weekly_accuring(self):
-        return self.filter(Q(repayment_frequency__code="RF_002"))
+        return self.filter(Q(term__repayment_frequency__code=RF_EVERY_WEEK))
 
     def everyday_accuring(self):
-        return self.filter(Q(repayment_frequency__code="RF_001"))
+        return self.filter(Q(term__repayment_frequency__code=RF_EVERY_DAY))
+
+    #-------------- by accrual type
+    def accrual_loans(self):
+        return self.performing()
+
+    def non_accrual_loans(self):
+        return self.non_performing()
+
+    def risk_classified(self, risk_classification_code):
+        return self.filter(
+            current_risk_classification__code=risk_classification_code
+        )

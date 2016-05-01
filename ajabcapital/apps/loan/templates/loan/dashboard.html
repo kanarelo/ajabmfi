@@ -1,15 +1,284 @@
 {% extends "loan/base.html" %}
 
 {% load staticfiles %}
+{% load humanize %}
 
-{% block loan_accounts %} active{% endblock %}
+{% block extrajs %}
+    <script src="{% static "js/bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
+    <script src="{% static "js/bower_components/jquery-ui/jquery-ui.min.js" %}"></script>
+    <script src="{% static "js/bower_components/lodash/lodash.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/momentjs/min/moment.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/accounting/accounting.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/chartjs/Chart.js" %}"></script>
 
-{% block nav-menu-items %}
-  <li><a href="{% url "home:dashboard" %}">Home</a></li>
-  <li class="active"><a href="{% url "loans:dashboard" %}">Loans</a></li>
-  <li><a href="{% url "crm:dashboard" %}">Clients</a></li>
-  <li><a href="{% url "accounting:dashboard" %}">Accounting</a></li>
-  <li><a href="{% url "risk:dashboard" %}">Risk &amp; Compliance</a></li>
-  <li><a href="{% url "users:dashboard" %}">Users</a></li>
-  <li><a href="{% url "users:my-profile" %}">My Profile</a></li>
-{% endblock nav-menu-items %}
+    <script>
+        var pieData = [
+            {% for item in portfolio_by_status %}
+                {
+                    label: "{{ item.name|safe }}",
+                    value: "{{ item.value }}",
+                    color: "{{ item.color }}",
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        var pieData2 = [
+            {% for item in portfolio_by_fund %}
+                {
+                    label: "{{ item.name|safe }}",
+                    value: "{{ item.value }}",
+                    color: "{{ item.color }}",
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        var pieData3 = [
+            {% for item in portfolio_by_repayment_model %}
+                {
+                    label: "{{ item.name|safe }}",
+                    value: "{{ item.value }}",
+                    color: "{{ item.color }}",
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        var grossLoanVSGrossNPLTrend = {
+            labels : ["Nov","Dec","Jan","Feb","Mar","Apr","May"],
+            datasets : [
+                {
+                    label: "GNPL",
+                    fillColor : "rgba(197,24,59,0.2)",
+                    strokeColor : "rgba(197,24,59,1)",
+                    pointColor : "rgba(197,24,59,1)",
+                    pointStrokeColor : "#fff",
+                    pointHighlightFill : "#fff",
+                    pointHighlightStroke : "rgba(197,24,59,1)",
+                    data : [75408542.88, 88332600.72, 92526281.23, 150691803.32, 163099602.55, 173822479.3, 193202479.3]
+                },
+                {
+                    label: "GLP",
+                    fillColor : "rgba(255,109,138,0.2)",
+                    strokeColor : "rgba(255,109,138,1)",
+                    pointColor : "rgba(255,109,138,1)",
+                    pointStrokeColor : "#fff",
+                    pointHighlightFill : "#",
+                    pointHighlightStroke : "rgba(255,109,138,1)",
+                    data : [734085742.88, 825332600.72, 839526281.23, 922691803.32, 930996029.55, 1238224719.3, 1299822000.3]
+                },
+            ]
+
+        };
+        var disbursementRepaymentTrend = {
+            labels : ["Nov","Dec","Jan","Feb","Mar","Apr","May"],
+            datasets : [
+                {
+                    label: "GR",
+                    fillColor : "rgba(65,161,134,0.2)",
+                    strokeColor : "rgba(65,161,134,1)",
+                    pointColor : "rgba(65,161,134,1)",
+                    pointStrokeColor : "#fff",
+                    pointHighlightFill : "#fff",
+                    pointHighlightStroke : "rgba(65,161,134,1)",
+                    data : [80408542.88, 88332600.72, 90526281.23, 100691803.32, 113099602.55, 123822479.3, 1549479.3]
+                },
+                {
+                    label: "GD",
+                    fillColor : "rgba(126,191,93,0.2)",
+                    strokeColor : "rgba(126,191,93,1)",
+                    pointColor : "rgba(126,191,93,1)",
+                    pointStrokeColor : "#fff",
+                    pointHighlightFill : "#fff",
+                    pointHighlightStroke : "rgba(126,191,93,1)",
+                    data : [40408542.88, 32332600.72, 28526281.23, 30691803.32, 40099602.55, 34822479.3, 692479.3]
+                }
+            ]
+
+        };
+
+        window.intword = function(value){
+            var value;
+
+            if (value >= 1000000000){
+                value /= 1000000000;
+                value = accounting.formatMoney(value, 'KES ', 0) + " B";
+                return value
+            } else if (value >= 1000000){
+                value /= 1000000;
+                value = accounting.formatMoney(value, 'KES ', 0) + " M";
+                return value
+            } else if (value == 0){
+                return "0";
+            }else{
+                return accounting.formatMoney(value, 'KES ', 0);
+            }
+        }
+        
+        var options = {
+            responsive: false, 
+            animateRotate : false, 
+            animateScale : false,
+            {% verbatim %}
+                scaleLabel: ("<%= intword(value) %>"),
+                tooltipTemplate: ("<%= accounting.formatMoney(value, 'KES ', 0) %>"),
+                multiTooltipTemplate: ("<%= accounting.formatMoney(value, 'KES ', 0) %>")
+            {% endverbatim %}
+        };
+
+        window.onload = function(){
+            var ctx = document.getElementById("portfolio-by-status").getContext("2d");
+            window.myPie1 = new Chart(ctx).Pie(pieData, options);
+            document.getElementById(
+                'portfolio-by-status-legend'
+            ).innerHTML = window.myPie1.generateLegend();
+            
+            var ctx2 = document.getElementById("portfolio-by-fund").getContext("2d");
+            window.myPie2 = new Chart(ctx2).Pie(pieData2, options);
+            document.getElementById(
+                'portfolio-by-fund-legend'
+            ).innerHTML = window.myPie2.generateLegend();
+
+            var ctx3 = document.getElementById("portfolio-by-repayment-model").getContext("2d");
+            window.myPie3 = new Chart(ctx3).Pie(pieData3, options);
+            document.getElementById(
+                'portfolio-by-repayment-model-legend'
+            ).innerHTML = window.myPie3.generateLegend();
+
+
+            options['responsive'] = true;
+
+            var ctx4 = document.getElementById("loan-repayment-disbursement-trends").getContext("2d");
+            window.myLine = new Chart(ctx4).Line(disbursementRepaymentTrend, options);
+            document.getElementById('loan-repayment-disbursement-trends-legend').innerHTML = window.myLine.generateLegend();
+
+            var ctx5 = document.getElementById("gross-portfolio-npl-trends").getContext("2d");
+            window.myLine2 = new Chart(ctx5).Line(grossLoanVSGrossNPLTrend, options);
+            document.getElementById('gross-portfolio-npl-trends-legend').innerHTML = window.myLine2.generateLegend();            
+        };
+    </script>
+{% endblock extrajs %}
+
+{% block reactjs-scripts %}
+  {{ block.super }}
+{% endblock reactjs-scripts %}
+
+{% block page-content %}
+    <div class="header row">
+        <div class="col-md-10 col-sm-12">
+            <h3>Your Loan Portfolio performance this month</h3>
+        </div>
+        <div class="col-md-2 col-sm-3 hidden-xs">
+            <a class="btn btn-primary btn-md pull-right font_black" style="color: white" href="#">
+                <i class="fa fa-help"></i> SEND MESSAGE
+            </a>
+        </div>
+    </div>
+    <div class="header row">
+        <div class="col-md-6 col-sm-12">
+            <h4>gross disbursement (GD) / gross repayment (GR) trends</h4>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <h4>gross loan portfolio (GLP) / gross non-performing loans (GNPL) trends</h4>
+        </div>
+    </div>
+    <div class="dashboard-row row">
+        <div class="dashboard-column col-md-6">
+            <div class="dashboard-inner-row clearfix">
+                <div class="">
+                    <div class="well well-sm loan-repayment-disbursement-trends">
+                        <div class="col-md-10">
+                            <canvas height="100px" id="loan-repayment-disbursement-trends"></canvas>
+                        </div>
+                        <div class="col-md-2">
+                            <div id="loan-repayment-disbursement-trends-legend"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-column col-md-6">
+            <div class="dashboard-inner-row clearfix">
+                <div class-"">
+                    <div class="well well-sm gross-portfolio-npl-trends">
+                        <div class="col-md-10">
+                            <canvas height="100px" id="gross-portfolio-npl-trends"></canvas>
+                        </div>
+                        <div class="col-md-2">
+                            <div id="gross-portfolio-npl-trends-legend"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-row row">
+        <div class="dashboard-column col-md-3 activities">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-12">
+                    <div class="well well-sm amounts">
+                        <div>
+                            <h4>total principal due</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ total_principal_due|intword }}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>total dues</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ total_dues|intword }}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>average days in arrears</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ avg_days_in_arrears|intword }}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>maximum days in arrears</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ max_days_in_arrears|intword }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-column col-md-3">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-12">
+                    <div class="well well-sm portfolio-by-status">
+                        <h4>Portfolio By Status</h4>
+                        <div id="canvas-holder-1">
+                            <canvas id="portfolio-by-status" width="180" height="180" style="margin-bottom: 10px;"></canvas>
+                            <div id="portfolio-by-status-legend"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-column col-md-6">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-6">
+                    <div class="well well-sm portfolio-by-fund">
+                        <h4>Portfolio By Fund</h4>
+                        <div id="canvas-holder-2">
+                            <canvas id="portfolio-by-fund" width="205" height="205" style="margin-bottom: 10px;"></canvas>
+                            <div id="portfolio-by-fund-legend"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="well well-sm portfolio-by-repayment-model">
+                        <h4>Portfolio by Repayment type</h4>
+                        <div id="canvas-holder-3">
+                            <canvas id="portfolio-by-repayment-model" width="232.5" height="232.5" style="margin-bottom: 10px;">
+                            </canvas>
+                            <div id="portfolio-by-repayment-model-legend"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock page-content %}

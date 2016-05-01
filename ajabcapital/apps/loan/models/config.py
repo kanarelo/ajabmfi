@@ -6,6 +6,8 @@ from decimal import Decimal as D
 
 from ajabcapital.apps.core.models import AuditBase, ConfigBase
 
+from .querysets import *
+
 class ConfigFeeCalculationMethod(ConfigBase):
     class Meta:
         db_table = "config_fee_calculation_method"
@@ -74,14 +76,6 @@ class ConfigLoanProductFeeType(ConfigBase):
     class Meta:
         db_table = "config_loan_product_fee_type"
         verbose_name = "Config Loan Product Fee Type"
-    
-class ConfigLoanRiskClassification(ConfigBase):
-    default_provision = models.DecimalField(decimal_places=4, max_digits=7, default=D(0.0))
-    icon = models.FileField(upload_to="config/icons/", null=True, blank=True)
-
-    class Meta:
-        db_table = "config_loan_risk_classification"
-        verbose_name = "Config Loan Risk Classification"
 
 class ConfigProfileType(ConfigBase):
     icon = models.FileField(upload_to="config/icons/profile_types/", null=True, blank=True)    

@@ -34,10 +34,15 @@ class BaseCustomerProfile(AuditBase):
     class Meta:
         abstract = True
 
+#--------------------------------------------------------------------------------
+
 class IndividualProfile(BaseCustomerProfile):
+    FEMALE = 0
+    MALE = 1
+    
     GENDER = (
-        (0, "Female"),
-        (1, "Male")
+        (FEMALE, "Female"),
+        (MALE, "Male")
     )
     
     CLIENT = 1
@@ -65,9 +70,8 @@ class IndividualProfile(BaseCustomerProfile):
     mobile_phone_number = models.CharField(max_length=20, unique=True)
     email = models.EmailField(unique=True)
 
-    @property
-    def whatsapp_user_id(self):
-        return "254%s" % self.mobile_phone_number[1:]
+    last_status = models.ForeignKey('ConfigProfileStatus', null=True)
+    last_status_date = models.DateTimeField(null=True)
 
     def get_full_name(self):
         return "%s %s" % (
@@ -83,11 +87,13 @@ class IndividualProfile(BaseCustomerProfile):
 
         unique_together = ('identity_number', 'identity_type')
 
+#--------------------------------------------------------------------------------
+
 class GroupProfile(BaseCustomerProfile):
     name = models.CharField(max_length=100)
 
     loan_group_type = models.ForeignKey('ConfigLoanGroupType', default=1)
-    last_group_status = models.ForeignKey('ConfigGroupProfileStatus', null=True)
+    last_group_status = models.ForeignKey('ConfigProfileStatus', null=True)
     last_group_status_date = models.DateTimeField(null=True)
 
     class Meta:
@@ -96,19 +102,6 @@ class GroupProfile(BaseCustomerProfile):
 
     def __unicode__(self):
         return self.name
-
-class GroupProfileStatus(AuditBase):
-    group_profile  = models.ForeignKey('GroupProfile')
-    status = models.ForeignKey('ConfigGroupProfileStatus')
-
-    approved_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
-
-    class Meta:
-        db_table = "group_status"
-        verbose_name = "Group Profile Status"
-
-    def __unicode__(self):
-        return "%s %s" % (self.group_profile, self.status)
 
 class GroupMembership(AuditBase):
     loan_group_profile = models.ForeignKey('GroupProfile', related_name="members")
@@ -131,6 +124,15 @@ class GroupMembership(AuditBase):
             )
         )
 
+    def member(self):
+        return (
+            self.member_individual or
+            self.member_business or
+            self.member_group
+        )
+
+#--------------------------------------------------------------------------------
+
 class BusinessProfile(BaseCustomerProfile):
     name = models.CharField(max_length=150)
 
@@ -140,7 +142,7 @@ class BusinessProfile(BaseCustomerProfile):
     physical_address = models.CharField(max_length=150)
     location_coodinates = models.CharField(max_length=50)
 
-    last_status = models.ForeignKey('ConfigBusinessProfileStatus', null=True)
+    last_status = models.ForeignKey('ConfigProfileStatus', null=True)
     last_status_date = models.DateTimeField(null=True)
 
     class Meta:
@@ -175,18 +177,32 @@ class BusinessStakeholder(AuditBase):
             )
         )
 
-class BusinessProfileStatus(AuditBase):
-    business_profile  = models.ForeignKey('BusinessProfile')
-    status = models.ForeignKey('ConfigBusinessProfileStatus')
+#--------------------------------------------------------------------------------
+
+class ProfileStatus(AuditBase):
+    individual_profile  = models.ForeignKey('IndividualProfile', null=True, blank=True)
+    business_profile  = models.ForeignKey('BusinessProfile', null=True, blank=True)
+    group_profile  = models.ForeignKey('GroupProfile', null=True, blank=True)
+
+    status = models.ForeignKey('ConfigProfileStatus')
 
     approved_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
 
     class Meta:
-        db_table = "business_profile_status"
-        verbose_name = "Business Profile Status"
+        db_table = "profile_status"
+        verbose_name = "Profile Status"
+        verbose_name_plural = "Profile Statuses"
 
     def __unicode__(self):
-        return "%s" % self.business_profile
+        return "%s %s" % ((
+                self.individual_profile or 
+                self.business_profile or 
+                self.group_profile 
+            ), 
+            self.status
+        )
+
+#--------------------------------------------------------------------------------
 
 class ProfileDocumentUpload(AuditBase):
     individual_profile = models.ForeignKey('IndividualProfile', null=True)

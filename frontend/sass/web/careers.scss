@@ -3,19 +3,20 @@
 section{
     &.page{
         &.header{
-            height: 12.5rem;
-            padding-top: 3.5rem;
+            padding: 3rem;
             background-color: #58B28D;
 
             h1 {
                 text-align: center; 
                 color: #fff; 
-                font-size: 27.5px;
+                font-size: 30px;
                 text-transform: uppercase;
+                margin: 0;
             }
         }
         &.other{
             min-height: 40rem;
+            font-size: 22px;
             padding-top: 2rem;
         }
     }

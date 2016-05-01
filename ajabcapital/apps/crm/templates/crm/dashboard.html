@@ -1,7 +1,238 @@
 {% extends "crm/base.html" %}
 
-{% block quick-actions %}
-  <li class="active">
-    <a href="#">add loan account</a>
-  </li>
-{% endblock quick-actions %}
+{% load staticfiles %}
+{% load humanize %}
+
+{% block extrajs %}
+    <script src="{% static "js/bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
+    <script src="{% static "js/bower_components/jquery-ui/jquery-ui.min.js" %}"></script>
+    <script src="{% static "js/bower_components/lodash/lodash.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/momentjs/min/moment.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/accounting/accounting.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/chartjs/Chart.js" %}"></script>
+
+    <script>
+        var pieData = [
+            {% for item in applications_by_product %}
+                {
+                    label: "{{ item.name|safe }}",
+                    value: "{{ item.value }}",
+                    color: "{{ item.color }}",
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        var genderData = [
+            {
+                label: "Female",
+                value: "350",
+                color: "#FF165D"
+            },{
+                label: "Male",
+                value: "423",
+                color: "#3EC1D3"
+            }
+        ];
+        var options = {
+            responsive: false, 
+            animateRotate : false, 
+            animateScale : false,
+            {% verbatim %}
+                tooltipTemplate: ("<%= accounting.formatMoney(value, 'KES ', 0) %>")
+            {% endverbatim %}
+        };
+        var options2 = {
+            responsive: false, 
+            animateRotate : false, 
+            animateScale : false,
+            {% verbatim %}
+                tooltipTemplate: ("<%= accounting.formatMoney(value, '', 0) %>")
+            {% endverbatim %}
+        };
+
+        window.onload = function(){
+            var ctx = document.getElementById("applications-by-product").getContext("2d");
+            window.myPie1 = new Chart(ctx).Pie(pieData, options);
+            document.getElementById(
+                'applications-by-product-legend'
+            ).innerHTML = window.myPie1.generateLegend();
+            var ctx2 = document.getElementById("individuals-by-gender").getContext("2d");
+            window.myPie2 = new Chart(ctx2).Pie(genderData, options2);
+            document.getElementById(
+                'individuals-by-gender-legend'
+            ).innerHTML = window.myPie2.generateLegend();
+        };
+    </script>
+{% endblock extrajs %}
+
+{% block reactjs-scripts %}
+  {{ block.super }}
+{% endblock reactjs-scripts %}
+
+{% block page-content %}
+    <div class="header row">
+        <div class="col-md-10 col-sm-12">
+            <h3>Here is how you interacted with your clients this month</h3>
+        </div>
+        <div class="col-md-2 col-sm-3 hidden-xs">
+            <a class="btn btn-primary btn-md pull-right font_black" style="color: white" href="#">
+                <i class="fa fa-help"></i> SEND MESSAGE
+            </a>
+        </div>
+        <div class="col-md-12">
+            <hr >
+            <h4>origination pipeline</h4>
+        </div>
+    </div>
+    <div class="dashboard-row row">
+        <div class="dashboard-column">
+            <div class="dashboard-inner-row clearfix">
+                <div class-"col-lg-12">
+                    <div class="well well-sm crm-origination-pipeline">
+                        <div class="row">
+                            <div class="col-lg-2 stage application">
+                                <div class="figure-label">Applied</div>
+                                <div class="figure">
+                                    {{ asset_to_equity_ratio|floatformat:2|default:120 }}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 stage credit-analysis">
+                                <div class="figure-label">Credit Analysis</div>
+                                <div class="figure">
+                                    {{ debt_to_equity_ratio|floatformat:2|default:110 }}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 stage risk-analysis">
+                                <div class="figure-label">Risk Analysis</div>
+                                <div class="figure">{{ active_borrowers|intcomma|default:200 }}</div>
+                            </div>
+                            <div class="col-lg-2 stage processing">
+                                <div class="figure-label">Processing</div>
+                                <div class="figure">
+                                    {{ women_borrowers|default:0 }}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 stage disbursement">
+                                <div class="figure-label">Disbursement</div>
+                                <div class="figure">
+                                    {{ average_loan_balance|floatformat:0|intcomma|default:230 }}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 stage servicing">
+                                <div class="figure-label">Servicing</div>
+                                <div class="figure">
+                                    {{ risk_coverage_ratio|floatformat:2|intcomma|default:320 }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr >
+	<div class="header row">
+        <div class="col-md-12 col-sm-12">
+            <h4>Origination Analytics</h4>
+        </div>
+    </div>
+    <div class="dashboard-row row">
+        <div class="dashboard-column col-lg-3 activities">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-12">
+                    <div class="well well-sm applications-by-product">
+                        <h4>Applications by Product</h4>
+                        <div id="canvas-holder-1">
+                            <canvas id="applications-by-product" width="270" height="200" style="margin-bottom: 10px;"></canvas>
+                            <div id="applications-by-product-legend"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-column col-lg-3">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-12">
+                    <div class="well well-sm amounts">
+                        <div>
+                            <h4>Individual Borrowers</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ individual_borrowers|intword }}</span>
+                                <span class="percentage">(71%)</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>Group Borrowers</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ group_borrowers|intword }}</span>
+                                <span class="percentage">(23%)</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>SME Borrowers</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ sme_borrowers|intword }}</span>
+                                <span class="percentage">(6%)</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>Total Borrowers</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ total_borrowers|intword }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-column col-lg-6">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-6">
+                    <div class="well well-sm ">
+                        <div class="well well-sm applications-by-product">
+                            <h4>Individuals by Gender</h4>
+                            <div id="canvas-holder-1">
+                                <canvas id="individuals-by-gender" width="240" height="240" style="margin-bottom: 10px;"></canvas>
+                                <div id="individuals-by-gender-legend"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="well well-sm amounts">
+                        <div>
+                            <h4>SMS's Sent</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ sms_sent|intword }}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>SMS's Left</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ sms_left|intword }}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>Emails Sent</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ emails_sent|intword }}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>SMS </h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ sms_received|intword }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock page-content %}

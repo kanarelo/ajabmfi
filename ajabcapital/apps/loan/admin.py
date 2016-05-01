@@ -10,7 +10,7 @@ for name, Model in models.iteritems():
             model = Model
 
             list_display = [f.name for f in Model._meta.fields[8:]]
-            list_filter = [f.name for f in Model._meta.fields[8:]]
+            list_filter = [f.name for f in Model._meta.fields[4:]]
             list_per_page = 25
 
         admin.site.register(Model, Admin)

@@ -9,6 +9,7 @@
 
 {% block nav-menu-items %}
   <li><a href="{% url "home:dashboard" %}">Home</a></li>
+  <li><a href="{% url "origination:dashboard" %}">Origination</a></li>
   <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
   <li><a href="{% url "crm:dashboard" %}">Clients</a></li>
   <li><a href="{% url "accounting:dashboard" %}">Accounting</a></li>
@@ -19,27 +20,28 @@
 
 {% block menu-items %}
   <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon users_users">
-      </div>
-      <div class="menu-label">users</div>
+    <div class="menu-item {% block users_users %}{% endblock %}">
+      <a href="{% url "users:users" %}">
+        <div class="menu-icon users_users">
+        </div>
+        <div class="menu-label">users</div>
+      </a>
     </div>
-    <div class="menu-item">
-      <div class="menu-icon users_roles">
-      </div>
-      <div class="menu-label">roles</div>
+    <div class="menu-item {% block users_loan_officers %}{% endblock %}">
+      <a href="{% url "users:users" %}">
+        <div class="menu-icon users_loan_officers">
+        </div>
+        <div class="menu-label">loan officers</div>
+      </a>
     </div>
   </li>
   <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon users_loan_officers">
-      </div>
-      <div class="menu-label">loan officers</div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-icon users_audit_trail">
-      </div>
-      <div class="menu-label">audit trail</div>
+    <div class="menu-item {% block users_audit_trail %}{% endblock %}">
+      <a href="{% url "users:users" %}">
+        <div class="menu-icon users_audit_trail">
+        </div>
+        <div class="menu-label">audit trail</div>
+      </a>
     </div>
   </li>
 {% endblock menu-items %}

@@ -6,6 +6,9 @@ from . import views
 urlpatterns = [
     url(r'^$', views.dashboard, name="dashboard"),
 
+    url(r'^list/$', views.users, name="users"),
+    # url(r'^roles/$', views.roles, name="roles"),
+
     url(r'^activate/$', views.activate_user, name="activate"),
     url(r'^deactivate/$', views.deactivate_user, name="deactivate"),
 

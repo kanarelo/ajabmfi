@@ -56,6 +56,7 @@ from . import (
     utils as auth_utils, 
     models as user_models
 )
+from .models import *
 
 import logging
 
@@ -71,6 +72,24 @@ def dashboard(request):
         'most_active_users': auth_api.get_most_active_users(limit=5),
         'password_expired_users': auth_api.get_password_expired_users(limit=5),
         'contact_us_form': core_forms.ContactUsForm()
+    })
+
+@login_required
+def users(request):
+    users = User.objects.all()
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(users, request.GET.get('count', 12)) # Show 11 contacts per page
+
+    try:
+        users = paginator.page(page)
+    except PageNotAnInteger:
+        users = paginator.page(1)
+    except EmptyPage:
+        users = paginator.page(paginator.num_pages)
+
+    return TemplateResponse(request, "users/users.html", {
+        "users": users
     })
 
 #-------------------- activate/deactivate

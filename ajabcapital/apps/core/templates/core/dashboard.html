@@ -1,53 +1,211 @@
 {% extends "base.html" %}
 
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% load humanize %}
+
 {% block mi_dashboard %}active{% endblock %}
+
+{% block sidebar %}
+{% endblock sidebar %}
+
+{% block extrajs %}
+    <script src="{% static "js/bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
+    <script src="{% static "js/bower_components/jquery-ui/jquery-ui.min.js" %}"></script>
+    <script src="{% static "js/bower_components/lodash/lodash.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/momentjs/min/moment.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/accounting/accounting.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/chartjs/Chart.js" %}"></script>
+
+    <script>
+        var pieData = [
+            {% for item in portfolio_by_risk %}
+                {
+                    label: "{{ item.name|safe }}",
+                    value: "{{ item.value }}",
+                    color: "{{ item.color }}",
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        var pieData2 = [
+            {% for item in portfolio_by_product %}
+                {
+                    label: "{{ item.name|safe }}",
+                    value: "{{ item.value }}",
+                    color: "{{ item.color }}",
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        var options = {
+            responsive: false, 
+            animateRotate : false, 
+            animateScale : false,
+            {% verbatim %}
+            tooltipTemplate: ("<%= accounting.formatMoney(value, 'KES ', 0) %>")
+            {% endverbatim %}
+        };
+
+        window.onload = function(){
+            var ctx = document.getElementById("portfolio-by-risk-chart").getContext("2d");
+            window.myPie1 = new Chart(ctx).Pie(pieData, options);
+            document.getElementById(
+                'portfolio-by-risk-legend'
+            ).innerHTML = window.myPie1.generateLegend();
+
+            var ctx = document.getElementById("portfolio-by-product-chart").getContext("2d");
+            window.myPie2 = new Chart(ctx).Pie(pieData2, options);
+            document.getElementById(
+                'portfolio-by-product-legend'
+            ).innerHTML = window.myPie2.generateLegend();
+        };
+    </script>
+{% endblock extrajs %}
+
+{% block reactjs-scripts %}
+  {{ block.super }}
+{% endblock reactjs-scripts %}
 
 {% block page-content %}
     <div class="header row">
         <div class="col-md-8 col-sm-9">
-            <h3>Welcome, {{ request.user.get_full_name }}</h3>
+            <h3>Welcome{% if request.user.first_name %} {{ request.user.first_name }}{% endif %}, here is a snapshot of your Micro Finance the past 1 month</h3>
         </div>
         <div class="col-md-4 col-sm-3 hidden-xs">
-            <a class="btn btn-primary btn-md pull-right" href="#">Simple Things</a>
+            <a class="btn btn-primary btn-md pull-right font_black" href="#">
+                <i class="fa fa-help"></i> SEND MESSAGE
+            </a>
         </div>
     </div>
     <div class="dashboard-row row">
-        <div class="dashboard-column col-lg-8">
+        <div class="dashboard-column col-lg-4 activities">
             <div class="dashboard-inner-row clearfix">
-                <div class="col-md-4">
-                    <div class="well well-sm">
-                        <h4>Gross Portfolio</h4>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="well well-sm">
-                        <h4>Portfolio At Risk <strong>(PAR)</strong></h4>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="well well-sm">
-                        <h4>Portfolio By Product</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard-inner-row clearfix">
-                <div class="col-md-8">
-                    <div class="well well-sm">
-                        <h4>Loan Funds Perfomance</h4>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="well well-sm">
-                        <h4>Overdues by Product</h4>
+                <div class="col-md-12">
+                    <div class="well well-sm pipeline">
+                        <h4>Loan Origination Pipeline</h4>
+                        <div class="funnel-holder">
+                            <div class="col-lg-8 funnel">
+                                <ul class="pipeline-rows">
+                                    {% for pipeline_item in pipeline_items %}
+                                        <li class="pipeline-row">
+                                            <div class="pipeline-item" style="
+                                            color: {{pipeline_item.color}}; 
+                                            background-color: {{pipeline_item.background_color}}; 
+                                            width:{{ pipeline_item.percentage }}%;">
+                                                {{ pipeline_item.amount|intword }}
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>   
+                            </div>
+                            <div class="col-lg-4 legend">
+                                <ul class="legend-rows">
+                                {% for pipeline_item in pipeline_items %}
+                                    <li class="legend-row">
+                                        <div class="legend-item" style="border-left: 5px solid {{ pipeline_item.background_color }};">
+                                            <div class="font_black">{{ pipeline_item.name }}</div>
+                                            <div>({{ pipeline_item.percentage|floatformat:0 }}%)</div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="origination-kpis col-lg-12">
+                            <div class="kpi potential col-md-3">
+                                <h4>Potential</h4>
+                                107
+                            </div>
+                            <div class="kpi applied col-md-3">
+                                <h4>Applied</h4>
+                                89
+                            </div>
+                            <div class="kpi rejected col-md-3">
+                                <h4>Rejected</h4>
+                                28
+                            </div>
+                            <div class="kpi withdrawn col-md-3">
+                                <h4>Withdrawn</h4>
+                                15
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="dashboard-column col-lg-4 activities">
+        <div class="dashboard-column col-lg-3">
             <div class="dashboard-inner-row clearfix">
                 <div class="col-md-12">
-                    <div class="well well-sm">
-                        <h4>Quick Accounts</h4>
+                    <div class="well well-sm amounts">
+                        <div>
+                            <h4>Gross Loan Portfolio</h4>
+                            <div class="amount-holder">
+                                <span class="currency">KES</span>
+                                {% if gross_loan_portfolio < 1000000 %}
+                                    <span class="amount"> {{ gross_loan_portfolio|floatformat:2|intcomma }}</span>
+                                {% else %}
+                                    <span class="amount"> {{ gross_loan_portfolio|intword }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>Provision for Bad debt</h4>
+                            <div class="amount-holder">
+                                <span class="currency">KES</span>
+                                {% if provision_for_bad_debt < 1000000 %}
+                                    <span class="amount"> {{ provision_for_bad_debt|floatformat:2|intcomma }}</span>
+                                {% else %}
+                                    <span class="amount"> {{ provision_for_bad_debt|intword }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>Net Loan Portfolio</h4>
+                            <div class="amount-holder">
+                                <span class="currency">KES</span>
+                                {% if net_loan_portfolio < 1000000 %}
+                                    <span class="amount"> {{ net_loan_portfolio|floatformat:2|intcomma }}</span>
+                                {% else %}
+                                    <span class="amount"> {{ net_loan_portfolio|intword }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>Gross Non Performing Loans (NPLs)</h4>
+                            <div class="amount-holder">
+                                <span class="currency">KES</span>
+                                {% if gross_non_performing_loans < 1000000 %}
+                                    <span class="amount"> {{ gross_non_performing_loans|floatformat:2|intcomma }}</span>
+                                {% else %}
+                                    <span class="amount"> {{ gross_non_performing_loans|intword }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-column col-lg-5">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-6">
+                    <div class="well well-sm portfolio-by-risk">
+                        <h4>Gross Portfolio By PAR Age</h4>
+                        <div id="canvas-holder-1">
+                            <canvas id="portfolio-by-risk-chart" width="250" height="180" style="margin-bottom: 10px;"></canvas>
+                            <div id="portfolio-by-risk-legend"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="well well-sm portfolio-by-product">
+                        <h4>Gross Portfolio By Product</h4>
+                        <div id="canvas-holder-2">
+                            <canvas id="portfolio-by-product-chart" width="245" height="245"></canvas>
+                            <div id="portfolio-by-product-legend"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,8 +215,67 @@
         <div class="dashboard-column">
             <div class="dashboard-inner-row clearfix">
                 <div class-"col-lg-12">
-                    <div class="well well-sm">
+                    <div class="well well-sm kpis">
                         <h4>Key Perfomance Indicators</h4>
+                        <div class="row">
+                            <div class="col-lg-2 kpi">
+                                <div class="figure-label">Asset to Equity Ratio</div>
+                                <div class="figure" 
+                                style="
+                                {% if asset_to_equity_ratio > 100.0 %}
+                                    color: green;
+                                {% else %}
+                                    color: red;
+                                {% endif %}
+                                ">
+                                    {{ asset_to_equity_ratio|floatformat:2 }}%
+                                </div>
+                            </div>
+                            <div class="col-lg-2 kpi">
+                                <div class="figure-label">Debt to Equity Ratio</div>
+                                <div class="figure"
+                                style="
+                                {% if debt_to_equity_ratio > 100.0 %}
+                                    color: green;
+                                {% else %}
+                                    color: red;
+                                {% endif %}
+                                ">
+                                    {{ debt_to_equity_ratio|floatformat:2 }}%
+                                </div>
+                            </div>
+                            <div class="col-lg-2 kpi">
+                                <div class="figure-label">Active Borrowers</div>
+                                <div class="figure">{{ active_borrowers|intcomma }}</div>
+                            </div>
+                            <div class="col-lg-2 kpi">
+                                <div class="figure-label">Women Borrowers</div>
+                                <div class="figure">
+                                    {{ women_borrowers }} ({{women_borrowers_percentage|floatformat:0}}%)
+                                </div>
+                            </div>
+                            <div class="col-lg-2 kpi">
+                                <div class="figure-label">Average Loan Balance</div>
+                                <div class="figure">
+                                    <span class="currency">KES.</span> 
+                                    <span class="amount">
+                                        {{ average_loan_balance|floatformat:0|intcomma }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 kpi">
+                                <div class="figure-label">Risk Coverage Ratio</div>
+                                <div class="figure"
+                                style="
+                                {% if risk_coverage_ratio > 200 %}
+                                    color: green;
+                                {% else %}
+                                    color: red;
+                                {% endif %}
+                                ">
+                                    {{ risk_coverage_ratio|floatformat:2|intcomma }}%
+                                </div>
+                        </div>
                     </div>
                 </div>
             </div>

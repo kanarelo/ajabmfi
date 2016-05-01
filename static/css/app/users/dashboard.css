@@ -5837,29 +5837,29 @@ button.close {
   src: url("/static/fonts/proximanova/proximanova-light-webfont.eot?#iefix") format("embedded-opentype"), url("/static/fonts/proximanova/proximanova-light-webfont.woff") format("woff"), url("/static/fonts/proximanova/proximanova-light-webfont.ttf") format("truetype"), url("/static/fonts/proximanova/proximanova-light-webfont.svg#proxima_nova_ltregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-.font_regular, html, body, section.page, h4, .font_extra_bold, .navbar .navbar-header .navbar-brand .ajab, .navbar.navbar-secondary #navbar ul.nav li.active > a,
+.font_regular, html, body, section.page, .font_extra_bold, .navbar .navbar-header .navbar-brand .ajab, .navbar.navbar-secondary #navbar ul.nav li.active > a,
 .navbar.navbar-secondary #navbar ul.nav li.focus > a,
-.navbar.navbar-secondary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label, section.body-area .main-content .header h3, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-label, .font_black, .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li:first-child, .font_light, .navbar .navbar-header .navbar-brand .mfi, .font_semibold, strong, .navbar.navbar-primary #navbar ul.nav li > a {
+.navbar.navbar-secondary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label, section.body-area .main-content .header h3, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr.summary, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage .figure, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis h4, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .amount-holder .amount, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-label, .font_black, .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li:first-child, section.body-area .main-content .table-holder .table-cover h3, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure, .font_light, .navbar .navbar-header .navbar-brand .mfi, .font_semibold, h4, strong, .navbar.navbar-primary #navbar ul.nav li > a, section.body-area .main-content .table-holder .table-cover table thead, section.body-area .main-content .header h4, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr th, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage .figure-label, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure-label, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .par ol li .classification, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .quick-accounts .quick-row .name {
   -webkit-font-feature-settings: "kern" 1,"liga" 1,"calt" 1,"pnum" 1,"tnum" 0,"onum" 0,"lnum" 0,"dlig" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility; }
 
-.font_regular, html, body, section.page, h4 {
+.font_regular, html, body, section.page {
   font-family: "ProximaNova-Regular"; }
 
 .font_extra_bold, .navbar .navbar-header .navbar-brand .ajab, .navbar.navbar-secondary #navbar ul.nav li.active > a,
 .navbar.navbar-secondary #navbar ul.nav li.focus > a,
-.navbar.navbar-secondary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label, section.body-area .main-content .header h3, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-label {
+.navbar.navbar-secondary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label, section.body-area .main-content .header h3, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr.summary, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage .figure, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis h4, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .amount-holder .amount, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-label {
   font-family: "proxima_nova_thbold"; }
 
-.font_black, .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li:first-child {
+.font_black, .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li:first-child, section.body-area .main-content .table-holder .table-cover h3, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure {
   font-family: "ProximaNovaBlRegular"; }
 
 .font_light, .navbar .navbar-header .navbar-brand .mfi {
   font-family: "proxima_nova_ltregular"; }
 
-.font_semibold, strong, .navbar.navbar-primary #navbar ul.nav li > a {
+.font_semibold, h4, strong, .navbar.navbar-primary #navbar ul.nav li > a, section.body-area .main-content .table-holder .table-cover table thead, section.body-area .main-content .header h4, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr th, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage .figure-label, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure-label, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .par ol li .classification, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .quick-accounts .quick-row .name {
   font-family: "proxima_nova_ltbold"; }
 
 .skinny-letterspacing {
@@ -5944,6 +5944,42 @@ html, body {
   min-height: 100% !important;
   height: 100%; }
 
+ul.pie-legend {
+  margin-left: -20px;
+  border-radius: 5px;
+  margin-right: 5px;
+  list-style: none; }
+  ul.pie-legend li {
+    margin-bottom: 10px;
+    color: #33345E; }
+    ul.pie-legend li span {
+      padding: 5px 12px;
+      width: 8px;
+      height: 8px;
+      font-weight: 600;
+      margin-bottom: 3px;
+      border-radius: 3px;
+      margin-right: 5px; }
+
+ul.line-legend {
+  margin-left: -20px;
+  border-radius: 5px;
+  margin-right: 5px;
+  list-style: none;
+  margin-top: 15px;
+  margin-right: 5px; }
+  ul.line-legend li {
+    margin-bottom: 10px;
+    color: #33345E; }
+    ul.line-legend li span {
+      padding: 5px 12px;
+      width: 8px;
+      height: 8px;
+      font-weight: 600;
+      margin-bottom: 3px;
+      border-radius: 3px;
+      margin-right: 5px; }
+
 .select-label .icon {
   color: #fff;
   background: #06aea7;
@@ -5974,8 +6010,9 @@ html, body {
 
 h4 {
   text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 12px; }
+  letter-spacing: 1.3px;
+  font-size: 12px;
+  text-decoration: underline; }
 
 .navbar {
   border-radius: 0; }
@@ -5984,7 +6021,8 @@ h4 {
     padding-bottom: 10px; }
   .navbar .navbar-header .navbar-brand {
     font-size: 30px;
-    color: #000; }
+    color: #000;
+    padding: 1rem 2rem; }
   .navbar.navbar-primary {
     margin-bottom: 0;
     border: none;
@@ -6065,12 +6103,15 @@ section.body-area {
               display: inline-block;
               width: 32px;
               height: 32px;
-              background-repeat: no-repeat;
-              background-size: 32px 32px; }
+              background-repeat: no-repeat; }
             section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover {
               text-decoration: none; }
+              section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover .menu-icon {
+                display: inline-block;
+                width: 32px;
+                height: 32px;
+                background-repeat: no-repeat; }
           section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active {
-            background-image: linear-gradient(-90deg, #06AEA7 0%, #20B38C 100%);
             cursor: pointer; }
             section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover .menu-label, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active .menu-label {
               color: #fff; }
@@ -6102,15 +6143,32 @@ section.body-area {
     overflow-y: scroll;
     margin-left: 19.15rem;
     box-shadow: -4px 0 3px -2px rgba(0, 0, 0, 0.15);
-    padding: 2rem 1rem 5rem 2rem; }
+    padding: 1rem 1rem 5rem; }
+    section.body-area .main-content .table-holder {
+      height: 100%; }
+      section.body-area .main-content .table-holder .table-cover {
+        height: 85%; }
+        section.body-area .main-content .table-holder .table-cover table tbody {
+          font-size: 13.5px; }
     section.body-area .main-content .header {
-      padding-right: 15px;
-      padding-bottom: 5px; }
+      padding-right: 1rem;
+      padding-bottom: 5px;
+      padding-left: 1rem; }
       section.body-area .main-content .header h3 {
         margin-top: 0; }
+      section.body-area .main-content .header h4 {
+        letter-spacing: 1.1px;
+        font-size: 12px; }
+      section.body-area .main-content .header hr {
+        margin-top: 0.75rem;
+        margin-bottom: 0.5rem; }
     section.body-area .main-content .dashboard-row {
-      padding: 0 0 0 15px;
-      margin-right: 0px; }
+      padding: 0 0 0 2rem;
+      margin-right: 0px;
+      margin-bottom: 1rem; }
+      section.body-area .main-content .dashboard-row > hr {
+        margin-top: 0.75rem;
+        margin-bottom: 0.3rem; }
       section.body-area .main-content .dashboard-row .dashboard-column {
         padding: 0;
         height: 100%; }
@@ -6128,7 +6186,185 @@ section.body-area {
             min-height: 12.5rem;
             padding: 5px 15px;
             height: 100%;
-            border: none; }
+            border: #FAFAFA;
+            -webkit-box-shadow: none;
+            box-shadow: none; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table {
+              text-transform: uppercase;
+              font-size: 12px; }
+              section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr.summary {
+                font-size: 102.5%; }
+                section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr.summary.subtotal {
+                  background-color: #EEEEEE; }
+                section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr.summary.total {
+                  background-color: #DEDEDE; }
+                section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr.summary td {
+                  border-top-width: 2px; }
+              section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr td {
+                padding: 4px; }
+                section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr td:last-child {
+                  text-align: right; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well hr {
+              margin-top: .85rem;
+              margin-bottom: 0.85rem; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.applications-by-product {
+              min-height: 30rem; }
+              section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.applications-by-product h4 {
+                margin-bottom: 15px; }
+              section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.applications-by-product canvas {
+                margin-left: -15px;
+                margin-bottom: 15px; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.loan-repayment-disbursement-trends {
+              min-height: 11rem; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.gross-portfolio-npl-trends {
+              min-height: 11rem; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline {
+              min-height: 7.5rem;
+              padding: 0; }
+              section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row {
+                margin: 0;
+                height: 7.5rem; }
+                section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage {
+                  text-align: center;
+                  height: 7.5rem;
+                  padding: 0;
+                  padding-top: 12.5px; }
+                  section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage.application {
+                    background-color: #1F3A52;
+                    color: #fff; }
+                    section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage.application:after {
+                      border-top: 52.5px solid #41A186;
+                      border-bottom: 53.5px solid #41A186;
+                      border-left: 25px solid #1F3A52; }
+                  section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage.credit-analysis {
+                    background-color: #41A186;
+                    color: #fff; }
+                    section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage.credit-analysis:after {
+                      border-top: 52.5px solid #8CCA6E;
+                      border-bottom: 53.5px solid #8CCA6E;
+                      border-left: 25px solid #41A186; }
+                  section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage.risk-analysis {
+                    background-color: #8CCA6E; }
+                    section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage.risk-analysis:after {
+                      border-top: 52.5px solid #D3F689;
+                      border-bottom: 53.5px solid #D3F689;
+                      border-left: 25px solid #8CCA6E; }
+                  section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage.processing {
+                    background-color: #D3F689; }
+                    section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage.processing:after {
+                      border-top: 52.5px solid #F8F7A5;
+                      border-bottom: 53.5px solid #F8F7A5;
+                      border-left: 25px solid #D3F689; }
+                  section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage.disbursement {
+                    background-color: #F8F7A5; }
+                    section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage.disbursement:after {
+                      border-top: 52.5px solid #F0F0EF;
+                      border-bottom: 53.5px solid #F0F0EF;
+                      border-left: 25px solid #F8F7A5; }
+                  section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage.servicing {
+                    background-color: #F0F0EF; }
+                    section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage.servicing:after {
+                      border-top: 52.5px solid #fff;
+                      border-bottom: 53.5px solid #fff;
+                      border-left: 25px solid #F0F0EF; }
+                  section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage .figure-label {
+                    font-size: 1rem;
+                    letter-spacing: 1px;
+                    text-transform: capitalize;
+                    padding-top: .6rem; }
+                  section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage .figure {
+                    font-size: 3rem; }
+                  section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage:after {
+                    content: "";
+                    position: absolute;
+                    right: 0px;
+                    top: 0; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.pipeline {
+              min-height: 30rem; }
+              section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.pipeline .origination-kpis {
+                border-top: 1px solid #eeeeee;
+                height: 7.5rem;
+                padding: 0; }
+                section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.pipeline .origination-kpis h4 {
+                  text-align: center;
+                  margin-top: 2.25rem;
+                  margin-bottom: 0.25rem; }
+                section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.pipeline .origination-kpis .kpi {
+                  padding-left: 0;
+                  padding-right: 0;
+                  font-size: 2.25rem;
+                  text-align: center; }
+              section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.pipeline .funnel-holder .funnel {
+                padding-left: 0; }
+                section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.pipeline .funnel-holder .funnel ul.pipeline-rows {
+                  list-style: none;
+                  padding: 0; }
+                  section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.pipeline .funnel-holder .funnel ul.pipeline-rows li.pipeline-row .pipeline-item {
+                    color: #000;
+                    font-size: 20px;
+                    padding: 10px;
+                    height: 50px;
+                    border-bottom: 1px solid #fff; }
+              section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.pipeline .funnel-holder .legend {
+                padding: 0; }
+                section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.pipeline .funnel-holder .legend .legend-rows {
+                  padding: 0;
+                  list-style: none; }
+                  section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.pipeline .funnel-holder .legend .legend-rows .legend-row {
+                    border-bottom: 1px solid #e9e9e9; }
+                    section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.pipeline .funnel-holder .legend .legend-rows .legend-row:last-child {
+                      border-bottom: none; }
+                    section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.pipeline .funnel-holder .legend .legend-rows .legend-row .legend-item {
+                      padding: 7px 0px;
+                      height: 50px;
+                      background-color: #f9f9f9;
+                      font-size: 13px;
+                      text-align: center; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.amounts {
+              min-height: 30rem; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.quick-accounts {
+              min-height: 30rem; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.portfolio-by-risk {
+              min-height: 30rem; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.portfolio-by-product {
+              min-height: 30rem; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis {
+              min-height: 9rem; }
+              section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis h4 {
+                font-size: 17px;
+                margin-bottom: 15px;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 10px;
+                text-align: center;
+                text-transform: capitalize; }
+              section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure-label {
+                font-size: 11px;
+                letter-spacing: 1px;
+                color: #000;
+                text-align: center;
+                text-transform: uppercase; }
+              section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure {
+                font-size: 25px;
+                text-align: center; }
+                section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure .currency {
+                  font-size: 60%; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .par ol {
+              padding-left: 15px; }
+              section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .par ol li {
+                font-size: 13px; }
+                section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .par ol li .classification {
+                  width: 65%;
+                  display: inline-block; }
+                section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .par ol li .value {
+                  width: 35%; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .quick-accounts .quick-row .name {
+              display: inline-block; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .quick-accounts .quick-row .balance {
+              display: inline-block; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .amount-holder .currency {
+              font-size: 15px; }
+            section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .amount-holder .amount {
+              font-size: 30px; }
             section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.notifications-holder {
               min-height: 39.25rem; }
     section.body-area .main-content .form-holder {
@@ -6165,22 +6401,27 @@ section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .m
   color: #7e7e7e;
   margin-top: .5rem;
   font-size: 13px; }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.users_users {
-  background-image: url("/static/img/icons/ic_users_coloured.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.users_roles {
-  background-image: url("/static/img/icons/ic_users_roles_coloured.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.users_loan_officers {
-  background-image: url("/static/img/icons/ic_users_coloured.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.users_audit_trail {
-  background-image: url("/static/img/icons/ic_audit_trail_coloured.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.users_users {
-  background-image: url("/static/img/icons/is_users_coloured.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.users_roles {
-  background-image: url("/static/img/icons/is_users_roles_coloured.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.users_loan_officers {
-  background-image: url("/static/img/icons/is_users_coloured.png"); }
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.users_audit_trail {
-  background-image: url("/static/img/icons/ic_audit_trail_coloured.png"); }
+section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat; }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.users_users {
+    background-image: url("/static/img/icons/ic_users_coloured.png"); }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.users_roles {
+    background-image: url("/static/img/icons/ic_users_roles_coloured.png"); }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.users_loan_officers {
+    background-image: url("/static/img/icons/ic_users_coloured.png"); }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon.users_audit_trail {
+    background-image: url("/static/img/icons/ic_audit_trail_coloured.png"); }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.users_users {
+    background-image: url("/static/img/icons/is_users_coloured.png"); }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.users_roles {
+    background-image: url("/static/img/icons/is_users_roles_coloured.png"); }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.users_loan_officers {
+    background-image: url("/static/img/icons/is_users_coloured.png"); }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item .menu-icon:hover.users_audit_trail {
+    background-image: url("/static/img/icons/ic_audit_trail_coloured.png"); }
 section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item:hover {
   background-image: linear-gradient(-90deg, #E18B7B 0%, #DF8778 100%);
   cursor: pointer; }

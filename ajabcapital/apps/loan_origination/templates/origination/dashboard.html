@@ -1,6 +1,19 @@
-{% extends "base.html" %}
+{% extends "origination/base.html" %}
 
 {% block mi_dashboard %}active{% endblock %}
+
+{% block menu-header %}Loan Origination{% endblock menu-header %}
+
+{% block nav-menu-items %}
+  <li><a href="{% url "home:dashboard" %}">Home</a></li>
+  <li class="active"><a href="{% url "origination:dashboard" %}">Origination</a></li>
+  <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
+  <li><a href="{% url "crm:dashboard" %}">Clients</a></li>
+  <li><a href="{% url "accounting:dashboard" %}">Accounting</a></li>
+  <li><a href="{% url "risk:dashboard" %}">Risk &amp; Compliance</a></li>
+  <li><a href="{% url "users:dashboard" %}">Users</a></li>
+  <li><a href="{% url "users:my-profile" %}">My Profile</a></li>
+{% endblock nav-menu-items %}
 
 {% block page-content %}
     <div class="header row">

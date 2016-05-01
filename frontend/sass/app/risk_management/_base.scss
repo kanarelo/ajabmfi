@@ -38,61 +38,67 @@ section.body-area{
                 ul.menu{
                     li.menu-row{
                         .menu-item{
-                            .menu-label{
-                                @extend %extra-bold;
-                                text-transform: uppercase;
-                                color: #7e7e7e;
-                                margin-top: .5rem;
-                                font-size: 13px;
-                            }
-                            .menu-icon{
-                                &.kyc{
-                                    background-image: url("/static/img/icons/ic_kyc_coloured.png");
+                            a{
+                                .menu-label{
+                                    @extend %extra-bold;
+                                    text-transform: uppercase;
+                                    color: #7e7e7e;
+                                    margin-top: .5rem;
+                                    font-size: 13px;
                                 }
-                                &.policies{
-                                    background-image: url("/static/img/icons/ic_policies_coloured.png");
-                                }
-                                &.monitoring{
-                                    background-image: url("/static/img/icons/ic_monitoring_coloured.png");
-                                }
-                                &.working_capital{
-                                    background-image: url("/static/img/icons/ic_core_capital_coloured.png");
-                                }
-                                &.user_controls{
-                                    background-image: url("/static/img/icons/ic_risk_user_control_coloured.png");
-                                }
-                                &.reports{
-                                    background-image: url("/static/img/icons/ic_risk_reports_coloured.png");
-                                }
-
-                                &:hover{
-                                    &.loan_accounts{
-                                        background-image: url("/static/img/icons/ic_loan_accounts_white.png");
+                                .menu-icon{
+                                    display: inline-block;
+                                    width: 32px;
+                                    height: 32px;
+                                    background-repeat: no-repeat;
+                                    
+                                    &.kyc{
+                                        background-image: url("/static/img/icons/ic_kyc_coloured.png");
                                     }
-                                    &.loan_funds{
-                                        background-image: url("/static/img/icons/ic_loan_funds_white.png");
+                                    &.policies{
+                                        background-image: url("/static/img/icons/ic_policies_coloured.png");
                                     }
-                                    &.loan_transactions{
-                                        background-image: url("/static/img/icons/ic_loan_transactions_white.png");
+                                    &.monitoring{
+                                        background-image: url("/static/img/icons/ic_monitoring_coloured.png");
                                     }
-                                    &.loan_products{
-                                        background-image: url("/static/img/icons/ic_loan_products_white.png");
+                                    &.liquidity{
+                                        background-image: url("/static/img/icons/ic_core_capital_coloured.png");
                                     }
-                                    &.loan_accounting{
-                                        background-image: url("/static/img/icons/ic_accounting_white.png");
+                                    &.user_controls{
+                                        background-image: url("/static/img/icons/ic_risk_user_control_coloured.png");
                                     }
-                                    &.loan_reports{
-                                        background-image: url("/static/img/icons/ic_accounting_reports_white.png");
+                                    &.reports{
+                                        background-image: url("/static/img/icons/ic_risk_reports_coloured.png");
                                     }
                                 }
                             }
 
-                            &:hover{
+                            a:hover, &.active{
                                 background-image: linear-gradient(-90deg, #2984D3 0%, #3891EB 100%);
                                 cursor: pointer;
 
                                 .menu-label{
                                     color: #fff;
+                                }
+                                .menu-icon{
+                                    &.kyc{
+                                        background-image: url("/static/img/icons/ic_kyc_white.png");
+                                    }
+                                    &.policies{
+                                        background-image: url("/static/img/icons/ic_policies_white.png");
+                                    }
+                                    &.monitoring{
+                                        background-image: url("/static/img/icons/ic_monitoring_white.png");
+                                    }
+                                    &.working_capital{
+                                        background-image: url("/static/img/icons/ic_core_capital_white.png");
+                                    }
+                                    &.user_controls{
+                                        background-image: url("/static/img/icons/ic_risk_user_control_white.png");
+                                    }
+                                    &.reports{
+                                        background-image: url("/static/img/icons/ic_risk_reports_white.png");
+                                    }
                                 }
                             }
                         }

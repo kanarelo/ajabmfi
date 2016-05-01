@@ -1,1 +1,471 @@
 {% extends "risk_management/base.html" %}
+
+{% load static %}
+{% load humanize %}
+
+{% block extrajs %}
+    <script src="{% static "js/bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
+    <script src="{% static "js/bower_components/jquery-ui/jquery-ui.min.js" %}"></script>
+    <script src="{% static "js/bower_components/lodash/lodash.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/momentjs/min/moment.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/accounting/accounting.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/chartjs/Chart.js" %}"></script>
+
+    <script>
+        window.intword = function(value){
+            var value;
+
+            if (value >= 1000000000){
+                value /= 1000000000;
+                value = accounting.formatMoney(value, 'KES ', 0) + " B";
+                return value
+            } else if (value >= 1000000){
+                value /= 1000000;
+                value = accounting.formatMoney(value, 'KES ', 0) + " M";
+                return value
+            } else if (value == 0){
+                return "0";
+            }else{
+                return accounting.formatMoney(value, 'KES ', 0);
+            }
+        }
+        var nplByCreditRating = [
+            {% for item in npl_by_credit_rating %}
+                {
+                    label: "{{ item.name|safe }}",
+                    value: "{{ item.value }}",
+                    color: "{{ item.color }}",
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        var kycDrilldown = [
+            {% for item in kyc_drilldown %}
+                {
+                    label: "{{ item.name|safe }}",
+                    value: "{{ item.value }}",
+                    color: "{{ item.color }}",
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+
+        var options = {
+            responsive: false, 
+            animateRotate : false, 
+            animateScale : false,
+            {% verbatim %}
+                scaleLabel: ("<%= intword(value) %>"),
+                tooltipTemplate: ("<%= accounting.formatMoney(value, 'KES ', 0) %>"),
+                multiTooltipTemplate: ("<%= accounting.formatMoney(value, 'KES ', 0) %>")
+            {% endverbatim %}
+        };
+
+        var options2 = {
+            responsive: false, 
+            animateRotate : false, 
+            animateScale : false,
+            {% verbatim %}
+                scaleLabel: ("<%= intword(value) %>"),
+                tooltipTemplate: ("<%= accounting.formatMoney(value, '', 0) %>"),
+                multiTooltipTemplate: ("<%= accounting.formatMoney(value, '', 0) %>")
+            {% endverbatim %}
+        };
+
+        window.onload = function(){
+            var ctx = document.getElementById("npl-by-credit-rating").getContext("2d");
+            window.myPie1 = new Chart(ctx).Pie(nplByCreditRating, options);
+            document.getElementById(
+                'npl-by-credit-rating-legend'
+            ).innerHTML = window.myPie1.generateLegend();
+            
+            var ctx2 = document.getElementById("kyc-drilldown").getContext("2d");
+            window.myPie2 = new Chart(ctx2).Pie(kycDrilldown, options2);
+            document.getElementById(
+                'kyc-drilldown-legend'
+            ).innerHTML = window.myPie2.generateLegend();
+        };
+    </script>
+{% endblock extrajs %}
+
+{% block reactjs-scripts %}
+  {{ block.super }}
+{% endblock reactjs-scripts %}
+
+{% block page-content %}
+    <div class="header row">
+        <div class="col-md-10 col-sm-12">
+            <h3>Your Risk Position This Month to Date</h3>
+        </div>
+        <div class="col-md-2 col-sm-3 hidden-xs">
+            <a class="btn btn-primary btn-md pull-right font_black" style="color: white" href="#">
+                <i class="fa fa-help"></i> SEND MESSAGE
+            </a>
+        </div>
+    </div>
+    <div class="dashboard-row row">
+        <div class="dashboard-column col-md-4 activities">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-12">
+                    <div class="well well-sm ">
+                        <h4>regulatory capital drilldown</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Capital Component</th>
+                                    <th style="text-align: right;">Amount (KES)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="">
+                                    <td>1.0</td>
+                                    <td>Gross Core Capital (Tier 1)</td>
+                                    <td>239,032,900.32</td>
+                                </tr>
+                                <tr class="">
+                                    <td>1.1</td>
+                                    <td>Goodwill</td>
+                                    <td>(2,000,000.00)</td>
+                                </tr>
+                                <tr class="">
+                                    <td>1.2</td>
+                                    <td>Intangibles Assets</td>
+                                    <td>(389,000.89)</td>
+                                </tr>
+                                <tr class="summary subtotal">
+                                    <td></td>
+                                    <td>Net Core Capital</td>
+                                    <td>236,643,899.43</td>
+                                </tr>
+                                <tr>
+                                    <td>2.0</td>
+                                    <td>Supplementary Capital</td>
+                                    <td>400,475,788.74</td>
+                                </tr>
+                                <tr class="summary total">
+                                    <td>3.0</td>
+                                    <td>Total Capital</td>
+                                    <td>637,119,688.17</td>
+                                </tr>
+                                <tr class="">
+                                    <td>4.0</td>
+                                    <td>Total shareholder's funds</td>
+                                    <td>(60,643,899.43)</td>
+                                </tr>
+                                <tr class="summary total">
+                                    <td></td>
+                                    <td>Total</td>
+                                    <td>576,475,788.74</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-column col-md-8 activities">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-4">
+                    <div class="well well-sm amounts" style="min-height: 26rem;">
+                        <div>
+                            <h4>Risk Weighted Asset (RWA)</h4>
+                            <div class="amount-holder">
+                                <span class="currency">KES</span>
+                                {% if risk_weighted_assets < 1000000 %}
+                                    <span class="amount"> {{ risk_weighted_assets|floatformat:2|intcomma }}</span>
+                                {% else %}
+                                    <span class="amount"> {{ risk_weighted_assets|intword }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>Capital Adequacy Ratio</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ capital_adequacy_ratio }}%</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>NPL Ratio</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ npl_ratio }}%</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>Return on RWA</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ return_on_rwa }}%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="well well-sm portfolio-by-repayment-model">
+                        <h4>Delinquency Transition Matrix</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="background-color: #fff;"></th>
+                                    <th style="text-align: right;background-color: #238C5C;color:#fff;" class="font_extra_bold">
+                                        Normal
+                                    </th>
+                                    <th style="text-align: right;background-color: #38C183;color:#fff;" class="font_extra_bold">
+                                        PAR30
+                                    </th>
+                                    <th style="text-align: right;background-color: #5BE7A9;" class="font_extra_bold">
+                                        PAR60
+                                    </th>
+                                    <th style="text-align: right;background-color: #F8FE85;" class="font_extra_bold">
+                                        PAR90
+                                    </th>
+                                    <th style="text-align: right;background-color: #FFBD67;" class="font_extra_bold">
+                                        PAR120
+                                    </th>
+                                    <th style="text-align: right;background-color: #FF6464;color:#fff;" class="font_extra_bold">
+                                        PAR180
+                                    </th>
+                                    <th style="text-align: right;background-color: #F72727;color:#fff;" class="font_extra_bold">
+                                        Loss
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="font_semibold">
+                                <tr>
+                                    <td class="font_extra_bold" style="background-color: #238C5C;color:#fff;">Normal</td>
+                                    <td style="text-align: right;">96.5%</td>
+                                    <td style="text-align: right;">3.5%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_extra_bold" style="background-color: #38C183;color:#fff;">PAR30</td>
+                                    <td style="text-align: right;">2.4%</td>
+                                    <td style="text-align: right;">70.6%</td>
+                                    <td style="text-align: right;">27%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_extra_bold" style="background-color: #5BE7A9;">PAR60</td>
+                                    <td style="text-align: right;">1.5%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">88%</td>
+                                    <td style="text-align: right;">10.5%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_extra_bold" style="background-color: #F8FE85;">PAR90</td>
+                                    <td style="text-align: right;">16%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">84%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_extra_bold" style="background-color: #FFBD67;">PAR120</td>
+                                    <td style="text-align: right;">8%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">50%</td>
+                                    <td style="text-align: right;">42%</td>
+                                    <td style="text-align: right;">0%</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_extra_bold" style="background-color: #FF6464;color:#fff;">PAR180</td>
+                                    <td style="text-align: right;">12%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">43%</td>
+                                    <td style="text-align: right;">35%</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_extra_bold" style="background-color: #F72727;color:#fff;">Loss</td>
+                                    <td style="text-align: right;">2.6%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">0%</td>
+                                    <td style="text-align: right;">97.4%</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div>
+                                    <h4 style="letter-spacing:0px;font-size:10px;">Probability of default</h4>
+                                    <div class="amount-holder">
+                                        <span class="amount"> {{ probability_of_default }}%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <h4 style="letter-spacing:0px;font-size:10px;">Exposure at Default</h4>
+                                    <div class="amount-holder">
+                                        <span class="amount"> {{ exposure_at_default|intword }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <h4 style="letter-spacing:0px;font-size:10px;">Expected Loss</h4>
+                                    <div class="amount-holder">
+                                        <span class="amount"> {{ expected_loss|intword }}</span>
+                                        <span class="percentage">(40%)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-row row">
+        <div class="dashboard-column col-md-6 activities">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-12">
+                    <div class="well well-sm ">
+                        <h4>Final Decisioning Report</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Score Band</th>
+                                    <th>Applicants</th>
+                                    <th>Accepted</th>
+                                    <th>Rejected</th>
+                                    <th>Manual</th>
+                                    <th>Manual%</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font_extra_bold" style="background-color:#EFF2DD;">200-300</td>
+                                    <td>230</td>
+                                    <td>13</td>
+                                    <td>217</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_extra_bold" style="background-color:#F6EA8C;">301-400</td>
+                                    <td>327</td>
+                                    <td>20</td>
+                                    <td>307</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_extra_bold" style="background-color:#FFEF6F;">401-500</td>
+                                    <td>89</td>
+                                    <td>47</td>
+                                    <td>22</td>
+                                    <td>20</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_extra_bold" style="background-color:#F26D5B;color:#fff;">501-600</td>
+                                    <td>530</td>
+                                    <td>239</td>
+                                    <td>231</td>
+                                    <td>60</td>
+                                    <td>11.3%</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_extra_bold" style="background-color:#C03546;color:#fff;">601-700</td>
+                                    <td>730</td>
+                                    <td>245</td>
+                                    <td>485</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_extra_bold" style="background-color:#492540;color:#fff;">701-800</td>
+                                    <td>90</td>
+                                    <td>80</td>
+                                    <td>10</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr class="summary total">
+                                    <td>Total</td>
+                                    <td>1,996</td>
+                                    <td>644</td>
+                                    <td>1,272</td>
+                                    <td>80</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div>
+                                    <h4 style="letter-spacing:0px;font-size:10px;">average score</h4>
+                                    <div class="amount-holder">
+                                        <span class="amount"> {{ average_score|default:"399" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <h4 style="letter-spacing:0px;font-size:10px;">Acceptance Rate</h4>
+                                    <div class="amount-holder">
+                                        <span class="amount"> {{ acceptance_rate|intword|default:"32.6" }}%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <h4 style="letter-spacing:0px;font-size:10px;">Portfolio Growth</h4>
+                                    <div class="amount-holder">
+                                        <span class="amount"> {{ portfolio_growth|intword|default:"203 M" }}</span>
+                                        <span class="percentage">(142%)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-column col-md-6 activities">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-6">
+                    <div class="well well-sm npl-by-credit-rating" style="min-height: 26rem;">
+                        <h4 class="font_semibold">NPL By Credit Score Band</h4>
+                        <canvas height="140px" width="140px" id="npl-by-credit-rating"></canvas>
+                        <div id="npl-by-credit-rating-legend"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="well well-sm ">
+                        <h4 class="font_semibold">Portfolio By CRB Status</h4>
+                        <canvas height="195px" width="195px" id="kyc-drilldown"></canvas>
+                        <div id="kyc-drilldown-legend"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock page-content %}

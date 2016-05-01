@@ -38,60 +38,66 @@ section.body-area{
                 ul.menu{
                     li.menu-row{
                         .menu-item{
-                            .menu-label{
-                                @extend %extra-bold;
-                                text-transform: uppercase;
-                                color: #7e7e7e;
-                                margin-top: .5rem;
-                                font-size: 13px;
-                            }
-                            .menu-icon{
-                                &.general_journal{
-                                    background-image: url("/static/img/icons/ic_accounting_general_journal_coloured.png");
+                            a{
+                                .menu-label{
+                                    @extend %extra-bold;
+                                    text-transform: uppercase;
+                                    color: #7e7e7e;
+                                    margin-top: .5rem;
+                                    font-size: 13px;
                                 }
-                                &.balance_sheet{
-                                    background-image: url("/static/img/icons/ic_accounting_balance_sheet_coloured.png");
-                                }
-                                &.pnl_statement{
-                                    background-image: url("/static/img/icons/ic_pnl_statement_coloured.png");
-                                }
-                                &.trial_balance{
-                                    background-image: url("/static/img/icons/ic_trial_balance_coloured.png");
-                                }
-                                &.ledgers{
-                                    background-image: url("/static/img/icons/ic_products_accounting_coloured.png");
-                                }
-                                &.banking{
-                                    background-image: url("/static/img/icons/ic_accounting_banking_coloured.png");
-                                }
-                                &:hover{
-                                    &.loan_accounts{
-                                        background-image: url("/static/img/icons/ic_loan_accounts_white.png");
+                                .menu-icon{
+                                    display: inline-block;
+                                    width: 32px;
+                                    height: 32px;
+                                    background-repeat: no-repeat;
+
+                                    &.general_journal{
+                                        background-image: url("/static/img/icons/ic_accounting_general_journal_coloured.png");
                                     }
-                                    &.loan_funds{
-                                        background-image: url("/static/img/icons/ic_loan_funds_white.png");
+                                    &.balance_sheet{
+                                        background-image: url("/static/img/icons/ic_accounting_balance_sheet_coloured.png");
                                     }
-                                    &.loan_transactions{
-                                        background-image: url("/static/img/icons/ic_loan_transactions_white.png");
+                                    &.pnl_statement{
+                                        background-image: url("/static/img/icons/ic_pnl_statement_coloured.png");
                                     }
-                                    &.loan_products{
-                                        background-image: url("/static/img/icons/ic_loan_products_white.png");
+                                    &.trial_balance{
+                                        background-image: url("/static/img/icons/ic_trial_balance_coloured.png");
                                     }
-                                    &.loan_accounting{
-                                        background-image: url("/static/img/icons/ic_accounting_white.png");
+                                    &.ledgers{
+                                        background-image: url("/static/img/icons/ic_products_accounting_coloured.png");
                                     }
-                                    &.loan_reports{
-                                        background-image: url("/static/img/icons/ic_accounting_reports_white.png");
+                                    &.banking{
+                                        background-image: url("/static/img/icons/ic_accounting_banking_coloured.png");
                                     }
                                 }
                             }
 
-                            &:hover{
+                            a:hover, &.active{
                                 background-image: linear-gradient(-90deg, #2C6D83 0%, #3B7F96 100%);
                                 cursor: pointer;
 
                                 .menu-label{
                                     color: #fff;
+                                }
+
+                                &.general_journal{
+                                    background-image: url("/static/img/icons/ic_loan_accounts_white.png");
+                                }
+                                &.balance_sheet{
+                                    background-image: url("/static/img/icons/ic_loan_funds_white.png");
+                                }
+                                &.pnl_statement{
+                                    background-image: url("/static/img/icons/ic_loan_transactions_white.png");
+                                }
+                                &.trial_balance{
+                                    background-image: url("/static/img/icons/ic_loan_products_white.png");
+                                }
+                                &.ledgers{
+                                    background-image: url("/static/img/icons/ic_accounting_white.png");
+                                }
+                                &.banking{
+                                    background-image: url("/static/img/icons/ic_accounting_reports_white.png");
                                 }
                             }
                         }
@@ -111,5 +117,53 @@ section.body-area{
         }
     }
     .main-content{
+        table{
+            &.balance-sheet, 
+            &.pl_statement  {
+                margin-bottom: 6.5rem;
+
+                tbody{
+                    tr{
+                        text-transform: capitalize;
+
+                        &.level0{
+                            font-size: 1.2rem;
+                            text-transform: uppercase;
+                            @extend %extra-bold;
+
+                            td{
+                                border-top-width: 2.4px;
+                            }
+                        }
+                        &.level1{
+                            font-size: 1rem;
+                            text-transform: uppercase;
+                            @extend %semibold;
+
+                            td{
+                                border-top-width: 2.3px;
+                            }
+                        }
+                        &.level2{
+                            font-size: .94rem;
+                            text-transform: uppercase;
+
+                            td{
+                                border-top-width: 2.2px;
+                            }
+                        }
+                        &.level3{
+                            font-size: .90rem;
+                        }
+                        &.level4{
+                            font-size: .88rem;
+                        }
+                        &.level4{
+                            font-size: .84rem;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

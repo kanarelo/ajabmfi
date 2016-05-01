@@ -7,12 +7,12 @@
   <link href="{% static "css/app/crm/dashboard.css" %}" rel="stylesheet">
 {% endblock extracss %}
 
-{% block menu-header %}Client Management{% endblock menu-header %}
+{% block menu-header %}CRM{% endblock menu-header %}
 
 {% block nav-menu-items %}
   <li><a href="{% url "home:dashboard" %}">Home</a></li>
+  <li class="active"><a href="{% url "crm:dashboard" %}">CRM</a></li>
   <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
-  <li class="active"><a href="{% url "crm:dashboard" %}">Clients</a></li>
   <li><a href="{% url "accounting:dashboard" %}">Accounting</a></li>
   <li><a href="{% url "risk:dashboard" %}">Risk &amp; Compliance</a></li>
   <li><a href="{% url "users:dashboard" %}">Users</a></li>
@@ -21,39 +21,51 @@
 
 {% block menu-items %}
   <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon clients_individuals">
-      </div>
-      <div class="menu-label">individuals</div>
+    <div class="menu-item {% block crm_individuals %}{% endblock %}">
+      <a href="{% url "crm:individual_profiles" %}">
+        <div class="menu-icon clients_individuals">
+        </div>
+        <div class="menu-label">individuals</div>
+      </a>
     </div>
-    <div class="menu-item">
-      <div class="menu-icon clients_business">
-      </div>
-      <div class="menu-label">businesses</div>
-    </div>
-  </li>
-  <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon clients_groups">
-      </div>
-      <div class="menu-label">groups</div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-icon clients_messages">
-      </div>
-      <div class="menu-label">messages</div>
+    <div class="menu-item {% block crm_businesses %}{% endblock %}">
+      <a href="{% url "crm:business_profiles" %}">
+        <div class="menu-icon clients_business">
+        </div>
+        <div class="menu-label">businesses</div>
+      </a>
     </div>
   </li>
   <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon clients_campaigns">
-      </div>
-      <div class="menu-label">campaigns</div>
+    <div class="menu-item {% block crm_groups %}{% endblock %}">
+      <a href="{% url "crm:group_profiles" %}">
+        <div class="menu-icon clients_groups">
+        </div>
+        <div class="menu-label">groups</div>
+      </a>
     </div>
-    <div class="menu-item">
-      <div class="menu-icon clients_templates">
-      </div>
-      <div class="menu-label">templates</div>
+    <div class="menu-item {% block crm_messages %}{% endblock %}">
+      <a href="{% url "crm:messages" %}">
+        <div class="menu-icon clients_messages">
+        </div>
+        <div class="menu-label">messages</div>
+      </a>
+    </div>
+  </li>
+  <li class="menu-row clearfix">
+    <div class="menu-item {% block crm_campaigns %}{% endblock %}">
+      <a href="{% url "crm:campaigns" %}">
+        <div class="menu-icon clients_campaigns">
+        </div>
+        <div class="menu-label">campaigns</div>
+      </a>
+    </div>
+    <div class="menu-item {% block crm_templates %}{% endblock %}">
+      <a href="{% url "crm:templates" %}">
+        <div class="menu-icon clients_templates">
+        </div>
+        <div class="menu-label">templates</div>
+      </a>
     </div>
   </li>
 {% endblock menu-items %}

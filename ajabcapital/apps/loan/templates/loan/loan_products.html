@@ -1,0 +1,91 @@
+{% extends "loan/base.html" %}
+
+{% load staticfiles %}
+
+{% block loan_products %} active{% endblock loan_products %}
+
+{% block page-content %}
+    <div class="col-lg-12 table-holder">
+        <div class="btn-group pull-right">
+            <button class="btn btn-default btn-xs">
+                <i class="fa fa-plus-circle"></i>
+                <span> Add</span>
+            </button>
+            <button class="btn btn-default btn-xs">
+                <i class="fa fa-search"></i><span> Search</span>
+            </button>
+            <div class="dropdown pull-right">
+                <button style="margin-bottom5px;" class="btn btn-default btn-xs dropdown-toggle filter-button" type="button" aria-haspopup="true" aria-expanded="true">
+                    <i class="fa fa-filter"></i>
+                    <span> Filter</span>
+                </button>
+            </div>
+        </div>
+        <div class="table-cover">
+            <h3>Loan Products</h3>
+            <table class="table table-hover user-list">
+                <thead>
+                    <tr>
+                        <th data-column="name">Name</th>
+                        <th data-column="active">Active</th>
+                        <th data-column="fund">Fund</th>
+                        <th data-column="channel">Channel</th>
+                        <th data-column="type">Type</th>
+                        <th data-column="type">Repayment model</th>
+                        <th data-column="date_created">Date Created</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.is_active }}</td>
+                        <td>{{ product.loan_fund.name }}</td>
+                        <td>{{ product.product_channel }}</td>
+                        <td>{{ product.product_type }}</td>
+                        <td>{{ product.repayment_model }}</td>
+                        <td>{{ product.created_at|date:"d/m/Y" }}</td>
+                        <td>
+                            <div class="pull-right dropdown">
+                                <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                    <span>Action </span>
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Manage User</a></li>
+                                    <li><a href="#">Reset Password</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Make Administrator</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Deactivate Account</a></li>
+                                    <li><a href="#">Delete Account</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <nav>
+            <ul class="pager">
+                <li class="previous disabled">
+                    <a href="#">
+                        <span aria-hidden="true">←</span>
+                        <span> Previous Page</span>
+                    </a>
+                </li>
+                <li>
+                    <span style="font-size1px;">Page 1 of 1</span>
+                </li>
+                <li class="next disabled">
+                    <a href="#">
+                        <span>Next Page </span>
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+{% endblock page-content %}

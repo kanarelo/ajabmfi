@@ -1,0 +1,134 @@
+{% extends "loan/base.html" %}
+
+{% load staticfiles %}
+{% load humanize %}
+
+{% block loan_accounts %} active{% endblock %}
+
+{% block page-content %}
+    <div class="col-lg-12 table-holder">
+        <div class="btn-group pull-right">
+            <button class="btn btn-default btn-xs">
+                <i class="fa fa-plus-circle"></i>
+                <span> Add</span>
+            </button>
+            <button class="btn btn-default btn-xs">
+                <i class="fa fa-search"></i><span> Search</span>
+            </button>
+            <div class="dropdown pull-right">
+                <button style="margin-bottom5px;" class="btn btn-default btn-xs dropdown-toggle filter-button" type="button" aria-haspopup="true" aria-expanded="true">
+                    <i class="fa fa-filter"></i>
+                    <span> Filter</span>
+                </button>
+                <ul class="dropdown-menu filter-dropdown">
+                    <form id="filter-form" method="POST" action="/user/list/">
+                        <li>
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="is_partner_staff">
+                                    <span>Partner Staff</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="is_metropol_staff""0">
+                                    <span"1">Metropol Staff</span>
+                                </label>
+                            </div>
+                        </li>
+                        <input type="hidden" name="filter" value="yes">
+                        <li>
+                            <div>
+                                <label>
+                                    <input name="deactivated_accounts" type="checkbox">
+                                    <span>Deactivated Accounts</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label>
+                                    <input name="deleted_accounts" type="checkbox" "60">
+                                    <span "61">Deleted Accounts</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="btn btn-primary btn-xs pull-right">Submit</button>
+                        </li>
+                    </form>
+                </ul>
+            </div>
+        </div>
+        <div class="table-cover">
+            <h3 class="font_black">Loan Accounts</h3>
+            <table class="table table-striped user-list">
+                <thead>
+                    <tr>
+                        <th data-column="account_number">A/C #</th>
+                        <th data-column="client">Client</th>
+                        <th data-column="product">Product</th>
+                        <th data-column="account_status">Status</th>
+                        <th  style="text-align:right" data-column="current_balance">Balance (KES)</th>
+                        <th data-column="amount_due">Due (KES)</th>
+                        <th data-column="date_disbursed">Date Disbursed</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for account in accounts %}
+                        <tr>
+                            <td>{{ account.account_number }}</td>
+                            <td>{{ account.loan_profile.profile }}</td>
+                            <td>{{ account.product.name }}</td>
+                            <td>{{ account.current_account_status.name }}</td>
+                            <td class="font_semibold" style="text-align:right;">
+                                {{ account.current_balance|intcomma }}
+                            </td>
+                            <td>{{ account.total_overdues }}</td>
+                            <td>{{ account.date_disbursed|date:"d/m/Y" }}</td>
+                            <td>
+                                <div class="pull-right dropdown">
+                                    <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                        <span>Action </span>
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Manage User</a></li>
+                                        <li><a href="#">Reset Password</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Make Administrator</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Deactivate Account</a></li>
+                                        <li><a href="#">Delete Account</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <nav>
+            <ul class="pager">
+                <li class="previous disabled">
+                    <a href="#">
+                        <span aria-hidden="true">←</span>
+                        <span> Previous Page</span>
+                    </a>
+                </li>
+                <li>
+                    <span style="font-size1px;">Page 1 of 1</span>
+                </li>
+                <li class="next disabled">
+                    <a href="#">
+                        <span>Next Page </span>
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+{% endblock page-content %}

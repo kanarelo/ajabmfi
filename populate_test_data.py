@@ -7,18 +7,23 @@ from decimal import Decimal as D
 
 import uuid
 import random
+import math
 import names
+import radar
 
 from calendar import monthrange
-from datetime import timedelta
+from datetime import timedelta, datetime
+from dateutil import relativedelta
 
 from ajabcapital.apps.core import utils
 from ajabcapital.apps.core.models import *
+from ajabcapital.apps.core_users.models import *
 from ajabcapital.apps.crm.models import *
 from ajabcapital.apps.loan.models import *
 from ajabcapital.apps.loan_origination.models import *
 
-GENDERS = ['female', 'male']
+from ajabcapital.apps.loan.facades import *
+
 EMAIL_PROVIDERS = [
     "ajabcapital", 
     "hotmail", 
@@ -114,12 +119,12 @@ def populate_profiles():
             "putmek services limited", "winterfell general construction limited", "jovinm contractors and suppliers co.ltd",
             "black africa security services", "suter brands", "afro group limited",
             "taitex construction company limited", "masters international limited", "sylva enterprises", "Sachira General Suppliers",
-            "INTRINSIC ELECTRICAL COMPANY", "Emakale enterprises", "KEYHOLDER ENTERPRISES", "qaizen (e.a) limited",
-            "DEYMO CONSTRUCTION AND CONSULTANCY COMPANY LIMITED", "GITARAMA ENTERPRISES", "green village east africa",
-            "WAIKWAMBU ENTERPRISES", "SOLEX LINK ELECTRICAL", "IDENTITEE SUPPLY (E.A)", "nyamci enterprise",
-            "LOURO ENTERPRISES", "SWIFT OPTION AGENCIES", "BISAMZ TECHNOLOGY LIMITED", "BE-FIFTEEN INVESTMENTS COMPANY LIMITED ",
+            "intrinsic electrical company", "emakale enterprises", "keyholder enterprises", "qaizen (e.a) limited",
+            "deymo construction and consultancy company limited", "gitarama enterprises", "green village east africa",
+            "waikwambu enterprises", "solex link electrical", "identitee supply (e.a)", "nyamci enterprise",
+            "louro enterprises", "swift option agencies", "bisamz technology limited", "be-fifteen investments company limited ",
             "e-net publishers and designs ltd", "galanticha enterprises limited", "ardha jila general supplies limited",
-            "TOFEI CONSTRUCTION COMPANY LIMITED", "gutole traders limited",
+            "tofei construction company limited", "gutole traders limited",
         ]
 
 
@@ -283,7 +288,6 @@ def populate_product_accounts():
 
                 account = LoanAccount.objects.create(
                     product=loan_product,
-                    repayment_model_id=1,
                     loan_profile=loan_profile,
                     account_number=utils.get_reference_no(17),
                     notes="No notes...",
@@ -291,7 +295,6 @@ def populate_product_accounts():
                     current_account_status_id=status_id,
                     current_account_status_date=timezone.now()
                 )
-                
                 status = LoanAccountStatus.objects.create(
                     account=account,
                     status_id=status_id,
@@ -300,7 +303,7 @@ def populate_product_accounts():
                     created_by_id=3,
                 )
 
-                if account.repayment_model.code == "TRM_001":
+                if account.product.repayment_model.code == RM_TERM:
                     loan_term = LoanTerm.objects.create(
                         loan_account=account,
                         loan_amount=random.uniform(
@@ -317,16 +320,17 @@ def populate_product_accounts():
                         interest_rate=loan_product.default_interest_rate,
                         created_by_id=3
                     )
-                elif account.repayment_model.code == "TRM_002":
-                    #for overdraft/revolving facilities
+                elif account.repayment_model.code == RF_REVOLVING:
+                    pass
+                elif account.repayment_model.code == RF_BULLET:
                     pass
 
                 if status_id == 3:
                     loan_term2 = LoanTerm.objects.create(
                         loan_account=account,
-                        loan_amount=random.uniform(
-                            float(loan_product.min_amount),
-                            float(loan_product.max_amount)
+                        loan_amount=(
+                            random.choice(random.randint(1, 10)) *
+                            random.choice([10, 100, 1000, 10000, 1000000])
                         ),
                         loan_amount_currency_id=1,
                         loan_amount_disbursal_date=None,
@@ -356,9 +360,92 @@ def populate_product_accounts():
                     account.risk_classification_id = random.choice((4, 3, 2, 5, 5, 5))
                     account.save()
 
+def disburse_loans():
+    loan_accounts = LoanAccount.objects.active()
 
-def setup_transactions():
-    pass
+    def disburse(loan_account):
+        term = loan_account.terms.latest('created_at')
+
+        repayment_period = term.repayment_period
+        repayment_period_unit = term.repayment_period_unit
+
+        if repayment_period_unit.code == LP_DAY:
+            delta = timedelta(days=repayment_period)
+        elif repayment_period_unit.code == LP_WEEK:
+            delta = timedelta(days=float(repayment_period * DAYS_IN_A_WEEK))
+        elif repayment_period_unit.code == LP_MONTH:
+            delta = timedelta(days=float(repayment_period * DAYS_IN_A_MONTH))
+        elif repayment_period_unit.code == LP_YEAR:
+            delta = timedelta(days=float(repayment_period * DAYS_IN_A_YEAR))
+        else:
+            delta = timedelta(days=float(repayment_period * DAYS_IN_A_YEAR))
+
+        start_date = (timezone.now() - delta)
+        date_disbursed = radar.random_datetime(start=start_date, stop=timezone.now())
+
+        return disburse_loan(
+            loan_account, 
+            User.objects.get(pk=3), 
+            date_disbursed=date_disbursed,
+            notes="blah " * 5,
+        )
+
+    with db_transaction.atomic():
+        for loan_account in loan_accounts:
+            #1. Disburse loan
+            (debit, credit) = disburse(loan_account)
+
+            debit.ledger_transaction.notified = True
+            debit.ledger_transaction.save()
+
+def accrue_interests():
+    loan_accounts = LoanAccount.objects.accrual_loans().filter()
+
+    with db_transaction.atomic():
+        for loan_account in loan_accounts:
+            schedule = get_term_installment_schedule(loan_account)
+
+            print schedule
+
+def add_repayments():
+    loan_accounts = LoanAccount.objects.accrual_loans().filter()
+
+    with db_transaction.atomic():
+        for loan_account in loan_accounts:
+            schedule = get_term_installment_schedule(loan_account)
+            for installment in schedule.get_installments():
+                transaction = add_loan_repayment(
+                    loan_account, 
+                    installment.installment_due, 
+                    User.objects.get(pk=3),
+                    status=ConfigLedgerTransactionStatus.objects.get(code="LTS_002"),
+                    transaction_date=(
+                        installment.installment_date + timedelta(days=random.choice([
+                                -5, -5, -4, -3, -2, -1, -1, 
+                                0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                                0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                                10, 10, 10, 10, 10, 10, 10
+                            ])
+                        )
+                    )
+                )
+
+def post_to_ledger():
+    print close_ledger_accounts()
+
+def allocate_repayments():
+    PENDING_POSTING = "LTS_001"
+
+    loan_account = LoanAccount.objects.accrual_loans().get(
+        account_number="UIUKYNIPZUNQU3PV8O"
+    )
+    ledger_transactions = LedgerTransaction.objects.filter(
+        product_account=loan_account.account_number,
+        last_status__code=PENDING_POSTING
+    )
+    for ledger_transaction in ledger_transactions:
+        allocate_repayment(loan_account, txn.amount, User.objects.get(pk=3))
 
 if __name__ == "__main__":
     populate_profiles()

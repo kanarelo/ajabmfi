@@ -9,8 +9,8 @@
 
 {% block nav-menu-items %}
   <li><a href="{% url "home:dashboard" %}">Home</a></li>
+  <li><a href="{% url "crm:dashboard" %}">CRM</a></li>
   <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
-  <li><a href="{% url "crm:dashboard" %}">Clients</a></li>
   <li><a href="{% url "accounting:dashboard" %}">Accounting</a></li>
   <li class="active"><a href="{% url "risk:dashboard" %}">Risk &amp; Compliance</a></li>
   <li><a href="{% url "users:dashboard" %}">Users</a></li>
@@ -19,41 +19,51 @@
 
 {% block menu-items %}
   <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon kyc">
-      </div>
-      <div class="menu-label">kyc</div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-icon policies">
-      </div>
-      <div class="menu-label">policies</div>
-    </div>
-  </li>
-  <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon monitoring">
-      </div>
-      <div class="menu-label">monitoring</div>
-    </div>
-    <div class="menu-item">
-      <a href="">
-        <div class="menu-icon working_capital">
+    <div class="menu-item {% block risk_kyc %}{% endblock %}">
+      <a href="{% url "risk:kyc" %}">
+        <div class="menu-icon kyc">
         </div>
-        <div class="menu-label">Liquidity</div>
+        <div class="menu-label">kyc</div>
+      </a>
+    </div>
+    <div class="menu-item {% block risk_monitoring %}{% endblock %}">
+      <a href="{% url "risk:watch-list" %}">
+        <div class="menu-icon monitoring">
+        </div>
+        <div class="menu-label">watch list</div>
       </a>
     </div>
   </li>
   <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon user_controls">
-      </div>
-      <div class="menu-label">user controls</div>
+    <div class="menu-item {% block risk_liquidity %}{% endblock %}">
+      <a href="{% url "risk:liquidity" %}">          
+        <div class="menu-icon liquidity">
+        </div>
+        <div class="menu-label">Liquidity</div>
+      </a>
     </div>
-    <div class="menu-item">
-      <div class="menu-icon reports">
-      </div>
-      <div class="menu-label">reports</div>
+    <div class="menu-item {% block risk_policies %}{% endblock %}">
+      <a href="{% url "risk:policies" %}">
+        <div class="menu-icon policies">
+        </div>
+        <div class="menu-label">policies &amp; limits</div>
+      </a>
+    </div>
+  </li>
+  <li class="menu-row clearfix">
+    <div class="menu-item {% block risk_decisioning %}{% endblock %}">
+      <a href="{% url "risk:kyc" %}">
+        <div class="menu-icon user_controls">
+        </div>
+        <div class="menu-label">Portfolio at Risk</div>
+      </a>
+    </div>
+    <div class="menu-item {% block risk_reports %}{% endblock %}">
+      <a href="{% url "risk:kyc" %}">
+        <div class="menu-icon reports">
+        </div>
+        <div class="menu-label">CRB Settings</div>
+      </a>
     </div>
   </li>
 {% endblock menu-items %}

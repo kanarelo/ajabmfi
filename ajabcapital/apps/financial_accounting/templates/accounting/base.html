@@ -11,8 +11,8 @@
 
 {% block nav-menu-items %}
   <li><a href="{% url "home:dashboard" %}">Home</a></li>
+  <li><a href="{% url "crm:dashboard" %}">CRM</a></li>
   <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
-  <li><a href="{% url "crm:dashboard" %}">Clients</a></li>
   <li class="active"><a href="{% url "accounting:dashboard" %}">Accounting</a></li>
   <li><a href="{% url "risk:dashboard" %}">Risk &amp; Compliance</a></li>
   <li><a href="{% url "users:dashboard" %}">Users</a></li>
@@ -21,39 +21,51 @@
 
 {% block menu-items %}
   <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon general_journal">
-      </div>
-      <div class="menu-label">general journal</div>
+    <div class="menu-item {% block fa_general_journal %}{% endblock %}">
+      <a href="{% url "accounting:general-journal" %}">
+        <div class="menu-icon general_journal">
+        </div>
+        <div class="menu-label">general journal</div>
+      </a>
     </div>
-    <div class="menu-item">
-      <div class="menu-icon balance_sheet">
-      </div>
-      <div class="menu-label">balance sheet</div>
-    </div>
-  </li>
-  <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon pnl_statement">
-      </div>
-      <div class="menu-label">p&amp;l statement</div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-icon trial_balance">
-      </div>
-      <div class="menu-label">trial balance</div>
+    <div class="menu-item {% block fa_balance_sheet %}{% endblock %}">
+      <a href="{% url "accounting:balance-sheet" %}">
+        <div class="menu-icon balance_sheet">
+        </div>
+        <div class="menu-label">balance sheet</div>
+      </a>
     </div>
   </li>
   <li class="menu-row clearfix">
-    <div class="menu-item">
-      <div class="menu-icon ledgers">
-      </div>
-      <div class="menu-label">ledgers</div>
+    <div class="menu-item {% block fa_pnl_statement %}{% endblock %}">
+      <a href="{% url "accounting:pnl-statement" %}">
+        <div class="menu-icon pnl_statement">
+        </div>
+        <div class="menu-label">p&amp;l statement</div>
+      </a>
     </div>
-    <div class="menu-item">
-      <div class="menu-icon banking">
-      </div>
-      <div class="menu-label">banking</div>
+    <div class="menu-item {% block fa_trial_balance %}{% endblock %}">
+      <a href="{% url "accounting:trial-balance" %}">
+        <div class="menu-icon trial_balance">
+        </div>
+        <div class="menu-label">trial balance</div>
+      </a>
+    </div>
+  </li>
+  <li class="menu-row clearfix">
+    <div class="menu-item {% block fa_product_ledgers %}{% endblock %}">
+      <a href="{% url "accounting:product-ledgers" %}">
+        <div class="menu-icon ledgers">
+        </div>
+        <div class="menu-label">Products</div>
+      </a>
+    </div>
+    <div class="menu-item {% block fa_banking %}{% endblock %}">
+      <a href="{% url "accounting:banking" %}">
+        <div class="menu-icon banking">
+        </div>
+        <div class="menu-label">banking</div>
+      </a>
     </div>
   </li>
 {% endblock menu-items %}

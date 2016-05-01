@@ -38,34 +38,13 @@ section.body-area{
                 ul.menu{
                     li.menu-row{
                         .menu-item{
-                            .menu-label{
-                                @extend %extra-bold;
-                                text-transform: uppercase;
-                                color: #7e7e7e;
-                                margin-top: .5rem;
-                                font-size: 13px;
-                            }
-                            .menu-icon{
-                                &.clients_individuals{
-                                    background-image: url("/static/img/icons/ic_clients_individual_coloured.png");
-                                }
-                                &.clients_business{
-                                    background-image: url("/static/img/icons/ic_clients_business_coloured.png");
-                                }
-                                &.clients_groups{
-                                    background-image: url("/static/img/icons/ic_clients_groups_coloured.png");
-                                }
-                                &.clients_messages{
-                                    background-image: url("/static/img/icons/ic_clients_messages_coloured.png");
-                                }
-                                &.clients_campaigns{
-                                    background-image: url("/static/img/icons/ic_clients_campaign_coloured.png");
-                                }
-                                &.clients_templates{
-                                    background-image: url("/static/img/icons/ic_clients_message_templates_coloured.png");
-                                }
-
-                                &:hover{
+                            a{
+                                .menu-icon{
+                                    display: inline-block;
+                                    width: 32px;
+                                    height: 32px;
+                                    background-repeat: no-repeat;
+                                    
                                     &.clients_individuals{
                                         background-image: url("/static/img/icons/ic_clients_individual_coloured.png");
                                     }
@@ -84,15 +63,34 @@ section.body-area{
                                     &.clients_templates{
                                         background-image: url("/static/img/icons/ic_clients_message_templates_coloured.png");
                                     }
+
                                 }
                             }
-
-                            &:hover{
+                            a:hover, &.active{
                                 background-image: linear-gradient(-90deg, #54BCCA 0%, #93DEE8 100%);
                                 cursor: pointer;
 
                                 .menu-label{
                                     color: #fff;
+                                }
+
+                                &.clients_individuals{
+                                    background-image: url("/static/img/icons/ic_clients_individual_white.png");
+                                }
+                                &.clients_business{
+                                    background-image: url("/static/img/icons/ic_clients_business_white.png");
+                                }
+                                &.clients_groups{
+                                    background-image: url("/static/img/icons/ic_clients_groups_white.png");
+                                }
+                                &.clients_messages{
+                                    background-image: url("/static/img/icons/ic_clients_messages_white.png");
+                                }
+                                &.clients_campaigns{
+                                    background-image: url("/static/img/icons/ic_clients_campaign_white.png");
+                                }
+                                &.clients_templates{
+                                    background-image: url("/static/img/icons/ic_clients_message_templates_white.png");
                                 }
                             }
                         }

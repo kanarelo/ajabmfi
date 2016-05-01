@@ -1,1 +1,448 @@
 {% extends "accounting/base.html" %}
+
+{% load static %}
+{% load humanize %}
+
+{% block extrajs %}
+    <script src="{% static "js/bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
+    <script src="{% static "js/bower_components/jquery-ui/jquery-ui.min.js" %}"></script>
+    <script src="{% static "js/bower_components/lodash/lodash.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/momentjs/min/moment.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/accounting/accounting.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/chartjs/Chart.js" %}"></script>
+
+    <script>
+        window.intword = function(value){
+            var value;
+
+            if (value >= 1000000000){
+                value /= 1000000000;
+                value = accounting.formatMoney(value, 'KES ', 0) + " B";
+                return value
+            } else if (value >= 1000000){
+                value /= 1000000;
+                value = accounting.formatMoney(value, 'KES ', 0) + " M";
+                return value
+            } else if (value == 0){
+                return "0";
+            }else{
+                return accounting.formatMoney(value, 'KES ', 0);
+            }
+        }
+        var assetBreakdown = [
+            {% for item in asset_breakdown %}
+                {
+                    label: "{{ item.name|safe }}",
+                    value: "{{ item.value }}",
+                    color: "{{ item.color }}",
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        var expenseBreakdown = [
+            {% for item in expense_breakdown %}
+                {
+                    label: "{{ item.name|safe }}",
+                    value: "{{ item.value }}",
+                    color: "{{ item.color }}",
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        var incomeExpenseTrend = {
+            labels : ["Nov","Dec","Jan","Feb","Mar","Apr","May"],
+            datasets : [
+                {
+                    label: "Income",
+                    fillColor : "rgba(41,101,122,0.2)",
+                    strokeColor : "rgba(41,101,122,1)",
+                    pointColor : "rgba(41,101,122,1)",
+                    pointStrokeColor : "#fff",
+                    pointHighlightFill : "#fff",
+                    pointHighlightStroke : "rgba(197,24,59,1)",
+                    data : [74408542.88, 88342600.72, 42526281.23, 140691803.32, 463099602.55, 143822479.3, 493202479.3]
+                },
+                {
+                    label: "Expense",
+                    fillColor : "rgba(60,150,181,0.2)",
+                    strokeColor : "rgba(60,150,181,1)",
+                    pointColor : "rgba(60,150,181,1)",
+                    pointStrokeColor : "#fff",
+                    pointHighlightFill : "#",
+                    pointHighlightStroke : "rgba(255,109,138,1)",
+                    data : [354085742.88, 385332600.72, 409526281.23, 412691803.32, 450996029.55, 4938224719.3, 5599822000.3]
+                },
+            ]
+        };
+
+        var assetExpenseLiabilityTrend = {
+            labels : ["Nov","Dec","Jan","Feb","Mar","Apr","May"],
+            datasets : [
+                {
+                    label: "Assets",
+                    fillColor : "rgba(36, 61, 68, 0.2)",
+                    strokeColor : "rgba(36, 61, 68, 1)",
+                    pointColor : "rgba(36, 61, 68,1)",
+                    pointStrokeColor : "#fff",
+                    pointHighlightFill : "#fff",
+                    pointHighlightStroke : "rgba(36, 61, 68,1)",
+                    data : [75408542.88, 88332600.72, 92526281.23, 150691803.32, 163099602.55, 173822479.3, 193202479.3]
+                },
+                {
+                    label: "Liabilities",
+                    fillColor : "rgba(22, 122, 139, 0.2)",
+                    strokeColor : "rgba(22, 122, 139, 1)",
+                    pointColor : "rgba(22, 122, 139, 1)",
+                    pointStrokeColor : "#fff",
+                    pointHighlightFill : "#",
+                    pointHighlightStroke : "rgba(22, 122, 139, 1)",
+                    data : [734085742.88, 825332600.72, 839526281.23, 922691803.32, 930996029.55, 1238224719.3, 1299822000.3]
+                },
+                {
+                    label: "Equity",
+                    fillColor : "rgba(45, 234, 143, 0.2)",
+                    strokeColor : "rgba(45, 234, 143, 1)",
+                    pointColor : "rgba(45, 234, 143, 1)",
+                    pointStrokeColor : "#fff",
+                    pointHighlightFill : "#",
+                    pointHighlightStroke : "rgba(45, 234, 143, 1)",
+                    data : [234085742.88, 225332600.72, 239526281.23, 242691803.32, 250996029.55, 2638224719.3, 2799822000.3]
+                },
+            ]
+        };
+        
+        var options = {
+            responsive: false, 
+            animateRotate : false, 
+            animateScale : false,
+            {% verbatim %}
+                scaleLabel: ("<%= intword(value) %>"),
+                tooltipTemplate: ("<%= accounting.formatMoney(value, 'KES ', 0) %>"),
+                multiTooltipTemplate: ("<%= accounting.formatMoney(value, 'KES ', 0) %>")
+            {% endverbatim %}
+        };
+
+        window.onload = function(){
+            var ctx = document.getElementById("asset-breakdown").getContext("2d");
+            window.myPie1 = new Chart(ctx).Pie(assetBreakdown, options);
+            document.getElementById(
+                'asset-breakdown-legend'
+            ).innerHTML = window.myPie1.generateLegend();
+
+            var ctx2 = document.getElementById("expense-breakdown").getContext("2d");
+            window.myPie2 = new Chart(ctx2).Pie(expenseBreakdown, options);
+            document.getElementById(
+                'expense-breakdown-legend'
+            ).innerHTML = window.myPie2.generateLegend();
+
+            var ctx3 = document.getElementById("income-expense-trends").getContext("2d");
+            window.myLine1 = new Chart(ctx3).Line(incomeExpenseTrend, options);
+            document.getElementById('income-expense-trends-legend').innerHTML = window.myLine1.generateLegend();
+
+            var ctx4 = document.getElementById("asset-expense-liability-trends").getContext("2d");
+            window.myLine2 = new Chart(ctx4).Line(assetExpenseLiabilityTrend, options);
+            document.getElementById('asset-expense-liability-trends-legend').innerHTML = window.myLine2.generateLegend();            
+        };
+    </script>
+{% endblock extrajs %}
+
+{% block reactjs-scripts %}
+  {{ block.super }}
+{% endblock reactjs-scripts %}
+
+{% block page-content %}
+    <div class="header row">
+        <div class="col-md-10 col-sm-12">
+            <h3>Your Financial Performance This Month</h3>
+        </div>
+        <div class="col-md-2 col-sm-3 hidden-xs">
+            <a class="btn btn-primary btn-md pull-right font_black" style="color: white" href="#">
+                <i class="fa fa-help"></i> SEND MESSAGE
+            </a>
+        </div>
+    </div>
+    <div class="dashboard-row row">
+        <div class="dashboard-column col-md-4 activities">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-12">
+                    <div class="well well-sm ">
+                        <h4>Balance Sheet Snapshot</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th style="text-align: right;">Balance (KES)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="summary">
+                                    <td>1.0</td>
+                                    <td>Assets</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>1.1</td>
+                                    <td>Cash</td>
+                                    <td>84,474,367.86</td>
+                                </tr>
+                                <tr>
+                                    <td>1.2</td>
+                                    <td>Net Loan Portfolio</td>
+                                    <td>1,238,453,244.04</td>
+                                </tr>
+                                <tr>
+                                    <td>1.3</td>
+                                    <td>Net Fixed Assets</td>
+                                    <td>8,475,788.74</td>
+                                </tr>
+                                <tr>
+                                    <td>1.4</td>
+                                    <td>Accounts Receivable</td>
+                                    <td>4,824,210.34</td>
+                                </tr>
+                                <tr class="summary subtotal">
+                                    <td></td>
+                                    <td>Total Assets</td>
+                                    <td>1,336,227,610.98</td>
+                                </tr>
+                                <tr class="summary">
+                                    <td>2.0</td>
+                                    <td>Liabilities</td>
+                                    <td>630,098,999.34</td>
+                                </tr>
+                                <tr class="summary">
+                                    <td>3.0</td>
+                                    <td>Equity</td>
+                                    <td>616,799,000.26</td>
+                                </tr>
+                                <tr class="summary subtotal">
+                                    <td></td>
+                                    <td>Liabilities + Equity</td>
+                                    <td>1,336,227,610.98</td>
+                                </tr>
+                                <tr class="summary total">
+                                    <td></td>
+                                    <td>A - (L + E)</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-column col-md-8 activities">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="well well-sm income-expense-trends">
+                                <h4 class="font_semibold">income / expense trends</h4>
+                                <div class="col-md-8">
+                                    <canvas height="120px" width="270px" id="income-expense-trends"></canvas>
+                                </div>
+                                <div class="col-md-4">
+                                    <div id="income-expense-trends-legend"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="well well-sm asset-expense-liability-trends">
+                                <h4 class="font_semibold">asset / liability / equity trends</h4>
+                                <div class="col-md-8">
+                                    <canvas height="120px" width="270px" id="asset-expense-liability-trends"></canvas>
+                                </div>
+                                <div class="col-md-4">
+                                    <div id="asset-expense-liability-trends-legend"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="well well-sm portfolio-by-repayment-model">
+                        <h4>Bank Accounts</h4>
+                        <table class="table  table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th style="text-align: right;">Balance (KES)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Barclays Bank</td>
+                                    <td>17,892,900.02</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Sidian Bank</td>
+                                    <td>62,901,788.00</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>M-Pesa (#34077)</td>
+                                    <td>2,032,002.00</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>M-Pesa (#34078)</td>
+                                    <td>222,672.00</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>M-Pesa (#34079)</td>
+                                    <td>993,002.92</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Airtel (#AAS4009)</td>
+                                    <td>432,002.92</td>
+                                </tr>
+                                <tr class="summary subtotal">
+                                    <td></td>
+                                    <td>Cash at Bank</td>
+                                    <td>84,474,367.86</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-row row">
+        <div class="dashboard-column col-md-4 activities">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-12">
+                    <div class="well well-sm ">
+                        <h4>Income Statement Snapshot</h4>
+                        <table class="table  table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th style="text-align: right;">Balance (KES)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="summary">
+                                    <td>4.0</td>
+                                    <td>Income</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>4.1</td>
+                                    <td>Financial Income</td>
+                                    <td>219,088,988.90</td>
+                                </tr>
+                                <tr>
+                                    <td>4.2</td>
+                                    <td>Other Operating Income</td>
+                                    <td>18,212,889.78</td>
+                                </tr>
+                                <tr class="summary subtotal">
+                                    <td></td>
+                                    <td>Total Income</td>
+                                    <td>237,301,878.68</td>
+                                </tr>
+                                <tr class="summary">
+                                    <td>5.0</td>
+                                    <td>Expenses</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>5.1</td>
+                                    <td>Financial Expense</td>
+                                    <td>16,899,902.89</td>
+                                </tr>
+                                <tr>
+                                    <td>5.2</td>
+                                    <td>Operating Expenses</td>
+                                    <td>33,788,789.91</td>
+                                </tr>
+                                <tr>
+                                    <td>5.3</td>
+                                    <td>Administrative Expenses</td>
+                                    <td>1,233,220.12</td>
+                                </tr>
+                                <tr class="summary subtotal">
+                                    <td></td>
+                                    <td>Total Expense</td>
+                                    <td>51,921,912.92</td>
+                                </tr>
+                                <tr class="summary total">
+                                    <td></td>
+                                    <td>Net Income</td>
+                                    <td>185,379,965.76</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-column col-md-8 activities">
+            <div class="dashboard-inner-row clearfix">
+                <div class="col-md-4">
+                    <div class="well well-sm amounts">
+                        <div>
+                            <h4>Return on assets</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ return_on_assets|intword }}%</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>gross margin ratio</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ gross_margin_ratio|intword }}%</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>working capital ratio</h4>
+                            <div class="amount-holder">
+                                <span class="currency">KES</span>
+                                <span class="amount"> {{ working_capital_ratio|intword }}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>liquidity ratio</h4>
+                            <div class="amount-holder">
+                                <span class="amount"> {{ liquidity_ratio|intword }}%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well well-sm expense-breakdown">
+                        <h4>Expense Breakdown</h4>
+                        <div id="canvas-holder-1">
+                            <canvas id="expense-breakdown" width="210" height="210" style="margin-bottom: 10px;"></canvas>
+                            <div id="expense-breakdown-legend"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well well-sm asset-breakdown">
+                        <h4>Asset Breakdown</h4>
+                        <div id="canvas-holder-1">
+                            <canvas id="asset-breakdown" width="150" height="150" style="margin-bottom: 10px;"></canvas>
+                            <div id="asset-breakdown-legend"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock page-content %}
