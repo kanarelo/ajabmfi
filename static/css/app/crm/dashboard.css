@@ -6392,6 +6392,9 @@ footer {
   .btn-primary:hover, .btn-primary.active, .btn-primary:active, .btn-primary.focus, .btn-primary:focus {
     background: #38a5b3; }
 
+h4 {
+  color: #54BCCA; }
+
 .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a {
   border-bottom: 5px solid #54BCCA; }
 
