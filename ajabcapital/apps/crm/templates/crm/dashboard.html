@@ -92,37 +92,45 @@
                         <div class="row">
                             <div class="col-lg-2 stage application">
                                 <div class="figure-label">Applied</div>
-                                <div class="figure">
-                                    {{ asset_to_equity_ratio|floatformat:2|default:120 }}
-                                </div>
+                                <span class="figure">
+                                    {{ applied|floatformat:2|default:1996 }}
+                                </span>
+                                <span class="figure-percentage font_extra_bold">100%</span>
                             </div>
                             <div class="col-lg-2 stage credit-analysis">
                                 <div class="figure-label">Credit Analysis</div>
-                                <div class="figure">
-                                    {{ debt_to_equity_ratio|floatformat:2|default:110 }}
-                                </div>
+                                <span class="figure">
+                                    {{ debt_to_equity_ratio|floatformat:2|default:644 }}
+                                </span>
+                                <span class="figure-percentage font_extra_bold">(32%)</span>
                             </div>
                             <div class="col-lg-2 stage risk-analysis">
                                 <div class="figure-label">Risk Analysis</div>
-                                <div class="figure">{{ active_borrowers|intcomma|default:200 }}</div>
+                                <span class="figure">
+                                    {{ active_borrowers|intcomma|default:153 }}
+                                </span>
+                                <span class="figure-percentage font_extra_bold">(7.6%)</span>
                             </div>
                             <div class="col-lg-2 stage processing">
                                 <div class="figure-label">Processing</div>
-                                <div class="figure">
-                                    {{ women_borrowers|default:0 }}
-                                </div>
+                                <span class="figure">
+                                    {{ women_borrowers|default:110 }}
+                                </span>
+                                <span class="figure-percentage font_extra_bold">(5.5%)</span>
                             </div>
                             <div class="col-lg-2 stage disbursement">
                                 <div class="figure-label">Disbursement</div>
-                                <div class="figure">
-                                    {{ average_loan_balance|floatformat:0|intcomma|default:230 }}
-                                </div>
+                                <span class="figure">
+                                    {{ average_loan_balance|floatformat:0|intcomma|default:60 }}
+                                </span>
+                                <span class="figure-percentage font_extra_bold">(3%)</span>
                             </div>
                             <div class="col-lg-2 stage servicing">
                                 <div class="figure-label">Servicing</div>
-                                <div class="figure">
-                                    {{ risk_coverage_ratio|floatformat:2|intcomma|default:320 }}
-                                </div>
+                                <span class="figure">
+                                    {{ risk_coverage_ratio|floatformat:2|intcomma|default:32 }}
+                                </span>
+                                <span class="figure-percentage font_extra_bold">(1.6%)</span>
                             </div>
                         </div>
                     </div>
@@ -206,28 +214,21 @@
                         <div>
                             <h4>SMS's Sent</h4>
                             <div class="amount-holder">
-                                <span class="amount"> {{ sms_sent|intword }}</span>
+                                <span class="amount" style="font-size: 45px"> {{ sms_sent|intword }}</span>
                             </div>
                         </div>
                         <hr>
                         <div>
                             <h4>SMS's Left</h4>
                             <div class="amount-holder">
-                                <span class="amount"> {{ sms_left|intword }}</span>
+                                <span class="amount" style="font-size: 45px"> {{ sms_left|intword }}</span>
                             </div>
                         </div>
                         <hr>
                         <div>
                             <h4>Emails Sent</h4>
                             <div class="amount-holder">
-                                <span class="amount"> {{ emails_sent|intword }}</span>
-                            </div>
-                        </div>
-                        <hr>
-                        <div>
-                            <h4>SMS </h4>
-                            <div class="amount-holder">
-                                <span class="amount"> {{ sms_received|intword }}</span>
+                                <span class="amount" style="font-size: 45px"> {{ emails_sent|intword }}</span>
                             </div>
                         </div>
                     </div>

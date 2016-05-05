@@ -26,9 +26,6 @@
                     <tr>
                         <th data-column="name">Name</th>
                         <th data-column="identity_type">Group Type</th>
-                        <th data-column="no_of_loans">No of Loans</th>
-                        <th data-column="performing_loans">Performing</th>
-                        <th data-column="non_performing_loans">Non Performing</th>
                         <th data-column="status">Status</th>
                         <th data-column="date">Date</th>
                         <th></th>
@@ -39,9 +36,6 @@
                         <tr>
                             <td style="text-transform: capitalize;">{{ group_profile.name }}</td>
                             <td>{{ group_profile.loan_group_type.name }}</td>
-                            <td>{{ group_profile.total_no_of_loans }}</td>
-                            <td>{{ group_profile.current_performing_loans }}</td>
-                            <td>{{ group_profile.current_non_performing_loans }}</td>
                             <td>{{ group_profile.last_group_status.name }}</td>
                             <td>{{ group_profile.created_at|date:"d/m/Y" }}</td>
                             <td>

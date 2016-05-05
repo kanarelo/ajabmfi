@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^groups/$', groups, name="group_profiles"),
     url(r'^messages/$', messages, name="messages"),
     url(r'^campaigns/$', campaigns, name="campaigns"),
+    url(r'^applications/$', applications, name="applications"),
     url(r'^templates/$', templates, name="templates"),
 ]

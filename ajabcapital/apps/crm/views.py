@@ -21,6 +21,8 @@ import json
 import random
 import logging
 
+from datetime import datetime
+
 from . import forms
 
 from ..core import (
@@ -158,4 +160,55 @@ def templates(request):
 
     return TemplateResponse(request, "crm/templates.html", {
         "templates": templates
+    })
+
+@login_required
+def applications(request):
+    applications = [
+        dict(
+            applicant_name='Onesmus Mukewa Wekalao',
+            identity_type='Passport Number',
+            identity_number='A1938021',
+            loan_purpose='Business Expansion',
+            crb_score='700',
+            amount=D('290000'),
+            color="rgba(255,33,43,0.1)",
+            status='Accepted',
+            created_at=datetime.now()
+        ),
+        dict(
+            applicant_name='Synacor LTD',
+            identity_type='Business Registration Number',
+            identity_number='CPR/001/20014',
+            loan_purpose='Business Expansion',
+            crb_score='700',
+            amount=D('290000'),
+            color="rgba(255,33,43,0.1)",
+            status='Accepted',
+            created_at=datetime.now()
+        ),
+        dict(
+            applicant_name='Justus Matanda',
+            identity_type='National ID',
+            identity_number='22883390',
+            loan_purpose='Asset Finance',
+            crb_score='410',
+            amount=D('430000'),
+            status='Rejected',
+            color="rgba(255,33,43,0.1)",
+            created_at=datetime.now()
+        ), 
+        dict(
+            applicant_name='Mary Nafula',
+            identity_type='National ID',
+            identity_number='32090023',
+            loan_purpose='Asset Finance',
+            crb_score='740',
+            amount=D('1900000'),
+            status='Accepted',
+            created_at=datetime.now()
+        ), 
+    ]
+    return TemplateResponse(request, "crm/applications.html", {
+        'applications': applications
     })

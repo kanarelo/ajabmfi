@@ -20,23 +20,75 @@ from . import (utils as origination_utils, forms as core_forms)
 
 from ..loan import facades as loan_facades
 
-@login_required
-def dashboard(request):
-    user = request.user
+def start(request, product_pk=None):
+    context = dict()
 
+    if request.method == "POST":
+        form = forms.PrequalificationForm(request.POST)
+
+        if form.is_valid():
+            data = form.cleaned_data
+            full_name = data.get('full_name')
+            age = data.get('age')
+            gender = data.get('gender')
+            location = data.get('location')
+            loan_amount_range = data.get('loan_amount_range')
+            credit_score_range = data.get('credit_score_range')
+            revenue_range = data.get('revenue_range')
+            loan_purpose = data.get('loan_purpose')
+
+            is_prequalified = False
+
+            if credit_score_range in ("CSR_004", "CSR_005", "CSR_006", "CSR_007"):
+                is_prequalified = True
+
+            if loan_amount_range > revenue_range:
+                is_prequalified = False
+
+            context['is_prequalified'] = is_prequalified
+            context['data'] = data
+        else:
+            context['form'] = form
+
+    return TemplateResponse(request, "origination/start.html", context)
+
+def apply_product(request, product_pk):
+    context = {}
+    template_name = "origination/identity_verification.html"
+
+    if request.method == "POST":
+        context['verified'] = True
+
+        n = 0
+        while n:
+            n += 1
+
+            if n == 10000000000000000000000000:
+                n = 0
+
+        template_name = "origination/identity_verification_done.html"
+
+    return TemplateResponse(request, template_name, context)
+
+
+def loan_terms(request):
     context = {}
     
-    return TemplateResponse(request, "origination/dashboard.html", context)
+    template_name = "origination/loan_terms.html"
 
-@login_required
-def my_pipeline(request):
-    
-    return TemplateResponse(request, "origination/mypipeline.html", {
+    if request.method == "POST":
+        n = 0
+        while n:
+            n += 1
 
-    })
+            if n == 10000000000000000000000000:
+                n = 0
+                
+        template_name = "origination/loan_processing.html"
 
-@login_required
-def reports(request):
-    return TemplateResponse(request, "origination/reports.html", {
+    return TemplateResponse(request, template_name, context)
 
-    })
+def loan_processing(request):
+    context = {}
+    template_name = "origination/loan_processing.html"
+    return TemplateResponse(request, template_name, context)    

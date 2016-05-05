@@ -42,7 +42,7 @@ def dashboard(request):
         key_perfomance_indicators=facades.get_key_perfomance_indicators(user),
         return_on_assets=143,
         gross_margin_ratio=26,
-        working_capital_ratio=16020121.99,
+        working_capital_ratio="692 million",
         liquidity_ratio=129,
         asset_breakdown=[
             {'name': 'Cash', 'value': 84474367.86, 'color': "#26252C"},

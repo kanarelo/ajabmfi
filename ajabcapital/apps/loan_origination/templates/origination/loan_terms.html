@@ -1,0 +1,134 @@
+{% extends "origination/base.html" %}
+
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block footer-parent %}
+{% endblock footer-parent %}
+
+{% block nav-menu-items %}
+{% endblock nav-menu-items %} 
+
+{% block navbar-buttons %}
+<div class="nav navbar-nav navbar-right">
+    <!-- <a style="margin-top:.7rem" class="btn btn-primary font_black" href="#">SignUp</a> -->
+</div>
+{% endblock navbar-buttons %}
+
+{% block fluid %}{% endblock fluid %}
+
+{% block body-area %}
+<div class="container" style="padding-bottom: 5rem">
+    <h2 style="margin-bottom:2rem;margin-top:3rem;;padding-bottom:.5rem" class="font_semibold">
+        Let's Start the Application Process
+    </h2>
+    <div class="dashboard-row row">
+        <div class="dashboard-column">
+            <div class="dashboard-inner-row clearfix">
+                <div class-"col-md-12"="">
+                    <div class="well well-sm loan-application-stages">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage prequalification">
+                                <span class="badge">1</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Prequalification
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage verification">
+                                <span class="badge">2</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Verification
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage terms active">
+                                <span class="badge">3</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Loan Terms
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage processing" style="color: #000">
+                                <span class="badge">4</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Processing
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <form class="form" action="." method="POST">{% csrf_token %}
+            <h4 style="margin-bottom: 1.25rem;margin-top: 2rem;">Loan Terms</h4>
+            {% if not verified %}
+                <div style="background-color:#eee; padding: 1rem 2rem">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>
+                                     Loan Amount
+                                </label>
+                                <input name="loan_amount" type="number" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>
+                                    Repayment Period
+                                </label>
+                                <div class="form-group">
+                                    <div class="col-md-7" style="padding-left: 0;padding-right:0">
+                                        <input class="form-control" type= name="repayment_period" />
+                                    </div>
+                                    <div class="col-md-5" style="padding-right:0">
+                                        <select name="repayment_period_unit" class="form-control">
+                                            <option>--</option>
+                                            <option value="RP_001">Days</option>
+                                            <option value="RP_002">Weeks</option>
+                                            <option value="RP_003">Months</option>
+                                            <option value="RP_004">Years</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:1rem">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>
+                                    Grace Period
+                                </label>
+                                <div class="form-group">
+                                    <div class="col-md-7" style="padding-left: 0;padding-right:0">
+                                        <input class="form-control" type= name="repayment_period" />
+                                    </div>
+                                    <div class="col-md-5" style="padding-right:0">
+                                        <select name="repayment_period_unit" class="form-control">
+                                            <option>--</option>
+                                            <option value="RP_001">Days</option>
+                                            <option value="RP_002">Weeks</option>
+                                            <option value="RP_003">Months</option>
+                                            <option value="RP_004">Years</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary font_extra_bold pull-right" type="submit">UPDATE TERMS</button>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div></div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock body-area %}

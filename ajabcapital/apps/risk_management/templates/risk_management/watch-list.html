@@ -1,0 +1,541 @@
+{% extends "risk_management/base.html" %}
+
+{% load static %}
+{% load humanize %}
+
+{% block risk_monitoring %} active{% endblock %}
+
+{% block page-content %}
+    <div class="col-md-12 table-holder">
+        <div class="btn-group pull-right">
+            <button class="btn btn-default btn-xs">
+                <i class="fa fa-plus-circle"></i>
+                <span> Add</span>
+            </button>
+            <button class="btn btn-default btn-xs">
+                <i class="fa fa-search"></i><span> Search</span>
+            </button>
+            <div class="dropdown pull-right">
+                <button style="margin-bottom5px;" class="btn btn-default btn-xs dropdown-toggle filter-button" type="button" aria-haspopup="true" aria-expanded="true">
+                    <i class="fa fa-filter"></i>
+                    <span> Filter</span>
+                </button>
+                <ul class="dropdown-menu filter-dropdown">
+                    <form id="filter-form" method="POST" action="/user/list/">
+                        <li>
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="is_partner_staff">
+                                    <span>Partner Staff</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="is_metropol_staff""0">
+                                    <span"1">Metropol Staff</span>
+                                </label>
+                            </div>
+                        </li>
+                        <input type="hidden" name="filter" value="yes">
+                        <li>
+                            <div>
+                                <label>
+                                    <input name="deactivated_accounts" type="checkbox">
+                                    <span>Deactivated Accounts</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label>
+                                    <input name="deleted_accounts" type="checkbox" "60">
+                                    <span "61">Deleted Accounts</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="btn btn-primary btn-xs pull-right">Submit</button>
+                        </li>
+                    </form>
+                </ul>
+            </div>
+        </div>
+        <div class="table-cover">
+            <h3 class="font_black">Portfolio Risk Watchlist</h3>
+            <table class="table table-striped user-list">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Identity Number</th>
+                        <th>Credit Score</th>
+                        <th>Delinquency</th>
+                        <th>Verified</th>
+                        <th>Fraud</th>
+                        <th>Notifications</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for loan_profile in loan_profiles %}
+                        <tr>
+                            <td style="text-transform:capitalize;">{{ loan_profile.profile }}</td>
+                            <td>{{ loan_profile.profile.identity_number|default:"Not provided" }} 
+                                {% if loan_profile.profile.identity_type %}
+                                    <span class="font_extra_bold" style="font-size: 85%">
+                                        ({{ loan_profile.profile.identity_type.name }})
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <span style="font-size:0.85rem; background-color:red" class="label font_extra_bold label-primary label-lg">{{ loan_profile.credit_score }}</span>
+                                <span class="font_semibold" style="font-size: 80%"><i class="fa fa-caret-down"></i> {{loan_profile.credit_score_down_percentage}}%</span>
+                            </td>
+                            <td>
+                                {% if loan_profile.risk_profile.has_current_delinquency %}
+                                    <span class="font_black" style="font-size:120%;color:red">C</span>
+                                    <span>({{ loan_profile.days_in_arrears }} days)</span>
+                                {% elif loan_profile.risk_profile.has_historical_delinquency %}
+                                    <span class="font_black" style="font-size:120%;color:green">H</span>
+                                    <span>({{ loan_profile.days_in_arrears }} days)</span>
+                                {% else %}
+                                    <span class="font_black" style="font-size:120%;">N</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if loan_profile.risk_profile.is_verified %}
+                                    <i style="color:green" class="fa fa-check-circle fa-lg"></i>
+                                {% else %}
+                                    <i style="color:red" class="fa fa-minus-circle fa-lg"></i>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if loan_profile.risk_profile.has_fraud %}
+                                    <i style="color:green" class="fa fa-check-circle fa-lg"></i>
+                                {% else %}
+                                    <i style="color:red" class="fa fa-minus-circle fa-lg"></i>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <span class="badge">0</span>
+                            </td>
+                            <td>
+                                <div class="pull-right dropdown">
+                                    <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                        <span>Action </span>
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Manage User</a></li>
+                                        <li><a href="#">Reset Password</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Make Administrator</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Deactivate Account</a></li>
+                                        <li><a href="#">Delete Account</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <nav>
+            <ul class="pager">
+                <li class="previous disabled">
+                    <a href="#">
+                        <span aria-hidden="true">←</span>
+                        <span> Previous Page</span>
+                    </a>
+                </li>
+                <li>
+                    <span style="font-size1px;">Page 1 of 1</span>
+                </li>
+                <li class="next disabled">
+                    <a href="#">
+                        <span>Next Page </span>
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+{% endblock page-content %}
+
+{% block modal-content %}
+    <div class="col-md-12 col-md-12 ">
+      <div class="row">
+        <div id="identity-stats-holder">
+            <div class="row" id="identity-details"  style="display: block;">
+                <h3 class="identity-name">
+                    <span>Noel Jalango</span>
+                    <span class="account-details-close close-button pull-right">
+                        <i class="fa fa-times-circle fa-lg"></i>
+                    </span>
+                </h3>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#personal-profile" aria-controls="personal-profile" role="tab" data-toggle="tab"  aria-expanded="false">
+                            Personal Profile
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#loan-profile" aria-controls="loan-profile" role="tab" data-toggle="tab"  aria-expanded="false">
+                            Loan Profile
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#risk-profile" aria-controls="risk-profile" role="tab" data-toggle="tab" aria-expanded="true">
+                            Risk Profile
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#activities" aria-controls="activities" role="tab" data-toggle="tab" aria-expanded="true">
+                            Activities
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="personal-profile">
+                        <div class="col-md-5 account-details count-column">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4><i class="fa fa-user"></i> Contact Details</h4>
+                                    <table class="table table-hover" id="search-result-details">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="font_extra_bold">Name</td>
+                                                <td>Wekalao Onesmus Mukewa</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font_extra_bold">DOB</td>
+                                                <td>19/3/1990</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font_extra_bold">Gender</td>
+                                                <td>Male</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font_extra_bold">Nationality</td>
+                                                <td>Kenyan</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font_extra_bold">Identity Type</td>
+                                                <td>National Card</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font_extra_bold">Identity Number</td>
+                                                <td>27446005</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font_extra_bold">Physical Address</td>
+                                                <td>61, Mai Mahiu Road, Nairobi West, Nairobi</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font_extra_bold">Postal Address</td>
+                                                <td>30177-00100 Nairobi, Kenya</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font_extra_bold">Email</td>
+                                                <td>onesmus.mukewa@gmail.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font_extra_bold">Status</td>
+                                                <td>Active</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font_extra_bold">Last Updated</td>
+                                                <td>1/2/2016 2:23 PM</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <hr>
+                                    <h4><i class="fa fa-comments"></i> Notes</h4>
+                                    <div>
+                                        Mr. Mukewa has been a client with us for 10 years. We have held a good relationship, and have mainted it without any issues to his Loan Profile. 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 count-column" style="background-color: #eee;">
+                            <div id="delinquency-count" class="stats-portfolio">
+                                <h4><i class="fa fa-bank"></i> Profile Summary</h4>
+                                <table>
+                                    <tbody>
+                                        <tr class="historical-delinquency">
+                                            <td>0.5</td>
+                                            <td>Relationship (Years)</td>
+                                        </tr>
+                                        <tr class="current-delinquency">
+                                            <td>&lt; 4m</td>
+                                            <td>Yearly Income (KES)</td>
+                                        </tr>
+                                        <tr class="historical-delinquency">
+                                            <td>353</td>
+                                            <td>Credit Score</td>
+                                        </tr>
+                                        <tr class="historical-delinquency">
+                                            <td>0</td>
+                                            <td>Bankruptcies</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <h4><i class="fa fa-money"></i> Financial Preferences</h4>
+                            <table class="table table-hover" id="search-result-details">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font_extra_bold">Amount Needed</td>
+                                        <td>KES 250,000 - KES 500,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font_extra_bold">Loan Purpose</td>
+                                        <td>Agricultural Inputs</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font_extra_bold">Security</td>
+                                        <td>None</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font_extra_bold">Security</td>
+                                        <td>None</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane active" id="loan-profile">
+                        <div class="col-md-6 account-details count-column">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4><i class="fa fa-briefcase"></i> Account Summaries</h4>
+                                    <table class="table table-hover" id="search-result-details">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Status</th>
+                                                <th>Disbursed</th>
+                                                <th>Amount</th>
+                                                <th>Balance</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>M-Loan</td>
+                                                <td>Active</td>
+                                                <td>2/4/2016</td>
+                                                <td>KES 23,000</td>
+                                                <td>Name</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <hr>
+                                    <h4><i class="fa fa-comments"></i> Notes</h4>
+                                    <div>
+                                        Mr. Mukewa has been a client with us for 10 years. We have held a good relationship, and have mainted it without any issues to his Loan Profile. 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4><i class="fa fa-money"></i> Financial Preferences</h4>
+                            
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="risk-profile">
+                        <div class="col-md-2 count-column">
+                            <div id="delinquency-count" class="stats-portfolio">
+                                <h4>Delinquency Summary</h4>
+                                <table>
+                                    <tbody>
+                                        <tr class="current-delinquency">
+                                            <td>0</td>
+                                            <td>Current Delinquency</td>
+                                        </tr>
+                                        <tr class="historical-delinquency">
+                                            <td>1</td>
+                                            <td>Historical Delinquency</td>
+                                        </tr>
+                                        <tr class="no-delinquency">
+                                            <td>2</td>
+                                            <td>No Delinquency</td>
+                                        </tr>
+                                        <tr class="id-not-found">
+                                            <td>0</td>
+                                            <td>Identity Not Found</td>
+                                        </tr>
+                                        <tr class="no-account-information">
+                                            <td>0</td>
+                                            <td>No Account Information</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="arrears-count" class="stats-portfolio">
+                                <h4>Arrears Drilldown</h4>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>0</td>
+                                            <td>Max days in arrears</td>
+                                        </tr>
+                                        <tr>
+                                            <td>0</td>
+                                            <td>Average days in arrears</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="arrears-count" class="stats-portfolio">
+                                <h4>Credit Events (6 Months)</h4>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>0</td>
+                                            <td>Bounced cheques</td>
+                                        </tr>
+                                        <tr>
+                                            <td>0</td>
+                                            <td>Credit enquiries</td>
+                                        </tr>
+                                        <tr>
+                                            <td>0</td>
+                                            <td>Credit applications</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-7 account-details count-column">
+                            <div class="row charts-row">
+                                <div class="col-md-3 account-details-charts">
+                                    <h4>Accounts by Sector</h4>
+                                    <canvas width="190" height="190"  style="width: 190px; height: 190px;"></canvas>
+                                    <div id="credit-sector-pie-legend"></div>
+                                </div>
+                                <div class="col-md-3 account-details-charts">
+                                    <h4>Accounts by Sector</h4>
+                                    <canvas width="190" height="190"  style="width: 190px; height: 190px;"></canvas>
+                                    <div id="credit-sector-pie-legend"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Monthly Score Perfomance (Past 12 Months) </h4>
+                                    <canvas width="420" height="215"  style="width: 420px; height: 215px;"></canvas>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h4>Credit Account Details</h4>
+                                    <table class="table table-hover" id="search-result-details">
+                                        <thead>
+                                            <tr>
+                                                <th>Sector</th>
+                                                <th>Product</th>
+                                                <th>Principal</th>
+                                                <th>Current</th>
+                                                <th>Overdue</th>
+                                                <th>Arrears</th>
+                                                <th>Updated</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="label label-mfb">MFB</span></td>
+                                                <td>Personal Loan</td>
+                                                <td>KES 531,000</td>
+                                                <td>KES 606,596</td>
+                                                <td>KES 0</td>
+                                                <td>
+                                                    <span class="label label-no-delinquency">
+                                                        <span>0</span>
+                                                        <span> days</span>
+                                                    </span>
+                                                </td>
+                                                <td>01/09/2014</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="label label-banks">Banks</span>
+                                                </td>
+                                                <td>Credit Card</td>
+                                                <td>KES 60,000</td>
+                                                <td>KES 6,600</td>
+                                                <td>KES 0</td>
+                                                <td>
+                                                    <span class="label label-no-delinquency">
+                                                        <span>0</span>
+                                                        <span> days</span>
+                                                    </span>
+                                                </td>
+                                                <td>01/09/2014</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="label label-banks">Banks</span>
+                                                </td>
+                                                <td>Overdraft</td>
+                                                <td>KES 5,762</td>
+                                                <td>KES 0</td>
+                                                <td>KES 0</td>
+                                                <td>
+                                                    <span class="label label-historical">
+                                                        <span>0</span>
+                                                        <span> days</span>
+                                                    </span>
+                                                </td>
+                                                <td>01/09/2014</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td>Total</td>
+                                                <td></td>
+                                                <td>KES 596,762</td>
+                                                <td>KES 613,196</td>
+                                                <td>KES 0</td>
+                                                <td>
+                                                    <span>0</span>
+                                                    <span> days</span>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4>Credit Account Details</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Risk Position</h4>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane active" id="activities">
+                        <div class="activities">
+                            <ul class="items"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+{% endblock modal-content %}

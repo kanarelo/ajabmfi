@@ -27,9 +27,6 @@
                         <th data-column="name">Name</th>
                         <th data-column="identity_type">Identity Type</th>
                         <th data-column="identity_number">Identity #</th>
-                        <th data-column="no_of_loans">No of Loans</th>
-                        <th data-column="performing_loans">Performing</th>
-                        <th data-column="non_performing_loans">Non Performing</th>
                         <th data-column="status">Status</th>
                         <th data-column="date">Date</th>
                         <th></th>
@@ -41,9 +38,6 @@
                             <td style="text-transform: capitalize;">{{ busines_profile.name }}</td>
                             <td>{{ busines_profile.identity_type.name }}</td>
                             <td>{{ busines_profile.identity_number }}</td>
-                            <td>{{ busines_profile.total_no_of_loans }}</td>
-                            <td>{{ busines_profile.current_performing_loans }}</td>
-                            <td>{{ busines_profile.current_non_performing_loans }}</td>
                             <td>{{ busines_profile.last_status.name }}</td>
                             <td>{{ busines_profile.created_at|date:"d/m/Y" }}</td>
                             <td>

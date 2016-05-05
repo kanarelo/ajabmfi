@@ -12,6 +12,7 @@
     <meta name="author" content="">
     <title>AjabMFI | {% block page-title %}Dashboard{% endblock page-title %}</title>
 
+    <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet">
     {% block extracss %}
       <link href="{% static "css/app/dashboard.css" %}" rel="stylesheet">
     {% endblock extracss %}
@@ -19,7 +20,7 @@
   </head>
   <body>
     <nav class="navbar navbar-default navbar-primary">
-      <div class="container-fluid">
+      <div class="container{% block fluid %}-fluid {% endblock fluid %}">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -34,22 +35,30 @@
         <!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
         <div id="navbar" class="clearfix">
           <div class="collapse navbar-collapse" id="collapsable">
+            {% block navbar-buttons %}
             <ul class="nav navbar-nav navbar-right">
               {% block nav-menu-items %}
-                <li class="active"><a href="{% url "home:dashboard" %}">Home</a></li>
-                <li><a href="{% url "crm:dashboard" %}">CRM</a></li>
+                <li class="active">
+                  <a href="{% url "home:dashboard" %}">Home</a>
+                </li>
+                <li>
+                  <a href="{% url "crm:dashboard" %}">CRM</a>
+                  <span class="badge font_extra_bold" style="margin-top: -20px; float: right; background-color: #54BCCA;">3</span>
+                </li>
                 <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
                 <li><a href="{% url "accounting:dashboard" %}">Accounting</a></li>
                 <li><a href="{% url "risk:dashboard" %}">Risk &amp; Compliance</a></li>
-                <li><a href="{% url "users:dashboard" %}">Users</a></li>
+                <!-- <li><a href="{% url "users:dashboard" %}">Users</a></li> -->
                 <li><a href="{% url "users:my-profile" %}">My Profile</a></li>
               {% endblock nav-menu-items %}
             </ul>
+            {% endblock navbar-buttons %}
           </div>
         </div>
       </div>
     </nav>
     <section class="body-area">
+      {% block body-area %}
       {% block sidebar %}
         <div class="sidebar">
           <div class="sidebar-menu">
@@ -71,7 +80,9 @@
                       <a href="{% url "origination:my_pipeline" %}">
                         <div class="menu-icon my_pipeline">
                         </div>
-                        <div class="menu-label">Applications</div>
+                        <div class="menu-label">
+                          Applications
+                        </div>
                       </a>
                     </div>
                   </li>
@@ -127,12 +138,19 @@
         {% block page-content %}
         {% endblock page-content %}
       </div>
+      <div class="modal-content">
+        {% block modal-content %}
+        {% endblock modal-content %}
+      </div>
+      {% endblock body-area %}
     </section>
+    {% block footer-parent %}
     <footer class="font_semibold">
       {% block footer %}
         &copy; {% now "Y" %} Ajab Capital LTD.
       {% endblock footer %}
     </footer>
+    {% endblock footer-parent %}
     <script type="text/javascript" src="{% static "js/bower_components/jquery/dist/jquery.min.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
 

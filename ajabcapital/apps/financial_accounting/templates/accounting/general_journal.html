@@ -43,7 +43,7 @@
                         <tr>
                             <td>{{ entry.ledger_transaction.pk }}</td>
                             <td>{{ entry.ledger_transaction.transaction_type.name }}</td>
-                            <td>{{ entry.get_ledger_balance_item_type_display }}</td>
+                            <td class="font_semibold" style="text-transform: uppercase;">{{ entry.get_ledger_balance_item_type_display }}</td>
                             <td>{{ entry.ledger_account.ledger_code }}</td>
                             <td>{{ entry.ledger_account.name }}</td>
                             <td class="font_semibold" style="text-align: right;">

@@ -1,0 +1,113 @@
+{% extends "origination/base.html" %}
+
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block footer-parent %}
+{% endblock footer-parent %}
+
+{% block nav-menu-items %}
+{% endblock nav-menu-items %} 
+
+{% block navbar-buttons %}
+<div class="nav navbar-nav navbar-right">
+    <!-- <a style="margin-top:.7rem" class="btn btn-primary font_black" href="#">SignUp</a> -->
+</div>
+{% endblock navbar-buttons %}
+
+{% block fluid %}{% endblock fluid %}
+
+{% block body-area %}
+<div class="container" style="padding-bottom: 5rem">
+    <h2 style="margin-bottom:2rem;margin-top:3rem;;padding-bottom:.5rem" class="font_semibold">
+        Let's Start the Application Process
+    </h2>
+    <div class="dashboard-row row">
+        <div class="dashboard-column">
+            <div class="dashboard-inner-row clearfix">
+                <div class-"col-md-12"="">
+                    <div class="well well-sm loan-application-stages">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage prequalification">
+                                <span class="badge">1</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Prequalification
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage verification active">
+                                <span class="badge">2</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Verification
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage terms">
+                                <span class="badge">3</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Loan Terms
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage processing" style="color: #000">
+                                <span class="badge">4</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Processing
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <form class="form" action="." method="POST">{% csrf_token %}
+            <h4 style="margin-bottom: 1.25rem;margin-top: 2rem;">Personal Details</h4>
+            <div class="row">
+                <div class="col-md-5" style="border-right: 1px solid #eee">
+                    <label>Uploaded Document</label>
+                    <img src="{% static "img/passport.jpg" %}" class="img-responsive">
+                </div>
+                <div class="col-md-7">
+                    <ul style="list-style:none; font-size: 1.05rem;">
+                        <li style="border-bottom:1px solid #eeeeee;padding:10px;">
+                            <label style="min-width:27.5%">Identification Type:</label>
+                            <span>Passport Number</span>
+                        </li>
+                        <li style="border-bottom:1px solid #eeeeee;padding:10px;">
+                            <label style="min-width:27.5%">Identification Number:</label>
+                            <span>A1938021</span>
+                        </li>
+                        <li style="border-bottom:1px solid #eeeeee;padding:10px;">
+                            <label style="min-width:27.5%"><i class=""></i> Email:</label>
+                            <span>onesmus.mukewa@gmail.com</span>
+                        </li>
+                        <li style="border-bottom:1px solid #eeeeee;padding:10px;">
+                            <label style="min-width:27.5%"><i class=""></i> Phone Number:</label>
+                            <span>0703266966</span>
+                        </li>
+                        <li style="border-bottom:1px solid #eeeeee;padding:10px;">
+                            <label style="min-width:27.5%"><i class=""></i> Town:</label>
+                            <span>Nairobi</span>
+                        </li>
+                        <li style="border-bottom:1px solid #eeeeee;padding:10px;">
+                            <label style="min-width:27.5%"><i class=""></i> Street:</label>
+                            <span>Mai Mahiu Road</span>
+                        </li>
+                        <li style="border-bottom:1px solid #eeeeee;padding:10px;">
+                            <label style="min-width:27.5%"><i class=""></i> Country:</label>
+                            <span>Kenya</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{% url "origination:set-loan-terms" %}" class="btn btn-primary pull-right">
+                        VERIFY CRB IDENTITY
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock body-area %}

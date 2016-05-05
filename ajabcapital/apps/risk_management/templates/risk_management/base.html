@@ -3,6 +3,8 @@
 
 {% block page-title %} Risk &amp; Compliance {% endblock page-title %}
 
+{% block menu-header %}Risk &amp; Compliance{% endblock menu-header %}
+
 {% block extracss %}
   <link href="{% static "css/app/risk_management/dashboard.css" %}" rel="stylesheet">
 {% endblock extracss %}
@@ -13,7 +15,7 @@
   <li><a href="{% url "loans:dashboard" %}">Loans</a></li>
   <li><a href="{% url "accounting:dashboard" %}">Accounting</a></li>
   <li class="active"><a href="{% url "risk:dashboard" %}">Risk &amp; Compliance</a></li>
-  <li><a href="{% url "users:dashboard" %}">Users</a></li>
+  <!-- <li><a href="{% url "users:dashboard" %}">Users</a></li> -->
   <li><a href="{% url "users:my-profile" %}">My Profile</a></li>
 {% endblock nav-menu-items %}
 
@@ -23,7 +25,7 @@
       <a href="{% url "risk:kyc" %}">
         <div class="menu-icon kyc">
         </div>
-        <div class="menu-label">kyc</div>
+        <div class="menu-label">kyc profiles</div>
       </a>
     </div>
     <div class="menu-item {% block risk_monitoring %}{% endblock %}">

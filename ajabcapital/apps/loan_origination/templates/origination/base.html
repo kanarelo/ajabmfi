@@ -1,20 +1,4 @@
 {% extends "base.html" %}
 
 {% block menu-items %}
-  <li class="menu-row clearfix">
-    <div class="menu-item {% block my_pipeline %}{% endblock %}">
-      <a href="{% url "origination:my_pipeline" %}">
-        <div class="menu-icon my_pipeline">
-        </div>
-        <div class="menu-label">MY pipeline</div>
-      </a>
-    </div>
-    <div class="menu-item {% block home_reports %}{% endblock %}">
-      <a href="{% url "origination:home_reports" %}">
-        <div class="menu-icon home_reports">
-        </div>
-        <div class="menu-label">Reports</div>
-      </a>
-    </div>
-  </li>
 {% endblock menu-items %}

@@ -1,0 +1,182 @@
+{% extends "origination/base.html" %}
+
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block footer-parent %}
+{% endblock footer-parent %}
+
+{% block nav-menu-items %}
+{% endblock nav-menu-items %} 
+
+{% block navbar-buttons %}
+<div class="nav navbar-nav navbar-right">
+    <!-- <a style="margin-top:.7rem" class="btn btn-primary font_black" href="#">SignUp</a> -->
+</div>
+{% endblock navbar-buttons %}
+
+{% block fluid %}{% endblock fluid %}
+
+{% block body-area %}
+<div class="container" style="padding-bottom: 5rem">
+    <h2 style="margin-bottom:2rem;margin-top:3rem;;padding-bottom:.5rem" class="font_semibold">
+        Let's Start the Application Process
+    </h2>
+    <div class="dashboard-row row">
+        <div class="dashboard-column">
+            <div class="dashboard-inner-row clearfix">
+                <div class-"col-md-12"="">
+                    <div class="well well-sm loan-application-stages">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage prequalification">
+                                <span class="badge">1</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Prequalification
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage verification active">
+                                <span class="badge">2</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Verification
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage terms">
+                                <span class="badge">3</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Loan Terms
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage processing" style="color: #000">
+                                <span class="badge">4</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Processing
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <form class="form" action="." method="POST">{% csrf_token %}
+            <h4 style="margin-bottom: 1.25rem;margin-top: 2rem;">Identity Verification</h4>
+            {% if not verified %}
+                <div style="background-color:#eee; padding: 1rem 2rem">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>
+                                     Upload Identification Document
+                                </label>
+                                <input type="file" name="id_document" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>
+                                     Identification Type
+                                </label>
+                                <select name="identification_type" class="form-control">
+                                    <option>--</option>
+                                    <option value="ID_002">National ID</option>
+                                    <option value="ID_003">Passport Number</option>
+                                    <option value="ID_004">Service Number</option>
+                                    <option value="ID_005">Alien ID</option>
+                                    <option value="ID_006">Company Reg No</option>
+                                    <option value="ID_007">PIN</option>
+                                    <option value="ID_008">VAT</option>
+                                    <option value="ID_009">Birth Certificate</option>
+                                    <option value="ID_010">Driving License</option>
+                                    <option value="ID_011">Employer ID</option>
+                                    <option value="ID_012">Voters Card</option>
+                                    <option value="ID_013">Other</option>
+                                    <option value="ID_014">Baptism Certificate</option>
+                                    <option value="ID_015">Marriage Certificate</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>
+                                     Identification Number
+                                </label>
+                                <input name="identification_number" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>
+                                     Mobile Phone Number
+                                </label>
+                                <input class="form-control" name="phone" />
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label>
+                                     Email
+                                </label>
+                                <input class="form-control" name="email" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>
+                                     Town
+                                </label>
+                                <input name="town" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>
+                                     Street
+                                </label>
+                                <input name="street" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>
+                                     Code
+                                </label>
+                                <input name="street_code" class="form-control" type="number">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>
+                                    Country
+                                </label>
+                                <select name="country" class="form-control">
+                                    <option>--</option>
+                                    <option value="254">Kenya</option>
+                                    <option value="253">Uganda</option>
+                                    <option value="255">Tanzania</option>
+                                    <option value="256">Rwanda</option>
+                                    <option value="257">Burundi</option>
+                                    <option value="300">South Sudan</option>
+                                    <option value="251">North Sudan</option>
+                                    <option value="252">Ethiopia</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary font_extra_bold pull-right" type="submit">VERIFY IDENTITY</button>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div></div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock body-area %}

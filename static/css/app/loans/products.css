@@ -5837,9 +5837,9 @@ button.close {
   src: url("/static/fonts/proximanova/proximanova-light-webfont.eot?#iefix") format("embedded-opentype"), url("/static/fonts/proximanova/proximanova-light-webfont.woff") format("woff"), url("/static/fonts/proximanova/proximanova-light-webfont.ttf") format("truetype"), url("/static/fonts/proximanova/proximanova-light-webfont.svg#proxima_nova_ltregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-.font_regular, html, body, section.page, .font_extra_bold, .navbar .navbar-header .navbar-brand .ajab, .navbar.navbar-secondary #navbar ul.nav li.active > a,
+.font_regular, html, body, section.page, .font_extra_bold, div#identity-details .count-column div.stats-portfolio table tr td:first-child, .navbar .navbar-header .navbar-brand .ajab, .navbar.navbar-secondary #navbar ul.nav li.active > a,
 .navbar.navbar-secondary #navbar ul.nav li.focus > a,
-.navbar.navbar-secondary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label, section.body-area .main-content .header h3, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr.summary, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage .figure, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis h4, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .amount-holder .amount, .font_black, .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li:first-child, section.body-area .main-content .table-holder .table-cover h3, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure, .font_light, .navbar .navbar-header .navbar-brand .mfi, .font_semibold, h4, strong, .navbar.navbar-primary #navbar ul.nav li > a, section.body-area .main-content .table-holder .table-cover table thead, section.body-area .main-content .header h4, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr th, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage .figure-label, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure-label, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .par ol li .classification, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .quick-accounts .quick-row .name, section.body-area .main-content .form-holder .body .form .form-group label {
+.navbar.navbar-secondary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label, section.body-area .main-content .header h3, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr.summary, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage .figure, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis h4, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .amount-holder .amount, .font_black, div#identity-details h3.identity-name, .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li:first-child, section.body-area .main-content .table-holder .table-cover h3, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure, .font_light, .navbar .navbar-header .navbar-brand .mfi, .font_semibold, label, .loan-application-stages .row .stage .figure-label, .loan-application-stages .row .stage .figure, div#identity-details .count-column div.stats-portfolio table tr td, div#identity-details #search-result-details.table thead > tr, div#identity-details .nav-tabs > li > a, h4, strong, .navbar.navbar-primary #navbar ul.nav li > a, section.body-area .sidebar .sidebar-menu .header h2, section.body-area .main-content .table-holder .table-cover table thead, section.body-area .main-content .header h4, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr th, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage .figure-label, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure-label, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .par ol li .classification, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .quick-accounts .quick-row .name, section.body-area .main-content .form-holder .body .form .form-group label {
   -webkit-font-feature-settings: "kern" 1,"liga" 1,"calt" 1,"pnum" 1,"tnum" 0,"onum" 0,"lnum" 0,"dlig" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -5848,18 +5848,18 @@ button.close {
 .font_regular, html, body, section.page {
   font-family: "ProximaNova-Regular"; }
 
-.font_extra_bold, .navbar .navbar-header .navbar-brand .ajab, .navbar.navbar-secondary #navbar ul.nav li.active > a,
+.font_extra_bold, div#identity-details .count-column div.stats-portfolio table tr td:first-child, .navbar .navbar-header .navbar-brand .ajab, .navbar.navbar-secondary #navbar ul.nav li.active > a,
 .navbar.navbar-secondary #navbar ul.nav li.focus > a,
 .navbar.navbar-secondary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label, section.body-area .main-content .header h3, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr.summary, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage .figure, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis h4, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .amount-holder .amount {
   font-family: "proxima_nova_thbold"; }
 
-.font_black, .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li:first-child, section.body-area .main-content .table-holder .table-cover h3, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure {
+.font_black, div#identity-details h3.identity-name, .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a, section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li:first-child, section.body-area .main-content .table-holder .table-cover h3, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure {
   font-family: "ProximaNovaBlRegular"; }
 
 .font_light, .navbar .navbar-header .navbar-brand .mfi {
   font-family: "proxima_nova_ltregular"; }
 
-.font_semibold, h4, strong, .navbar.navbar-primary #navbar ul.nav li > a, section.body-area .main-content .table-holder .table-cover table thead, section.body-area .main-content .header h4, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr th, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage .figure-label, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure-label, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .par ol li .classification, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .quick-accounts .quick-row .name, section.body-area .main-content .form-holder .body .form .form-group label {
+.font_semibold, label, .loan-application-stages .row .stage .figure-label, .loan-application-stages .row .stage .figure, div#identity-details .count-column div.stats-portfolio table tr td, div#identity-details #search-result-details.table thead > tr, div#identity-details .nav-tabs > li > a, h4, strong, .navbar.navbar-primary #navbar ul.nav li > a, section.body-area .sidebar .sidebar-menu .header h2, section.body-area .main-content .table-holder .table-cover table thead, section.body-area .main-content .header h4, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well table tr th, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.crm-origination-pipeline .row .stage .figure-label, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well.kpis .kpi .figure-label, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .par ol li .classification, section.body-area .main-content .dashboard-row .dashboard-column .dashboard-inner-row .well .quick-accounts .quick-row .name, section.body-area .main-content .form-holder .body .form .form-group label {
   font-family: "proxima_nova_ltbold"; }
 
 .skinny-letterspacing {
@@ -5943,6 +5943,175 @@ footer {
 html, body {
   min-height: 100% !important;
   height: 100%; }
+
+label {
+  font-weight: normal; }
+
+.loan-application-stages {
+  min-height: 5rem;
+  padding: 0;
+  border: none;
+  margin-left: 1rem;
+  margin-right: 1rem; }
+  .loan-application-stages .row {
+    margin: 0;
+    height: 5rem; }
+    .loan-application-stages .row .stage {
+      text-align: center;
+      height: 5rem;
+      padding: 0;
+      padding-top: 18.5px;
+      background-color: #eee;
+      color: #fff; }
+      .loan-application-stages .row .stage:after {
+        border-top: 35px solid #eee;
+        border-bottom: 35px solid #eee;
+        border-left: 17.5px solid #eee; }
+      .loan-application-stages .row .stage.prequalification {
+        background-color: #eee;
+        color: #000; }
+        .loan-application-stages .row .stage.prequalification:after {
+          border-top: 35px solid #eee;
+          border-bottom: 35px solid #eee;
+          border-left: 17.5px solid #eee; }
+        .loan-application-stages .row .stage.prequalification.active {
+          background-color: #60316E;
+          color: #fff; }
+          .loan-application-stages .row .stage.prequalification.active:after {
+            border-top: 35px solid #eee;
+            border-bottom: 35px solid #eee;
+            border-left: 17.5px solid #60316E; }
+      .loan-application-stages .row .stage.verification {
+        background-color: #eee;
+        color: #000; }
+        .loan-application-stages .row .stage.verification:after {
+          border-top: 35px solid #eee;
+          border-bottom: 35px solid #eee;
+          border-left: 17.5px solid #eee; }
+        .loan-application-stages .row .stage.verification.active {
+          background-color: #4B6289;
+          color: #fff; }
+          .loan-application-stages .row .stage.verification.active:after {
+            border-top: 35px solid #eee;
+            border-bottom: 35px solid #eee;
+            border-left: 17.5px solid #4B6289; }
+      .loan-application-stages .row .stage.terms {
+        background-color: #eee;
+        color: #000; }
+        .loan-application-stages .row .stage.terms:after {
+          border-top: 35px solid #eee;
+          border-bottom: 35px solid #eee;
+          border-left: 17.5px solid #eee; }
+        .loan-application-stages .row .stage.terms.active {
+          background-color: #29A19C;
+          color: #fff; }
+          .loan-application-stages .row .stage.terms.active:after {
+            border-top: 35px solid #eee;
+            border-bottom: 35px solid #eee;
+            border-left: 17.5px solid #29A19C; }
+      .loan-application-stages .row .stage.processing {
+        background-color: #eee;
+        color: #000; }
+        .loan-application-stages .row .stage.processing:after {
+          border-top: 35px solid #fff;
+          border-bottom: 35px solid #fff;
+          border-left: 17.5px solid #eee; }
+        .loan-application-stages .row .stage.processing.active {
+          background-color: #A3F7BF; }
+          .loan-application-stages .row .stage.processing.active:after {
+            border-top: 35px solid #fff;
+            border-bottom: 35px solid #fff;
+            border-left: 17.5px solid #A3F7BF; }
+      .loan-application-stages .row .stage .figure-label {
+        font-size: 1rem;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+        padding-top: .6rem; }
+      .loan-application-stages .row .stage .figure {
+        padding-top: 0.5rem;
+        font-size: 1.35rem; }
+      .loan-application-stages .row .stage .badge {
+        padding: 5.5px 11px;
+        border-radius: 80px;
+        margin-right: .5rem;
+        background: #fff;
+        color: #000;
+        font-size: 1rem; }
+      .loan-application-stages .row .stage:after {
+        content: "";
+        position: absolute;
+        right: 0px;
+        top: 0; }
+
+div#identity-details {
+  height: 50rem;
+  -webkit-box-shadow: 1px -1px 2px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px -1px 2px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px -1px 2px -1px rgba(0, 0, 0, 0.75);
+  position: absolute;
+  bottom: 0;
+  display: none;
+  width: 99.5%;
+  background-color: #fff;
+  top: -50.15rem;
+  right: 0rem;
+  left: 1.25rem;
+  bottom: 0; }
+  div#identity-details h3.identity-name {
+    padding: 0px 20px 10px 15px;
+    font-size: 2rem; }
+    div#identity-details h3.identity-name .account-details-close {
+      cursor: pointer;
+      margin-top: -18px;
+      margin-right: -7px; }
+    div#identity-details h3.identity-name .account-details-close i.fa {
+      font-size: 16px !important; }
+  div#identity-details .count-column {
+    border-right: 1px solid #2984D3;
+    height: 550px; }
+    div#identity-details .count-column div.stats-portfolio {
+      margin-bottom: 20px; }
+      div#identity-details .count-column div.stats-portfolio table {
+        padding: 8px;
+        line-height: 1.271429; }
+        div#identity-details .count-column div.stats-portfolio table tr td {
+          text-transform: capitalize; }
+          div#identity-details .count-column div.stats-portfolio table tr td:first-child {
+            font-size: 2.3rem;
+            text-align: left; }
+    div#identity-details .count-column div.stats-portfolio table {
+      line-height: 1.15; }
+      div#identity-details .count-column div.stats-portfolio table tr td:last-child,
+      div#identity-details .count-column div.stats-portfolio table tr td:last-child {
+        font-size: 13px;
+        margin-bottom: 20px;
+        padding-left: 10px; }
+  div#identity-details #search-result-details.table thead > tr {
+    text-transform: capitalize; }
+  div#identity-details #search-result-details.table tr > th,
+  div#identity-details #search-result-details.table tr > td {
+    padding: 3px;
+    line-height: 1.42857143;
+    font-size: 1rem; }
+  div#identity-details #search-result-details.table tfoot > tr {
+    font-weight: 900;
+    background-color: #E0E0E0; }
+  div#identity-details .nav-tabs, div#identity-details > .nav-tabs {
+    border-bottom: 1px solid #ebf0f5;
+    background-color: #fff898;
+    padding-top: 10px;
+    padding-left: 15px; }
+    div#identity-details .nav-tabs > li > a, div#identity-details > .nav-tabs > li > a {
+      font-size: 11px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      padding-top: 10px;
+      letter-spacing: 1px; }
+  div#identity-details .nav-tabs {
+    border-bottom: none;
+    background-color: none; }
+  div#identity-details .tab-content .tab-pane {
+    padding-top: 1rem; }
 
 ul.pie-legend {
   margin-left: -20px;
@@ -6063,7 +6232,7 @@ h4 {
 section.body-area {
   height: 93.5%; }
   section.body-area .sidebar {
-    background-color: #f8f8f8;
+    background-color: #ECECEC;
     float: left;
     height: 100%;
     width: 100%; }
@@ -6071,8 +6240,8 @@ section.body-area {
       section.body-area .sidebar {
         width: 19rem; } }
     section.body-area .sidebar .sidebar-menu .header h2 {
-      padding-left: 1rem;
-      font-size: 25px; }
+      padding-left: 2rem;
+      font-size: 20px; }
     section.body-area .sidebar .sidebar-menu .body ul.menu {
       border-bottom: 1px solid #DBDBDB;
       list-style: none;
@@ -6393,7 +6562,7 @@ footer {
     background: #c5183b; }
 
 h4 {
-  color: #E52B50; }
+  color: #97132d; }
 
 .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a {
   border-bottom: 5px solid #E52B50; }

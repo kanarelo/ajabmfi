@@ -119,8 +119,8 @@
                             <tbody>
                                 <tr class="">
                                     <td>1.0</td>
-                                    <td>Gross Core Capital (Tier 1)</td>
-                                    <td>239,032,900.32</td>
+                                    <td>Gross Core Capital (Tier I)</td>
+                                    <td>439,032,900.32</td>
                                 </tr>
                                 <tr class="">
                                     <td>1.1</td>
@@ -135,32 +135,57 @@
                                 <tr class="summary subtotal">
                                     <td></td>
                                     <td>Net Core Capital</td>
-                                    <td>236,643,899.43</td>
+                                    <td>436,643,899.43</td>
                                 </tr>
                                 <tr>
                                     <td>2.0</td>
-                                    <td>Supplementary Capital</td>
-                                    <td>400,475,788.74</td>
+                                    <td>Supplementary Capital (Tier II)</td>
+                                    <td>200,475,788.74</td>
                                 </tr>
                                 <tr class="summary total">
-                                    <td>3.0</td>
+                                    <td></td>
                                     <td>Total Capital</td>
                                     <td>637,119,688.17</td>
                                 </tr>
                                 <tr class="">
-                                    <td>4.0</td>
+                                    <td>3.0</td>
                                     <td>Total shareholder's funds</td>
-                                    <td>(60,643,899.43)</td>
+                                    <td>637,116,899.43</td>
                                 </tr>
                                 <tr class="summary total">
                                     <td></td>
-                                    <td>Total</td>
-                                    <td>576,475,788.74</td>
+                                    <td>Difference</td>
+                                    <td>2,788.74</td>
                                 </tr>
                             </tbody>
                             <tfoot>
                             </tfoot>
                         </table>
+                        <div class="row" style="border-top: 1px solid #eee; margin-top: -10px;">
+                            <div class="col-md-6">
+                                <div>
+                                    <h4 style="letter-spacing:0px;font-size:10px;margin-bottom: 0;">
+                                        Net Core Capital
+                                    </h4>
+                                    <div class="amount-holder">
+                                        <span class="currency">KES</span>
+                                        <span class="amount">436m</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <h4 style="letter-spacing:0px;font-size:10px;margin-bottom: 0;">
+                                        Capital Surplus/Deficiency
+                                    </h4>
+                                    <div class="amount-holder">
+                                        <span class="currency">KES</span>
+                                        <span class="amount"> {{ capital_surplus_deficiency|intword|default:"236m" }}</span>
+                                        <span class="percentage">(54%)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -170,7 +195,7 @@
                 <div class="col-md-4">
                     <div class="well well-sm amounts" style="min-height: 26rem;">
                         <div>
-                            <h4>Risk Weighted Asset (RWA)</h4>
+                            <h4>Risk Weighted Assets (RWA)</h4>
                             <div class="amount-holder">
                                 <span class="currency">KES</span>
                                 {% if risk_weighted_assets < 1000000 %}
@@ -189,7 +214,7 @@
                         </div>
                         <hr>
                         <div>
-                            <h4>NPL Ratio</h4>
+                            <h4>Non Perfoming Loan Ratio</h4>
                             <div class="amount-holder">
                                 <span class="amount"> {{ npl_ratio }}%</span>
                             </div>
@@ -360,7 +385,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="font_extra_bold" style="background-color:#EFF2DD;">200-300</td>
+                                    <td class="font_extra_bold" style="background-color:#492540;color:#fff;">200-300</td>
                                     <td>230</td>
                                     <td>13</td>
                                     <td>217</td>
@@ -368,7 +393,7 @@
                                     <td>0%</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_extra_bold" style="background-color:#F6EA8C;">301-400</td>
+                                    <td class="font_extra_bold" style="background-color:#C03546;color:#fff;">301-400</td>
                                     <td>327</td>
                                     <td>20</td>
                                     <td>307</td>
@@ -376,7 +401,7 @@
                                     <td>0%</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_extra_bold" style="background-color:#FFEF6F;">401-500</td>
+                                    <td class="font_extra_bold" style="background-color:#F26D5B;color:#fff;">401-500</td>
                                     <td>89</td>
                                     <td>47</td>
                                     <td>22</td>
@@ -384,7 +409,7 @@
                                     <td>0%</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_extra_bold" style="background-color:#F26D5B;color:#fff;">501-600</td>
+                                    <td class="font_extra_bold" style="background-color:#FFEF6F;">501-600</td>
                                     <td>530</td>
                                     <td>239</td>
                                     <td>231</td>
@@ -392,7 +417,7 @@
                                     <td>11.3%</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_extra_bold" style="background-color:#C03546;color:#fff;">601-700</td>
+                                    <td class="font_extra_bold" style="background-color:#F6EA8C;">601-700</td>
                                     <td>730</td>
                                     <td>245</td>
                                     <td>485</td>
@@ -400,7 +425,7 @@
                                     <td>0%</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_extra_bold" style="background-color:#492540;color:#fff;">701-800</td>
+                                    <td class="font_extra_bold" style="background-color:#EFF2DD;">701-800</td>
                                     <td>90</td>
                                     <td>80</td>
                                     <td>10</td>
@@ -419,16 +444,16 @@
                             <tfoot>
                             </tfoot>
                         </table>
-                        <div class="row">
-                            <div class="col-md-3">
+                        <div class="row" style="border-top: 1px solid #eee;">
+                            <div class="col-md-2">
                                 <div>
-                                    <h4 style="letter-spacing:0px;font-size:10px;">average crb score</h4>
+                                    <h4 style="letter-spacing:0px;font-size:10px;">avg score</h4>
                                     <div class="amount-holder">
                                         <span class="amount"> {{ average_score|default:"509" }}</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div>
                                     <h4 style="letter-spacing:0px;font-size:10px;">Acceptance Rate</h4>
                                     <div class="amount-holder">
@@ -436,13 +461,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-3">
                                 <div>
-                                    <h4 style="letter-spacing:0px;font-size:10px;">Portfolio Growth</h4>
+                                    <h4 style="letter-spacing:0px;font-size:10px;">Rejection Rate</h4>
+                                    <div class="amount-holder">
+                                        <span class="amount"> {{ acceptance_rate|intword|default:"63.7" }}%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <h4 style="letter-spacing:0px;font-size:10px;">Potential Growth</h4>
                                     <div class="amount-holder">
                                         <span class="currency">KES</span>
-                                        <span class="amount"> {{ portfolio_growth|intword|default:"203 M" }}</span>
-                                        <span class="percentage">(142%)</span>
+                                        <span class="amount"> {{ portfolio_growth|intword|default:"203m" }}</span>
+                                        <span class="percentage">(14%)</span>
                                     </div>
                                 </div>
                             </div>
@@ -462,7 +495,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="well well-sm ">
-                        <h4 class="font_semibold">Portfolio By CRB Status</h4>
+                        <h4 class="font_semibold">Portfolio By CRB KYC Status</h4>
                         <canvas height="195px" width="195px" id="kyc-drilldown"></canvas>
                         <div id="kyc-drilldown-legend"></div>
                     </div>

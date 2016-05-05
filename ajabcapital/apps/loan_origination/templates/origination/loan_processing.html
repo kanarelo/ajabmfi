@@ -1,0 +1,78 @@
+{% extends "origination/base.html" %}
+
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block footer-parent %}
+{% endblock footer-parent %}
+
+{% block nav-menu-items %}
+{% endblock nav-menu-items %} 
+
+{% block navbar-buttons %}
+<div class="nav navbar-nav navbar-right">
+    <!-- <a style="margin-top:.7rem" class="btn btn-primary font_black" href="#">SignUp</a> -->
+</div>
+{% endblock navbar-buttons %}
+
+{% block fluid %}{% endblock fluid %}
+
+{% block body-area %}
+<div class="container" style="padding-bottom: 5rem">
+    <h2 style="margin-bottom:2rem;margin-top:3rem;;padding-bottom:.5rem" class="font_semibold">
+        Let's Start the Application Process
+    </h2>
+    <div class="dashboard-row row">
+        <div class="dashboard-column">
+            <div class="dashboard-inner-row clearfix">
+                <div class-"col-md-12"="">
+                    <div class="well well-sm loan-application-stages">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage prequalification">
+                                <span class="badge">1</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Prequalification
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage verification">
+                                <span class="badge">2</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Verification
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage terms">
+                                <span class="badge">3</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Loan Terms
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 stage processing active" style="color: #000">
+                                <span class="badge">4</span>
+                                <span class="figure hidden-xs hidden-sm">
+                                    Processing
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <form class="form" action="." method="POST">{% csrf_token %}
+            <h4 style="margin-bottom: 1.25rem;margin-top: 2rem;">Congratulations!</h4>
+            <div style="background-color:#eee; padding: 1rem 2rem" class="clearfix">
+                <h3 style="font-size:1.4rem; text-align:center">
+                    you have successfully applied for the loan, please wait for our team to get back to you as soon as possible.
+                </h3>
+                <h3 style="font-size:1.2rem; text-align:center">
+                    <i class="fa fa-phone"></i> contact us on 0703266966/0736705812
+                </h3>
+                <button type="submit" class="btn btn-primary" style="margin-left: 50%; margin-top: 1rem">
+                    BACK
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock body-area %}

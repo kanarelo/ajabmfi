@@ -11,14 +11,6 @@ from ajabcapital.apps.core.models import (
 
 class BaseCustomerProfile(AuditBase):
     #counters
-    total_no_of_loans = models.PositiveIntegerField(default=0)
-    closed_loans = models.PositiveIntegerField(default=0)
-    current_performing_loans = models.PositiveIntegerField(default=0)
-    current_non_performing_loans = models.PositiveIntegerField(default=0)
-
-    has_delinquency = models.BooleanField(default=False)
-    has_historical_delinquency = models.BooleanField(default=False)
-
     total_fees_overdue = models.DateTimeField(null=True)
     total_principal_overdue = models.DateTimeField(null=True)
         

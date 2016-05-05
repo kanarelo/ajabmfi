@@ -59,7 +59,7 @@
                     pointStrokeColor : "#fff",
                     pointHighlightFill : "#fff",
                     pointHighlightStroke : "rgba(197,24,59,1)",
-                    data : [74408542.88, 88342600.72, 42526281.23, 140691803.32, 463099602.55, 143822479.3, 493202479.3]
+                    data : [354085742.88, 385332600.72, 409526281.23, 412691803.32, 450996029.55, 493824719.3, 559982200.3]
                 },
                 {
                     label: "Expense",
@@ -69,7 +69,7 @@
                     pointStrokeColor : "#fff",
                     pointHighlightFill : "#",
                     pointHighlightStroke : "rgba(255,109,138,1)",
-                    data : [354085742.88, 385332600.72, 409526281.23, 412691803.32, 450996029.55, 4938224719.3, 5599822000.3]
+                    data : [74408542.88, 88342600.72, 42526281.23, 140691803.32, 46309962.55, 143822479.3, 493202479.3]
                 },
             ]
         };
@@ -85,7 +85,7 @@
                     pointStrokeColor : "#fff",
                     pointHighlightFill : "#fff",
                     pointHighlightStroke : "rgba(36, 61, 68,1)",
-                    data : [75408542.88, 88332600.72, 92526281.23, 150691803.32, 163099602.55, 173822479.3, 193202479.3]
+                    data : [1246471484.88, 1295332600.72, 1339526281.23, 1392691803.32, 1400996029.55, 1423824719.3, 1429982000.3]
                 },
                 {
                     label: "Liabilities",
@@ -95,7 +95,7 @@
                     pointStrokeColor : "#fff",
                     pointHighlightFill : "#",
                     pointHighlightStroke : "rgba(22, 122, 139, 1)",
-                    data : [734085742.88, 825332600.72, 839526281.23, 922691803.32, 930996029.55, 1238224719.3, 1299822000.3]
+                    data : [612385742.88, 560332600.72, 540526281.23, 523691803.32, 512996029.55, 501824719.3, 478822000.3]
                 },
                 {
                     label: "Equity",
@@ -105,7 +105,7 @@
                     pointStrokeColor : "#fff",
                     pointHighlightFill : "#",
                     pointHighlightStroke : "rgba(45, 234, 143, 1)",
-                    data : [234085742.88, 225332600.72, 239526281.23, 242691803.32, 250996029.55, 2638224719.3, 2799822000.3]
+                    data : [634085742.88, 679332600.72, 709526281.23, 742691803.32, 770996029.55, 823824719.3, 909822000.3]
                 },
             ]
         };
@@ -240,22 +240,26 @@
                         <div class="col-md-12">
                             <div class="well well-sm income-expense-trends">
                                 <h4 class="font_semibold">income / expense trends</h4>
-                                <div class="col-md-8">
-                                    <canvas height="120px" width="270px" id="income-expense-trends"></canvas>
-                                </div>
-                                <div class="col-md-4">
-                                    <div id="income-expense-trends-legend"></div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <canvas height="120px" width="270px" id="income-expense-trends"></canvas>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div id="income-expense-trends-legend"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="well well-sm asset-expense-liability-trends">
                                 <h4 class="font_semibold">asset / liability / equity trends</h4>
-                                <div class="col-md-8">
-                                    <canvas height="120px" width="270px" id="asset-expense-liability-trends"></canvas>
-                                </div>
-                                <div class="col-md-4">
-                                    <div id="asset-expense-liability-trends-legend"></div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <canvas height="120px" width="270px" id="asset-expense-liability-trends"></canvas>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div id="asset-expense-liability-trends-legend"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -312,6 +316,26 @@
                             <tfoot>
                             </tfoot>
                         </table>
+                        <div class="row" style="border-top: 1px solid #eee; padding-top: 5px; padding-left: 5px;">
+                            <div class="col-md-6">
+                                <div>
+                                    <h4 style="letter-spacing:0px;font-size:10px;">Current Balance</h4>
+                                    <div class="amount-holder">
+                                        <span class="currency">KES</span>
+                                        <span class="amount">84m</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <h4 style="letter-spacing:0px;font-size:10px;">Available Balance</h4>
+                                    <div class="amount-holder">
+                                        <span class="currency">KES</span>
+                                        <span class="amount">72m</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -379,7 +403,7 @@
                                 </tr>
                                 <tr class="summary total">
                                     <td></td>
-                                    <td>Net Income</td>
+                                    <td>Net Income Before Tax</td>
                                     <td>185,379,965.76</td>
                                 </tr>
                             </tbody>
@@ -393,7 +417,7 @@
         <div class="dashboard-column col-md-8 activities">
             <div class="dashboard-inner-row clearfix">
                 <div class="col-md-4">
-                    <div class="well well-sm amounts">
+                    <div class="well well-sm amounts" style="min-height: 26rem;">
                         <div>
                             <h4>Return on assets</h4>
                             <div class="amount-holder">

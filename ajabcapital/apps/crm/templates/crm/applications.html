@@ -1,0 +1,97 @@
+{% extends "crm/base.html" %}
+
+{% load humanize %}
+
+{% block crm_applications %} active{% endblock crm_applications %}
+
+{% block page-content %}
+    <div class="col-lg-12 table-holder">
+        <div class="btn-group pull-right">
+            <button class="btn btn-default btn-xs">
+                <i class="fa fa-plus-circle"></i>
+                <span> Add</span>
+            </button>
+            <button class="btn btn-default btn-xs">
+                <i class="fa fa-search"></i><span> Search</span>
+            </button>
+            <div class="dropdown pull-right">
+                <button style="margin-bottom5px;" class="btn btn-default btn-xs dropdown-toggle filter-button" type="button" aria-haspopup="true" aria-expanded="true">
+                    <i class="fa fa-filter"></i>
+                    <span> Filter</span>
+                </button>
+            </div>
+        </div>
+        <div class="table-cover">
+            <h3>Applications</h3>
+            <table class="table table-striped user-list">
+                <thead>
+                    <tr>
+                        <th data-column="applicant_name">Applicant Name</th>
+                        <th data-column="identity_type">Identity Type</th>
+                        <th data-column="identity_number">Identity Number</th>
+                        <th data-column="loan_purpose">Loan Purpose</th>
+                        <th data-column="crb_score">CRB Score</th>
+                        <th data-column="amount">Amount</th>
+                        <th data-column="status">Status</th>
+                        <th data-column="date">Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for application in applications %}
+                        <tr style="background-color: {{ application.color }}">
+                            <td>{{ application.applicant_name }}</td>
+                            <td>{{ application.identity_type }}</td>
+                            <td>{{ application.identity_number }}</td>
+                            <td>{{ application.loan_purpose }}</td>
+                            <td class="font_semibold">{{ application.crb_score }}</td>
+                            <td>KES. {{ application.amount|intcomma }}</td>
+                            <td>
+                                {% if application.status == "Accepted" %}
+                                    <i style="color: #5ABFCD" class="fa fa-check-square"></i>
+                                {% else %}
+                                    <i style="color: #5ABFCD" class="fa fa-ban"></i>
+                                {% endif %}
+                                {{ application.status }}
+                            </td>
+                            <td>{{ application.created_at|date:"d/m/Y" }}</td>
+                            <td>
+                                <div class="pull-right dropdown">
+                                    <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                        <span class="font_extra_bold">ACTION</span>
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#"><i class="fa fa-check-square"></i> Approve Loan</a></li>
+                                        <li><a href="#"><i class="fa fa-ban"></i> Reject Loan</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Delete Account</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <nav>
+            <ul class="pager">
+                <li class="previous disabled">
+                    <a href="#">
+                        <span aria-hidden="true">←</span>
+                        <span> Previous Page</span>
+                    </a>
+                </li>
+                <li>
+                    <span style="font-size1px;">Page 1 of 1</span>
+                </li>
+                <li class="next disabled">
+                    <a href="#">
+                        <span>Next Page </span>
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+{% endblock page-content %}

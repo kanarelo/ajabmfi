@@ -1,0 +1,166 @@
+{% extends "risk_management/base.html" %}
+
+{% load static %}
+{% load humanize %}
+
+{% block risk_kyc %} active{% endblock %}
+
+{% block page-content %}
+    <div class="col-lg-12 table-holder">
+        <div class="btn-group pull-right">
+            <button class="btn btn-default btn-xs">
+                <i class="fa fa-plus-circle"></i>
+                <span> Add</span>
+            </button>
+            <button class="btn btn-default btn-xs">
+                <i class="fa fa-search"></i><span> Search</span>
+            </button>
+            <div class="dropdown pull-right">
+                <button style="margin-bottom5px;" class="btn btn-default btn-xs dropdown-toggle filter-button" type="button" aria-haspopup="true" aria-expanded="true">
+                    <i class="fa fa-filter"></i>
+                    <span> Filter</span>
+                </button>
+                <ul class="dropdown-menu filter-dropdown">
+                    <form id="filter-form" method="POST" action="/user/list/">
+                        <li>
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="is_partner_staff">
+                                    <span>Partner Staff</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="is_metropol_staff""0">
+                                    <span"1">Metropol Staff</span>
+                                </label>
+                            </div>
+                        </li>
+                        <input type="hidden" name="filter" value="yes">
+                        <li>
+                            <div>
+                                <label>
+                                    <input name="deactivated_accounts" type="checkbox">
+                                    <span>Deactivated Accounts</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label>
+                                    <input name="deleted_accounts" type="checkbox" "60">
+                                    <span "61">Deleted Accounts</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="btn btn-primary btn-xs pull-right">Submit</button>
+                        </li>
+                    </form>
+                </ul>
+            </div>
+        </div>
+        <div class="table-cover">
+            <h3 class="font_black">KYC Profiles</h3>
+            <table class="table table-striped user-list">
+                <thead>
+                    <tr>
+                        <th data-column="profile">Profile</th>
+                        <th data-column="identity_type">Identity</th>
+                        <th data-column="profile_type">Profile Type</th>
+                        <th data-column="verified">Verified</th>
+                        <th data-column="amount_due">Fraud</th>
+                        <th data-column="amount_due">Delinquency</th>
+                        <th style="text-align:right;" data-column="total_exposure">Credit Limit</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for loan_profile in loan_profiles %}
+                        <tr>
+                            <td style="text-transform:capitalize;">{{ loan_profile.profile }}</td>
+                            <td>{{ loan_profile.profile.identity_number|default:"Not provided" }} 
+                                {% if loan_profile.profile.identity_type %}
+                                    <span class="font_extra_bold" style="font-size: 85%">
+                                        ({{ loan_profile.profile.identity_type.name }})
+                                    </span>
+                                {% endif %}
+                            </td>
+                            {% if loan_profile.individual_profile %}
+                                <td><i style="color:#2984d3;" class="fa fa-user"></i> Individual</td>
+                            {% elif loan_profile.business_profile %}
+                                <td><i style="color:#2984d3;" class="fa fa-building"></i> Business</td>
+                            {% elif loan_profile.group_profile %}
+                                <td><i style="color:#2984d3;" class="fa fa-users"></i> Group</td>
+                            {% endif %}
+                            <td>
+                                {% if loan_profile.risk_profile.is_verified %}
+                                    <i style="color:green" class="fa fa-check-circle fa-lg"></i>
+                                {% else %}
+                                    <i style="color:red" class="fa fa-minus-circle fa-lg"></i>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if loan_profile.risk_profile.has_fraud %}
+                                    <i style="color:green" class="fa fa-check-circle fa-lg"></i>
+                                {% else %}
+                                    <i style="color:red" class="fa fa-minus-circle fa-lg"></i>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if loan_profile.risk_profile.has_current_delinquency %}
+                                    <span class="font_extra_bold">C</span>
+                                {% elif loan_profile.risk_profile.has_historical_delinquency %}
+                                    <span class="font_extra_bold">H</span>
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td style="text-align:right;" class="font_semibold">
+                                KES. {{ loan_profile.credit_limit|intcomma }}
+                            </td>
+                            <td>
+                                <div class="pull-right dropdown">
+                                    <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                        <span>Action </span>
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Manage User</a></li>
+                                        <li><a href="#">Reset Password</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Make Administrator</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Deactivate Account</a></li>
+                                        <li><a href="#">Delete Account</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <nav>
+            <ul class="pager">
+                <li class="previous disabled">
+                    <a href="#">
+                        <span aria-hidden="true">←</span>
+                        <span> Previous Page</span>
+                    </a>
+                </li>
+                <li>
+                    <span style="font-size1px;">Page 1 of 1</span>
+                </li>
+                <li class="next disabled">
+                    <a href="#">
+                        <span>Next Page </span>
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+{% endblock page-content %}

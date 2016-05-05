@@ -12,11 +12,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.template.response import TemplateResponse
 
 from django.http import (
-	HttpResponseRedirect, 
-	HttpResponseForbidden, 
-	JsonResponse, 
-	HttpResponse,
-	Http404
+    HttpResponseRedirect, 
+    HttpResponseForbidden, 
+    JsonResponse, 
+    HttpResponse,
+    Http404
 )
 
 from django.utils import timezone
