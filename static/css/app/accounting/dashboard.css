@@ -5944,6 +5944,16 @@ html, body {
   min-height: 100% !important;
   height: 100%; }
 
+body {
+  font-size: 12px; }
+
+a {
+  color: #882100; }
+  a:hover {
+    color: #882100; }
+  .nav > li > a {
+    padding: 6px 15px; }
+
 label {
   font-weight: normal; }
 
@@ -6113,33 +6123,20 @@ div#identity-details {
   div#identity-details .tab-content .tab-pane {
     padding-top: 1rem; }
 
-ul.pie-legend {
-  margin-left: -20px;
-  border-radius: 5px;
-  margin-right: 5px;
-  list-style: none; }
-  ul.pie-legend li {
-    margin-bottom: 10px;
-    color: #33345E; }
-    ul.pie-legend li span {
-      padding: 5px 12px;
-      width: 8px;
-      height: 8px;
-      font-weight: 600;
-      margin-bottom: 3px;
-      border-radius: 3px;
-      margin-right: 5px; }
-
+ul.pie-legend,
+ul.bar-legend,
 ul.line-legend {
   margin-left: -20px;
   border-radius: 5px;
   margin-right: 5px;
-  list-style: none;
-  margin-top: 15px;
-  margin-right: 5px; }
+  list-style: none; }
+  ul.pie-legend li,
+  ul.bar-legend li,
   ul.line-legend li {
     margin-bottom: 10px;
     color: #33345E; }
+    ul.pie-legend li span,
+    ul.bar-legend li span,
     ul.line-legend li span {
       padding: 5px 12px;
       width: 8px;
@@ -6178,7 +6175,7 @@ ul.line-legend {
   font-size: 14px; }
 
 h4 {
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 1.3px;
   font-size: 12px; }
 
@@ -6203,6 +6200,8 @@ h4 {
         height: 3px; }
     .navbar.navbar-primary #navbar ul.nav {
       margin-top: 5px; }
+      .navbar.navbar-primary #navbar ul.nav li > a {
+        text-transform: uppercase; }
       .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a {
         background-color: transparent;
         border-bottom: 5px solid #28B98E; }
@@ -6263,15 +6262,16 @@ section.body-area {
             width: 100%;
             height: 100%; }
             section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label {
-              text-transform: uppercase;
+              text-transform: capitalize;
               color: #7e7e7e;
               margin-top: .5rem;
-              font-size: 13px; }
+              font-size: .95rem; }
             section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-icon {
               display: inline-block;
               width: 32px;
               height: 32px;
-              background-repeat: no-repeat; }
+              background-repeat: no-repeat;
+              background-size: 32px 32px; }
             section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover {
               text-decoration: none; }
               section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover .menu-icon {
@@ -6316,8 +6316,16 @@ section.body-area {
       height: 100%; }
       section.body-area .main-content .table-holder .table-cover {
         height: 85%; }
-        section.body-area .main-content .table-holder .table-cover table tbody {
-          font-size: 13.5px; }
+        section.body-area .main-content .table-holder .table-cover table {
+          font-size: 12.5px !important; }
+          section.body-area .main-content .table-holder .table-cover table tbody tr td {
+            padding: 6px; }
+      section.body-area .main-content .table-holder .dashboard-row {
+        margin-bottom: 0;
+        padding-left: 1rem; }
+        section.body-area .main-content .table-holder .dashboard-row .dashboard-column .dashboard-inner-row .well {
+          min-height: 7rem;
+          margin-left: 0; }
     section.body-area .main-content .header {
       padding-right: 1rem;
       padding-bottom: 5px;
@@ -6556,22 +6564,17 @@ footer {
 
 .btn-primary {
   background: none;
-  background-image: linear-gradient(-90deg, #2C6D83 0%, #3B7F96 100%);
+  background-image: linear-gradient(-90deg, #2984D3 0%, #529cdd 100%);
   border: none; }
   .btn-primary:hover, .btn-primary.active, .btn-primary:active, .btn-primary.focus, .btn-primary:focus {
-    background: #1f4d5d; }
+    background: #529cdd; }
 
 h4 {
-  color: #2C6D83; }
+  color: #2577be; }
 
 .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a {
-  border-bottom: 5px solid #2C6D83; }
+  border-bottom: 5px solid #2984D3; }
 
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label {
-  text-transform: uppercase;
-  color: #7e7e7e;
-  margin-top: .5rem;
-  font-size: 13px; }
 section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-icon {
   display: inline-block;
   width: 32px;
@@ -6590,25 +6593,25 @@ section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a 
   section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-icon.banking {
     background-image: url("/static/img/icons/ic_accounting_banking_coloured.png"); }
 section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active {
-  background-image: linear-gradient(-90deg, #2C6D83 0%, #3B7F96 100%);
+  background-image: linear-gradient(-90deg, #2984D3 0%, #529cdd 100%);
   cursor: pointer; }
   section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover .menu-label, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active .menu-label {
     color: #fff; }
-  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover.general_journal, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active.general_journal {
-    background-image: url("/static/img/icons/ic_loan_accounts_white.png"); }
-  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover.balance_sheet, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active.balance_sheet {
-    background-image: url("/static/img/icons/ic_loan_funds_white.png"); }
-  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover.pnl_statement, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active.pnl_statement {
-    background-image: url("/static/img/icons/ic_loan_transactions_white.png"); }
-  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover.trial_balance, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active.trial_balance {
-    background-image: url("/static/img/icons/ic_loan_products_white.png"); }
-  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover.ledgers, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active.ledgers {
-    background-image: url("/static/img/icons/ic_accounting_white.png"); }
-  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover.banking, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active.banking {
-    background-image: url("/static/img/icons/ic_accounting_reports_white.png"); }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover .menu-icon.general_journal, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active .menu-icon.general_journal {
+    background-image: url("/static/img/icons/ic_accounting_general_journal_white.png"); }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover .menu-icon.balance_sheet, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active .menu-icon.balance_sheet {
+    background-image: url("/static/img/icons/ic_accounting_balance_sheet_white.png"); }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover .menu-icon.pnl_statement, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active .menu-icon.pnl_statement {
+    background-image: url("/static/img/icons/ic_pnl_statement_white.png"); }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover .menu-icon.trial_balance, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active .menu-icon.trial_balance {
+    background-image: url("/static/img/icons/ic_trial_balance_white.png"); }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover .menu-icon.ledgers, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active .menu-icon.ledgers {
+    background-image: url("/static/img/icons/ic_products_accounting_white.png"); }
+  section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover .menu-icon.banking, section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item.active .menu-icon.banking {
+    background-image: url("/static/img/icons/ic_accounting_banking_white.png"); }
 section.body-area .sidebar .sidebar-menu .footer ul.quick-actions li.active {
   padding-left: 1.5rem;
-  border-left: 5px solid #2C6D83; }
+  border-left: 5px solid #2984D3; }
 section.body-area .main-content table.balance-sheet, section.body-area .main-content table.pl_statement {
   margin-bottom: 6.5rem; }
   section.body-area .main-content table.balance-sheet tbody tr, section.body-area .main-content table.pl_statement tbody tr {

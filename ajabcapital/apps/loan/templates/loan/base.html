@@ -29,11 +29,11 @@
         <div class="menu-label">accounts</div>
       </a>
     </div>
-    <div class="menu-item {% block loan_funds %}{% endblock %}">
-      <a href="{% url "loans:loan_funds" %}">
-        <div class="menu-icon loan_funds">
+    <div class="menu-item {% block loan_products %}{% endblock %}">
+      <a href="{% url "loans:loan_products" %}">
+        <div class="menu-icon loan_products">
         </div>
-        <div class="menu-label">loan funds</div>
+        <div class="menu-label">loan products</div>
       </a>
     </div>
   </li>
@@ -45,11 +45,11 @@
         <div class="menu-label">transactions</div>
       </a>
     </div>
-    <div class="menu-item {% block loan_products %}{% endblock %}">
-      <a href="{% url "loans:loan_products" %}">
-        <div class="menu-icon loan_products">
+    <div class="menu-item {% block loan_funds %}{% endblock %}">
+      <a href="{% url "loans:loan_funds" %}">
+        <div class="menu-icon loan_funds">
         </div>
-        <div class="menu-label">loan products</div>
+        <div class="menu-label">loan funds</div>
       </a>
     </div>
   </li>

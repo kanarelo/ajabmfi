@@ -448,4 +448,4 @@ def allocate_repayments():
         allocate_repayment(loan_account, txn.amount, User.objects.get(pk=3))
 
 if __name__ == "__main__":
-    populate_profiles()
+    accrue_interests()

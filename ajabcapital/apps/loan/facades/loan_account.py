@@ -324,7 +324,7 @@ def get_installment_dates(loan_account):
             return [last_date]
 
 def get_loan_repayments(loan_account):
-    repayments = LedgerTransaction.objects.product_account_transactions(
+    repayments = LedgerTransaction.objects.filter(
         product_account=loan_account.account_number
     ).loan_repayments().posted()
 

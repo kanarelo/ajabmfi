@@ -39,7 +39,7 @@ def loan_accounts(request):
     accounts = LoanAccount.objects.active().order_by('-created_at')
 
     page = request.GET.get('page', 1)
-    paginator = Paginator(accounts, request.GET.get('count', 12)) # Show 11 contacts per page
+    paginator = Paginator(accounts, request.GET.get('count', 10)) # Show 11 contacts per page
 
     try:
         accounts = paginator.page(page)

@@ -78,23 +78,25 @@ section.body-area{
                                     color: #fff;
                                 }
 
-                                &.clients_individuals{
-                                    background-image: url("/static/img/icons/ic_clients_individual_white.png");
-                                }
-                                &.clients_business{
-                                    background-image: url("/static/img/icons/ic_clients_business_white.png");
-                                }
-                                &.clients_groups{
-                                    background-image: url("/static/img/icons/ic_clients_groups_white.png");
-                                }
-                                &.clients_messages{
-                                    background-image: url("/static/img/icons/ic_clients_messages_white.png");
-                                }
-                                &.clients_campaigns{
-                                    background-image: url("/static/img/icons/ic_clients_campaign_white.png");
-                                }
-                                &.clients_templates{
-                                    background-image: url("/static/img/icons/ic_clients_message_templates_white.png");
+                                .menu-icon{
+                                    &.clients_individuals{
+                                        background-image: url("/static/img/icons/ic_clients_individual_white.png");
+                                    }
+                                    &.clients_business{
+                                        background-image: url("/static/img/icons/ic_clients_business_white.png");
+                                    }
+                                    &.clients_groups{
+                                        background-image: url("/static/img/icons/ic_clients_groups_white.png");
+                                    }
+                                    &.clients_messages{
+                                        background-image: url("/static/img/icons/ic_clients_messages_white.png");
+                                    }
+                                    &.clients_campaigns{
+                                        background-image: url("/static/img/icons/ic_clients_campaign_white.png");
+                                    }
+                                    &.clients_templates{
+                                        background-image: url("/static/img/icons/ic_clients_message_templates_white.png");
+                                    }
                                 }
                             }
                         }

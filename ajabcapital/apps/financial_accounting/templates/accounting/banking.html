@@ -5,67 +5,791 @@
 
 {% block fa_banking %} active{% endblock fa_banking %}
 
+{% block extrajs %}
+    <script src="{% static "js/bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
+    <script src="{% static "js/bower_components/jquery-ui/jquery-ui.min.js" %}"></script>
+    <script src="{% static "js/bower_components/lodash/lodash.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/momentjs/min/moment.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/accounting/accounting.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bower_components/chartjs/Chart.js" %}"></script>
+
+    <script>
+        window.intword = function(value){
+            var value;
+
+            if (value >= 1000000000){
+                value /= 1000000000;
+                value = accounting.formatMoney(value, 'KES ', 0) + " B";
+                return value
+            } else if (value >= 1000000){
+                value /= 1000000;
+                value = accounting.formatMoney(value, 'KES ', 0) + " M";
+                return value
+            } else if (value == 0){
+                return "0";
+            }else{
+                return accounting.formatMoney(value, 'KES ', 0);
+            }
+        }
+        var assetBreakdown = [
+            {% for item in asset_breakdown %}
+                {
+                    label: "{{ item.name|safe }}",
+                    value: "{{ item.value }}",
+                    color: "{{ item.color }}",
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        var incomeExpenseTrend = {
+            labels : ["Nov","Dec","Jan","Feb","Mar","Apr","May"],
+            datasets : [
+                {
+                    label: "Money In",
+                    fillColor : "rgba(73, 37, 64, 0.2)",
+                    strokeColor : "rgba(73, 37, 64, 1)",
+                    pointColor : "rgba(73, 37, 64, 1)",
+                    pointStrokeColor : "#fff",
+                    pointHighlightFill : "#fff",
+                    pointHighlightStroke : "rgba(197,24,59,1)",
+                    data : [354085742.88, 385332600.72, 409526281.23, 412691803.32, 450996029.55, 493824719.3, 559982200.3]
+                },
+                {
+                    label: "Money Out",
+                    fillColor : "rgba(192, 53, 70, 0.2)",
+                    strokeColor : "rgba(192, 53, 70, 1)",
+                    pointColor : "rgba(192, 53, 70, 1)",
+                    pointStrokeColor : "#fff",
+                    pointHighlightFill : "#",
+                    pointHighlightStroke : "rgba(255,109,138,1)",
+                    data : [74408542.88, 88342600.72, 42526281.23, 140691803.32, 46309962.55, 143822479.3, 493202479.3]
+                },
+            ]
+        };
+        
+        var options = {
+            responsive: false, 
+            animateRotate : false, 
+            animateScale : false,
+            {% verbatim %}
+                scaleLabel: ("<%= intword(value) %>"),
+                tooltipTemplate: ("<%= accounting.formatMoney(value, 'KES ', 0) %>"),
+                multiTooltipTemplate: ("<%= accounting.formatMoney(value, 'KES ', 0) %>")
+            {% endverbatim %}
+        };
+
+        window.onload = function(){
+            // var ctx = document.getElementById("asset-breakdown").getContext("2d");
+            // window.myPie1 = new Chart(ctx).Pie(assetBreakdown, options);
+            // document.getElementById(
+            //     'asset-breakdown-legend'
+            // ).innerHTML = window.myPie1.generateLegend();
+
+            var ctx1 = document.getElementById("account-summary-trend").getContext("2d");
+            window.myLine1 = new Chart(ctx1).Line(incomeExpenseTrend, options);
+            document.getElementById('account-summary-trend-legend').innerHTML = window.myLine1.generateLegend();            
+        };
+    </script>
+{% endblock extrajs %}
+
+{% block reactjs-scripts %}
+  {{ block.super }}
+{% endblock reactjs-scripts %}
+
 {% block page-content %}
-    <div class="col-lg-12 table-holder">
-        <div class="table-cover">
+    <div class="header row">
+        <div class="col-md-8 col-sm-12">
             <h3>Banking</h3>
-            <table class="table table-striped user-list">
-                <thead>
-                    <tr>
-                        <th data-column="transaction_type">Name</th>
-                        <th data-column="ledger_code">Ledger Code</th>
-                        <th data-column="transaction_date">Balance</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for account in accounts %}
-                        <tr>
-                            <td>{{ account.ledger_transaction.pk }}</td>
-                            <td>{{ account.ledger_account.ledger_code }}</td>
-                            <td class="font_semibold" style="text-align: right;">
-                                {{ account.ledger_transaction.amount|intcomma }}
-                            </td>
-                            <td>
-                                <div class="pull-right dropdown">
-                                    <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
-                                        <span class="font_extra_bold">ACTION</span>
-                                        <i class="fa fa-caret-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#">Manage User</a></li>
-                                        <li><a href="#">Reset Password</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">Make Administrator</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">Deactivate Account</a></li>
-                                        <li><a href="#">Delete Account</a></li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
         </div>
-        <nav>
-            <ul class="pager">
-                <li class="previous disabled">
-                    <a href="#">
-                        <span aria-hidden="true">←</span>
-                        <span> Previous Page</span>
-                    </a>
-                </li>
-                <li>
-                    <span style="font-size1px;">Page 1 of 1</span>
-                </li>
-                <li class="next disabled">
-                    <a href="#">
-                        <span>Next Page </span>
-                        <span aria-hidden="true">→</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <div class="col-md-4 col-sm-3 hidden-xs">
+            <div class="row">
+                <a class="btn btn-primary btn-sm font_black" href="#">
+                    <i class="fa fa-plus"></i> ADD BANK ACCOUNT
+                </a>
+            
+                <a class="btn btn-default btn-sm font_black" href="#" style="">
+                    <i class="fa fa-arrow-circle-up"></i> DEPOSIT
+                </a>
+                <a class="btn btn-default btn-sm font_black" href="#">
+                    <i class="fa fa-arrow-circle-down"></i> WITHDRAW
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 table-holder">
+        <div class="dashboard-row row" style="border-bottom: 1px solid #ddd; margin-bottom: 1.5rem;">
+            <div class="dashboard-column col-md-6" style="padding-right: 2rem;">
+                <div class="dashboard-inner-row clearfix">
+                    <div class="well well-sm" style="padding:0; padding-right:1rem; background-color:#fff;">
+                        <h4>current bank balances</h4>
+                        <table class="table table-bordered table-hover" style="text-transform:capitalize;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th style="text-align: right;">Bank</th>
+                                    <th style="text-align: right;">Ledger</th>
+                                    <th style="text-align: right;">Diff</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Barclays Bank</td>
+                                    <td style="text-align:right">17,892,900.02</td>
+                                    <td style="text-align:right">17,892,900.02</td>
+                                    <td style="text-align:right">172,900.02</td>
+                                </tr>
+                                <!-- <tr>
+                                    <td>3</td>
+                                    <td>M-Pesa (#34077)</td>
+                                    <td style="text-align:right">2,032,002.00</td>
+                                    <td style="text-align:right">2,032,002.00</td>
+                                    <td style="text-align:right">232,002.00</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>M-Pesa (#34078)</td>
+                                    <td style="text-align:right">222,672.00</td>
+                                    <td style="text-align:right">222,672.00</td>
+                                    <td style="text-align:right">22,672.00</td>
+                                </tr> -->
+                                <tr>
+                                    <td>5</td>
+                                    <td>M-Pesa (#34079)</td>
+                                    <td style="text-align:right">993,002.92</td>
+                                    <td style="text-align:right">993,002.92</td>
+                                    <td style="text-align:right">93,002.92</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Airtel (#AAS4009)</td>
+                                    <td style="text-align:right">432,002.92</td>
+                                    <td style="text-align:right">432,002.92</td>
+                                    <td style="text-align:right">43,002.92</td>
+                                </tr>
+                                <tr class="summary subtotal">
+                                    <td></td>
+                                    <td>Total Balance</td>
+                                    <td style="text-align:right">84,474,367.86</td>
+                                    <td style="text-align:right">84,474,367.86</td>
+                                    <td style="text-align:right">774,367.86</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-column col-md-6" style="border-left: 1px solid #e9e9e9;margin-left: 0rem;">
+                <div class="dashboard-inner-row clearfix">
+                    <div class="well well-sm" style="padding:0; padding-left:3rem; background-color:#fff;">
+                        <h4>accounts summary trend</h4>
+                        <div id="canvas-holder-1">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <canvas id="account-summary-trend" width="400" height="225" style="margin-bottom: 10px;"></canvas>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div id="account-summary-trend-legend" style="margin-left:-10px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4>Account Transactions</h4>
+        <div class="well" style="margin-top: 1rem; min-height: 5rem; border: none; margin-bottom: 1.5rem;">
+            <form class="form-inline">
+              <div class="form-group" style="margin-right:1.5rem">
+                <label for="exampleInputName2">Bank Account:</label>
+                <select class="form-control input-sm">
+                    <option>All</option>
+                    <option>Barclays Bank</option>
+                    <option>Sidian Bank</option>
+                    <option>M-Pesa (#34077)</option>
+                    <option>M-Pesa (#34078)</option>
+                    <option>M-Pesa (#34079)</option>
+                    <option>Airtel (#AAS4009)</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-right:1.5rem">
+                <label for="exampleInputName2">Transaction Type:</label>
+                <select class="form-control input-sm">
+                    <option>All</option>
+                    <option>Disbursement</option>
+                    <option>Repayment</option>
+                    <option>Deposit</option>
+                    <option>Withdrawal</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail2">Month:</label>
+                <select type="from" class="form-control input-sm">
+                    <option></option>
+                    <option selected value='1'>Janaury</option>
+                    <option value='2'>February</option>
+                    <option value='3'>March</option>
+                    <option value='4'>April</option>
+                    <option value='5'>May</option>
+                    <option value='6'>June</option>
+                    <option value='7'>July</option>
+                    <option value='8'>August</option>
+                    <option value='9'>September</option>
+                    <option value='10'>October</option>
+                    <option value='11'>November</option>
+                    <option value='12'>December</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail2">Year:</label>
+                <input type="to" class="form-control input-sm">
+              </div>
+              <button type="submit" class="btn btn-primary btn-sm font_semibold">
+                <i class="fa fa-filter"></i> FILTER
+              </button>
+            </form>
+        </div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#personal-profile" aria-controls="personal-profile" role="tab" data-toggle="tab"  aria-expanded="false" class="font_semibold">
+                    Bank Entries <span class="badge badge-primary">26</span>
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#loan-profile" aria-controls="loan-profile" role="tab" data-toggle="tab"  aria-expanded="false" class="font_semibold">
+                    Ledger Entries <span class="badge">23</span>
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#risk-profile" aria-controls="risk-profile" role="tab" data-toggle="tab" aria-expanded="true" class="font_semibold">
+                    Reconciled Entries <span class="badge">23</span>
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#activities" aria-controls="activities" role="tab" data-toggle="tab" aria-expanded="true" class="font_semibold">
+                    Unreconciled Entries <span class="badge">3</span>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="personal-profile">
+                <div class="table-cover" style="padding-top:1.5rem">
+                    <table class="table table-striped table-bordered user-list">
+                        <thead>
+                            <tr>
+                                <th data-column="transaction_number">Transaction #</th>
+                                <th data-column="transaction_type">Transaction Type</th>
+                                <th data-column="ledger_code">Ledger Code</th>
+                                <th data-column="ledger_account">Bank Account</th>
+                                <th style="text-align: right;" data-column="amount">Spent (KES)</th>
+                                <th style="text-align: right;" data-column="amount">Received (KES)</th>
+                                <th data-column="status">Status</th>
+                                <th data-column="transaction_date">Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0JOQHNOS58Y</td>
+                                <td>Loan Disbursal</td>
+                                <td>1.1220.0000</td>
+                                <td>Loan Fund Source</td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                </td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                        83,821.19
+                                    
+                                </td>
+                                <td>
+                                    
+                                        <i class="fa fa-check"></i>
+                                    
+                                    Pending Posting
+                                </td>
+                                <td>26/04/2016</td>
+                                <td>
+                                    <div class="pull-right dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                            <span class="font_extra_bold">ACTION</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Manage User</a></li>
+                                            <li><a href="#">Reset Password</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Make Administrator</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Deactivate Account</a></li>
+                                            <li><a href="#">Delete Account</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>0JOQHNOS58Y</td>
+                                <td>Loan Disbursal</td>
+                                <td>1.4100.0000</td>
+                                <td>Gross loan portfolio control</td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                        83,821.19
+                                    
+                                </td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                </td>
+                                <td>
+                                    
+                                        <i class="fa fa-check"></i>
+                                    
+                                    Pending Posting
+                                </td>
+                                <td>26/04/2016</td>
+                                <td>
+                                    <div class="pull-right dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                            <span class="font_extra_bold">ACTION</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Manage User</a></li>
+                                            <li><a href="#">Reset Password</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Make Administrator</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Deactivate Account</a></li>
+                                            <li><a href="#">Delete Account</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>OVZMBKJR5QV</td>
+                                <td>Loan Disbursal</td>
+                                <td>1.1220.0000</td>
+                                <td>Loan Fund Source</td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                </td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                        4,899,879.92
+                                    
+                                </td>
+                                <td>
+                                    
+                                        <i class="fa fa-check"></i>
+                                    
+                                    Pending Posting
+                                </td>
+                                <td>26/04/2016</td>
+                                <td>
+                                    <div class="pull-right dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                            <span class="font_extra_bold">ACTION</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Manage User</a></li>
+                                            <li><a href="#">Reset Password</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Make Administrator</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Deactivate Account</a></li>
+                                            <li><a href="#">Delete Account</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>OVZMBKJR5QV</td>
+                                <td>Loan Disbursal</td>
+                                <td>1.4100.0000</td>
+                                <td>Gross loan portfolio control</td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                        4,899,879.92
+                                    
+                                </td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                </td>
+                                <td>
+                                    
+                                        <i class="fa fa-check"></i>
+                                    
+                                    Pending Posting
+                                </td>
+                                <td>26/04/2016</td>
+                                <td>
+                                    <div class="pull-right dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                            <span class="font_extra_bold">ACTION</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Manage User</a></li>
+                                            <li><a href="#">Reset Password</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Make Administrator</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Deactivate Account</a></li>
+                                            <li><a href="#">Delete Account</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>JWORJHFG2W1</td>
+                                <td>Loan Disbursal</td>
+                                <td>1.1220.0000</td>
+                                <td>Loan Fund Source</td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                </td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                        5,825.43
+                                    
+                                </td>
+                                <td>
+                                    
+                                        <i class="fa fa-check"></i>
+                                    
+                                    Pending Posting
+                                </td>
+                                <td>26/04/2016</td>
+                                <td>
+                                    <div class="pull-right dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                            <span class="font_extra_bold">ACTION</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Manage User</a></li>
+                                            <li><a href="#">Reset Password</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Make Administrator</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Deactivate Account</a></li>
+                                            <li><a href="#">Delete Account</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>JWORJHFG2W1</td>
+                                <td>Loan Disbursal</td>
+                                <td>1.4100.0000</td>
+                                <td>Gross loan portfolio control</td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                        5,825.43
+                                    
+                                </td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                </td>
+                                <td>
+                                    
+                                        <i class="fa fa-check"></i>
+                                    
+                                    Pending Posting
+                                </td>
+                                <td>26/04/2016</td>
+                                <td>
+                                    <div class="pull-right dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                            <span class="font_extra_bold">ACTION</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Manage User</a></li>
+                                            <li><a href="#">Reset Password</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Make Administrator</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Deactivate Account</a></li>
+                                            <li><a href="#">Delete Account</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>9GD95UCQDID</td>
+                                <td>Loan Disbursal</td>
+                                <td>1.1220.0000</td>
+                                <td>Loan Fund Source</td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                </td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                        3,997,379.54
+                                    
+                                </td>
+                                <td>
+                                    
+                                        <i class="fa fa-check"></i>
+                                    
+                                    Pending Posting
+                                </td>
+                                <td>26/04/2016</td>
+                                <td>
+                                    <div class="pull-right dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                            <i class="fa fa-cog"></i>
+                                            <span class="font_extra_bold">ACTION</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Manage User</a></li>
+                                            <li><a href="#">Reset Password</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Make Administrator</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Deactivate Account</a></li>
+                                            <li><a href="#">Delete Account</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>9GD95UCQDID</td>
+                                <td>Loan Disbursal</td>
+                                <td>1.4100.0000</td>
+                                <td>Gross loan portfolio control</td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                        3,997,379.54
+                                    
+                                </td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                </td>
+                                <td>
+                                    
+                                        <i class="fa fa-check"></i>
+                                    
+                                    Pending Posting
+                                </td>
+                                <td>26/04/2016</td>
+                                <td>
+                                    <div class="pull-right dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                            <span class="font_extra_bold">ACTION</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Manage User</a></li>
+                                            <li><a href="#">Reset Password</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Make Administrator</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Deactivate Account</a></li>
+                                            <li><a href="#">Delete Account</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>9MLBQYYZEYW</td>
+                                <td>Loan Disbursal</td>
+                                <td>1.1220.0000</td>
+                                <td>Loan Fund Source</td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                </td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                        1,606.05
+                                    
+                                </td>
+                                <td>
+                                    
+                                        <i class="fa fa-check"></i>
+                                    
+                                    Pending Posting
+                                </td>
+                                <td>26/04/2016</td>
+                                <td>
+                                    <div class="pull-right dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                            <span class="font_extra_bold">ACTION</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Manage User</a></li>
+                                            <li><a href="#">Reset Password</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Make Administrator</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Deactivate Account</a></li>
+                                            <li><a href="#">Delete Account</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>9MLBQYYZEYW</td>
+                                <td>Loan Disbursal</td>
+                                <td>1.4100.0000</td>
+                                <td>Gross loan portfolio control</td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                        1,606.05
+                                    
+                                </td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                </td>
+                                <td>
+                                    
+                                        <i class="fa fa-check"></i>
+                                    
+                                    Pending Posting
+                                </td>
+                                <td>26/04/2016</td>
+                                <td>
+                                    <div class="pull-right dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                            <span class="font_extra_bold">ACTION</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Manage User</a></li>
+                                            <li><a href="#">Reset Password</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Make Administrator</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Deactivate Account</a></li>
+                                            <li><a href="#">Delete Account</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>DCP3L8JLQXE</td>
+                                <td>Loan Disbursal</td>
+                                <td>1.1220.0000</td>
+                                <td>Loan Fund Source</td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                </td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                        59,749.12
+                                    
+                                </td>
+                                <td>
+                                    
+                                        <i class="fa fa-check"></i>
+                                    
+                                    Pending Posting
+                                </td>
+                                <td>26/04/2016</td>
+                                <td>
+                                    <div class="pull-right dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                            <span class="font_extra_bold">ACTION</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Manage User</a></li>
+                                            <li><a href="#">Reset Password</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Make Administrator</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Deactivate Account</a></li>
+                                            <li><a href="#">Delete Account</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>DCP3L8JLQXE</td>
+                                <td>Loan Disbursal</td>
+                                <td>1.4100.0000</td>
+                                <td>Gross loan portfolio control</td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                        59,749.12
+                                    
+                                </td>
+                                <td class="font_semibold" style="text-align: right;">
+                                    
+                                </td>
+                                <td>
+                                    
+                                        <i class="fa fa-check"></i>
+                                    
+                                    Pending Posting
+                                </td>
+                                <td>26/04/2016</td>
+                                <td>
+                                    <div class="pull-right dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                            <span class="font_extra_bold">ACTION</span>
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Manage User</a></li>
+                                            <li><a href="#">Reset Password</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Make Administrator</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Deactivate Account</a></li>
+                                            <li><a href="#">Delete Account</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                    </table>
+                </div>
+                <nav>
+                    <ul class="pager">
+                        <li class="previous disabled">
+                            <a href="#">
+                                <span aria-hidden="true">←</span>
+                                <span> Previous Page</span>
+                            </a>
+                        </li>
+                        <li>
+                            <span style="font-size1px;">Page 1 of 1</span>
+                        </li>
+                        <li class="next disabled">
+                            <a href="#">
+                                <span>Next Page </span>
+                                <span aria-hidden="true">→</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div role="tabpanel" class="tab-pane active" id="loan-profile">
+            </div>
+            <div role="tabpanel" class="tab-pane active" id="risk-profile">
+            </div>
+            <div role="tabpanel" class="tab-pane active" id="activities">
+            </div>
+        </div>
     </div>
 {% endblock page-content %}

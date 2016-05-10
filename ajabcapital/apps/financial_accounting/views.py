@@ -45,16 +45,16 @@ def dashboard(request):
         working_capital_ratio="692 million",
         liquidity_ratio=129,
         asset_breakdown=[
-            {'name': 'Cash', 'value': 84474367.86, 'color': "#26252C"},
-            {'name': 'Financial Investments', 'value': 4909999.23, 'color': "#E54861"},
-            {'name': 'Net Loan Portfolio', 'value': 1238453244.04, 'color': "#F2A379"},
-            {'name': 'Net Fixed Assets', 'value': 2109002.23, 'color': "#E0B58C"},
-            {'name': 'Accounts Receivable', 'value': 7891212.23, 'color': "#EFD5B7"},
+            {'name': 'Cash', 'value': 84474367.86, 'color': "#000"},
+            {'name': 'Financial Investments', 'value': 4909999.23, 'color': "#222831"},
+            {'name': 'Net Loan Portfolio', 'value': 1238453244.04, 'color': "#393E46"},
+            {'name': 'Net Fixed Assets', 'value': 2109002.23, 'color': "#FD7014"},
+            {'name': 'Accounts Receivable', 'value': 7891212.23, 'color': "#EEEEEE"},
         ],
         expense_breakdown=[
-            {'name': 'Financial Expense', 'value': 16899902.89, 'color': "#5D414D"},
-            {'name': 'Operating Expense', 'value': 33788789.91, 'color': "#7E858B"},
-            {'name': 'Administrative Expense', 'value': 1233220.12, 'color': "#ABD4C1"},
+            {'name': 'Financial Expense', 'value': 16899902.89, 'color': "#363863"},
+            {'name': 'Operating Expense', 'value': 33788789.91, 'color': "#635270"},
+            {'name': 'Administrative Expense', 'value': 1233220.12, 'color': "#C98B70"},
         ],
     )
 
@@ -62,7 +62,7 @@ def dashboard(request):
 
 @login_required
 def general_journal(request):
-    entries = LedgerEntry.objects.all().order_by('-created_at')
+    entries = LedgerEntry.objects.product_account_entries().order_by('-created_at')
 
     page = request.GET.get('page', 1)
     paginator = Paginator(entries, request.GET.get('count', 12)) # Show 11 contacts per page

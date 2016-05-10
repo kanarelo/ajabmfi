@@ -24,15 +24,15 @@
         </div>
         <div class="table-cover">
             <h3>General Journal</h3>
-            <table class="table table-striped user-list">
+            <table class="table table-striped table-bordered user-list">
                 <thead>
                     <tr>
                         <th data-column="transaction_number">Transaction #</th>
                         <th data-column="transaction_type">Transaction Type</th>
-                        <th data-column="item_type">Item Type</th>
                         <th data-column="ledger_code">Ledger Code</th>
                         <th data-column="ledger_account">Ledger Account #</th>
-                        <th style="text-align: right;" data-column="amount">Amount (KES)</th>
+                        <th style="text-align: right;" data-column="amount">Debit (KES)</th>
+                        <th style="text-align: right;" data-column="amount">Credit (KES)</th>
                         <th data-column="status">Status</th>
                         <th data-column="transaction_date">Date</th>
                         <th></th>
@@ -43,13 +43,26 @@
                         <tr>
                             <td>{{ entry.ledger_transaction.pk }}</td>
                             <td>{{ entry.ledger_transaction.transaction_type.name }}</td>
-                            <td class="font_semibold" style="text-transform: uppercase;">{{ entry.get_ledger_balance_item_type_display }}</td>
                             <td>{{ entry.ledger_account.ledger_code }}</td>
                             <td>{{ entry.ledger_account.name }}</td>
                             <td class="font_semibold" style="text-align: right;">
-                                {{ entry.ledger_transaction.amount|intcomma }}
+                                {% if entry.ledger_balance_item_type == entry.DEBIT %}
+                                    {{ entry.ledger_transaction.amount|floatformat:2|intcomma }}
+                                {% endif %}
                             </td>
-                            <td>{{ entry.ledger_transaction.last_status }}</td>
+                            <td class="font_semibold" style="text-align: right;">
+                                {% if entry.ledger_balance_item_type == entry.CREDIT %}
+                                    {{ entry.ledger_transaction.amount|floatformat:2|intcomma }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if entry.ledger_balance_item_type == "Pending Posting" %}
+                                    <i class="fa fa-clock-o"></i>
+                                {% else %}
+                                    <i class="fa fa-check"></i>
+                                {% endif %}
+                                {{ entry.ledger_transaction.last_status }}
+                            </td>
                             <td>{{ entry.created_at|date:"d/m/Y" }}</td>
                             <td>
                                 <div class="pull-right dropdown">

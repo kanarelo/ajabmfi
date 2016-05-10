@@ -43,13 +43,6 @@ section.body-area{
                     li.menu-row{
                         .menu-item{
                             a{
-                                .menu-label{
-                                    @extend %extra-bold;
-                                    text-transform: uppercase;
-                                    color: #7e7e7e;
-                                    margin-top: .5rem;
-                                    font-size: 13px;
-                                }
                                 .menu-icon{
                                     display: inline-block;
                                     width: 32px;

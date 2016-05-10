@@ -5944,6 +5944,16 @@ html, body {
   min-height: 100% !important;
   height: 100%; }
 
+body {
+  font-size: 12px; }
+
+a {
+  color: #882100; }
+  a:hover {
+    color: #882100; }
+  .nav > li > a {
+    padding: 6px 15px; }
+
 label {
   font-weight: normal; }
 
@@ -6113,33 +6123,20 @@ div#identity-details {
   div#identity-details .tab-content .tab-pane {
     padding-top: 1rem; }
 
-ul.pie-legend {
-  margin-left: -20px;
-  border-radius: 5px;
-  margin-right: 5px;
-  list-style: none; }
-  ul.pie-legend li {
-    margin-bottom: 10px;
-    color: #33345E; }
-    ul.pie-legend li span {
-      padding: 5px 12px;
-      width: 8px;
-      height: 8px;
-      font-weight: 600;
-      margin-bottom: 3px;
-      border-radius: 3px;
-      margin-right: 5px; }
-
+ul.pie-legend,
+ul.bar-legend,
 ul.line-legend {
   margin-left: -20px;
   border-radius: 5px;
   margin-right: 5px;
-  list-style: none;
-  margin-top: 15px;
-  margin-right: 5px; }
+  list-style: none; }
+  ul.pie-legend li,
+  ul.bar-legend li,
   ul.line-legend li {
     margin-bottom: 10px;
     color: #33345E; }
+    ul.pie-legend li span,
+    ul.bar-legend li span,
     ul.line-legend li span {
       padding: 5px 12px;
       width: 8px;
@@ -6178,7 +6175,7 @@ ul.line-legend {
   font-size: 14px; }
 
 h4 {
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 1.3px;
   font-size: 12px; }
 
@@ -6203,6 +6200,8 @@ h4 {
         height: 3px; }
     .navbar.navbar-primary #navbar ul.nav {
       margin-top: 5px; }
+      .navbar.navbar-primary #navbar ul.nav li > a {
+        text-transform: uppercase; }
       .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a {
         background-color: transparent;
         border-bottom: 5px solid #28B98E; }
@@ -6263,15 +6262,16 @@ section.body-area {
             width: 100%;
             height: 100%; }
             section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label {
-              text-transform: uppercase;
+              text-transform: capitalize;
               color: #7e7e7e;
               margin-top: .5rem;
-              font-size: 13px; }
+              font-size: .95rem; }
             section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-icon {
               display: inline-block;
               width: 32px;
               height: 32px;
-              background-repeat: no-repeat; }
+              background-repeat: no-repeat;
+              background-size: 32px 32px; }
             section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover {
               text-decoration: none; }
               section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a:hover .menu-icon {
@@ -6316,8 +6316,16 @@ section.body-area {
       height: 100%; }
       section.body-area .main-content .table-holder .table-cover {
         height: 85%; }
-        section.body-area .main-content .table-holder .table-cover table tbody {
-          font-size: 13.5px; }
+        section.body-area .main-content .table-holder .table-cover table {
+          font-size: 12.5px !important; }
+          section.body-area .main-content .table-holder .table-cover table tbody tr td {
+            padding: 6px; }
+      section.body-area .main-content .table-holder .dashboard-row {
+        margin-bottom: 0;
+        padding-left: 1rem; }
+        section.body-area .main-content .table-holder .dashboard-row .dashboard-column .dashboard-inner-row .well {
+          min-height: 7rem;
+          margin-left: 0; }
     section.body-area .main-content .header {
       padding-right: 1rem;
       padding-bottom: 5px;
@@ -6567,11 +6575,6 @@ h4 {
 .navbar.navbar-primary #navbar ul.nav li.active > a, .navbar.navbar-primary #navbar ul.nav li.focus > a, .navbar.navbar-primary #navbar ul.nav li.open > a {
   border-bottom: 5px solid #2984D3; }
 
-section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-label {
-  text-transform: uppercase;
-  color: #7e7e7e;
-  margin-top: .5rem;
-  font-size: 13px; }
 section.body-area .sidebar .sidebar-menu .body ul.menu li.menu-row .menu-item a .menu-icon {
   display: inline-block;
   width: 32px;

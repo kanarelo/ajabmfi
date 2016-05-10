@@ -5,6 +5,22 @@ html, body {
     height: 100%;
 }
 
+body{
+    font-size: 12px;
+}
+
+a{
+    color: darken(#FF5722, 30%);
+
+    &:hover{
+        color: darken(#FF5722, 30%);
+    }
+
+    .nav > li > & {
+        padding: 6px 15px;
+    }
+}
+
 label{
     font-weight:normal;
     @extend %semibold;
@@ -273,35 +289,13 @@ div#identity-details{
     }
 }
 
-ul.pie-legend{
-    margin-left: -20px;
-    border-radius: 5px;
-    margin-right: 5px;
-    list-style: none;
-
-    li{
-        margin-bottom: 10px;
-        color: #33345E;
-
-        span{
-            padding: 5px 12px;
-            width: 8px;
-            height: 8px;
-            font-weight: 600;
-            margin-bottom: 3px;
-            border-radius: 3px;
-            margin-right: 5px;
-        }
-    }
-}
-
+ul.pie-legend, 
+ul.bar-legend, 
 ul.line-legend{
     margin-left: -20px;
     border-radius: 5px;
     margin-right: 5px;
     list-style: none;
-    margin-top: 15px;
-    margin-right: 5px;
 
     li{
         margin-bottom: 10px;
@@ -353,7 +347,7 @@ ul.line-legend{
 
 
 h4{
-    text-transform: uppercase;
+    text-transform: capitalize;
     letter-spacing: 1.3px;
     font-size: 12px;
     @extend %semibold;
@@ -413,6 +407,7 @@ strong{
                 li {
                     > a{
                         @extend %semibold;
+                        text-transform: uppercase;
                     }
                     &.active, 
                     &.focus,
@@ -513,16 +508,17 @@ section.body-area{
 
                                 .menu-label{
                                     @extend %extra-bold;
-                                    text-transform: uppercase;
+                                    text-transform: capitalize;
                                     color: #7e7e7e;
                                     margin-top: .5rem;
-                                    font-size: 13px;
+                                    font-size: .95rem;
                                 }
                                 .menu-icon{
                                     display: inline-block;
                                     width: 32px;
                                     height: 32px;
                                     background-repeat: no-repeat;
+                                    background-size: 32px 32px;
                                 }
 
                                 &:hover{
@@ -608,11 +604,31 @@ section.body-area{
                     @extend %black;
                 }
                 table{
+                    font-size: 12.5px !important;
+
                     thead{
                         @extend %semibold;
                     }
                     tbody{
-                        font-size: 13.5px;
+                        tr{
+                            td{
+                                padding: 6px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .dashboard-row{
+                margin-bottom: 0;
+                padding-left: 1rem;
+
+                .dashboard-column{
+                    .dashboard-inner-row{
+                        .well{
+                            min-height: 7rem;
+                            margin-left: 0;
+                        }
                     }
                 }
             }

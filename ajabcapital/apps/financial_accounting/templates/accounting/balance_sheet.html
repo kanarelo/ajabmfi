@@ -6,9 +6,65 @@
 {% block fa_balance_sheet %} active{% endblock fa_balance_sheet %}
 
 {% block page-content %}
+    <div class="header row">
+        <div class="col-md-9 col-sm-12">
+            <h3>Balance Sheet</h3>
+        </div>
+        <div class="col-md-3 col-sm-3 hidden-xs">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-4" style="margin-right:-.15rem">
+                    <a class="btn btn-primary btn-sm font_black" href="#">
+                        <i class="fa fa-arrow-circle-up"></i> DEPOSIT
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <a class="btn btn-default btn-sm font_black" href="#">
+                        <i class="fa fa-arrow-circle-down"></i> WITHDRAW
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="well" style="margin-top: 0rem; margin-left: 1rem; min-height: 5rem; border: none; margin-bottom: 1.5rem;">
+        <form class="form-inline">
+          <div class="form-group" style="margin-right:1.5rem">
+            <label for="exampleInputName2">Bank Account:</label>
+            <select class="form-control input-sm">
+                <option>All</option>
+                <option>Barclays Bank</option>
+                <option>Sidian Bank</option>
+                <option>M-Pesa (#34077)</option>
+                <option>M-Pesa (#34078)</option>
+                <option>M-Pesa (#34079)</option>
+                <option>Airtel (#AAS4009)</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-right:1.5rem">
+            <label for="exampleInputName2">Transaction Type:</label>
+            <select class="form-control input-sm">
+                <option>All</option>
+                <option>Disbursement</option>
+                <option>Repayment</option>
+                <option>Deposit</option>
+                <option>Withdrawal</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail2">From:</label>
+            <input type="from" class="form-control input-sm">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail2">To:</label>
+            <input type="to" class="form-control input-sm">
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm font_semibold">
+            <i class="fa fa-filter"></i> FILTER
+          </button>
+        </form>
+    </div>
     <div class="col-lg-12 table-holder">
         <div class="table-cover">
-            <h3>Balance Sheet</h3>
+
             <table class="table table-hover balance-sheet">
                 <thead>
                     <tr>
