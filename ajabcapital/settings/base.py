@@ -128,7 +128,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = reverse_lazy('login')
 DEFAULT_FROM_EMAIL = "Ajab Capital Info <info@ajabcapital.com>"
 
-LOG_ROOT = os.environ.get('LOG_ROOT', os.path.join(BASE_DIR, '..'))
+LOG_ROOT = os.environ.get('LOG_ROOT', os.path.join(BASE_DIR, '..', 'logs'))
 
 LOGGING = {
     'version': 1,
@@ -151,18 +151,10 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
         },
-        'django_log_file': {
-            'level' : 'INFO',
-            'class' : 'logging.handlers.RotatingFileHandler',
-            'filename' : os.path.join(LOG_ROOT, 'logs', 'django.request.log'),
-            'maxBytes' : 1024 * 1024 * 20, # 20MB
-            'backupCount' : 10,
-            'formatter' : 'simple'
-        },
         'core_log_file': {
             'level' : 'INFO',
             'class' : 'logging.handlers.RotatingFileHandler',
-            'filename' : os.path.join(LOG_ROOT, 'logs', 'core.log'),
+            'filename' : os.path.join(LOG_ROOT, 'ajabcapital.app.log'),
             'maxBytes' : 1024 * 1024 * 20, # 20MB
             'backupCount' : 10,
             'formatter' : 'simple'
