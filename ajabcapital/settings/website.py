@@ -1,9 +1,11 @@
 from .base import *
+import dj_database_url
 
 DEBUG = False
 
 ALLOWED_HOSTS = [
     '.ajabcapital.com',
+    'ajabcapital.ajabworld.net',
     '192.241.160.33'
 ]
 
@@ -20,21 +22,7 @@ INSTALLED_APPS = [
     'ajabcapital.apps.website'
 ]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '../../db/landing.db',
-    }
-}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ajabcapital',
-        'USER': 'ajabcapital',
-        'PASSWORD': 'qoSQhO5ygV'
-    }
-}
+DATABASES['default'] = dj_database_url(os.environ.get('AJABCAPITAL_WEBSITE_DB_URL', 'sqlite:///../../db/ajabcapital.sqlite3'))
 
 AUTH_USER_MODEL = 'auth.User'
 

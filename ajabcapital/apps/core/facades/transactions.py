@@ -14,8 +14,8 @@ from ...loan.facades import *
 
 INITIAL = D('0.0')
 
-PENDING_POSTING = "LTS_001"
-POSTED = "LTS_002"
+PENDING_POSTING = "pending_posting"
+POSTED = "posted"
 
 def get_transaction_type_account_turple(transaction_type):
     accounting_rule = LedgerAccountingRule.objects.get(
@@ -28,11 +28,11 @@ def get_transaction_type_account_turple(transaction_type):
 
 def get_ledger_balance_increment(amount, account, item_type):
     #constants
-    ASSET = "1"
-    LIABILITY = "2"
-    EQUITY = "3"
-    INCOME = "4"
-    EXPENSE = "5"
+    ASSET = "A"
+    LIABILITY = "L"
+    EQUITY = "E"
+    INCOME = "I"
+    EXPENSE = "E"
 
     if (amount is None) or (not amount):
         raise Exception("Invalid amount")
@@ -54,11 +54,11 @@ def get_ledger_balance_increment(amount, account, item_type):
             amount = +(amount)
 
     else:
-        raise "Invalid account category"
+        raise Exception("Invalid account category")
 
     #constants
-    NORMAL_ACCOUNT = "LBD_001"
-    CONTRA_ACCOUNT = "LBD_002"
+    NORMAL_ACCOUNT = "N"
+    CONTRA_ACCOUNT = "C"
 
     account_type_code = account.balance_direction.code
 
@@ -166,7 +166,7 @@ def create_transaction(
             (user) and
             (transaction_type and notes)
         ):
-            raise Exception("please provide valid parameters for this transaction.")
+            raise Exception("Please provide valid parameters for this transaction.")
 
         transaction = create_transaction_obj()
         (debit_entry, credit_entry) = (None, None)

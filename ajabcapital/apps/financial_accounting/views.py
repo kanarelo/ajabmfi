@@ -65,7 +65,7 @@ def general_journal(request):
     entries = LedgerEntry.objects.product_account_entries().order_by('-created_at')
 
     page = request.GET.get('page', 1)
-    paginator = Paginator(entries, request.GET.get('count', 12)) # Show 11 contacts per page
+    paginator = Paginator(entries, request.GET.get('count', 14)) # Show 11 contacts per page
 
     try:
         entries = paginator.page(page)
