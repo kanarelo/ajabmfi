@@ -129,8 +129,8 @@ DEFAULT_FROM_EMAIL = "Ajab Capital Info <info@ajabcapital.com>"
 
 LOG_ROOT = os.environ.get('LOG_ROOT', os.path.join(BASE_DIR, '..', 'logs'))
 
-STATIC_ROOT = os.environ.get('STATIC_ROOT', os.path.join(BASE_DIR, '..', 'assets', 'ajabcapital', 'static'))
-MEDIA_ROOT = os.environ.get('MEDIA_ROOT', os.path.join(BASE_DIR, '..', 'assets', 'ajabcapital', 'media'))
+STATIC_ROOT = os.environ.get('STATIC_ROOT', os.path.join(BASE_DIR, '..', '..', 'assets', 'ajabcapital', 'static'))
+MEDIA_ROOT = os.environ.get('MEDIA_ROOT', os.path.join(BASE_DIR, '..', '..', 'assets', 'ajabcapital', 'media'))
 FIXTURE_DIRS = os.environ.get('FIXTURE_DIRS', '/opt/apps/assets/ajabcapital/fixtures/')
 
 LOGGING = {
