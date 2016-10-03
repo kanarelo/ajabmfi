@@ -171,10 +171,5 @@ LOGGING = {
             'propagate': True,
             'level': 'DEBUG',
         },
-        'django.request': {
-            'handlers': ['stream', 'django_log_file'],
-            'propagate': True,
-            'level': 'DEBUG',
-        },
     }
 }
