@@ -18,11 +18,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'bootstrap3',
-
     'ajabcapital.apps.website'
 ]
 
-DATABASES['default'] = dj_database_url(os.environ.get('AJABCAPITAL_WEBSITE_DB_URL', 'sqlite:///../../db/ajabcapital.sqlite3'))
+DATABASES['default'] = dj_database_url(os.environ.get(
+    'AJABCAPITAL_WEBSITE_DB_URL', 'sqlite:///../../db/ajabcapital.sqlite3'))
 
 AUTH_USER_MODEL = 'auth.User'
 
