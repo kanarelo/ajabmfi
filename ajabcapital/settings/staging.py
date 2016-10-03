@@ -20,11 +20,6 @@ DATABASES = {
 }
 
 BASE_URL = 'http://www.ajabcapital.com'
-
-STATIC_ROOT = '/opt/apps/assets/ajabcapital/static/'
-MEDIA_ROOT = '/opt/apps/assets/ajabcapital/media/'
-FIXTURE_DIRS = '/opt/apps/assets/ajabcapital/fixtures/'
-
 # Use local settings if it's available
 
 try:

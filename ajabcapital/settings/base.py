@@ -128,6 +128,9 @@ LOGIN_URL = reverse_lazy('login')
 DEFAULT_FROM_EMAIL = "Ajab Capital Info <info@ajabcapital.com>"
 
 LOG_ROOT = os.environ.get('LOG_ROOT', os.path.join(BASE_DIR, '..', 'logs'))
+STATIC_ROOT = os.environ.get('STATIC_ROOT', '/opt/apps/assets/ajabcapital/static/')
+MEDIA_ROOT = os.environ.get('MEDIA_ROOT', '/opt/apps/assets/ajabcapital/media/')
+FIXTURE_DIRS = os.environ.get('FIXTURE_DIRS', '/opt/apps/assets/ajabcapital/fixtures/')
 
 LOGGING = {
     'version': 1,
