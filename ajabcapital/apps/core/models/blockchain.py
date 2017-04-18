@@ -20,7 +20,7 @@ class LedgerTransactionBlockItem(BaseTransactionBlockItem):
         (LOAN, "Loan"),
         (SAVINGS, "Savings")
     )
-    product_type    = models.PositiveIntegerField(choices=PRODUCT_TYPES, default=LOAN)
+    product_type = models.PositiveIntegerField(choices=PRODUCT_TYPES, default=LOAN)
 
     block = models.ForeignKey('LedgerTransactionBlock', related_name="block_items")
     ledger_account = models.ForeignKey('LedgerAccount')

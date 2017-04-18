@@ -7,8 +7,7 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include('ajabcapital.apps.website.urls')),
-    url(r'home/', include('ajabcapital.apps.core.urls', namespace="home")),
+    url(r'', include('ajabcapital.apps.core.urls', namespace="home")),
     url(r'users/', include('ajabcapital.apps.core_users.urls', namespace="users")),
     url(r'loans/', include('ajabcapital.apps.loan.urls', namespace="loans")),
     url(r'loan/origination/', include('ajabcapital.apps.loan_origination.urls', namespace="origination")),
