@@ -1,15 +1,22 @@
 {% extends "base.html" %}
+
 {% load bootstrap3 %}
 {% load staticfiles %}
 
 {% block page-head %}
 {% endblock page-head %}
 
-{% block body %}
+{% block body-area %}
     <body class="login-body" cz-shortcut-listen="true" hola-ext-player="1">
         <div class="container log-row">
-            <img class="login-logo" src="{% static "img/logos/dark-small.png" %}">
-            <form method="POST" class="form-signin" action="{% url 'login' %}">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <form method="POST" class="form-signin col-md-6 col-md-offset-3" action="{% url 'login' %}">
               {% csrf_token %}
                 <div class="login-wrap">
                     <div class="errors">
@@ -23,10 +30,10 @@
                         </button>
                     {% endbuttons %}
                     {% buttons %}
-                        <a class="forgot-password" href="{% url "password_reset" %}">Forgot Password</a>
+                        <a class="forgot-password" href="{% url "users:password_reset" %}">Forgot Password</a>
                     {% endbuttons %}
                 </div>
             </form>
         </div>
     </block>
-{% endblock body %}
+{% endblock body-area %}
