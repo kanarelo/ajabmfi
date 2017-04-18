@@ -11,8 +11,8 @@ from ajabcapital.apps.core.models import (
 
 class BaseCustomerProfile(AuditBase):
     #counters
-    total_fees_overdue = models.DateTimeField(null=True)
-    total_principal_overdue = models.DateTimeField(null=True)
+    total_fees_overdue = models.DateTimeField(default=D('0.0'))
+    total_principal_overdue = models.DateTimeField(default=D('0.0'))
         
     last_repayment_amount = models.DecimalField(max_digits=18, decimal_places=4, default=D('0.0'))
     last_repayment_date = models.DateTimeField(null=True)
