@@ -11,7 +11,8 @@ ALLOWED_HOSTS = [
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '10.132.32.164',
         'NAME': 'ajabmfi_demo',
         'USER': 'ajabmfi_demo',
         'PASSWORD': '5iwpTr5DII^1ran!n*et&wkeTbKw93dxQVEX@b0KQ0HuholzrF3'
