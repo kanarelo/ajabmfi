@@ -26,7 +26,7 @@ SECRET_KEY = '?P<SECURITY>_7^2i0##!skpu4cz(nsdsd-m.0.09239028932coxuvx-0(p4&7py-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ajabmfi.ajabworld.net']
 
 
 # Application definition
@@ -125,7 +125,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = reverse_lazy('login')
 DEFAULT_FROM_EMAIL = "Ajab Capital Info <info@ajabcapital.com>"
 
-LOG_ROOT = os.environ.get('LOG_ROOT', os.path.join(BASE_DIR, '..', 'logs'))
+LOG_ROOT = os.environ.get('LOG_ROOT', os.path.join(BASE_DIR, '..', '..', 'ajabcapital', 'logs'))
 
 STATIC_ROOT = os.environ.get('STATIC_ROOT', os.path.join(BASE_DIR, '..', '..', 'assets', 'ajabcapital', 'static'))
 MEDIA_ROOT = os.environ.get('MEDIA_ROOT', os.path.join(BASE_DIR, '..', '..', 'assets', 'ajabcapital', 'media'))
