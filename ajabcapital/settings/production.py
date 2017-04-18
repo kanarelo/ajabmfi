@@ -12,9 +12,9 @@ ALLOWED_HOSTS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django',
-        'USER': 'django',
-        'PASSWORD': '598bab6dffcf25833841fa123df676bc'
+        'NAME': 'ajabmfi_demo',
+        'USER': 'ajabmfi_demo',
+        'PASSWORD': '5iwpTr5DII^1ran!n*et&wkeTbKw93dxQVEX@b0KQ0HuholzrF3'
     }
 }
 
