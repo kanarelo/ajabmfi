@@ -30,9 +30,12 @@ def get_women_borrowers():
     return D(LoanProfile.objects.women_profiles().count())
 
 def get_women_borrowers_percentage():
+    active_borrowers = get_active_borrowers()
+    if active_borrowers <= 0:
+        return 0
+
     return (
-        get_women_borrowers() / 
-        get_active_borrowers()
+        get_women_borrowers() / active_borrowers
     ) * 100
 
 def get_average_loan_balance():
@@ -41,9 +44,12 @@ def get_average_loan_balance():
     ).pop('total_current_balance') or INITIAL
 
 def get_risk_coverage_ratio():
+    _gross_non_performing_loans = gross_non_performing_loans()
+    if _gross_non_performing_loans <= 0:
+        return 0
+
     return (
-        get_provision_for_bad_debt() / 
-        gross_non_performing_loans()
+        get_provision_for_bad_debt() / _gross_non_performing_loans
     )
 
 def gross_non_performing_loans():
