@@ -26,8 +26,10 @@ SECRET_KEY = '?P<SECURITY>_7^2i0##!skpu4cz(nsdsd-m.0.09239028932coxuvx-0(p4&7py-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ajabmfi.ajabworld.net']
-
+ALLOWED_HOSTS = [
+    '.ajabmfi.ajabworld.net',
+    'my.ajabmfi.ajabworld.net'
+]
 
 # Application definition
 

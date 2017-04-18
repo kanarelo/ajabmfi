@@ -14,6 +14,9 @@ urlpatterns = [
     url(r'risk-and-compliance/', include('ajabcapital.apps.risk_management.urls', namespace="risk")),
     url(r'clients/', include('ajabcapital.apps.crm.urls', namespace="crm")),
     url(r'accounting/', include('ajabcapital.apps.financial_accounting.urls', namespace="accounting")),
+
+    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'users/auth/login.html'}, name='login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
 ]
 
 if settings.DEBUG:
